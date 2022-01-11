@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,6 +60,21 @@ public class LayoutAnchor : MonoBehaviour
         Vector2 parentOffset = GetPosition(parentRT, parentAnchor);
         Vector2 anchorCenter = new Vector2(Mathf.Lerp(rectTransform.anchorMin.x, rectTransform.anchorMax.x, rectTransform.pivot.x), 
             Mathf.Lerp(rectTransform.anchorMin.y, rectTransform.anchorMax.y, rectTransform.pivot.y));
-        return theOffset;
+        Vector2 anchorOffset = new Vector2(parentRT.rect.width * anchorCenter.x, parentRT.rect.height * anchorCenter.y);
+        Vector2 pivotOffset = new Vector2(rectTransform.rect.width * rectTransform.pivot.x,
+            rectTransform.rect.height * rectTransform.pivot.y);
+        Vector2 pos = parentOffset - anchorOffset - theOffset + pivotOffset + offset;
+        pos.x = Mathf.RoundToInt(pos.x);
+        pos.y = Mathf.RoundToInt(pos.y);
+        return pos;
     }
+
+    public void SnapToAnchorPosition(TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
+    {
+        rectTransform.anchoredPosition = AnchorPosition(anchor, parentAnchor, offset);
+    }
+    
+    /*public void Tweener MoveToAnchorPosition(TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
+    {
+    }*/
 }
