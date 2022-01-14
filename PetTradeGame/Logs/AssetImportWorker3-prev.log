@@ -1,23 +1,30 @@
+Unity Editor version:    2021.2.7f1 (6bd9e232123f)
+Branch:                  2021.2/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 12.1 (Build 21C52)
+Darwin version:          21.2.0
+Architecture:            arm64
+Running under Rosetta:   NO
+Available memory:        32768 MB
 Using pre-set license
-Built from '2021.2/staging' branch; Version is '2021.2.7f1 (6bd9e232123f) revision 7068130'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19044) 64bit Professional' Language: 'zh' Physical Memory: 65443 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+Pro License: NO
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Unity.exe
+/Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/MacOS/Unity
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker3
 -projectPath
-C:/work/Unity/Project/PetTradeGame/PetTradeGame
+/Users/d_harisael/Work/Unity/Project/PetTradeGame/PetTradeGame
 -logFile
 Logs/AssetImportWorker3.log
 -srvPort
-58561
-Successfully changed project path to: C:/work/Unity/Project/PetTradeGame/PetTradeGame
-C:/work/Unity/Project/PetTradeGame/PetTradeGame
+58898
+Successfully changed project path to: /Users/d_harisael/Work/Unity/Project/PetTradeGame/PetTradeGame
+/Users/d_harisael/Work/Unity/Project/PetTradeGame/PetTradeGame
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,189 +54,143 @@ C:/work/Unity/Project/PetTradeGame/PetTradeGame
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 101.86 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 79.41 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.7f1 (6bd9e232123f)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /Users/d_harisael/Work/Unity/Project/PetTradeGame/PetTradeGame/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3080 (ID=0x2216)
-    Vendor:   NVIDIA
-    VRAM:     10078 MB
-    Driver:   30.0.14.9676
+ preferred device: Apple M1 Max (high power)
+Metal devices available: 1
+0: Apple M1 Max (high power)
+Using device Apple M1 Max (high power)
+Initializing Metal device caps: Apple M1 Max
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56080
+Mono path[0] = '/Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
+Mono config path = '/Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56336
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.006875 seconds.
+Register platform support module: /Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /Applications/Unity/Hub/Editor/2021.2.7f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002358 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 85.02 ms, found 4 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 80.30 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.546 seconds
+- Completed reload, in  0.413 seconds
 Domain Reload Profiling:
-	ReloadAssembly (547ms)
-		BeginReloadAssembly (63ms)
+	ReloadAssembly (414ms)
+		BeginReloadAssembly (50ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (411ms)
-			LoadAssemblies (61ms)
+			CreateAndSetChildDomain (0ms)
+		EndReloadAssembly (310ms)
+			LoadAssemblies (51ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (92ms)
+			SetupTypeCache (69ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (22ms)
-			SetupLoadedEditorAssemblies (251ms)
+			RebuildScriptCaches (20ms)
+			SetupLoadedEditorAssemblies (191ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (14ms)
+				InitializePlatformSupportModulesInManaged (8ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (85ms)
+				RefreshPlugins (80ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (109ms)
-				ProcessInitializeOnLoadMethodAttributes (41ms)
+				ProcessInitializeOnLoadAttributes (78ms)
+				ProcessInitializeOnLoadMethodAttributes (25ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.009161 seconds.
+Registered in 0.002682 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\work\Unity\Project\PetTradeGame\PetTradeGame\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image C:\work\Unity\Project\PetTradeGame\PetTradeGame\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image /Users/d_harisael/Work/Unity/Project/PetTradeGame/PetTradeGame/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image /Users/d_harisael/Work/Unity/Project/PetTradeGame/PetTradeGame/Library/PackageCache/com.unity.visualscripting@1.7.6/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 83.85 ms, found 4 plugins.
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 74.99 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.356 seconds
+- Completed reload, in  2.154 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1357ms)
-		BeginReloadAssembly (111ms)
+	ReloadAssembly (2154ms)
+		BeginReloadAssembly (54ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (5ms)
+			DisableScriptedObjects (3ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (18ms)
-		EndReloadAssembly (1154ms)
-			LoadAssemblies (87ms)
+			CreateAndSetChildDomain (11ms)
+		EndReloadAssembly (2037ms)
+			LoadAssemblies (49ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (212ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (47ms)
-			SetupLoadedEditorAssemblies (780ms)
+			SetupTypeCache (152ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (1766ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (9ms)
+				InitializePlatformSupportModulesInManaged (5ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (84ms)
-				BeforeProcessingInitializeOnLoad (91ms)
-				ProcessInitializeOnLoadAttributes (560ms)
-				ProcessInitializeOnLoadMethodAttributes (28ms)
-				AfterProcessingInitializeOnLoad (8ms)
+				RefreshPlugins (75ms)
+				BeforeProcessingInitializeOnLoad (59ms)
+				ProcessInitializeOnLoadAttributes (1606ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (2ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.73 ms, found 4 plugins.
+Launching external process: /Applications/Unity/Hub/Editor/2021.2.7f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.44 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3925 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 46 unused Assets / (225.9 KB). Loaded Objects now: 4382.
-Memory consumption went from 147.6 MB to 147.3 MB.
-Total: 3.089800 ms (FindLiveObjects: 0.319900 ms CreateObjectMapping: 0.100300 ms MarkObjects: 2.544200 ms  DeleteObjects: 0.124200 ms)
+Unloading 3961 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 40 unused Assets / (43.7 KB). Loaded Objects now: 4425.
+Memory consumption went from 270.7 MB to 270.7 MB.
+Total: 2.603833 ms (FindLiveObjects: 0.113041 ms CreateObjectMapping: 0.047542 ms MarkObjects: 2.384833 ms  DeleteObjects: 0.057500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 2871198.911062 seconds.
-  path: Assets/Game/Textures/UI/天竺鼠_Photo.png
-  artifactKey: Guid(02e679d12845b6241810650db73d3850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/天竺鼠_Photo.png using Guid(02e679d12845b6241810650db73d3850) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf9e327fda7ff980d0a4d31381d516fe') in 0.335872 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000041 seconds.
-  path: Assets/Game/Textures/UI/小葵花鳳頭鸚鵡_inMontior.png
-  artifactKey: Guid(4ec3c178797dfc64bbe58265cfb0f142) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/小葵花鳳頭鸚鵡_inMontior.png using Guid(4ec3c178797dfc64bbe58265cfb0f142) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3209d36c296b2616a5695a814818054a') in 0.163992 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000028 seconds.
-  path: Assets/Game/Textures/UI/白子玄鳳鸚鵡_Photo.png
-  artifactKey: Guid(bea34a2d8a132ae4e9cff5c386da79fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/白子玄鳳鸚鵡_Photo.png using Guid(bea34a2d8a132ae4e9cff5c386da79fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af7a9374c41dcc89622bee54f0ed0089') in 0.236404 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000023 seconds.
-  path: Assets/Game/Textures/UI/香港瘰螈_Photo.png
-  artifactKey: Guid(6113f1106cb97b843880f8fa1c25dac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/香港瘰螈_Photo.png using Guid(6113f1106cb97b843880f8fa1c25dac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8926bc52eea8f82ed2860d0e751a5e9e') in 0.186882 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Game/Textures/UI/緬甸蟒蛇_Photo.png
-  artifactKey: Guid(5f03249312b41b44eb257f6fb92d2c93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/緬甸蟒蛇_Photo.png using Guid(5f03249312b41b44eb257f6fb92d2c93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb7ecac60e010c7f2a0fad5399e9bad3') in 0.149393 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000019 seconds.
-  path: Assets/Game/Textures/UI/貴賓犬_inMontior.png
-  artifactKey: Guid(dcd0e13405ac2d249a8cb07ee05ed54b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/貴賓犬_inMontior.png using Guid(dcd0e13405ac2d249a8cb07ee05ed54b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '782530813b8d019c5f49106d19a622b7') in 0.201661 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
+  Time since last request: 71096.610426 seconds.
   path: Assets/Game/Textures/UI/緬甸蟒蛇2_inMontior.png
   artifactKey: Guid(34f0d0e1d13e7fc498248fb8354ae9d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/緬甸蟒蛇2_inMontior.png using Guid(34f0d0e1d13e7fc498248fb8354ae9d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c63b65226d7f999d640b23a95faf0ee6') in 0.286382 seconds 
+Start importing Assets/Game/Textures/UI/緬甸蟒蛇2_inMontior.png using Guid(34f0d0e1d13e7fc498248fb8354ae9d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '875b14bbea23c9f7af92b3eefe2b7e49') in 0.338421 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000033 seconds.
-  path: Assets/Game/Textures/UI/布偶貓_inMontior.png
-  artifactKey: Guid(baef187991672804eb0bc5b812611e61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/布偶貓_inMontior.png using Guid(baef187991672804eb0bc5b812611e61) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f66367bc135bb6759aafb753e1e8d03') in 0.147992 seconds 
+  Time since last request: 19.390583 seconds.
+  path: Assets/Game/Textures/UI/Buttons/Main Menu.png
+  artifactKey: Guid(57d308452a654594cade470beda65ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Textures/UI/Buttons/Main Menu.png using Guid(57d308452a654594cade470beda65ceb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '445ddcdda39e6de829dd1bbff27e4c82') in 0.014115 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000016 seconds.
-  path: Assets/Game/Textures/UI/香港瘰螈_inMontior.png
-  artifactKey: Guid(7d5e68306f224ea4d959234c7f3691bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/香港瘰螈_inMontior.png using Guid(7d5e68306f224ea4d959234c7f3691bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61091add3045b22d2c0f049ba0cd3294') in 0.285439 seconds 
+  Time since last request: 0.000031 seconds.
+  path: Assets/Game/Textures/UI/Buttons/Quit.png
+  artifactKey: Guid(9875dccbb3222e14a91c18b51cba04de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Textures/UI/Buttons/Quit.png using Guid(9875dccbb3222e14a91c18b51cba04de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcd656d6296ed8f8727d1dfa345bf3e0') in 0.010415 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000024 seconds.
-  path: Assets/Game/Textures/UI/鵝_Photo.png
-  artifactKey: Guid(835907ed1c0e7de45bb0058134867054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/鵝_Photo.png using Guid(835907ed1c0e7de45bb0058134867054) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afefe60ab264f021f8cab9b8c0de6eff') in 0.200333 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000025 seconds.
-  path: Assets/Game/Textures/UI/獅子兔_Photo.png
-  artifactKey: Guid(28035a720412048488fe3ec05c4c97d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/獅子兔_Photo.png using Guid(28035a720412048488fe3ec05c4c97d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c0435ede0cd904e452d0c36cb12a63e') in 0.228906 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000022 seconds.
-  path: Assets/Game/Textures/UI/緬甸蟒蛇2_Photo.png
-  artifactKey: Guid(08b212523a1836943a06ad81210ef0d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Game/Textures/UI/緬甸蟒蛇2_Photo.png using Guid(08b212523a1836943a06ad81210ef0d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b61909f8a74e5d08e9aacd556d51d03b') in 0.227954 seconds 
+  Time since last request: 0.000050 seconds.
+  path: Assets/Game/Textures/UI/Buttons/Question.png
+  artifactKey: Guid(bb89195c776d1b747808261daac572bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Game/Textures/UI/Buttons/Question.png using Guid(bb89195c776d1b747808261daac572bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff0ae05ccb66d054b082ff5d9dd8d38d') in 0.008316 seconds 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
