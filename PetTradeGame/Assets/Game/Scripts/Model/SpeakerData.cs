@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Scripts.Model
+namespace Assets.Game.Scripts.Model
 {
     [System.Serializable]
     public class SpeakerData
