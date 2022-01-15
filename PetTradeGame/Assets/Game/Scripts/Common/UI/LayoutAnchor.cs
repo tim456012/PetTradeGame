@@ -3,10 +3,13 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Common.UI
 {
+    /// <summary>
+    /// Provide an easy way to modify the relationship of RectTransform via the inspector.
+    /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class LayoutAnchor : MonoBehaviour
     {
-        private RectTransform rectTransform;
+        private RectTransform rectTransform; //itself
         private RectTransform parentRT;
 
         private void Awake()
@@ -19,6 +22,8 @@ namespace Assets.Game.Scripts.Common.UI
             }
         }
 
+        //Get the general offsets based on the location of the anchor and the size of
+        //RectTransform rect that we want
         private Vector2 GetPosition(RectTransform rt, TextAnchor anchor)
         {
             Vector2 retValue = Vector2.zero;
@@ -33,7 +38,7 @@ namespace Assets.Game.Scripts.Common.UI
                 case TextAnchor.LowerRight:
                 case TextAnchor.MiddleRight:
                 case TextAnchor.UpperRight:
-                    retValue.x -= rt.rect.width;
+                    retValue.x += rt.rect.width;
                     break;
             }
 
@@ -53,6 +58,7 @@ namespace Assets.Game.Scripts.Common.UI
             return retValue;
         }
 
+        //Based on the anchor points we specify to calculating the correct position of the RectTransform (pixel-prefect)
         public Vector2 AnchorPosition(TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
         {
             Vector2 theOffset = GetPosition(rectTransform, anchor);
@@ -68,11 +74,24 @@ namespace Assets.Game.Scripts.Common.UI
             return pos;
         }
     
+        /// <summary>
+        /// Determine where to place the RectTransform.
+        /// </summary>
+        /// <param name="anchor">The anchor of GameObject itself.</param>
+        /// <param name="parentAnchor">The anchor of parent GameObject.</param>
+        /// <param name="offset">The offset of the RectTransform that we want.</param>
         public void SnapToAnchorPosition(TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
         {
             rectTransform.anchoredPosition = AnchorPosition(anchor, parentAnchor, offset);
         }
     
+        /// <summary>
+        /// Moving RectTransform into position with animation.
+        /// </summary>
+        /// <param name="anchor">The anchor of GameObject itself.</param>
+        /// <param name="parentAnchor">The anchor of parent GameObject.</param>
+        /// <param name="offset">The offset of the RectTransform that we want.</param>
+        /// <returns></returns>
         public Tweener MoveToAnchorPosition(TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
         {
             return rectTransform.AnchorTo(AnchorPosition(anchor, parentAnchor, offset));

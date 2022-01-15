@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Common.UI
 {
+    /// <summary>
+    /// The component to define target positions and work with LayoutAnchor to snap or move the UI GameObjet.
+    /// </summary>
     [RequireComponent(typeof(LayoutAnchor))]
     public class Panel : MonoBehaviour
     {
@@ -54,17 +57,26 @@ namespace Assets.Game.Scripts.Common.UI
 
         private void Start()
         {
+            //If no Position has been init when reaching the Start method, assign the first Position as the default.
             if (CurrentPosition == null && positionList.Count > 0)
             {
                 SetPosition(positionList[0], false);
             }
         }
 
+        /// <summary>
+        /// Add a new Position dynamically in the scripts.
+        /// </summary>
+        /// <param name="p">The Position.</param>
         public void AddPosition(Position p)
         {
             _positionMap[p.name] = p;
         }
 
+        /// <summary>
+        /// Remove the Position dynamically in the scripts.
+        /// </summary>
+        /// <param name="p">The Position.</param>
         public void RemovePosition(Position p)
         {
             if (_positionMap.ContainsKey(p.name))
@@ -73,11 +85,23 @@ namespace Assets.Game.Scripts.Common.UI
             }
         }
 
+        /// <summary>
+        /// Move the Panel to specified positions.
+        /// </summary>
+        /// <param name="positionName">The name of specified position.</param>
+        /// <param name="animated">Does it have animation?</param>
+        /// <returns>Panel.Transition / Null</returns>
         public Tweener SetPosition(string positionName, bool animated)
         {
             return SetPosition(this[positionName], animated);
         }
 
+        /// <summary>
+        /// Move the Panel to specified positions.
+        /// </summary>
+        /// <param name="p">The specified position.</param>
+        /// <param name="animated">Does it have animation?</param>
+        /// <returns>Panel.Transition / Null</returns>
         public Tweener SetPosition(Position p, bool animated)
         {
             CurrentPosition = p;
