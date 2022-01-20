@@ -47,6 +47,7 @@ namespace Assets.Game.Scripts.Common.Animation
             if (destroyOnComplete)
             {
                 Destroy(this);
+                Destroy(easingControl);
             }
         }
         #endregion

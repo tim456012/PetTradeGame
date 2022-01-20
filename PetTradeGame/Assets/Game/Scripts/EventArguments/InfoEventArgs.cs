@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Game.Scripts.EventArgs
+namespace Assets.Game.Scripts.EventArguments
 {
     public class InfoEventArgs<T> : System.EventArgs
     {

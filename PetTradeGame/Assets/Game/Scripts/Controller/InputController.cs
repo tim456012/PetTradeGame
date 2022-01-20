@@ -1,23 +1,51 @@
 using System;
-using Game.Scripts.EventArgs;
+using Assets.Game.Scripts.EventArguments;
 using UnityEngine;
 
 namespace Assets.Game.Scripts.Controller
 {
     public class InputController : MonoBehaviour
     {
-        //public static event EventHandler<InfoEventArgs<GameObject>> obj;
-        public static event EventHandler<InfoEventArgs<int>> clickEvent;
+        public static bool IsDragActive = false;
 
-        private string[] _buttons = new string[] { "Fire1", "Fire2", "Fire3" };
+        public static event EventHandler<InfoEventArgs<Vector3>> ClickedEvent;
+        public static event EventHandler<InfoEventArgs<Vector3>> DraggingEvent;
+        public static event EventHandler<InfoEventArgs<Vector3>> DroppingEvent;
 
         private void Update()
         {
-            for (int i = 0; i < 3; ++i)
+            if (IsDragActive)
             {
-                if (Input.GetButtonUp(_buttons[i]))
+                DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
                 {
-                    clickEvent?.Invoke(this, new InfoEventArgs<int>(i));
+                    DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                }
+
+                //If player either clicked the mouse or lifted the finger during dragging, invoke the drop event.
+                if (Input.GetMouseButtonDown(0))
+                {
+                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                }
+                if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+                {
+                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
+                }
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                }
+                else if (Input.touchCount > 0)
+                {
+                    ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
                 }
             }
         }

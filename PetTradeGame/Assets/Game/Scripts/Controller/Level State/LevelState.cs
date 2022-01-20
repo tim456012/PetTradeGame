@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using Assets.Game.Scripts.Common.State_Machine;
-using Game.Scripts.EventArgs;
+using Assets.Game.Scripts.EventArguments;
 
 namespace Assets.Game.Scripts.Controller.Level_State
 {
@@ -19,12 +19,12 @@ namespace Assets.Game.Scripts.Controller.Level_State
 
         protected override void AddListeners()
         {
-            InputController.clickEvent += OnClick;
+            //InputController.ClickEvent += OnClick;
         }
 
         protected override void RemoveListeners()
         {
-            InputController.clickEvent -= OnClick;
+            //InputController.ClickEvent -= OnClick;
         }
 
         protected virtual void OnClick(object sender, InfoEventArgs<int> e)
