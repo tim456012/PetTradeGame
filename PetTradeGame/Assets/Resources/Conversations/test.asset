@@ -15,10 +15,10 @@ MonoBehaviour:
   speakerList:
   - messages:
     - Hello, World!
-    - WTF
+    - This is test 1
     speaker: {fileID: 0}
     anchor: 3
   - messages:
-    - What the fuck!
+    - This is test 2
     speaker: {fileID: 0}
     anchor: 5

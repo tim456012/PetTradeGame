@@ -44,11 +44,10 @@ namespace Assets.Game.Scripts.Common.Animation
         protected abstract void OnUpdate(object sender, EventArgs e);
         protected virtual void OnComplete(object sender, EventArgs e)
         {
-            if (destroyOnComplete)
-            {
-                Destroy(this);
-                Destroy(easingControl);
-            }
+            if (!destroyOnComplete) 
+                return;
+            Destroy(this);
+            Destroy(easingControl);
         }
         #endregion
     }

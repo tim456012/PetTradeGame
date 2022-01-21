@@ -12,41 +12,58 @@ namespace Assets.Game.Scripts.Controller
         public static event EventHandler<InfoEventArgs<Vector3>> DraggingEvent;
         public static event EventHandler<InfoEventArgs<Vector3>> DroppingEvent;
 
+        private bool _isHolding;
+
+        //Need Modify
+        private void Start()
+        {
+            Input.simulateMouseWithTouches = false;
+        }
+
         private void Update()
         {
-            if (IsDragActive)
-            {
-                DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
-                {
-                    DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                }
-
-                //If player either clicked the mouse or lifted the finger during dragging, invoke the drop event.
-                if (Input.GetMouseButtonDown(0))
-                {
-                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
-                }
-                if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
-                {
-                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                }
-
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
-                }
-            }
-            else
+            if (!IsDragActive)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
                     ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                    _isHolding = true;
                 }
                 else if (Input.touchCount > 0)
                 {
                     ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                    _isHolding = true;
                 }
+            }
+            else
+            {
+                if (!_isHolding || Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
+                {
+                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
+                    return;
+                }
+                /*if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
+                {
+                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
+                    return;
+                }*/
+
+
+                if (Input.GetMouseButton(0) && _isHolding)
+                {
+                    DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                }
+                if (Input.touchCount > 0 
+                    && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary 
+                    && _isHolding)
+                {
+                    DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                }
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isHolding = false;
             }
         }
     }

@@ -45,7 +45,7 @@ namespace Assets.Game.Scripts.Temp
             if (!temp.IsDraggable)
                 return;
 
-            _originalPos = _targetObj.transform.position;
+            _originalPos = _targetObj.transform.localPosition;
             _draggableTest = temp;
             InputController.IsDragActive = true;
         }
@@ -56,17 +56,23 @@ namespace Assets.Game.Scripts.Temp
 
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main.ScreenToWorldPoint(_screenPos);
-            _targetObj.transform.position = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
+            _targetObj.transform.MoveToLocal(new Vector2(_gameWorldPos.x, _gameWorldPos.y), 0.2f, EasingEquations.EaseOutSine);
+            //_targetObj.transform.position = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
         }
 
         private void OnDropEvent(object sender, InfoEventArgs<Vector3> e)
         {
             Debug.Log($"Drop Event invoke.");
             
+            Vector3 cameraWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
             InputController.IsDragActive = false;
-            if (_targetObj.transform.position.y > 1.8)
+            if (_targetObj.transform.localPosition.x > (cameraWorld.x / 1.2)
+                || _targetObj.transform.localPosition.x < (cameraWorld.x / 1.2)
+                || _targetObj.transform.localPosition.y > (cameraWorld.y / 1.2) 
+                || _targetObj.transform.localPosition.y < (cameraWorld.y / 1.2))
             {
-                _targetObj.transform.MoveTo(_originalPos, 0.5f);
+                _targetObj.transform.MoveToLocal(_originalPos);
             }
         }
     }
