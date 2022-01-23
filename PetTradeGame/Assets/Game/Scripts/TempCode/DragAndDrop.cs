@@ -30,7 +30,7 @@ namespace Assets.Game.Scripts.Temp
 
         private void OnClickedEvent(object sender, InfoEventArgs<Vector3> e)
         {
-            Debug.Log($"Click Event invoke.");
+            //Debug.Log($"Click Event invoke.");
 
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main.ScreenToWorldPoint(_screenPos);
@@ -52,27 +52,27 @@ namespace Assets.Game.Scripts.Temp
 
         private void OnDragEvent(object sender, InfoEventArgs<Vector3> e)
         {
-            Debug.Log($"Dragging Event invoke.");
+            //Debug.Log($"Dragging Event invoke.");
 
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main.ScreenToWorldPoint(_screenPos);
-            _targetObj.transform.MoveToLocal(new Vector2(_gameWorldPos.x, _gameWorldPos.y), 0.2f, EasingEquations.EaseOutSine);
-            //_targetObj.transform.position = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
+            //_targetObj.transform.MoveToLocal(new Vector2(_gameWorldPos.x, _gameWorldPos.y), 0.2f, EasingEquations.EaseOutSine);
+            _targetObj.transform.localPosition = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
         }
 
         private void OnDropEvent(object sender, InfoEventArgs<Vector3> e)
         {
-            Debug.Log($"Drop Event invoke.");
+            //Debug.Log($"Drop Event invoke.");
             
             Vector3 cameraWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-
+            Debug.Log(cameraWorld);
             InputController.IsDragActive = false;
-            if (_targetObj.transform.localPosition.x > (cameraWorld.x / 1.2)
-                || _targetObj.transform.localPosition.x < (cameraWorld.x / 1.2)
-                || _targetObj.transform.localPosition.y > (cameraWorld.y / 1.2) 
-                || _targetObj.transform.localPosition.y < (cameraWorld.y / 1.2))
+            if (_targetObj.transform.localPosition.x > (cameraWorld.x / 1.13)
+                || _targetObj.transform.localPosition.y > (cameraWorld.y / 1.13)
+                || _targetObj.transform.localPosition.x < -cameraWorld.x / 1.13
+                || _targetObj.transform.localPosition.y < -cameraWorld.y / 1.13)
             {
-                _targetObj.transform.MoveToLocal(_originalPos);
+                _targetObj.transform.MoveToLocal(_originalPos, 2f, EasingEquations.EaseInOutExpo);
             }
         }
     }
