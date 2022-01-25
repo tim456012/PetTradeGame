@@ -6,7 +6,6 @@ using Assets.Game.Scripts.Model;
 using Assets.Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-
 namespace Assets.Game.Scripts.Controller
 {
     public class ConversationController : MonoBehaviour
@@ -71,7 +70,7 @@ namespace Assets.Game.Scripts.Controller
                     or TextAnchor.UpperRight)
                 {
                     show = ShowTop;
-                    hide = ShowBottom;
+                    hide = HideTop;
                 }
                 else
                 {
@@ -86,8 +85,8 @@ namespace Assets.Game.Scripts.Controller
                 while(presenter.MoveNext())
                     yield return null;
 
-                MovePanel(currentPanel, show);
-                transition.easingControl.completedEvent += delegate(object sender, EventArgs e)
+                MovePanel(currentPanel, hide);
+                transition.easingControl.completedEvent += delegate
                 {
                     conversation.MoveNext();
                 };
@@ -103,7 +102,7 @@ namespace Assets.Game.Scripts.Controller
         {
             transition = conversationPanel.panel.SetPosition(pos, true);
             transition.easingControl.duration = 0.5f;
-            transition.easingControl.equation = EasingEquations.EaseInOutQuad;
+            transition.easingControl.equation = EasingEquations.EaseOutQuad;
         }
     }
 }

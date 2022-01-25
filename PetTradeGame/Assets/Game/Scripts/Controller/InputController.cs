@@ -42,12 +42,6 @@ namespace Assets.Game.Scripts.Controller
                     DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
                     return;
                 }
-                /*if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
-                {
-                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
-                    return;
-                }*/
-
 
                 if (Input.GetMouseButton(0) && _isHolding)
                 {

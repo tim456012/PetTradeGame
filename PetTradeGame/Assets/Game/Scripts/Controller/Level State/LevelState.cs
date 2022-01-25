@@ -19,17 +19,17 @@ namespace Assets.Game.Scripts.Controller.Level_State
 
         protected override void AddListeners()
         {
-            //InputController.ClickEvent += OnClick;
+            InputController.ClickedEvent += OnClick;
         }
 
         protected override void RemoveListeners()
         {
-            //InputController.ClickEvent -= OnClick;
+            InputController.ClickedEvent -= OnClick;
         }
 
-        protected virtual void OnClick(object sender, InfoEventArgs<int> e)
+        protected virtual void OnClick(object sender, InfoEventArgs<Vector3> e)
         {
-            
+            //Debug.Log("Detected Clicked");
         }
         
         //Select GameObject

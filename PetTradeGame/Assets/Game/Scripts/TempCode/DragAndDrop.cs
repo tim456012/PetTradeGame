@@ -65,7 +65,6 @@ namespace Assets.Game.Scripts.Temp
             //Debug.Log($"Drop Event invoke.");
             
             Vector3 cameraWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-            Debug.Log(cameraWorld);
             InputController.IsDragActive = false;
             if (_targetObj.transform.localPosition.x > (cameraWorld.x / 1.13)
                 || _targetObj.transform.localPosition.y > (cameraWorld.y / 1.13)

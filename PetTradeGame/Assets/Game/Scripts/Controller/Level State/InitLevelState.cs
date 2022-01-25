@@ -14,7 +14,7 @@ namespace Assets.Game.Scripts.Controller.Level_State
         private IEnumerator Init()
         {
             yield return null;
-            //owner.ChangeState<PlayingState>();
+            owner.ChangeState<CutSceneState>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Game.Scripts.EventArguments;
 using Assets.Game.Scripts.Model;
 using UnityEngine;
 
@@ -45,9 +46,15 @@ namespace Assets.Game.Scripts.Controller.Level_State
             ConversationController.completeEvent -= OnCompleteConversation;
         }
 
+        protected override void OnClick(object sender, InfoEventArgs<Vector3> e)
+        {
+            base.OnClick(sender, e);
+            conversationController.Next();
+        }
+
         private void OnCompleteConversation(object sender, EventArgs e)
         {
-            //owner.ChangeState<Statee>();
+            //owner.ChangeState<LevelState>();
         }
     }
 }

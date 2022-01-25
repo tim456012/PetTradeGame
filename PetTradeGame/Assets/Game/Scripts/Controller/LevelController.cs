@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using Assets.Game.Scripts.Common.State_Machine;
+using Assets.Game.Scripts.Controller.Level_State;
 
 namespace Assets.Game.Scripts.Controller
 {
@@ -11,7 +12,7 @@ namespace Assets.Game.Scripts.Controller
 
         private void Start()
         {
-            //ChangeState<InitLevelState>();
+            ChangeState<InitLevelState>();
         }
     }
 }
