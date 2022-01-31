@@ -11,8 +11,12 @@ public class SettingsAutoConverter : AssetPostprocessor
 
     static SettingsAutoConverter()
     {
-        _parsers = new Dictionary<string, Action>();
-        _parsers.Add("Dialogue Test.csv", ParseDialogues);
+        _parsers = new Dictionary<string, Action>
+        {
+            {
+                "Dialogue Test.csv", ParseDialogues
+            }
+        };
     }
 
     private static void OnPostprocessAllAssets(string[] importedAssets,
@@ -43,12 +47,15 @@ public class SettingsAutoConverter : AssetPostprocessor
 
         string[] readText = File.ReadAllLines("Assets/Game/Settings/Dialogue Test.csv");
         filePath = "Assets/Resources/";
+        ConversationData conversationData = ScriptableObject.CreateInstance<ConversationData>();
         for (int i = 1; i < readText.Length; ++i)
         {
-            ConversationData dialogueData = ScriptableObject.CreateInstance<ConversationData>();
-            dialogueData.Load(readText[i]);
-            string fileName = $"{filePath}{dialogueData.name}.asset";
-            AssetDatabase.CreateAsset(dialogueData, fileName);
+            //ConversationData conversationData = ScriptableObject.CreateInstance<ConversationData>();
+            conversationData.Load(readText[i]);
+            string fileName = $"{filePath}{conversationData.name}.asset";
+            AssetDatabase.CreateAsset(conversationData, fileName);
         }
+        //string fileName = $"{filePath}{conversationData.name}.asset";
+        //AssetDatabase.CreateAsset(conversationData, fileName);
     }
 }

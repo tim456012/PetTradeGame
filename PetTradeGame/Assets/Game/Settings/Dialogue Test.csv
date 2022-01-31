@@ -1,5 +1,3 @@
-Level Name,ID,Event Type,Messages
-Day1,1,Intro Event,Hello World!,This is a dialogoue test
-Day2,2,Middle Event,Testing,123,Very Good.
-Day3,3,Outtro Event,This is outtro testing
-dAY4,4,TEST,hello
+Level,Dialogue ID,Event Type,NPC,Position,Messages
+Day1,0,Intro,Circle,Middle Left,"Hello, World!?","This is Day1 Intro Test"
+Day2,2,Outro,Circle,Upper Left,"Hello","This is Outro","Is time to Work"
