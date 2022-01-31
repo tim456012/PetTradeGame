@@ -37,12 +37,14 @@ namespace Assets.Game.Scripts.Controller
             }
             else
             {
+                //Check the input first. If users stop dragging, invoke the drop event.
                 if (!_isHolding || Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
                 {
                     DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
                     return;
                 }
 
+                //Continues invoking drag event to sending the input position to subscribers.
                 if (Input.GetMouseButton(0) && _isHolding)
                 {
                     DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));

@@ -10,21 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0f37cab6f1164e7cb1b2560a35d4d9b, type: 3}
-  m_Name: IntroScene
+  m_Name: Day3
   m_EditorClassIdentifier: 
-  speakerList:
-  - messages:
-    - Be scared! Cause I am awesome!!!
-    - And Scary!!!
-    - You're scared aren't you?
-    speaker: {fileID: 0}
-    anchor: 0
-  - messages:
-    - Nope. Not really.
-    - Let's get this over with.
-    speaker: {fileID: 0}
-    anchor: 8
-  - messages:
-    - Oh...well...hmm..
-    speaker: {fileID: 0}
-    anchor: 0
+  Description: 
+  dialogueList:
+  - dialogueId: 3
+    dialogueType: Outtro Event
+    messages:
+    - This is outtro testing
+  speakerList: []

@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Game.Scripts.Model;
 using UnityEditor;
 using UnityEngine;
 
 public class SettingsAutoConverter : AssetPostprocessor
 {
-    private static Dictionary<string, Action> _parsers;
+    private static readonly Dictionary<string, Action> _parsers;
 
     static SettingsAutoConverter()
     {
         _parsers = new Dictionary<string, Action>();
-        _parsers.Add("Enemies.csv", ParseEnemies);
+        _parsers.Add("Dialogue Test.csv", ParseDialogues);
     }
 
     private static void OnPostprocessAllAssets(string[] importedAssets,
@@ -30,24 +31,24 @@ public class SettingsAutoConverter : AssetPostprocessor
         AssetDatabase.Refresh();
     }
 
-    private static void ParseEnemies()
+    private static void ParseDialogues()
     {
-        string filePath = Application.dataPath + "/Game/Settings/Enemies.csv";
+        string filePath = Application.dataPath + "/Game/Settings/Dialogue Test.csv";
         Debug.Log(filePath);
         if (!File.Exists(filePath))
         {
-            Debug.LogError($"Missing Enemies Data : {filePath}");
+            Debug.LogError($"Missing Dialogue Data : {filePath}");
             return;
         }
 
-        string[] readText = File.ReadAllLines("Assets/Game/Settings/Enemies.csv");
+        string[] readText = File.ReadAllLines("Assets/Game/Settings/Dialogue Test.csv");
         filePath = "Assets/Resources/";
         for (int i = 1; i < readText.Length; ++i)
         {
-            EnemyData enemyData = ScriptableObject.CreateInstance<EnemyData>();
-            enemyData.Load(readText[i]);
-            string fileName = $"{filePath}{enemyData.name}.asset";
-            AssetDatabase.CreateAsset(enemyData, fileName);
+            ConversationData dialogueData = ScriptableObject.CreateInstance<ConversationData>();
+            dialogueData.Load(readText[i]);
+            string fileName = $"{filePath}{dialogueData.name}.asset";
+            AssetDatabase.CreateAsset(dialogueData, fileName);
         }
     }
 }

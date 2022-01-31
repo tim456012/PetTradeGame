@@ -4,7 +4,7 @@ using Assets.Game.Scripts.Controller;
 using Assets.Game.Scripts.Common.Animation;
 using Assets.Game.Scripts.EventArguments;
 
-namespace Assets.Game.Scripts.Temp
+namespace Assets.Game.Scripts.TempCode
 {
     public class DragAndDrop : MonoBehaviour
     {

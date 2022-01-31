@@ -1,14 +1,15 @@
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Game.Scripts.Model
 {
     [System.Serializable]
-    public class SpeakerData
+    public class DialogueData
     {
+        public int dialogueId;
+        public string dialogueType;
         public List<string> messages;
-        public int pairDialogueId;
-        public Sprite speaker;
-        public TextAnchor anchor;
     }
 }
+
