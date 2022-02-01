@@ -9,8 +9,7 @@ namespace Assets.Game.Scripts.Model
     public class ConversationData : ScriptableObject
     {
         public string description;
-        public List<DialogueData> dialogueList = new();
-        public List<SpeakerData> speakerList;
+        public List<SpeakerData> speakerList = new();
 
         private static readonly Regex regex = new("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
 
@@ -25,10 +24,10 @@ namespace Assets.Game.Scripts.Model
                 {
                     lines.Add("");
                 }
-                lines.Add(current.TrimStart(','));
+                lines.Add(current.Trim(',', '"'));
             }
-            
-            DialogueData data  = new DialogueData(lines[0])
+
+            SpeakerData data = new SpeakerData(lines[0])
             {
                 dialogueId = Convert.ToInt32(lines[1]),
                 eventType = Convert.ToString(lines[2]) switch
@@ -55,20 +54,18 @@ namespace Assets.Game.Scripts.Model
                 }
             };
 
-            if (lines.Count > 5)
+            if (lines.Count >= 5)
             {
                 data.messages = new List<string>(lines.Count - 5);
                 for (int i = 5; i < lines.Count; ++i)
                 {
-                    data.messages.Add(Convert.ToString(lines[i]));
+                    string text = Convert.ToString(lines[i]);
+                    if (string.IsNullOrEmpty(text))
+                        continue;
+                    data.messages.Add(text);
                 }
             }
-            else
-            {
-                data.messages = new List<string> { Convert.ToString(lines[3]) };
-            }
-
-            dialogueList.Add(data);
+            speakerList.Add(data);
         }
     }
 }

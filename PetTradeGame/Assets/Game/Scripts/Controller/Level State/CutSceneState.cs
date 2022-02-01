@@ -16,7 +16,7 @@ namespace Assets.Game.Scripts.Controller.Level_State
         {
             base.Awake();
             conversationController = owner.GetComponentInChildren<ConversationController>();
-            conversationData = Resources.Load<ConversationData>("Conversations/IntroScene");
+            conversationData = Resources.Load<ConversationData>("Conversations/Day1");
         }
 
         protected override void OnDestroy()
