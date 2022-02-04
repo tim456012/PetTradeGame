@@ -14,30 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   speakerList:
-  - speakerName: 'Danny        '
+  - speakerName: Danny
     dialogueId: 0
-    eventType: 4
+    eventType: 1
     messages:
     - Hello, World!?
-    - 'This is Day1 Intro Test. '
-    - "\u4F60\u597D               "
-    - "\u65E9\u6668"
-    speaker: {fileID: 0}
-    anchor: 0
-  - speakerName: 'Ben          '
+    - This is Day1 Intro Test.
+    speaker: {fileID: -2413806693520163455, guid: d4ec9c04893934498b538367fe2bf86c, type: 3}
+    anchor: 4
+  - speakerName: Peter
     dialogueId: 1
-    eventType: 4
+    eventType: 3
     messages:
-    - 'Hello            '
-    - 'This is Outro            '
-    - 'Is time to Work. '
-    speaker: {fileID: 0}
-    anchor: 0
-  - speakerName: 'Boe          '
+    - "\u4F60\u597D"
+    - "\u65E9\u6668"
+    - "\u9019\u500B\u662F\u6E2C\u8A66\u4E00"
+    - "\u9019\u500B\u662F\u6E2C\u8A66\u4E8C\u3002"
+    speaker: {fileID: -2413806693520163455, guid: d4ec9c04893934498b538367fe2bf86c, type: 3}
+    anchor: 4
+  - speakerName: Ben
     dialogueId: 2
-    eventType: 4
+    eventType: 3
     messages:
-    - Hi, Ben
-    - 'How''s going              '
-    speaker: {fileID: 0}
-    anchor: 0
+    - Hi
+    - Hello
+    - 123
+    - test.
+    speaker: {fileID: -2413806693520163455, guid: d4ec9c04893934498b538367fe2bf86c, type: 3}
+    anchor: 5

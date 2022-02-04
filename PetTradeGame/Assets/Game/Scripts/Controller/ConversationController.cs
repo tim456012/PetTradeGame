@@ -12,6 +12,7 @@ namespace Assets.Game.Scripts.Controller
     {
         [SerializeField] private ConversationPanel leftPanel;
         [SerializeField] private ConversationPanel rightPanel;
+        [SerializeField] private ConversationPanel centerPanel;
 
         private Canvas canvas;
         private IEnumerator conversation;
@@ -19,10 +20,12 @@ namespace Assets.Game.Scripts.Controller
 
         private const string ShowTop = "Show Top";
         private const string ShowBottom = "Show Bottom";
+        private const string ShowCenter = "Show Center";
         private const string HideTop = "Hide Top";
         private const string HideBottom = "Hide Bottom";
+        private const string HideCenter = "Hide Center";
 
-        public static event EventHandler completeEvent;
+        public static event EventHandler CompleteEvent;
 
         private void Start()
         {
@@ -35,6 +38,11 @@ namespace Assets.Game.Scripts.Controller
             if (rightPanel.panel.CurrentPosition == null)
             {
                 rightPanel.panel.SetPosition(HideBottom, false );
+            }
+
+            if (centerPanel.panel.CurrentPosition == null)
+            {
+                centerPanel.panel.SetPosition(HideBottom, false);
             }
         }
 
@@ -55,27 +63,49 @@ namespace Assets.Game.Scripts.Controller
 
         private IEnumerator Sequence(ConversationData data)
         {
-            for (int i = 0; i < data.speakerList.Count; ++i)
+            foreach (var speakerData in data.speakerList)
             {
-                SpeakerData speakerData = data.speakerList[i];
-                ConversationPanel currentPanel = speakerData.anchor is TextAnchor.UpperLeft 
+                ConversationPanel currentPanel = speakerData.anchor switch
+                {
+                    TextAnchor.UpperLeft or TextAnchor.MiddleLeft or TextAnchor.LowerLeft => leftPanel,
+                    TextAnchor.UpperCenter or TextAnchor.MiddleCenter or TextAnchor.LowerCenter => centerPanel,
+                    TextAnchor.UpperRight or TextAnchor.MiddleRight or TextAnchor.LowerRight => rightPanel,
+                    _ => centerPanel
+                };
+                
+                /*ConversationPanel currentPanel = speakerData.anchor is TextAnchor.UpperLeft 
                     or TextAnchor.MiddleLeft 
-                    or TextAnchor.LowerLeft ? leftPanel : rightPanel;
+                    or TextAnchor.LowerLeft ? leftPanel : rightPanel;*/
+                
                 IEnumerator presenter = currentPanel.Display(speakerData);
                 presenter.MoveNext();
 
                 string show, hide;
-                if (speakerData.anchor is TextAnchor.UpperLeft
-                    or TextAnchor.UpperCenter
-                    or TextAnchor.UpperRight)
+                
+                switch (speakerData.anchor)
                 {
-                    show = ShowTop;
-                    hide = HideTop;
-                }
-                else
-                {
-                    show = ShowBottom;
-                    hide = HideBottom;
+                    case TextAnchor.UpperLeft:
+                    case TextAnchor.UpperCenter:
+                    case TextAnchor.UpperRight: 
+                        show = ShowTop;
+                        hide = HideTop;
+                        break;
+                    case TextAnchor.MiddleLeft:
+                    case TextAnchor.MiddleCenter: 
+                    case TextAnchor.MiddleRight:
+                        show = ShowCenter;
+                        hide = HideCenter;
+                        break;
+                    case TextAnchor.LowerLeft: 
+                    case TextAnchor.LowerCenter: 
+                    case TextAnchor.LowerRight:
+                        show = ShowBottom;
+                        hide = HideBottom;
+                        break;
+                    default:
+                        show = ShowBottom;
+                        hide = HideBottom;
+                        break;
                 }
 
                 currentPanel.panel.SetPosition(hide, false);
@@ -95,7 +125,7 @@ namespace Assets.Game.Scripts.Controller
             }
 
             canvas.gameObject.SetActive(false);
-            completeEvent?.Invoke(this, EventArgs.Empty);
+            CompleteEvent?.Invoke(this, EventArgs.Empty);
         }
 
         private void MovePanel(ConversationPanel conversationPanel, string pos)

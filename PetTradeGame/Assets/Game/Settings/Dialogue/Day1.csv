@@ -1,4 +1,4 @@
-Speaker Name ,Dialogue ID ,Event Type ,NPC    ,Position    ,Messages         ,                         ,                 , 
-Danny        ,0           ,Intro      ,Circle ,Upper Left  ,"Hello, World!?" ,This is Day1 Intro Test. ,你好               ,早晨
-Ben          ,1           ,Outro      ,Circle ,Lower Right ,Hello            ,This is Outro            ,Is time to Work. ,
-Boe          ,2           ,Cutscene   ,Square ,Lower Left  ,"Hi, Ben"        ,How's going              ,
+Speaker Name,Dialogue ID,Event Type,NPC,Position,Messages,,,
+Danny,0,Intro,Circle,Upper Left,"Hello, World!?",This is Day1 Intro Test.
+Peter,1,Outro,Circle,Middle Center,你好,早晨,這個是測試一,這個是測試二。
+Ben,2,Outro,Circle,Middle Right,Hi,Hello,123,test.

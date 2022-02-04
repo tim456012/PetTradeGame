@@ -37,13 +37,13 @@ namespace Assets.Game.Scripts.Controller.Level_State
         protected override void AddListeners()
         {
             base.AddListeners();
-            ConversationController.completeEvent += OnCompleteConversation;
+            ConversationController.CompleteEvent += OnCompleteConversation;
         }
 
         protected override void RemoveListeners()
         {
             base.RemoveListeners();
-            ConversationController.completeEvent -= OnCompleteConversation;
+            ConversationController.CompleteEvent -= OnCompleteConversation;
         }
 
         protected override void OnClick(object sender, InfoEventArgs<Vector3> e)

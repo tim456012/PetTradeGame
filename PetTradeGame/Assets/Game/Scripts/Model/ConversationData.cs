@@ -48,8 +48,8 @@ namespace Assets.Game.Scripts.Model
                     "Middle Center" => TextAnchor.MiddleCenter,
                     "Middle Right" => TextAnchor.MiddleRight,
                     "Lower Left" => TextAnchor.LowerLeft,
-                    "Lower Center" => TextAnchor.MiddleCenter,
-                    "Lower Right" => TextAnchor.MiddleRight,
+                    "Lower Center" => TextAnchor.LowerCenter,
+                    "Lower Right" => TextAnchor.LowerRight,
                     _ => TextAnchor.UpperLeft,
                 }
             };

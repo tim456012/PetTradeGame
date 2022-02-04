@@ -31,7 +31,5 @@ namespace Assets.Game.Scripts.Controller.Level_State
         {
             //Debug.Log("Detected Clicked");
         }
-        
-        //Select GameObject
     }
 }

@@ -57,6 +57,7 @@ namespace Assets.Game.Scripts.Controller
                 }
             }
 
+            //Need Modify phone version
             if (Input.GetMouseButtonUp(0))
             {
                 _isHolding = false;
