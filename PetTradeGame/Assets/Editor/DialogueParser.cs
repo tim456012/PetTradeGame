@@ -1,12 +1,16 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
+using Assets.Game.Scripts.Enum;
 using Assets.Game.Scripts.Model;
 using UnityEngine;
 using UnityEditor;
 
 public static class DialogueParser
 {
+    private static readonly Regex Regex = new("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+
     [MenuItem("Pre Production/Parse Dialogue Data")]
     public static void Parse()
     {
@@ -20,7 +24,7 @@ public static class DialogueParser
     {
         if (!AssetDatabase.IsValidFolder("Assets/Resources/Conversations"))
         {
-            AssetDatabase.CreateFolder("Assets/Resources", "Conversation");
+            AssetDatabase.CreateFolder("Assets/Resources", "Conversations");
         }
     }
 
@@ -48,12 +52,11 @@ public static class DialogueParser
             {
                 conversationData.Load(readText[i]);
             }
-
             string assetName = file.Name;
             int filExtPos = assetName.LastIndexOf('.');
             if (filExtPos >= 0)
             {
-                assetName = assetName.Substring(0, filExtPos);
+                assetName = assetName[..filExtPos];
             }
 
             string fileName = $"{targetPath}{assetName}.asset";

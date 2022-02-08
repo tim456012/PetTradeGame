@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Model
 {
+    [CreateAssetMenu(fileName = "Conversation Data", menuName = "ScriptableObject/Conversation Data")]
     public class ConversationData : ScriptableObject
     {
         public string description;
@@ -15,7 +16,6 @@ namespace Assets.Game.Scripts.Model
 
         public void Load(string line)
         {
-            //string[] lines = line.Split(",");
             List<string> lines = new List<string>();
             foreach (Match match in regex.Matches(line))
             {
@@ -30,16 +30,8 @@ namespace Assets.Game.Scripts.Model
             SpeakerData data = new SpeakerData(lines[0])
             {
                 dialogueId = Convert.ToInt32(lines[1]),
-                eventType = Convert.ToString(lines[2]) switch
-                {
-                    "Cutscene" => DialogueEvent.CutScenes,
-                    "Intro" => DialogueEvent.Intro,
-                    "Middle" => DialogueEvent.Middle,
-                    "Outro" => DialogueEvent.Outro,
-                    _ => DialogueEvent.Other,
-                },
-                speaker = Resources.Load<Sprite>($"Test/{lines[3]}"),
-                anchor = Convert.ToString(lines[4]) switch
+                speaker = Resources.Load<Sprite>($"Test/{lines[2]}"),
+                anchor = Convert.ToString(lines[3]) switch
                 {
                     "Upper Left" => TextAnchor.UpperLeft,
                     "Upper Center" => TextAnchor.UpperCenter,
@@ -54,10 +46,10 @@ namespace Assets.Game.Scripts.Model
                 }
             };
 
-            if (lines.Count >= 5)
+            if (lines.Count >= 4)
             {
-                data.messages = new List<string>(lines.Count - 5);
-                for (int i = 5; i < lines.Count; ++i)
+                data.messages = new List<string>(lines.Count - 4);
+                for (int i = 4; i < lines.Count; ++i)
                 {
                     string text = Convert.ToString(lines[i]);
                     if (string.IsNullOrEmpty(text))

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Game.Scripts.Common.Animation;
+using Assets.Game.Scripts.Enum;
 using Assets.Game.Scripts.Model;
 using Assets.Game.Scripts.View_Model_Components;
 using UnityEngine;
@@ -72,10 +73,6 @@ namespace Assets.Game.Scripts.Controller
                     TextAnchor.UpperRight or TextAnchor.MiddleRight or TextAnchor.LowerRight => rightPanel,
                     _ => centerPanel
                 };
-                
-                /*ConversationPanel currentPanel = speakerData.anchor is TextAnchor.UpperLeft 
-                    or TextAnchor.MiddleLeft 
-                    or TextAnchor.LowerLeft ? leftPanel : rightPanel;*/
                 
                 IEnumerator presenter = currentPanel.Display(speakerData);
                 presenter.MoveNext();

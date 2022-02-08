@@ -1,4 +1,5 @@
-Speaker Name,Dialogue ID,Event Type,NPC,Position,Messages,,,
-Danny,0,Intro,Circle,Upper Left,"Hello, World!?",This is Day1 Intro Test.
-Peter,1,Outro,Circle,Middle Center,你好,早晨,這個是測試一,這個是測試二。
-Ben,2,Outro,Circle,Middle Right,Hi,Hello,123,test.
+Speaker Name,Dialogue ID,NPC,Position,Messages,,,
+Danny,0,Boss_ccexpress,Upper Left,"Hello, World!?",This is Day1 Intro Test.
+Peter,1,courier_ccexpress,Middle Center,你好,早晨,這個是測試一,這個是測試二。
+Ben,2,Horse_ccexpress,Middle Right,Hi,Hello,123,test.
+Danny,3,Boss_ccexpress,Lower Center,"Hellom,你好,早晨"

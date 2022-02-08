@@ -9,7 +9,6 @@ namespace Assets.Game.Scripts.Model
     {
         public string speakerName;
         public int dialogueId;
-        public DialogueEvent eventType;
         public List<string> messages;
         public Sprite speaker;
         public TextAnchor anchor;

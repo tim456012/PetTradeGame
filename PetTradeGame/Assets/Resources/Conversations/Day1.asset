@@ -16,29 +16,32 @@ MonoBehaviour:
   speakerList:
   - speakerName: Danny
     dialogueId: 0
-    eventType: 1
     messages:
     - Hello, World!?
     - This is Day1 Intro Test.
-    speaker: {fileID: -2413806693520163455, guid: d4ec9c04893934498b538367fe2bf86c, type: 3}
-    anchor: 4
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 0
   - speakerName: Peter
     dialogueId: 1
-    eventType: 3
     messages:
     - "\u4F60\u597D"
     - "\u65E9\u6668"
     - "\u9019\u500B\u662F\u6E2C\u8A66\u4E00"
     - "\u9019\u500B\u662F\u6E2C\u8A66\u4E8C\u3002"
-    speaker: {fileID: -2413806693520163455, guid: d4ec9c04893934498b538367fe2bf86c, type: 3}
+    speaker: {fileID: 21300000, guid: 97c90bcec707cd744803c03edf04dd9e, type: 3}
     anchor: 4
   - speakerName: Ben
     dialogueId: 2
-    eventType: 3
     messages:
     - Hi
     - Hello
     - 123
     - test.
-    speaker: {fileID: -2413806693520163455, guid: d4ec9c04893934498b538367fe2bf86c, type: 3}
+    speaker: {fileID: 21300000, guid: 9c1b2fe70e6c8d744ac6aa320914b37c, type: 3}
     anchor: 5
+  - speakerName: Danny
+    dialogueId: 3
+    messages:
+    - "Hellom,\u4F60\u597D,\u65E9\u6668"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 7

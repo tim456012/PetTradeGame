@@ -29,7 +29,7 @@ namespace Assets.Game.Scripts.View_Model_Components
         public IEnumerator Display(SpeakerData data)
         {
             speaker.sprite = data.speaker;
-            speaker.SetNativeSize();
+            //speaker.SetNativeSize();
 
             for (int i = 0; i < data.messages.Count; ++i)
             {

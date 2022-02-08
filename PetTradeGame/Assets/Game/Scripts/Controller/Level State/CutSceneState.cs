@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Controller.Level_State
 {
-    public class CutSceneState : LevelState
+    public class CutSceneState : GameLoopState
     {
         private ConversationController conversationController;
         private ConversationData conversationData;
@@ -16,7 +16,9 @@ namespace Assets.Game.Scripts.Controller.Level_State
         {
             base.Awake();
             conversationController = owner.GetComponentInChildren<ConversationController>();
-            conversationData = Resources.Load<ConversationData>("Conversations/Day1");
+            //conversationData = Resources.Load<ConversationData>("Conversations/Day1");
+
+            conversationData = owner.LevelData.CutSceneDialogue;
         }
 
         protected override void OnDestroy()
@@ -24,7 +26,8 @@ namespace Assets.Game.Scripts.Controller.Level_State
             base.OnDestroy();
             if (conversationData)
             {
-                Resources.UnloadAsset(conversationData);
+                //Resources.UnloadAsset(conversationData);
+                conversationData = null;
             }
         }
 
@@ -54,7 +57,7 @@ namespace Assets.Game.Scripts.Controller.Level_State
 
         private void OnCompleteConversation(object sender, EventArgs e)
         {
-            //owner.ChangeState<LevelState>();
+            owner.ChangeState<PlayingState>();
         }
     }
 }
