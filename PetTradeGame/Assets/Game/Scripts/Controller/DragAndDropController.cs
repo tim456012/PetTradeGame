@@ -1,16 +1,19 @@
+using System;
 using Assets.Game.Scripts.Common.Animation;
 using Assets.Game.Scripts.EventArguments;
+using Assets.Game.Scripts.View_Model_Components;
 using UnityEngine;
 
 namespace Assets.Game.Scripts.Controller
 {
     public class DragAndDropController : MonoBehaviour
     {
+        public static event EventHandler<InfoEventArgs<GameObject>> TargetObjSelectedEvent;
+
         private Vector2 _screenPos;
         private Vector3 _gameWorldPos;
         private Vector3 _originalPos;
         private GameObject _targetObj;
-        private DraggableTest _draggableTest;
 
         private void OnEnable()
         {
@@ -39,12 +42,11 @@ namespace Assets.Game.Scripts.Controller
 
             _targetObj = hit.transform.gameObject;
             Debug.Log($"GameObject {_targetObj.name} selected.");
-            DraggableTest temp = _targetObj.GetComponent<DraggableTest>();
+            EntityAttribute temp = _targetObj.GetComponent<EntityAttribute>();
             if (!temp.IsDraggable)
                 return;
 
             _originalPos = _targetObj.transform.localPosition;
-            _draggableTest = temp;
             InputController.IsDragActive = true;
         }
 
@@ -71,6 +73,9 @@ namespace Assets.Game.Scripts.Controller
             {
                 _targetObj.transform.MoveToLocal(_originalPos, 2f, EasingEquations.EaseInOutExpo);
             }
+           
+            TargetObjSelectedEvent?.Invoke(this, new InfoEventArgs<GameObject>(_targetObj));
+            _targetObj = null;
         }
     }
 }

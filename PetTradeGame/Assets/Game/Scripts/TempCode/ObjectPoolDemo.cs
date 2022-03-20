@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Assets.Game.Scripts.Controller;
+using Assets.Game.Scripts.View_Model_Components;
 using UnityEngine;
 
 namespace Assets.Game.Scripts.TempCode

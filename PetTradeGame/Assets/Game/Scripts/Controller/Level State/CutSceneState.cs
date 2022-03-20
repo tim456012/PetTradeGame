@@ -57,7 +57,7 @@ namespace Assets.Game.Scripts.Controller.Level_State
 
         private void OnCompleteConversation(object sender, EventArgs e)
         {
-            owner.ChangeState<PlayingState>();
+            owner.ChangeState<IntroState>();
         }
     }
 }

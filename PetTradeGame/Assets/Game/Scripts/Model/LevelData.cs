@@ -11,5 +11,8 @@ namespace Assets.Game.Scripts.Model
         public ConversationData MiddleDialogue;
         public ConversationData OutroDialogue;
         public ConversationData OtherDialogue;
+
+        public List<string> DocumentsNeeded;
+        public List<FunctionalObjectsData> FunctionalObjectsData;
     }
 }

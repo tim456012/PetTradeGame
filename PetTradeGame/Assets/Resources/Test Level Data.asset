@@ -17,3 +17,24 @@ MonoBehaviour:
   MiddleDialogue: {fileID: 0}
   OutroDialogue: {fileID: 0}
   OtherDialogue: {fileID: 0}
+  DocumentsNeeded:
+  - SpecialPermit
+  - DealerLicense
+  - PossessionLicense
+  - HealthCertificate
+  FunctionalObjectsData:
+  - Object: {fileID: 3278780523530120428, guid: 6ed189573a6c6d84c830df659366dfad, type: 3}
+    Key: GStamp
+    Amount: 1
+    MaxAmount: 1
+    SpawnPosition: StampPos1
+  - Object: {fileID: 8072269054454794087, guid: 9624a96f6da7a8041a99da2e58497ee6, type: 3}
+    Key: RStamp
+    Amount: 1
+    MaxAmount: 1
+    SpawnPosition: StampPos2
+  - Object: {fileID: 5812135187394343717, guid: d346dcd1142c1d547bb35d74ae0289c3, type: 3}
+    Key: License
+    Amount: 5
+    MaxAmount: 10
+    SpawnPosition: 

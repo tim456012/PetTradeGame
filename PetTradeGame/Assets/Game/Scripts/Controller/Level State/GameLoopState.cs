@@ -11,7 +11,7 @@ namespace Assets.Game.Scripts.Controller.Level_State
     {
         protected LevelController owner;
 
-        public LevelData levelData => owner.LevelData;
+        public LevelData LevelData => owner.LevelData;
 
         protected virtual void Awake()
         {
