@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
+using Game.Scripts.EventArguments;
+using Game.Scripts.Model;
 using UnityEngine;
-using Assets.Game.Scripts.EventArguments;
-using Assets.Game.Scripts.Model;
 
-namespace Assets.Game.Scripts.Controller.Level_State
+namespace Game.Scripts.Controller.Level_State
 {
     public class MiddleState : GameLoopState
     {

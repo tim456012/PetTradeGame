@@ -1,37 +1,40 @@
 using System;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 
-public interface IHasChanged : IEventSystemHandler
+namespace Game.Scripts
 {
-    public void HasChanged();
-}
-
-public class Inventory : MonoBehaviour, IHasChanged
-{
-    [SerializeField] private Transform slots;
-    [SerializeField] private TextMeshProUGUI itemText;
-    
-    // Start is called before the first frame update
-    void Start()
+    public interface IHasChanged : IEventSystemHandler
     {
-        HasChanged();
+        public void HasChanged();
     }
 
-    public void HasChanged()
+    public class Inventory : MonoBehaviour, IHasChanged
     {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(" - ");
-        foreach (Transform slot in slots)
+        [SerializeField] private Transform slots;
+        [SerializeField] private TextMeshProUGUI itemText;
+    
+        // Start is called before the first frame update
+        void Start()
         {
-            GameObject item = slot.GetComponent<Slot>().item;
-            if (!item)
-                continue;
-            sb.Append(item.name);
-            sb.Append(" - ");
+            HasChanged();
         }
-        itemText.text = sb.ToString();
+
+        public void HasChanged()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(" - ");
+            foreach (Transform slot in slots)
+            {
+                GameObject item = slot.GetComponent<Slot>().item;
+                if (!item)
+                    continue;
+                sb.Append(item.name);
+                sb.Append(" - ");
+            }
+            itemText.text = sb.ToString();
+        }
     }
 }

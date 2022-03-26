@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Assets.Game.Scripts.Model;
+using Game.Scripts.Model;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller.Level_State
+namespace Game.Scripts.Controller.Level_State
 {
     public class PlayingState : GameLoopState
     {

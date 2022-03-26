@@ -1,7 +1,6 @@
 using UnityEngine;
-using System.Collections;
 
-namespace Assets.Game.Scripts.Common.State_Machine
+namespace Game.Scripts.Common.State_Machine
 {
     public class StateMachine : MonoBehaviour
     {
@@ -35,6 +34,7 @@ namespace Assets.Game.Scripts.Common.State_Machine
         public virtual void ChangeState<T>() where T : State
         {
             CurrentState = GetState<T>();
+            //Debug.Log(CurrentState);
         }
 
         protected virtual void Transition(State value)
@@ -45,9 +45,7 @@ namespace Assets.Game.Scripts.Common.State_Machine
             _transition = true;
             
             if (_currentState != null)
-            {
                 _currentState.Exit();
-            }
 
             _currentState = value;
 

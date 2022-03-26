@@ -1,4 +1,4 @@
-namespace Assets.Game.Scripts.Enum
+namespace Game.Scripts.Enum
 {
     public enum PaperType
     {

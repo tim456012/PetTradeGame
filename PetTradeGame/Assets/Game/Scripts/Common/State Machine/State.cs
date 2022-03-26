@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Common.State_Machine
+namespace Game.Scripts.Common.State_Machine
 {
     public abstract class State : MonoBehaviour
     {

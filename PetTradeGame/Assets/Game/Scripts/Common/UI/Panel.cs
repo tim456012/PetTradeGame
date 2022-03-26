@@ -1,10 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Assets.Game.Scripts.Common.Animation;
+using Game.Scripts.Common.Animation;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Common.UI
+namespace Game.Scripts.Common.UI
 {
     /// <summary>
     /// The component to define target positions and work with LayoutAnchor to snap or move the UI GameObjet.

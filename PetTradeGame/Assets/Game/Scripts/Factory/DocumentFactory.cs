@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using Assets.Game.Scripts.Model;
-using Assets.Game.Scripts.Tools;
-using Assets.Game.Scripts.TempCode;
-using Assets.Game.Scripts.View_Model_Components;
-using UnityEngine;
+using Game.Scripts.Model;
+using Game.Scripts.Tools;
+using Game.Scripts.View_Model_Components;
 using TMPro;
+using UnityEngine;
 using Random = System.Random;
 
-namespace Assets.Game.Scripts.Factory
+namespace Game.Scripts.Factory
 {
     public static class DocumentFactory
     {

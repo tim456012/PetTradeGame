@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine; 
 
-namespace Assets.Game.Scripts.Model
+namespace Game.Scripts.Model
 {
     [System.Serializable]
     public class DocumentPartsData

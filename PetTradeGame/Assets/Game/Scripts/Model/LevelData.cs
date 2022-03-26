@@ -1,7 +1,7 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace Assets.Game.Scripts.Model
+namespace Game.Scripts.Model
 {
     [CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObject/Level Data")]
     public class LevelData : ScriptableObject

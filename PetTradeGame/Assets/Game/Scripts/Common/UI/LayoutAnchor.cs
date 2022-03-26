@@ -1,7 +1,7 @@
-using Assets.Game.Scripts.Common.Animation;
+using Game.Scripts.Common.Animation;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Common.UI
+namespace Game.Scripts.Common.UI
 {
     /// <summary>
     /// Provide an easy way to modify the relationship of RectTransform via the inspector.

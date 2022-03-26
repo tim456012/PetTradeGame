@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Assets.Game.Scripts.Enum;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Model
+namespace Game.Scripts.Model
 {
     [CreateAssetMenu(fileName = "Conversation Data", menuName = "ScriptableObject/Conversation Data")]
     public class ConversationData : ScriptableObject
@@ -30,7 +29,7 @@ namespace Assets.Game.Scripts.Model
             SpeakerData data = new SpeakerData(lines[0])
             {
                 dialogueId = Convert.ToInt32(lines[1]),
-                speaker = Resources.Load<Sprite>($"Test/{lines[2]}"),
+                speaker = Resources.Load<Sprite>($"Test/NPC/{lines[2]}"),
                 anchor = Convert.ToString(lines[3]) switch
                 {
                     "Upper Left" => TextAnchor.UpperLeft,

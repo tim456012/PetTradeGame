@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using Assets.Game.Scripts.Common.Animation;
-using Assets.Game.Scripts.Enum;
-using Assets.Game.Scripts.Model;
-using Assets.Game.Scripts.View_Model_Components;
+using Game.Scripts.Common.Animation;
+using Game.Scripts.Model;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller
+namespace Game.Scripts.Controller
 {
     public class ConversationController : MonoBehaviour
     {
@@ -58,12 +56,21 @@ namespace Assets.Game.Scripts.Controller
         {
             if (conversation == null || transition != null)
                 return;
-
+            
             conversation.MoveNext();
         }
 
         private IEnumerator Sequence(ConversationData data)
         {
+            if (data == null)
+            {
+                yield return null;
+                canvas.gameObject.SetActive(false);
+                CompleteEvent?.Invoke(this, EventArgs.Empty);
+                conversation = null;
+                yield break;
+            }
+            
             foreach (var speakerData in data.speakerList)
             {
                 ConversationPanel currentPanel = speakerData.anchor switch

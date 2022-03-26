@@ -1,10 +1,10 @@
 using System;
-using Assets.Game.Scripts.Common.Animation;
-using Assets.Game.Scripts.EventArguments;
-using Assets.Game.Scripts.View_Model_Components;
+using Game.Scripts.Common.Animation;
+using Game.Scripts.EventArguments;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller
+namespace Game.Scripts.Controller
 {
     public class DragAndDropController : MonoBehaviour
     {

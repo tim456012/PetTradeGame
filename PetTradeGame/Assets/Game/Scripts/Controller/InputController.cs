@@ -1,8 +1,8 @@
 using System;
-using Assets.Game.Scripts.EventArguments;
+using Game.Scripts.EventArguments;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller
+namespace Game.Scripts.Controller
 {
     public class InputController : MonoBehaviour
     {

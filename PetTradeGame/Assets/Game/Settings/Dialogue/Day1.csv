@@ -1,5 +1,3 @@
-Speaker Name,Dialogue ID,NPC,Position,Messages,,,
-Danny,0,Boss_ccexpress,Upper Left,"Hello, World!?",This is Day1 Intro Test.
-Peter,1,courier_ccexpress,Middle Center,你好,早晨,這個是測試一,這個是測試二。
-Ben,2,Horse_ccexpress,Middle Right,Hi,Hello,123,test.
-Danny,3,Boss_ccexpress,Lower Center,"Hellom,你好,早晨"
+Speaker Name,Dialogue ID,NPC,Position,Messages 1,Messages 2,Messages 3,Messages 4,Messages 5
+Boss,1,Boss_ccexpress,Middle Center,歡迎來到ETM調查組。,相信你也知道我們是新部門，現在雖然外勤人手夠了，但正缺審核人才。,恰好你調來了!,接下來會很忙，我需要你盡快接手有關鳥類、爬蟲類以及海洋生物的審查。,事不宜遲，Aden會教你如何完成任務的，對吧？
+Aden,2,workmate_ccexpress,Middle Center,是！,你好，我是Aden。,放心吧！畢竟是第一天，我會全程Support你的。,先跟我去關口吧！,

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Tools
+namespace Game.Scripts.Tools
 {
     public static class UIFinder
     {

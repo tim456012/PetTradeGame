@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
-using Assets.Game.Scripts.Controller;
-using Assets.Game.Scripts.View_Model_Components;
+using Game.Scripts.Controller;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.TempCode
+namespace Game.Scripts.TempCode
 {
     public class ObjectPoolDemo : MonoBehaviour
     {

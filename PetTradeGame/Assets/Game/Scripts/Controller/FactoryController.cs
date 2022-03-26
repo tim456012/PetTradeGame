@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Assets.Game.Scripts.Factory;
+using Game.Scripts.Factory;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller
+namespace Game.Scripts.Controller
 {
     public class FactoryController : MonoBehaviour
     {

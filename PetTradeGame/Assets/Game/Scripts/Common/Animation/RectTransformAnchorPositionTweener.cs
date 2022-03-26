@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Common.Animation
+namespace Game.Scripts.Common.Animation
 {
     public class RectTransformAnchorPositionTweener : Vector3Tweener
     {

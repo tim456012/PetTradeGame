@@ -41,9 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: PaperBottom
+  - name: Bottom
     uniqueID: 4160916151
     locked: 0
-  - name: PaperTop
+  - name: Top
     uniqueID: 96248161
     locked: 0

@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
+using Game.Scripts.Common.Animation;
+using Game.Scripts.Common.UI;
+using Game.Scripts.Model;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Game.Scripts.Common.UI;
-using Assets.Game.Scripts.Common.Animation;
-using Assets.Game.Scripts.Model;
-using TMPro;
 
-namespace Assets.Game.Scripts.View_Model_Components
+namespace Game.Scripts.View_Model_Components
 {
     public class ConversationPanel : MonoBehaviour
     {

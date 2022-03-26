@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Game.Scripts.Enum;
-using Assets.Game.Scripts.EventArguments;
-using Assets.Game.Scripts.Model;
-using Assets.Game.Scripts.Tools;
-using Assets.Game.Scripts.View_Model_Components;
+using Game.Scripts.Enum;
+using Game.Scripts.EventArguments;
+using Game.Scripts.Model;
+using Game.Scripts.TempCode;
+using Game.Scripts.Tools;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller
+namespace Game.Scripts.Controller
 {
     public class ObjectController : MonoBehaviour
     {
@@ -80,6 +81,7 @@ namespace Assets.Game.Scripts.Controller
             instances.Clear();
         }
 
+        //TODO: Need to modify
         private void OnSelected(object sender, InfoEventArgs<GameObject> e)
         {
             if (!DetectCollision(e.info, out GameObject obj) || !e.info.GetComponent<EntityAttribute>().IsFunctionalObject)
@@ -108,6 +110,17 @@ namespace Assets.Game.Scripts.Controller
 
                 Instantiate(stamp, pos.transform);
             }
+
+            /*if (collidedObjectType.ObjectType == ObjectType.Bin && selfObjectType.ObjectType == ObjectType.Test)
+            {
+                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
+                ClearChildren(pos);
+
+                e.info.gameObject.transform.SetParent(collidedObjectType.transform);
+                e.info.gameObject.transform.localPosition = Vector3.zero;
+
+                //GameObjectPoolController.Enqueue(pos.GetComponentInParent<Poolable>());
+            }*/
         }
 
         public bool DetectCollision(GameObject obj, out GameObject collided)

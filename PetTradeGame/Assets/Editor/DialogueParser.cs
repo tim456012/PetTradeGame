@@ -1,66 +1,64 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
-using Assets.Game.Scripts.Enum;
-using Assets.Game.Scripts.Model;
-using UnityEngine;
+using Game.Scripts.Model;
 using UnityEditor;
+using UnityEngine;
 
-public static class DialogueParser
+namespace Editor
 {
-    private static readonly Regex Regex = new("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-
-    [MenuItem("Pre Production/Parse Dialogue Data")]
-    public static void Parse()
+    public static class DialogueParser
     {
-        Initialize();
-        ParseAllDialogueData();
-        AssetDatabase.SaveAssets();
-        AssetDatabase.Refresh();
-    }
-
-    private static void Initialize()
-    {
-        if (!AssetDatabase.IsValidFolder("Assets/Resources/Conversations"))
+        [MenuItem("Pre Production/Parse Dialogue Data")]
+        public static void Parse()
         {
-            AssetDatabase.CreateFolder("Assets/Resources", "Conversations");
+            Initialize();
+            ParseAllDialogueData();
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
-    }
 
-    private static void ParseAllDialogueData()
-    {
-        string readPath = $"{Application.dataPath}/Game/Settings/Dialogue";
-        const string targetPath = "Assets/Resources/Conversations/";
-        Debug.Log(readPath);
-
-        DirectoryInfo directoryInfo = new DirectoryInfo(readPath);
-        FileInfo[] fileInfos = directoryInfo.GetFiles("*.csv");
-
-        foreach (FileInfo file in fileInfos)
+        private static void Initialize()
         {
-            Debug.Log(file.Name);
-            if (!File.Exists(file.ToString()))
+            if (!AssetDatabase.IsValidFolder("Assets/Resources/Conversations"))
             {
-                Debug.LogError($"Missing Dialogue Data : {file}");
-                return;
+                AssetDatabase.CreateFolder("Assets/Resources", "Conversations");
             }
+        }
 
-            string[] readText = File.ReadAllLines(file.ToString());
-            ConversationData conversationData = ScriptableObject.CreateInstance<ConversationData>();
-            for (int i = 1; i < readText.Length; ++i)
-            {
-                conversationData.Load(readText[i]);
-            }
-            string assetName = file.Name;
-            int filExtPos = assetName.LastIndexOf('.');
-            if (filExtPos >= 0)
-            {
-                assetName = assetName[..filExtPos];
-            }
+        private static void ParseAllDialogueData()
+        {
+            string readPath = $"{Application.dataPath}/Game/Settings/Dialogue";
+            const string targetPath = "Assets/Resources/Conversations/";
+            Debug.Log(readPath);
 
-            string fileName = $"{targetPath}{assetName}.asset";
-            AssetDatabase.CreateAsset(conversationData, fileName);
+            DirectoryInfo directoryInfo = new DirectoryInfo(readPath);
+            FileInfo[] fileInfos = directoryInfo.GetFiles("*.csv");
+
+            foreach (FileInfo file in fileInfos)
+            {
+                Debug.Log(file.Name);
+                if (!File.Exists(file.ToString()))
+                {
+                    Debug.LogError($"Missing Dialogue Data : {file}");
+                    return;
+                }
+
+                string[] readText = File.ReadAllLines(file.ToString());
+                ConversationData conversationData = ScriptableObject.CreateInstance<ConversationData>();
+                for (int i = 1; i < readText.Length; ++i)
+                {
+                    conversationData.Load(readText[i]);
+                }
+                string assetName = file.Name;
+                int filExtPos = assetName.LastIndexOf('.');
+                if (filExtPos >= 0)
+                {
+                    assetName = assetName[..filExtPos];
+                }
+
+                string fileName = $"{targetPath}{assetName}.asset";
+                AssetDatabase.CreateAsset(conversationData, fileName);
+            }
         }
     }
 }

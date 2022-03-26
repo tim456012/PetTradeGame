@@ -1,9 +1,9 @@
 using System.Collections.Generic;
+using Game.Scripts.Enum;
+using Game.Scripts.Model;
 using UnityEngine;
-using Assets.Game.Scripts.Enum;
-using Assets.Game.Scripts.Model;
 
-namespace Assets.Game.Scripts.Factory
+namespace Game.Scripts.Factory
 {
     [CreateAssetMenu(fileName = "Document Recipe", menuName = "ScriptableObject/Document Recipe")]
     public class DocumentRecipe : ScriptableObject

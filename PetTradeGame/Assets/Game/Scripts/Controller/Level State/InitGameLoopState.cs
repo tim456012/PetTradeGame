@@ -1,7 +1,6 @@
 using System.Collections;
-using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller.Level_State
+namespace Game.Scripts.Controller.Level_State
 {
     public class InitGameLoopState : GameLoopState
     {

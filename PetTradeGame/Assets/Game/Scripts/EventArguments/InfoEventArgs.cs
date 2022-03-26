@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace Assets.Game.Scripts.EventArguments
+namespace Game.Scripts.EventArguments
 {
     public class InfoEventArgs<T> : System.EventArgs
     {

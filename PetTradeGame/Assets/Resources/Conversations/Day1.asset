@@ -14,34 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   speakerList:
-  - speakerName: Danny
-    dialogueId: 0
-    messages:
-    - Hello, World!?
-    - This is Day1 Intro Test.
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
-    anchor: 0
-  - speakerName: Peter
+  - speakerName: Boss
     dialogueId: 1
     messages:
-    - "\u4F60\u597D"
-    - "\u65E9\u6668"
-    - "\u9019\u500B\u662F\u6E2C\u8A66\u4E00"
-    - "\u9019\u500B\u662F\u6E2C\u8A66\u4E8C\u3002"
-    speaker: {fileID: 21300000, guid: 97c90bcec707cd744803c03edf04dd9e, type: 3}
+    - "\u6B61\u8FCE\u4F86\u5230ETM\u8ABF\u67E5\u7D44\u3002"
+    - "\u76F8\u4FE1\u4F60\u4E5F\u77E5\u9053\u6211\u5011\u662F\u65B0\u90E8\u9580\uFF0C\u73FE\u5728\u96D6\u7136\u5916\u52E4\u4EBA\u624B\u5920\u4E86\uFF0C\u4F46\u6B63\u7F3A\u5BE9\u6838\u4EBA\u624D\u3002"
+    - "\u6070\u597D\u4F60\u8ABF\u4F86\u4E86!"
+    - "\u63A5\u4E0B\u4F86\u6703\u5F88\u5FD9\uFF0C\u6211\u9700\u8981\u4F60\u76E1\u5FEB\u63A5\u624B\u6709\u95DC\u9CE5\u985E\u3001\u722C\u87F2\u985E\u4EE5\u53CA\u6D77\u6D0B\u751F\u7269\u7684\u5BE9\u67E5\u3002"
+    - "\u4E8B\u4E0D\u5B9C\u9072\uFF0CAden\u6703\u6559\u4F60\u5982\u4F55\u5B8C\u6210\u4EFB\u52D9\u7684\uFF0C\u5C0D\u5427\uFF1F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4
-  - speakerName: Ben
+  - speakerName: Aden
     dialogueId: 2
     messages:
-    - Hi
-    - Hello
-    - 123
-    - test.
-    speaker: {fileID: 21300000, guid: 9c1b2fe70e6c8d744ac6aa320914b37c, type: 3}
-    anchor: 5
-  - speakerName: Danny
-    dialogueId: 3
-    messages:
-    - "Hellom,\u4F60\u597D,\u65E9\u6668"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
-    anchor: 7
+    - "\u662F\uFF01"
+    - "\u4F60\u597D\uFF0C\u6211\u662FAden\u3002"
+    - "\u653E\u5FC3\u5427\uFF01\u7562\u7ADF\u662F\u7B2C\u4E00\u5929\uFF0C\u6211\u6703\u5168\u7A0BSupport\u4F60\u7684\u3002"
+    - "\u5148\u8DDF\u6211\u53BB\u95DC\u53E3\u5427\uFF01"
+    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    anchor: 4

@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.Game.Scripts.Model;
-using Assets.Game.Scripts.TempCode;
-using Assets.Game.Scripts.View_Model_Components;
+using Game.Scripts.Model;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Assets.Game.Scripts.Controller
+namespace Game.Scripts.Controller
 {
     /// <summary>
     /// This controller will hold a PoolData dictionary as a object pool to process the instantiation.
