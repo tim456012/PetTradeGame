@@ -8,8 +8,6 @@ namespace Game.Scripts.Controller
 {
     public class DragAndDropController : MonoBehaviour
     {
-        public static event EventHandler<InfoEventArgs<GameObject>> TargetObjSelectedEvent;
-
         private Vector2 _screenPos;
         private Vector3 _gameWorldPos;
         private Vector3 _originalPos;
@@ -41,9 +39,9 @@ namespace Game.Scripts.Controller
                 return;
 
             _targetObj = hit.transform.gameObject;
-            Debug.Log($"GameObject {_targetObj.name} selected.");
+            //Debug.Log($"GameObject {_targetObj.name} selected.");
             EntityAttribute temp = _targetObj.GetComponent<EntityAttribute>();
-            if (!temp.IsDraggable)
+            if (!temp.isDraggable)
                 return;
 
             _originalPos = _targetObj.transform.localPosition;
@@ -74,7 +72,6 @@ namespace Game.Scripts.Controller
                 _targetObj.transform.MoveToLocal(_originalPos, 2f, EasingEquations.EaseInOutExpo);
             }
            
-            TargetObjSelectedEvent?.Invoke(this, new InfoEventArgs<GameObject>(_targetObj));
             _targetObj = null;
         }
     }

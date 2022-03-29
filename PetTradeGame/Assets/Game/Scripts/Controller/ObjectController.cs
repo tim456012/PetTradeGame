@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Enum;
@@ -7,16 +8,19 @@ using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
+    //TODO: Need to rewrite FactoryController
     public class ObjectController : MonoBehaviour
     {
         private FactoryController factoryController;
+        private InteractionController interactionController;
         
         private IEnumerator enqueueObject;
-        private List<Poolable> instances = new();
-
+        private readonly List<Poolable> instances = new();
+        
         private void Awake()
         {
             enabled = false;
@@ -24,12 +28,13 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            DragAndDropController.TargetObjSelectedEvent += OnSelected;
+            interactionController = GetComponentInChildren<InteractionController>();
         }
 
+        #region Object Initiation
         public void InitFactory(List<string> documentList)
         {
-            FactoryController instance = gameObject.GetComponentInChildren<FactoryController>();
+            var instance = gameObject.GetComponentInChildren<FactoryController>();
             if (instance)
             {
                 factoryController = instance;
@@ -45,7 +50,7 @@ namespace Game.Scripts.Controller
             if (objectList == null)
                 return;
 
-            foreach (FunctionalObjectsData data in objectList)
+            foreach (var data in objectList)
             {
                 GameObjectPoolController.AddEntry(data.Key, data.Object, data.Amount, data.MaxAmount);
                 dequeueObject(data.Key, data.SpawnPosition);
@@ -54,11 +59,11 @@ namespace Game.Scripts.Controller
 
         private void dequeueObject(string key, string spawnPos)
         {
-            Poolable obj = GameObjectPoolController.Dequeue(key);
+            var obj = GameObjectPoolController.Dequeue(key);
 
             if (!string.IsNullOrEmpty(spawnPos))
             {
-                GameObject temp = GameObjFinder.FindChildGameObject(gameObject, spawnPos);
+                var temp = GameObjFinder.FindChildGameObject(gameObject, spawnPos);
                 obj.transform.localPosition = temp.transform.position;
                 obj.gameObject.SetActive(true);
             }
@@ -66,7 +71,7 @@ namespace Game.Scripts.Controller
             {
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-3, 3);
-
+                
                 obj.transform.localPosition = new Vector3(x,y,0);
                 obj.gameObject.SetActive(true);
             }
@@ -80,20 +85,18 @@ namespace Game.Scripts.Controller
                 GameObjectPoolController.Enqueue(instances[i]);
             instances.Clear();
         }
+        #endregion
 
         //TODO: Need to modify
-        private void OnSelected(object sender, InfoEventArgs<GameObject> e)
+        private void ProcessCollision(ObjectType objectType, Collider2D col)
         {
-            if (!DetectCollision(e.info, out GameObject obj) || !e.info.GetComponent<EntityAttribute>().IsFunctionalObject)
+            if (col == null)
                 return;
 
-            if (obj == null)
-                return;
+            var collidedObjectType = col.GetComponent<EntityAttribute>().objectType;
 
-            ObjectTypes selfObjectType = e.info.GetComponent<ObjectTypes>();
-            ObjectTypes collidedObjectType = obj.GetComponent<ObjectTypes>();
 
-            if (collidedObjectType.ObjectType == ObjectType.Test && selfObjectType.ObjectType == ObjectType.GreenStamp)
+            /*if (collidedObjectType.ObjectType == ObjectType.Test && selfObjectType.ObjectType == ObjectType.GreenStamp)
             {
                 GameObject stamp = obj.GetComponent<AvailableParts>().parts.Find(part => part.name == "Approved");
                 GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
@@ -109,7 +112,7 @@ namespace Game.Scripts.Controller
                 ClearChildren(pos);
 
                 Instantiate(stamp, pos.transform);
-            }
+            }*/
 
             /*if (collidedObjectType.ObjectType == ObjectType.Bin && selfObjectType.ObjectType == ObjectType.Test)
             {
@@ -122,28 +125,7 @@ namespace Game.Scripts.Controller
                 //GameObjectPoolController.Enqueue(pos.GetComponentInParent<Poolable>());
             }*/
         }
-
-        public bool DetectCollision(GameObject obj, out GameObject collided)
-        {
-            collided = null;
-            Collider2D self = obj.GetComponent<Collider2D>();
-
-            foreach (Poolable other in instances)
-            {
-                if (other.gameObject == obj)
-                    continue;
-
-                Collider2D target = other.GetComponent<Collider2D>();
-
-                if (!target.bounds.Intersects(self.bounds)) 
-                    continue;
-
-                collided = target.gameObject;
-                return true;
-            }
-            return false;
-        }
-
+        
         public void ClearChildren(GameObject obj)
         {
             int i = 0;
@@ -159,16 +141,6 @@ namespace Game.Scripts.Controller
             {
                 Destroy(child.gameObject);
             }
-        }
-
-        private void OnDisable()
-        {
-            DragAndDropController.TargetObjSelectedEvent -= OnSelected;
-        }
-
-        private void OnEnable()
-        {
-            DragAndDropController.TargetObjSelectedEvent += OnSelected;
         }
     }
 }

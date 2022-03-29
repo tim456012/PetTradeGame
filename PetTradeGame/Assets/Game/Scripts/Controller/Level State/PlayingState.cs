@@ -23,6 +23,8 @@ namespace Game.Scripts.Controller.Level_State
             base.Enter();
             gamePlayController.gameObject.AddComponent<DragAndDropController>();
             gamePlayController.enabled = true;
+
+            objectController.gameObject.AddComponent<InteractionController>();
             objectController.enabled = true;
 
             documents = owner.LevelData.DocumentsNeeded;

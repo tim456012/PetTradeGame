@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8072269054454794085}
   - component: {fileID: 8072269054454794084}
-  - component: {fileID: 8072269054454794090}
+  - component: {fileID: 2629487470845821704}
   - component: {fileID: 8072269054454794091}
-  - component: {fileID: 8072269054454794088}
+  - component: {fileID: 8072269054454794090}
   m_Layer: 0
   m_Name: T_RStamp
   m_TagString: Untagged
@@ -87,20 +87,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8072269054454794090
-MonoBehaviour:
+--- !u!50 &2629487470845821704
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8072269054454794087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ce6d294957e475a9e73deeaf209d28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDraggable: 1
-  IsFunctionalObject: 1
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &8072269054454794091
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.27, y: 10.65}
   m_EdgeRadius: 0
---- !u!114 &8072269054454794088
+--- !u!114 &8072269054454794090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +143,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8072269054454794087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af7275bd18544846a2b10788c58bd5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 25ce6d294957e475a9e73deeaf209d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectType: 1
+  isDocument: 0
+  objectType: 2
+  paperType: 0
+  isDraggable: 1
+  isFunctionalObject: 1

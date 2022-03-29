@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5812135187394343715}
   - component: {fileID: 5812135187394343716}
-  - component: {fileID: 5812135187394343714}
+  - component: {fileID: 4853693248041413943}
   - component: {fileID: 5812135187394343713}
-  - component: {fileID: 5812135187394343712}
+  - component: {fileID: 5812135187394343714}
   - component: {fileID: 5520502874702729465}
   m_Layer: 0
   m_Name: License
@@ -89,20 +89,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5812135187394343714
-MonoBehaviour:
+--- !u!50 &4853693248041413943
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5812135187394343717}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ce6d294957e475a9e73deeaf209d28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsDraggable: 1
-  IsFunctionalObject: 1
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &5812135187394343713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -113,7 +120,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -129,7 +136,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.22, y: 1.76}
   m_EdgeRadius: 0
---- !u!114 &5812135187394343712
+--- !u!114 &5812135187394343714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,10 +145,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5812135187394343717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7af7275bd18544846a2b10788c58bd5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 25ce6d294957e475a9e73deeaf209d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectType: 2
+  isDocument: 0
+  isFunctionalObject: 1
+  isDraggable: 1
+  objectType: 3
+  paperType: 1
 --- !u!114 &5520502874702729465
 MonoBehaviour:
   m_ObjectHideFlags: 0

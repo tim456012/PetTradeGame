@@ -2,9 +2,10 @@ namespace Game.Scripts.Enum
 {
     public enum ObjectType
     {
+        None,
         GreenStamp,
         RedStamp,
-        Test,
-        Bin
+        License,
+        CollectBox
     }
 }

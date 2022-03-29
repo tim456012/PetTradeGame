@@ -12,7 +12,7 @@ namespace Game.Scripts.Controller
         {
             foreach (string document in list)
             {
-                GameObject obj = DocumentFactory.CreateDocument(document);
+                var obj = DocumentFactory.CreateDocument(document);
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-3, 3);
                 obj.transform.localPosition = new Vector3(x, y, 0);

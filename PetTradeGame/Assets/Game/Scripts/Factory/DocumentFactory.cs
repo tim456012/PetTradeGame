@@ -8,6 +8,7 @@ using Random = System.Random;
 
 namespace Game.Scripts.Factory
 {
+    //TODO: Modify document generate algorithm
     public static class DocumentFactory
     {
         private static readonly Random Random = new();
@@ -19,21 +20,22 @@ namespace Game.Scripts.Factory
         /// <returns>GameObject</returns>
         public static GameObject CreateDocument(string name)
         {
-            DocumentRecipe recipe = Resources.Load<DocumentRecipe>(name);
+            //TODO: Need to change loading path
+            var recipe = Resources.Load<DocumentRecipe>(name);
             if (recipe != null)
                 return CreateDocument(recipe);
             Debug.Log("No Document Recipe found");
             return null;
         }
-
-
+        
         #region Document Process
         private static GameObject CreateDocument(DocumentRecipe recipe)
         {
+            //TODO: Need to change loading path
             //Instantiate Document Base
-            GameObject obj = InstantiateGameObj($"Test/Prefabs/{recipe.document}");
+            var obj = InstantiateGameObj($"Test/Prefabs/{recipe.document}");
             obj.name = recipe.name;
-            obj.GetComponent<PaperTypes>().type = recipe.paperType;
+            obj.GetComponent<EntityAttribute>().paperType = recipe.paperType;
             AddContent(obj, recipe.components);
 
             return obj;
@@ -41,14 +43,14 @@ namespace Game.Scripts.Factory
 
         private static GameObject InstantiateGameObj(string name)
         {
-            GameObject temp = Resources.Load<GameObject>(name);
+            var temp = Resources.Load<GameObject>(name);
             if (temp == null)
             {
                 Debug.LogError($"No prefab for name {name}");
                 return new GameObject(name);
             }
 
-            GameObject gameObject = GameObject.Instantiate(temp);
+            var gameObject = Object.Instantiate(temp);
             return gameObject;
         }
 
@@ -67,9 +69,9 @@ namespace Game.Scripts.Factory
                     return;
                 }
 
-                GameObject gameObject = InstantiateGameObj($"Test/Prefabs/{selected}");
+                var gameObject = InstantiateGameObj($"Test/Prefabs/{selected}");
                 index = Random.Next(partsData.positions.Count);
-                GameObject temp = GameObjFinder.FindChildGameObject(obj, partsData.positions[index]);
+                var temp = GameObjFinder.FindChildGameObject(obj, partsData.positions[index]);
                 gameObject.transform.SetParent(temp.transform);
                 gameObject.transform.localPosition = Vector3.zero;
             }
@@ -85,7 +87,7 @@ namespace Game.Scripts.Factory
 
         private static void AddContentText(GameObject obj, string name)
         {
-            GameObject temp = GameObjFinder.FindChildGameObject(obj, "TypeName");
+            var temp = GameObjFinder.FindChildGameObject(obj, "TypeName");
             temp.GetComponent<TextMeshPro>().text = name;
         }
         #endregion

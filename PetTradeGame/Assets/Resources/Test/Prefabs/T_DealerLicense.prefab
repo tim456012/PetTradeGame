@@ -214,9 +214,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1843162134786488598}
   - component: {fileID: 1843162134786488597}
+  - component: {fileID: 1277104571158406861}
   - component: {fileID: 1843162134786488599}
   - component: {fileID: 1843162134786488600}
-  - component: {fileID: 2901340671732785587}
   m_Layer: 0
   m_Name: T_DealerLicense
   m_TagString: Untagged
@@ -292,6 +292,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &1277104571158406861
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843162134786488596}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!61 &1843162134786488599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -302,7 +323,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -330,17 +351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ce6d294957e475a9e73deeaf209d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDraggable: 1
---- !u!114 &2901340671732785587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843162134786488596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd1ede8816ac4346b8708390b15ed782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 3
+  isDocument: 1
+  objectType: 0
+  paperType: 4
+  isDraggable: 1
+  isFunctionalObject: 0
