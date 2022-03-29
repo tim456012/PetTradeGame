@@ -3,16 +3,16 @@ using Game.Scripts.Model;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Game.Scripts.Controller
+namespace Game.Scripts.Controller.SubController
 {
     /// <summary>
     /// This controller will hold a PoolData dictionary as a object pool to process the instantiation.
     /// </summary>
-    public class GameObjectPoolController : MonoBehaviour
+    public class GameObjectPoolSubController : MonoBehaviour
     {
         #region Fields / Properties
 
-        private static GameObjectPoolController Instance
+        private static GameObjectPoolSubController Instance
         {
             get
             {
@@ -24,7 +24,7 @@ namespace Game.Scripts.Controller
                 return instance;
             }
         }
-        private static GameObjectPoolController instance;
+        private static GameObjectPoolSubController instance;
         private static readonly Dictionary<string, PoolData> pools = new();
 
         #endregion
@@ -155,7 +155,7 @@ namespace Game.Scripts.Controller
         {
             GameObject obj = new GameObject("GameObject Pool Controller");
             DontDestroyOnLoad(obj);
-            instance = obj.AddComponent<GameObjectPoolController>();
+            instance = obj.AddComponent<GameObjectPoolSubController>();
         }
 
         private static Poolable CreateInstance(string key, GameObject prefab)

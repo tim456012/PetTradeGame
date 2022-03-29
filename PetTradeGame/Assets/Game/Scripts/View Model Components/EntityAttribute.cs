@@ -22,8 +22,8 @@ namespace Game.Scripts.View_Model_Components
         //If object enter others' collider, call ObjectController to process
         private void OnTriggerEnter2D(Collider2D col)
         {
-            //if(isFunctionalObject)
-                //ObjectController.ProcessCollision(objectType, col);
+            if (isFunctionalObject)
+                ObjectController.ProcessCollision(gameObject, col.gameObject);
         }
     }
 }

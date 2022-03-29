@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.Controller.SubController;
 using Game.Scripts.Enum;
-using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
-using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
@@ -12,39 +9,46 @@ using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
-    //TODO: Need to rewrite FactoryController
     public class ObjectController : MonoBehaviour
     {
-        private FactoryController factoryController;
-        private InteractionController interactionController;
+        private FactorySubController _factorySubController;
+        //private InteractionSubController _interactionSubController;
         
-        private IEnumerator enqueueObject;
+        //private IEnumerator enqueueObject; //?
+        private readonly List<GameObject> documents = new();
         private readonly List<Poolable> instances = new();
         
         private void Awake()
         {
             enabled = false;
         }
-
-        private void Start()
+        
+        #region Initiation
+        /*public void InitInteraction()
         {
-            interactionController = GetComponentInChildren<InteractionController>();
-        }
-
-        #region Object Initiation
-        public void InitFactory(List<string> documentList)
-        {
-            var instance = gameObject.GetComponentInChildren<FactoryController>();
+            var instance = gameObject.GetComponentInChildren<InteractionSubController>();
             if (instance)
             {
-                factoryController = instance;
+                _interactionSubController = instance;
                 return;
             }
 
-            factoryController = gameObject.AddComponent<FactoryController>();
-            factoryController.ProduceDocument(documentList);
-        }
+            _interactionSubController = gameObject.AddComponent<InteractionSubController>();
+        }*/
+        
+        public void InitFactory(List<string> documentList)
+        {
+            var instance = gameObject.GetComponentInChildren<FactorySubController>();
+            if (instance)
+            {
+                _factorySubController = instance;
+                return;
+            }
 
+            _factorySubController = gameObject.AddComponent<FactorySubController>();
+            produceDocument(documentList);
+        }
+        
         public void InitObjectPool(List<FunctionalObjectsData> objectList)
         {
             if (objectList == null)
@@ -52,14 +56,30 @@ namespace Game.Scripts.Controller
 
             foreach (var data in objectList)
             {
-                GameObjectPoolController.AddEntry(data.Key, data.Object, data.Amount, data.MaxAmount);
+                GameObjectPoolSubController.AddEntry(data.Key, data.Object, data.Amount, data.MaxAmount);
                 dequeueObject(data.Key, data.SpawnPosition);
+            }
+        }
+        #endregion
+
+        #region Methods
+
+        private void produceDocument(List<string> list)
+        {
+            foreach (string document in list)
+            {
+                var obj = _factorySubController.ProduceDocument(document);
+                float x = Random.Range(-3, 3);
+                float y = Random.Range(-3, 3);
+                obj.transform.localPosition = new Vector3(x, y, 0);
+                obj.SetActive(true);
+                documents.Add(obj);
             }
         }
 
         private void dequeueObject(string key, string spawnPos)
         {
-            var obj = GameObjectPoolController.Dequeue(key);
+            var obj = GameObjectPoolSubController.Dequeue(key);
 
             if (!string.IsNullOrEmpty(spawnPos))
             {
@@ -79,51 +99,30 @@ namespace Game.Scripts.Controller
             instances.Add(obj);
         }
 
+        //TODO: Create enqueue object method
+        
         private void ReleaseInstances()
         {
             for (int i = instances.Count - 1; i >= 0; --i)
-                GameObjectPoolController.Enqueue(instances[i]);
+                GameObjectPoolSubController.Enqueue(instances[i]);
             instances.Clear();
         }
+        
+        private void ReleaseGameObjList()
+        {
+            for (int i = documents.Count - 1; i >= 0; --i)
+                Destroy(documents[i]);
+            documents.Clear();
+        }
+        
         #endregion
-
-        //TODO: Need to modify
-        private void ProcessCollision(ObjectType objectType, Collider2D col)
+        
+        public static void ProcessCollision(GameObject original, GameObject col)
         {
             if (col == null)
                 return;
 
-            var collidedObjectType = col.GetComponent<EntityAttribute>().objectType;
-
-
-            /*if (collidedObjectType.ObjectType == ObjectType.Test && selfObjectType.ObjectType == ObjectType.GreenStamp)
-            {
-                GameObject stamp = obj.GetComponent<AvailableParts>().parts.Find(part => part.name == "Approved");
-                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
-
-                ClearChildren(pos);
-                Instantiate(stamp, pos.transform);
-            }
-
-            if (collidedObjectType.ObjectType == ObjectType.Test && selfObjectType.ObjectType == ObjectType.RedStamp)
-            {
-                GameObject stamp = obj.GetComponent<AvailableParts>().parts.Find(part => part.name == "Rejected");
-                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
-                ClearChildren(pos);
-
-                Instantiate(stamp, pos.transform);
-            }*/
-
-            /*if (collidedObjectType.ObjectType == ObjectType.Bin && selfObjectType.ObjectType == ObjectType.Test)
-            {
-                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
-                ClearChildren(pos);
-
-                e.info.gameObject.transform.SetParent(collidedObjectType.transform);
-                e.info.gameObject.transform.localPosition = Vector3.zero;
-
-                //GameObjectPoolController.Enqueue(pos.GetComponentInParent<Poolable>());
-            }*/
+            InteractionSubController.executeObjBehavior(original, col);
         }
         
         public void ClearChildren(GameObject obj)

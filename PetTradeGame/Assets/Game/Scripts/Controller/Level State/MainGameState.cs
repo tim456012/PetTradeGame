@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
+using Game.Scripts.Controller.SubController;
 using Game.Scripts.Model;
 using UnityEngine;
 
 namespace Game.Scripts.Controller.Level_State
 {
-    public class PlayingState : GameLoopState
+    public class MainGameState : GameLoopState
     {
         private GamePlayController gamePlayController;
         private ObjectController objectController;
+        
         private List<string> documents;
         private List<FunctionalObjectsData> functionalObjects;
 
@@ -21,15 +23,17 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
-            gamePlayController.gameObject.AddComponent<DragAndDropController>();
             gamePlayController.enabled = true;
 
-            objectController.gameObject.AddComponent<InteractionController>();
+            //objectController.gameObject.AddComponent<InteractionSubController>();
+            objectController.gameObject.AddComponent<DragAndDropSubController>();
             objectController.enabled = true;
 
             documents = owner.LevelData.DocumentsNeeded;
             functionalObjects = owner.LevelData.FunctionalObjectsData;
 
+            //objectController.InitInteraction();
+            
             objectController.InitFactory(documents);
             objectController.InitObjectPool(functionalObjects);
 

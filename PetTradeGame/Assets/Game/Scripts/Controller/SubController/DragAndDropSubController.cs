@@ -1,12 +1,11 @@
-using System;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.EventArguments;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
-namespace Game.Scripts.Controller
+namespace Game.Scripts.Controller.SubController
 {
-    public class DragAndDropController : MonoBehaviour
+    public class DragAndDropSubController : MonoBehaviour
     {
         private Vector2 _screenPos;
         private Vector3 _gameWorldPos;

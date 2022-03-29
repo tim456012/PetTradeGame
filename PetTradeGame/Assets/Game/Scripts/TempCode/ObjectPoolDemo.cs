@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Game.Scripts.Controller;
+using Game.Scripts.Controller.SubController;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Game.Scripts.TempCode
         // Start is called before the first frame update
         void Start()
         {
-            Debug.Log(GameObjectPoolController.AddEntry(PoolKey, prefab, 10, 15)
+            Debug.Log(GameObjectPoolSubController.AddEntry(PoolKey, prefab, 10, 15)
                 ? "Pre-populating pool" : "Pool already configured");
         }
 
@@ -25,7 +26,7 @@ namespace Game.Scripts.TempCode
         {
             if (GUI.Button(new Rect(10, 10, 100, 30), "Dequeue"))
             {
-                Poolable obj = GameObjectPoolController.Dequeue(PoolKey);
+                Poolable obj = GameObjectPoolSubController.Dequeue(PoolKey);
                 float x = UnityEngine.Random.Range(-10, 10);
                 float y = UnityEngine.Random.Range(0, 5);
                 obj.transform.localPosition = new Vector3(x, y, 0);
@@ -39,14 +40,14 @@ namespace Game.Scripts.TempCode
                     return;
                 Poolable obj = instances[0];
                 instances.RemoveAt(0);
-                GameObjectPoolController.Enqueue(obj);
+                GameObjectPoolSubController.Enqueue(obj);
             }
         }
 
         void ReleaseInstances()
         {
             for (int i = instances.Count - 1; i >= 0; --i)
-                GameObjectPoolController.Enqueue(instances[i]);
+                GameObjectPoolSubController.Enqueue(instances[i]);
             instances.Clear();
         }
     }

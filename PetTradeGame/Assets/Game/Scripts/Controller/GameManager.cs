@@ -4,7 +4,7 @@ using Game.Scripts.Model;
 
 namespace Game.Scripts.Controller
 {
-    public class LevelController : StateMachine
+    public class GameManager : StateMachine
     {
         public LevelData LevelData;
 
