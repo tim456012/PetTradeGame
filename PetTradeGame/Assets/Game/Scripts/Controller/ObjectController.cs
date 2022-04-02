@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
+using Game.Scripts.Common.Animation;
 using Game.Scripts.Controller.SubController;
-using Game.Scripts.Enum;
+using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
@@ -12,30 +14,19 @@ namespace Game.Scripts.Controller
     public class ObjectController : MonoBehaviour
     {
         private FactorySubController _factorySubController;
-        //private InteractionSubController _interactionSubController;
         
         //private IEnumerator enqueueObject; //?
         private readonly List<GameObject> documents = new();
-        private readonly List<Poolable> instances = new();
-        
+        private static readonly List<Poolable> instances = new();
+
+        public static event EventHandler<InfoEventArgs<int>> LicenseSubmitedEvent; 
+
         private void Awake()
         {
             enabled = false;
         }
         
         #region Initiation
-        /*public void InitInteraction()
-        {
-            var instance = gameObject.GetComponentInChildren<InteractionSubController>();
-            if (instance)
-            {
-                _interactionSubController = instance;
-                return;
-            }
-
-            _interactionSubController = gameObject.AddComponent<InteractionSubController>();
-        }*/
-        
         public void InitFactory(List<string> documentList)
         {
             var instance = gameObject.GetComponentInChildren<FactorySubController>();
@@ -70,7 +61,7 @@ namespace Game.Scripts.Controller
             {
                 var obj = _factorySubController.ProduceDocument(document);
                 float x = Random.Range(-3, 3);
-                float y = Random.Range(-3, 3);
+                float y = Random.Range(-2, 2);
                 obj.transform.localPosition = new Vector3(x, y, 0);
                 obj.SetActive(true);
                 documents.Add(obj);
@@ -98,8 +89,6 @@ namespace Game.Scripts.Controller
            
             instances.Add(obj);
         }
-
-        //TODO: Create enqueue object method
         
         private void ReleaseInstances()
         {
@@ -117,29 +106,35 @@ namespace Game.Scripts.Controller
         
         #endregion
         
-        public static void ProcessCollision(GameObject original, GameObject col)
+        public void ProcessCollision(GameObject original, GameObject col)
         {
             if (col == null)
                 return;
 
-            InteractionSubController.executeObjBehavior(original, col);
+            if(original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
+                return;
+            
+            sbyte index = InteractionSubController.executeObjBehavior(original, col);
+            
+            if(index == 0)
+                return;
+            
+            var p = col.GetComponent<Poolable>();
+            EnqueueObject(p);
+            LicenseSubmitedEvent?.Invoke(this, new InfoEventArgs<int>(1));
         }
         
-        public void ClearChildren(GameObject obj)
+        private void EnqueueObject(Poolable target)
         {
-            int i = 0;
-            GameObject[] allChild = new GameObject[obj.transform.childCount];
-
-            foreach (Transform child in obj.transform)
-            {
-                allChild[i] = child.gameObject;
-                i++;
-            }
-
-            foreach (GameObject child in allChild)
-            {
-                Destroy(child.gameObject);
-            }
+            if (instances.Count <= 0 || target == null)
+                return;
+            
+            int index = instances.IndexOf(target);
+            if(index < 0)
+                return;
+                
+            instances.RemoveAt(index);
+            GameObjectPoolSubController.Enqueue(target);
         }
     }
 }

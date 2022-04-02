@@ -7,7 +7,7 @@ namespace Game.Scripts.Controller
     public class GameManager : StateMachine
     {
         public LevelData LevelData;
-
+        
         private void Start()
         {
             ChangeState<InitGameLoopState>();

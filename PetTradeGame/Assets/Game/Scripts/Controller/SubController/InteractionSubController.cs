@@ -1,11 +1,13 @@
 using System;
 using Game.Scripts.Enum;
+using Game.Scripts.EventArguments;
+using Game.Scripts.TempCode;
+using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
 namespace Game.Scripts.Controller.SubController
 {
-    //TODO: Create Object interaction behavior process
     /// <summary>
     /// This sub-controller will responsible for all gameObject interaction behavior.
     /// </summary>
@@ -27,7 +29,7 @@ namespace Game.Scripts.Controller.SubController
         }
         
         private static InteractionSubController instance;
-
+        
         #endregion
 
         #region MonoBehaviour
@@ -48,53 +50,81 @@ namespace Game.Scripts.Controller.SubController
         
         #region Methods
 
-        public static void executeObjBehavior(GameObject original, GameObject target)
+        public static sbyte executeObjBehavior(GameObject original, GameObject target)
         {
             var oType = original.GetComponent<EntityAttribute>().objectType;
             var tType = target.GetComponent<EntityAttribute>().objectType;
 
-            CheckObjectType(oType, tType);
+            sbyte index = CheckObjectType(oType, tType);
+            
+            if(index == 0)
+                return 0;
+
+            GameObject stamp, pos;
+            
+            switch (index)
+            {
+                case 1:
+                    stamp = target.GetComponent<AvailableParts>().parts.Find(part => part.name == "Approved");
+                    pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    ClearChildren(pos);
+                    Instantiate(stamp, pos.transform);
+                    break;
+                case 2:
+                    stamp = target.GetComponent<AvailableParts>().parts.Find(part => part.name == "Rejected");
+                    pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    ClearChildren(pos);
+                    Instantiate(stamp, pos.transform);
+                    break;
+                case 3:
+                    pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    ClearChildren(pos);
+                    return 1;
+            }
+
+            return 0;
         }
         
-        private static void CheckObjectType(ObjectType original, ObjectType target)
+        private static sbyte CheckObjectType(ObjectType original, ObjectType target)
         {
-            Debug.Log("Testing");
-            /*switch (original, target)
+            //Debug.Log("Testing");
+            switch (original)
             {
-                
-            }*/
+                case ObjectType.GreenStamp:
+                    if (target == ObjectType.License)
+                        return 1;
+                    break;
+                case ObjectType.RedStamp:
+                    if (target == ObjectType.License)
+                        return 2;
+                    break;
+                case ObjectType.CollectBox:
+                    if (target == ObjectType.License)
+                        return 3;
+                    break;
+                default:
+                    return 0;
+            }
 
-
-            /*if (original == ObjectType.GreenStamp && target == ObjectType.License)
-            {
-                GameObject stamp = obj.GetComponent<AvailableParts>().parts.Find(part => part.name == "Approved");
-                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
-
-                ClearChildren(pos);
-                Instantiate(stamp, pos.transform);
-            }*/
-
-            /*if (collidedObjectType.ObjectType == ObjectType.Test && selfObjectType.ObjectType == ObjectType.RedStamp)
-            {
-                GameObject stamp = obj.GetComponent<AvailableParts>().parts.Find(part => part.name == "Rejected");
-                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
-                ClearChildren(pos);
-
-                Instantiate(stamp, pos.transform);
-            }*/
-
-            /*if (collidedObjectType.ObjectType == ObjectType.Bin && selfObjectType.ObjectType == ObjectType.Test)
-            {
-                GameObject pos = GameObjFinder.FindChildGameObject(obj, "Pos");
-                ClearChildren(pos);
-
-                e.info.gameObject.transform.SetParent(collidedObjectType.transform);
-                e.info.gameObject.transform.localPosition = Vector3.zero;
-
-                //GameObjectPoolController.Enqueue(pos.GetComponentInParent<Poolable>());
-            }*/
+            return 0;
         }
+        
+        private static void ClearChildren(GameObject obj)
+        {
+            int i = 0;
+            var allChild = new GameObject[obj.transform.childCount];
 
+            foreach (Transform child in obj.transform)
+            {
+                allChild[i] = child.gameObject;
+                i++;
+            }
+
+            foreach (var child in allChild)
+            {
+                Destroy(child.gameObject);
+            }
+        }
         #endregion
 
         

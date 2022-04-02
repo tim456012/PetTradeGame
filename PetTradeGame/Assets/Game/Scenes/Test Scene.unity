@@ -214,6 +214,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5105011262418795838, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: c06c284ebdbd3e44bb637c0312308542, type: 3}
+    - target: {fileID: 5105011262664069093, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
+      propertyPath: objectType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105011262664069093, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
+      propertyPath: isFunctionalObject
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105011262664069097, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
+      propertyPath: m_Name
+      value: Collect Box
+      objectReference: {fileID: 0}
     - target: {fileID: 5105011264026261957, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -262,7 +278,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5105011262664069092, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0ea56f7ccb5244f2082753864e81f5e3, type: 3}
 --- !u!1 &1684089135
 GameObject:
