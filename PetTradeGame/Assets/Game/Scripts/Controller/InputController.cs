@@ -14,7 +14,7 @@ namespace Game.Scripts.Controller
 
         private bool _isHolding;
 
-        //Need Modify
+        //TODO: Find some implementation that can split mouse and touch input action.
         private void Start()
         {
             Input.simulateMouseWithTouches = false;
@@ -29,70 +29,49 @@ namespace Game.Scripts.Controller
                 _isHolding = false;
             
             //Check Input
-            checkInput(IsDragActive);
-            
-
-            
-            /*switch (IsDragActive)
-            {
-                case false when Input.GetMouseButtonDown(0):
-                    ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
-                    _isHolding = true;
-                    break;
-
-                case false:
-                    if (Input.touchCount > 0)
-                    {
-                        ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                        _isHolding = true;
-                    }
-                    break;
-
-                default:
-                {
-                    //Check the input first. If users stop dragging, invoke the drop event.
-                    if (!_isHolding || Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
-                    {
-                        DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
-                        return;
-                    }
-
-                    //Continues invoking drag event to sending the input position to subscribers.
-                    if (Input.GetMouseButton(0) && _isHolding)
-                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
-
-                    //Mobile
-                    if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary && _isHolding)
-                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                    break;
-                }
-            }*/
-
-
+            CheckInput(IsDragActive);
         }
 
-        private void checkInput(bool dragging)
+        private void CheckInput(bool dragging)
         {
-            switch (dragging)
+            //If player is dragging something, check their input first.
+            if (dragging)
             {
-                //Check the input first. If users stop dragging, invoke the drop event.
-                case false when !_isHolding || Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled:
-                    DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
-                    return;
-                //Continues invoking drag event to sending the input position to subscribers.
-                case true when _isHolding:
+                switch (_isHolding)
                 {
-                    //Mobile
-                    if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary && _isHolding)
-                    {
+                    //Invoke ReleaseEvent when player release their input
+                    //Mobile Version
+                    case false when Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled:
+                        DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                        return;
+                    //PC Version
+                    case false:
+                        DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                        return;
+                    
+                    //Invoke HoldingEvent when player still holding their input.
+                    //Mobile Version
+                    case true when Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary:
                         DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
                         return;
-                    }
-                
-                    DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
-                    break;
+                    //PC Version
+                    case true:
+                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                        return;
                 }
             }
+            
+            //Invoke general ClickedEvent when player is not doing dragging.
+            //Mobile Version
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Began or TouchPhase.Stationary)
+            {
+                ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                return;
+            }
+            
+            //PC Version
+            if(Input.GetMouseButtonDown(0))
+                ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
         }
     }
 }

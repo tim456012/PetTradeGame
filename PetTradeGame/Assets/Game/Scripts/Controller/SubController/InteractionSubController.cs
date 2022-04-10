@@ -37,20 +37,16 @@ namespace Game.Scripts.Controller.SubController
         private void Awake()
         {
             if (instance != null && instance != this)
-            {
                 Destroy(this);
-            }
             else
-            {
                 instance = this;
-            }
         }
 
         #endregion
         
         #region Methods
 
-        public static sbyte executeObjBehavior(GameObject original, GameObject target)
+        public static sbyte ExecuteObjBehavior(GameObject original, GameObject target)
         {
             var oType = original.GetComponent<EntityAttribute>().objectType;
             var tType = target.GetComponent<EntityAttribute>().objectType;

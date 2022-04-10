@@ -40,7 +40,7 @@ namespace Game.Scripts.Controller.SubController
                 return;
 
             TargetObj = hit.transform.gameObject;
-            //Debug.Log($"GameObject {_targetObj.name} selected.");
+            //Debug.Log($"GameObject {TargetObj.name} selected.");
             var temp = TargetObj.GetComponent<EntityAttribute>();
             if (!temp.isDraggable)
                 return;
@@ -52,6 +52,8 @@ namespace Game.Scripts.Controller.SubController
         private void OnDragEvent(object sender, InfoEventArgs<Vector3> e)
         {
             //Debug.Log($"Dragging Event invoke.");
+            if (!TargetObj || TargetObj == null)
+                return;
             
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
