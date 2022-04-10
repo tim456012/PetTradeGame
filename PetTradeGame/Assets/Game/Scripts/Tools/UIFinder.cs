@@ -6,44 +6,62 @@ namespace Game.Scripts.Tools
     {
         private static GameObject canvasObj;
     
+        /// <summary>
+        /// Find UI GameObject under the canvas.
+        /// </summary>
+        /// <param name="UIName">GameObject name that you want to search.</param>
+        /// <returns>GameObject</returns>
         public static GameObject FindUIGameObject(string UIName)
         {
             if (canvasObj == null)
-            {
                 canvasObj = GameObjFinder.FindGameObject("Canvas");
-            }
 
             return canvasObj == null ? null : GameObjFinder.FindChildGameObject(canvasObj, UIName);
         }
 
-        public static T GetObjComponent<T>(GameObject container, string UIName) where T : Component
+        /// <summary>
+        /// Find GameObject's component.
+        /// </summary>
+        /// <param name="container">Target GameObject</param>
+        /// <param name="componentName">Component that you want to find.</param>
+        /// <typeparam name="T">Component type</typeparam>
+        /// <returns>Component type</returns>
+        public static T GetObjComponent<T>(GameObject container, string componentName) where T : Component
         {
-            GameObject childGameObject = GameObjFinder.FindChildGameObject(container, UIName);
+            var childGameObject = GameObjFinder.FindChildGameObject(container, componentName);
 
-            T temp = childGameObject.GetComponent<T>();
-            if (temp == null)
-            {
-                Debug.Log($"Component [{UIName}] is not a [{typeof(T)}]");
-                return null;
-            }
-            return temp;
+            var temp = childGameObject.GetComponent<T>();
+            if (temp != null)
+                return temp;
+            Debug.Log($"Component [{componentName}] is not a [{typeof(T)}]");
+            return null;
         }
     }
-
+    
     public static class GameObjFinder
     {
+        /// <summary>
+        /// Find the GameObject.
+        /// </summary>
+        /// <param name="objName">Target GameObject</param>
+        /// <returns>GameObject</returns>
         public static GameObject FindGameObject(string objName)
         {
-            GameObject temp = GameObject.Find(objName);
+            var temp = GameObject.Find(objName);
+
+            if (temp != null)
+                return temp;
             
-            if (temp == null)
-            {
-                Debug.LogWarning($"GameObject[{objName}] does not exist in this scene.");
-                return null;
-            }
-            return temp;
+            Debug.LogWarning($"GameObject[{objName}] does not exist in this scene.");
+            return null;
         }
 
+        /// <summary>
+        /// Find the child GameObject under the parent
+        /// </summary>
+        /// <param name="container">Parent GameObject</param>
+        /// <param name="objName">Target GameObject</param>
+        /// <returns>GameObject</returns>
         public static GameObject FindChildGameObject(GameObject container, string objName)
         {
             if (container == null)
@@ -60,29 +78,24 @@ namespace Game.Scripts.Tools
             }
             else
             {
-                Transform[] allChildren = container.transform.GetComponentsInChildren<Transform>();
-                foreach (Transform child in allChildren)
+                var allChildren = container.transform.GetComponentsInChildren<Transform>();
+                foreach (var child in allChildren)
                 {
-                    if (child.name == objName)
-                    {
-                        if (objTran == null)
-                        {
-                            objTran = child;
-                        }
-                        else
-                        {
-                            Debug.LogWarning($"Found same component name[{objName}] under the Container[{container.name}].");
-                        }
-                    }
+                    if (child.name != objName)
+                        continue;
+                    
+                    if (objTran == null)
+                        objTran = child;
+                    else
+                        Debug.LogWarning($"Found same component name[{objName}] under the Container[{container.name}].");
                 }
             }
 
-            if (objTran == null)
-            {
-                Debug.LogError($"GameObjFinder : I can't find the component[{objName}] in container[{container.name}].");
-                return null;
-            }
-            return objTran.gameObject;
+            if (objTran != null)
+                return objTran.gameObject;
+            
+            Debug.LogError($"GameObjFinder : I can't find the component[{objName}] in container[{container.name}].");
+            return null;
         }
     }
 }

@@ -20,9 +20,7 @@ namespace Editor
         private static void Initialize()
         {
             if (!AssetDatabase.IsValidFolder("Assets/Resources/Conversations"))
-            {
                 AssetDatabase.CreateFolder("Assets/Resources", "Conversations");
-            }
         }
 
         private static void ParseAllDialogueData()
@@ -31,10 +29,10 @@ namespace Editor
             const string targetPath = "Assets/Resources/Conversations/";
             Debug.Log(readPath);
 
-            DirectoryInfo directoryInfo = new DirectoryInfo(readPath);
-            FileInfo[] fileInfos = directoryInfo.GetFiles("*.csv");
+            var directoryInfo = new DirectoryInfo(readPath);
+            var fileInfos = directoryInfo.GetFiles("*.csv");
 
-            foreach (FileInfo file in fileInfos)
+            foreach (var file in fileInfos)
             {
                 Debug.Log(file.Name);
                 if (!File.Exists(file.ToString()))
@@ -44,7 +42,7 @@ namespace Editor
                 }
 
                 string[] readText = File.ReadAllLines(file.ToString());
-                ConversationData conversationData = ScriptableObject.CreateInstance<ConversationData>();
+                var conversationData = ScriptableObject.CreateInstance<ConversationData>();
                 for (int i = 1; i < readText.Length; ++i)
                 {
                     conversationData.Load(readText[i]);

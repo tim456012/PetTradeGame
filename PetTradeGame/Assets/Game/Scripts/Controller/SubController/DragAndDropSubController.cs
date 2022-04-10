@@ -11,7 +11,8 @@ namespace Game.Scripts.Controller.SubController
         private Vector2 _screenPos;
         private Vector3 _gameWorldPos;
         private Vector3 _originalPos;
-        private GameObject _targetObj;
+        
+        public GameObject TargetObj { get; set; }
 
         private void OnEnable()
         {
@@ -32,19 +33,19 @@ namespace Game.Scripts.Controller.SubController
             //Debug.Log($"Click Event invoke.");
 
             _screenPos = new Vector2(e.info.x, e.info.y);
-            _gameWorldPos = Camera.main.ScreenToWorldPoint(_screenPos);
+            _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
 
-            RaycastHit2D hit = Physics2D.Raycast(_gameWorldPos, Vector2.zero);
+            var hit = Physics2D.Raycast(_gameWorldPos, Vector2.zero);
             if (hit.collider == null) 
                 return;
 
-            _targetObj = hit.transform.gameObject;
+            TargetObj = hit.transform.gameObject;
             //Debug.Log($"GameObject {_targetObj.name} selected.");
-            EntityAttribute temp = _targetObj.GetComponent<EntityAttribute>();
+            var temp = TargetObj.GetComponent<EntityAttribute>();
             if (!temp.isDraggable)
                 return;
 
-            _originalPos = _targetObj.transform.localPosition;
+            _originalPos = TargetObj.transform.localPosition;
             InputController.IsDragActive = true;
         }
 
@@ -53,28 +54,27 @@ namespace Game.Scripts.Controller.SubController
             //Debug.Log($"Dragging Event invoke.");
             
             _screenPos = new Vector2(e.info.x, e.info.y);
-            _gameWorldPos = Camera.main.ScreenToWorldPoint(_screenPos);
-            _targetObj.transform.localPosition = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
+            _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
+            TargetObj.transform.localPosition = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
         }
 
         private void OnDropEvent(object sender, InfoEventArgs<Vector3> e)
         {
-            if(!GameObject.Find(_targetObj.name))
+            //Debug.Log($"Drop Event invoke.");
+            if (!TargetObj || TargetObj == null)
                 return;
             
-            //Debug.Log($"Drop Event invoke.");
-            
-            Vector3 cameraWorld = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+            var cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             InputController.IsDragActive = false;
-            if (_targetObj.transform.localPosition.x > cameraWorld.x / 1.13
-                || _targetObj.transform.localPosition.y > cameraWorld.y / 1.13
-                || _targetObj.transform.localPosition.x < -cameraWorld.x / 1.13
-                || _targetObj.transform.localPosition.y < -cameraWorld.y / 1.13)
+            if (TargetObj.transform.localPosition.x > cameraWorld.x / 1.13
+                || TargetObj.transform.localPosition.y > cameraWorld.y / 1.13
+                || TargetObj.transform.localPosition.x < -cameraWorld.x / 1.13
+                || TargetObj.transform.localPosition.y < -cameraWorld.y / 1.13)
             { 
-                _targetObj.transform.MoveToLocal(_originalPos, 1f, EasingEquations.EaseInOutExpo);
+                TargetObj.transform.MoveToLocal(_originalPos, 1f, EasingEquations.EaseInOutExpo);
             }
            
-            _targetObj = null;
+            TargetObj = null;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Game.Scripts.Controller.Level_State
     {
         private GamePlayController gamePlayController;
         private ObjectController objectController;
+        private UIController uiController;
         
         private List<string> documents;
         private List<FunctionalObjectsData> functionalObjects;
@@ -20,6 +21,7 @@ namespace Game.Scripts.Controller.Level_State
             base.Awake();
             gamePlayController = owner.GetComponentInChildren<GamePlayController>();
             objectController = owner.GetComponentInChildren<ObjectController>();
+            uiController = owner.GetComponentInChildren<UIController>();
         }
 
         public override void Enter()
@@ -43,21 +45,21 @@ namespace Game.Scripts.Controller.Level_State
         {
             base.AddListeners();
             EntityAttribute.FunctionalObjCollisionEvent += OnFunctObjCollision;
-            ObjectController.LicenseSubmitedEvent += OnSubmited;
+            ObjectController.LicenseSubmittedEvent += OnSubmitted;
         }
 
         protected override void RemoveListeners()
         {
             base.RemoveListeners();
             EntityAttribute.FunctionalObjCollisionEvent -= OnFunctObjCollision;
-            ObjectController.LicenseSubmitedEvent -= OnSubmited;
+            ObjectController.LicenseSubmittedEvent -= OnSubmitted;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
             EntityAttribute.FunctionalObjCollisionEvent -= OnFunctObjCollision;
-            ObjectController.LicenseSubmitedEvent -= OnSubmited;
+            ObjectController.LicenseSubmittedEvent -= OnSubmitted;
         }
 
         private void OnFunctObjCollision(object sender, InfoEventArgs<GameObject> col)
@@ -69,12 +71,12 @@ namespace Game.Scripts.Controller.Level_State
             objectController.ProcessCollision(original, col.info);
         }
 
-        private void OnSubmited(object sender, InfoEventArgs<int> e)
+        private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
             if (e.info == 1)
-                gamePlayController.Score++;
-            
-            Debug.Log(gamePlayController.Score);
+            {
+                uiController.setScore(++gamePlayController.Score);
+            }
         }
     }
 }

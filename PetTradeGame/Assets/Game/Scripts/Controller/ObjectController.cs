@@ -14,18 +14,24 @@ namespace Game.Scripts.Controller
     public class ObjectController : MonoBehaviour
     {
         private FactorySubController _factorySubController;
-        
+        private DragAndDropSubController _dragAndDropSubController;
+
         //private IEnumerator enqueueObject; //?
         private readonly List<GameObject> documents = new();
         private static readonly List<Poolable> instances = new();
 
-        public static event EventHandler<InfoEventArgs<int>> LicenseSubmitedEvent; 
+        public static event EventHandler<InfoEventArgs<int>> LicenseSubmittedEvent;
 
         private void Awake()
         {
             enabled = false;
         }
-        
+
+        private void Start()
+        {
+            _dragAndDropSubController = GetComponent<DragAndDropSubController>();
+        }
+
         #region Initiation
         public void InitFactory(List<string> documentList)
         {
@@ -71,6 +77,9 @@ namespace Game.Scripts.Controller
         private void dequeueObject(string key, string spawnPos)
         {
             var obj = GameObjectPoolSubController.Dequeue(key);
+            
+            Destroy(obj.gameObject.GetComponent<EasingControl>());
+            Destroy(obj.gameObject.GetComponent<TransformLocalPositionTweener>());
 
             if (!string.IsNullOrEmpty(spawnPos))
             {
@@ -121,7 +130,9 @@ namespace Game.Scripts.Controller
             
             var p = col.GetComponent<Poolable>();
             EnqueueObject(p);
-            LicenseSubmitedEvent?.Invoke(this, new InfoEventArgs<int>(1));
+            _dragAndDropSubController.TargetObj = null;
+            dequeueObject("License", null);
+            LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
         }
         
         private void EnqueueObject(Poolable target)
@@ -132,7 +143,7 @@ namespace Game.Scripts.Controller
             int index = instances.IndexOf(target);
             if(index < 0)
                 return;
-                
+            
             instances.RemoveAt(index);
             GameObjectPoolSubController.Enqueue(target);
         }

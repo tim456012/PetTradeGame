@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test Level Data
   m_EditorClassIdentifier: 
   CutSceneDialogue: {fileID: 0}
-  IntroDialogue: {fileID: 11400000, guid: 838e8c5706053ae49b29db459d23bf12, type: 2}
+  IntroDialogue: {fileID: 0}
   MiddleDialogue: {fileID: 0}
   OutroDialogue: {fileID: 0}
   OtherDialogue: {fileID: 0}

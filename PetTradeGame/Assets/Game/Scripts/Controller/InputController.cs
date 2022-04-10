@@ -22,45 +22,76 @@ namespace Game.Scripts.Controller
 
         private void Update()
         {
-            if (!IsDragActive)
+            if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
+                _isHolding = true;
+            
+            if (Input.GetMouseButtonUp(0))
+                _isHolding = false;
+            
+            //Check Input
+            checkInput(IsDragActive);
+            
+
+            
+            /*switch (IsDragActive)
             {
-                if (Input.GetMouseButtonDown(0))
-                {
+                case false when Input.GetMouseButtonDown(0):
                     ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
                     _isHolding = true;
-                }
-                else if (Input.touchCount > 0)
+                    break;
+
+                case false:
+                    if (Input.touchCount > 0)
+                    {
+                        ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                        _isHolding = true;
+                    }
+                    break;
+
+                default:
                 {
-                    ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                    _isHolding = true;
+                    //Check the input first. If users stop dragging, invoke the drop event.
+                    if (!_isHolding || Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
+                    {
+                        DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
+                        return;
+                    }
+
+                    //Continues invoking drag event to sending the input position to subscribers.
+                    if (Input.GetMouseButton(0) && _isHolding)
+                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+
+                    //Mobile
+                    if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary && _isHolding)
+                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                    break;
                 }
-            }
-            else
+            }*/
+
+
+        }
+
+        private void checkInput(bool dragging)
+        {
+            switch (dragging)
             {
                 //Check the input first. If users stop dragging, invoke the drop event.
-                if (!_isHolding || Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled)
-                {
+                case false when !_isHolding || Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled:
                     DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>());
                     return;
-                }
-
                 //Continues invoking drag event to sending the input position to subscribers.
-                if (Input.GetMouseButton(0) && _isHolding)
+                case true when _isHolding:
                 {
+                    //Mobile
+                    if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary && _isHolding)
+                    {
+                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                        return;
+                    }
+                
                     DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+                    break;
                 }
-                if (Input.touchCount > 0 
-                    && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary 
-                    && _isHolding)
-                {
-                    DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                }
-            }
-
-            //Need Modify phone version
-            if (Input.GetMouseButtonUp(0))
-            {
-                _isHolding = false;
             }
         }
     }

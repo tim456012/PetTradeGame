@@ -15,18 +15,16 @@ namespace Game.Scripts.Model
 
         public void Load(string line)
         {
-            List<string> lines = new List<string>();
+            var lines = new List<string>();
             foreach (Match match in regex.Matches(line))
             {
                 string current = match.Value;
                 if (0 == current.Length)
-                {
                     lines.Add("");
-                }
                 lines.Add(current.Trim(',', '"'));
             }
 
-            SpeakerData data = new SpeakerData(lines[0])
+            var data = new SpeakerData(lines[0])
             {
                 dialogueId = Convert.ToInt32(lines[1]),
                 speaker = Resources.Load<Sprite>($"Test/NPC/{lines[2]}"),
