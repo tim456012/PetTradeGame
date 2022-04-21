@@ -11,7 +11,7 @@ namespace Game.Scripts.Controller
         private VideoPlayer videoPlayer;
         private Canvas canvas;
 
-        private Coroutine routine;
+        private IEnumerator routine;
         
         public static event EventHandler CompleteEvent;
     
@@ -29,51 +29,43 @@ namespace Game.Scripts.Controller
         public void playCutScene(VideoClip video)
         {
             videoPlayer.clip = video;
+            if (videoPlayer.clip == null)
+            {
+                Debug.Log("Video is null");
+                canvas.gameObject.SetActive(false);
+                CompleteEvent?.Invoke(this, EventArgs.Empty);
+            }
+            
             if(routine != null)
                 StopCoroutine(routine);
             
             canvas.gameObject.SetActive(true);
-            routine = StartCoroutine(Sequence(videoPlayer));
+            routine = Sequence(videoPlayer);
+            StartCoroutine(routine);
         }
 
         private IEnumerator Sequence(VideoPlayer vp)
         {
-            if (vp.clip == null)
-            {
-                Debug.Log("Video is null");
-                yield return null;
-                canvas.gameObject.SetActive(false);
-                CompleteEvent?.Invoke(this, EventArgs.Empty);
-                yield break;
-            }
-            
-            while (!vp.isPrepared)
-            {
-                Debug.Log($"Status: {vp.isPrepared}, Video is not prepare");
-                vp.Prepare();
-            }
-            
+            vp.Prepare();
             
             if (!vp.isPrepared)
             {
                 Debug.Log($"Status: {vp.isPrepared}, Video is not prepare");
-                vp.Prepare();
-                yield return new WaitForSecondsRealtime(3);
-                //yield return null;
+                //vp.Prepare();
+                yield return null;
             }
-            else
+            
+            vp.prepareCompleted += player =>
             {
                 Debug.Log($"Status: {vp.isPrepared}, Video is prepared");
-                vp.Play();
-            }
-
-            vp.errorReceived += (source, message) => 
+                player.Play();
+                Debug.Log("Video is playing");
+            };
+            
+            vp.errorReceived += (player, message) => 
             {
                 Debug.Log($"Error received : {message}");
             };
-            
-            if(vp.isPlaying)
-                Debug.Log("Video is playing");
             
             vp.loopPointReached += player =>
             {
