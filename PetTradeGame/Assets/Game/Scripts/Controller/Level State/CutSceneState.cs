@@ -2,18 +2,21 @@
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace Game.Scripts.Controller.Level_State
 {
     public class CutSceneState : GameLoopState
     {
         private CutsceneController cutsceneController;
-        //private ConversationData conversationData;
+        private VideoClip video;
 
         protected override void Awake()
         {
             base.Awake();
             cutsceneController = owner.GetComponentInChildren<CutsceneController>();
+            video = owner.LevelData.cutSceneVideo;
+            Debug.Log(video);
         }
 
         protected override void OnDestroy()
@@ -29,7 +32,7 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
-            cutsceneController.playCutScene();
+            cutsceneController.playCutScene(video);
         }
 
         protected override void AddListeners()
