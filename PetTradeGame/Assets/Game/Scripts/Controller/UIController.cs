@@ -7,10 +7,9 @@ namespace Game.Scripts.Controller
 {
     public class UIController : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI score;
-
         [SerializeField] private MainMenuPanel mainMenuPanel;
-        
+        [SerializeField] private GamePlayPanel gamePlayPanel;
+
         private Canvas canvas;
         
         public static event EventHandler StartGameEvent;
@@ -21,18 +20,19 @@ namespace Game.Scripts.Controller
         private void Start()
         {
             canvas = GetComponentInChildren<Canvas>();
-
             mainMenuPanel.btnStart.onClick.AddListener(OnBtnStartClicked);
-        }
-
-        public void setScore(int s)
-        {
-            score.text = $"Score : {s}";
+            gamePlayPanel.gameObject.SetActive(false);
         }
 
         private void OnBtnStartClicked()
         {
             StartGameEvent?.Invoke(this, EventArgs.Empty);
+            gamePlayPanel.gameObject.SetActive(true);
+        }
+        
+        public void setScore(int s)
+        {
+            gamePlayPanel.setScore(s);
         }
     }
 }
