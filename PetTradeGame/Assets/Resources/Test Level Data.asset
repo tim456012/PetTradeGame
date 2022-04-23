@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1086b88fc98ec614d9d2ec3578c51076, type: 3}
   m_Name: Test Level Data
   m_EditorClassIdentifier: 
-  CutSceneDialogue: {fileID: 0}
-  IntroDialogue: {fileID: 0}
-  MiddleDialogue: {fileID: 0}
-  OutroDialogue: {fileID: 0}
-  OtherDialogue: {fileID: 0}
+  cutSceneVideo: {fileID: 32900000, guid: c0f2083cd6a935f468169597daed81a7, type: 3}
+  introDialogue: {fileID: 11400000, guid: 838e8c5706053ae49b29db459d23bf12, type: 2}
+  middleDialogue: {fileID: 0}
+  outroDialogue: {fileID: 0}
+  otherDialogue: {fileID: 0}
   DocumentsNeeded:
   - SpecialPermit
   - DealerLicense
