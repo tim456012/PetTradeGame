@@ -16,7 +16,6 @@ namespace Game.Scripts.Controller.Level_State
             base.Awake();
             cutsceneController = owner.GetComponentInChildren<CutsceneController>();
             video = owner.LevelData.cutSceneVideo;
-            Debug.Log(video);
         }
 
         protected override void OnDestroy()

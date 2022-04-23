@@ -13,7 +13,7 @@ namespace Game.Scripts.Controller.Level_State
         private IEnumerator Init()
         {
             yield return null;
-            owner.ChangeState<CutSceneState>();
+            owner.ChangeState<MainMenuState>();
         }
     }
 }

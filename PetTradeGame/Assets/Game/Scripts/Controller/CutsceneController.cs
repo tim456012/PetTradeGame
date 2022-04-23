@@ -1,5 +1,4 @@
 using System;
-using System.Buffers;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Video;
@@ -21,21 +20,15 @@ namespace Game.Scripts.Controller
             videoPlayer = GetComponent<VideoPlayer>();
             canvas = GetComponentInChildren<Canvas>();
             
-
             videoPlayer.playOnAwake = false;
             videoPlayer.targetCameraAlpha = 1f;
+
+            canvas.gameObject.SetActive(false);
         }
         
         public void playCutScene(VideoClip video)
         {
             videoPlayer.clip = video;
-            if (videoPlayer.clip == null)
-            {
-                Debug.Log("Video is null");
-                canvas.gameObject.SetActive(false);
-                CompleteEvent?.Invoke(this, EventArgs.Empty);
-            }
-            
             if(routine != null)
                 StopCoroutine(routine);
             
@@ -46,6 +39,14 @@ namespace Game.Scripts.Controller
 
         private IEnumerator Sequence(VideoPlayer vp)
         {
+            if (videoPlayer.clip == null)
+            {
+                yield return null;
+                canvas.gameObject.SetActive(false);
+                CompleteEvent?.Invoke(this, EventArgs.Empty);
+                yield break;
+            }
+            
             vp.Prepare();
             
             if (!vp.isPrepared)
