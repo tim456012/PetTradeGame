@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 166
+    x: 0
     y: 42.666668
     width: 2560
     height: 1397.3334
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 4}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
-  m_Maximized: 0
+  m_Maximized: 1
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -39,10 +39,10 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 800
+    x: 799.3333
     y: 0
-    width: 913.33325
-    height: 618.00006
+    width: 913.99994
+    height: 618.6667
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 23}
@@ -68,13 +68,13 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 729.3333
+    y: 728.6667
     width: 1713.3333
-    height: 618.00006
+    height: 618.6667
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 30
+  controlID: 257
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 77
+  controlID: 73
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 78
+  controlID: 74
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,7 +268,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1713.3333
-    height: 729.3333
+    height: 728.6667
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
@@ -288,25 +288,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsolePro3Window
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 800
-    height: 618.00006
-  m_MinSize: {x: 202, y: 141}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 20}
+    width: 799.3333
+    height: 618.6667
+  m_MinSize: {x: 232, y: 271}
+  m_MaxSize: {x: 10002, y: 10021}
+  m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
   - {fileID: 20}
   - {fileID: 21}
   - {fileID: 22}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -327,10 +327,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 847.3334
-    y: 802
-    width: 798
-    height: 597
+    x: 846.6667
+    y: 801.3334
+    width: 797.3333
+    height: 597.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -416,8 +416,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0c600000
-    m_LastClickedInstanceID: 24588
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: f26000006262000062650000
     m_RenameOverlay:
@@ -467,8 +467,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 7.3333335
-    y: 80
+    x: 0
+    y: 72.66667
     width: 325.66666
     height: 1326.3334
   m_ViewDataDictionary: {fileID: 0}
@@ -478,9 +478,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0c600000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 10fbffff12fbffff
+      m_SelectedIDs: 905f0000
+      m_LastClickedID: 24464
+      m_ExpandedIDs: 12fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -524,8 +524,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 334
-    y: 80
+    x: 326.6667
+    y: 72.66667
     width: 518
     height: 1326.3334
   m_ViewDataDictionary: {fileID: 0}
@@ -593,10 +593,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 854
-    y: 80
+    x: 846.6667
+    y: 72.66667
     width: 1712.3333
-    height: 708.3333
+    height: 707.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -704,7 +704,7 @@ MonoBehaviour:
       containerId: overlay-container--right
       floating: 0
       collapsed: 0
-      displayed: 0
+      displayed: 1
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -1040,18 +1040,18 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 854
-    y: 809.3334
-    width: 798
-    height: 597.00006
+    x: 846.6667
+    y: 801.3334
+    width: 797.3333
+    height: 597.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
-  logPanelScroll: {x: 0, y: 7.333313}
-  logPanelSelectedIndex: 3
-  logPanelAutoScroll: 0
-  currentFrame: 5441634
+  logPanelScroll: {x: 0, y: 43.333313}
+  logPanelSelectedIndex: -1
+  logPanelAutoScroll: 1
+  currentFrame: 5443457
   logs:
     lastGrabbedIndex: 7
     lastGrabbedCount: 8
@@ -1168,35 +1168,19 @@ MonoBehaviour:
 
         exit
         code: 1'
-      logColumnText: 'CommandInvokationFailure: Unity Remote requirements check failed
-
-        C:\Tools\AndroidSDK\platform-tools\adb.exe
-        forward tcp:7201 tcp:7201
-
-        stderr[
-
-        adb.exe: error: device
-        offline
-
-        ]
-
-        stdout[
-
-        ]
-
-        exit code: 1'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 8
       hasSourceCode: 0
-      timeStamp: 00:31:41.723
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.723
+      timeStamp: 14:12:11.630
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.630
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: <374d68101b9e4829844c8329406f32cc>
         fileNameWithoutAssets: <374d68101b9e4829844c8329406f32cc>
@@ -1808,19 +1792,19 @@ MonoBehaviour:
       watchName: 
       logText: 01_output (UnityEngine.VideoClip)
       logTruncatedText: 01_output (UnityEngine.VideoClip)
-      logColumnText: 01_output (UnityEngine.VideoClip)
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.741
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.741
+      timeStamp: 14:12:11.646
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.646
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/Level State/CutSceneState.cs
         fileNameWithoutAssets: Game/Scripts/Controller/Level State/CutSceneState.cs
@@ -1840,15 +1824,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 148
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/CutSceneState.cs:19'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 384.66666
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -1870,15 +1854,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 521.3333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -1900,15 +1884,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 489.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:25'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 389.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -1930,15 +1914,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 514
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:36'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 390
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -1960,15 +1944,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 261.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/InitGameLoopState.cs:16'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 410
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -1990,15 +1974,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 212.66667
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2433,19 +2417,19 @@ MonoBehaviour:
       watchName: 
       logText: 'Status: False, Video is not prepare'
       logTruncatedText: 'Status: False, Video is not prepare'
-      logColumnText: 'Status: False, Video is not prepare'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.741
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.741
+      timeStamp: 14:12:11.646
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.646
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -2465,15 +2449,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 306
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:53'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 339.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2495,15 +2479,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 199.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2525,15 +2509,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 219.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:44'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 339.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2555,15 +2539,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 139.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/CutSceneState.cs:35'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 386.66666
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2585,15 +2569,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 160.66667
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:54'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 390
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2615,15 +2599,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 205.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:10'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 388
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2645,15 +2629,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 514
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:36'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 390
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2675,15 +2659,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 261.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/InitGameLoopState.cs:16'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 410
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -2705,15 +2689,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 212.66667
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -3120,20 +3104,19 @@ MonoBehaviour:
         Please make sure tracks all start at 0 in C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets/Game/Textures/01_output.mp4'
       logTruncatedText: 'First video frame not zero: 4 (0.166667s). Result may be
         out of sync. Please make sure tracks all start at 0 in C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets/Game/Textures/01_output.mp4'
-      logColumnText: 'First video frame not zero: 4 (0.166667s). Result may be out
-        of sync. Please make sure tracks all start at 0 in C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets/Game/Textures/01_output.mp4'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.742
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.742
+      timeStamp: 14:12:11.647
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.647
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries: []
       ignoredStackEntries: []
       lastMatchedCount: 1
@@ -3543,19 +3526,19 @@ MonoBehaviour:
       watchName: 
       logText: 'Status: True, Video is prepared'
       logTruncatedText: 'Status: True, Video is prepared'
-      logColumnText: 'Status: True, Video is prepared'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.849
-      timeFrame: 4
-      timeStampDateTimeNow: 00:31:41.849
+      timeStamp: 14:12:11.647
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.647
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -3575,15 +3558,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 381.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:60'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 339.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -3605,15 +3588,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 350
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -4024,19 +4007,19 @@ MonoBehaviour:
       watchName: 
       logText: Video is playing
       logTruncatedText: Video is playing
-      logColumnText: Video is playing
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.849
-      timeFrame: 4
-      timeStampDateTimeNow: 00:31:41.849
+      timeStamp: 14:12:11.647
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.647
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -4056,15 +4039,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 381.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:62'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 338.66666
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -4086,15 +4069,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 350
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -4505,19 +4488,19 @@ MonoBehaviour:
       watchName: 
       logText: Video is end.
       logTruncatedText: Video is end.
-      logColumnText: Video is end.
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:32:03.847
-      timeFrame: 9845
-      timeStampDateTimeNow: 00:32:03.847
+      timeStamp: 14:12:33.507
+      timeFrame: 10314
+      timeStampDateTimeNow: 14:12:33.507
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -4992,20 +4975,19 @@ MonoBehaviour:
         (object,System.EventArgs) (at Assets/Game/Scripts/Controller/Level State/IntroState.cs:56)
 
         Game.Scripts.Controller.ConversationController/<Sequence>d__18:MoveNext
-        () (at Assets/Game/Scripts/Controller/ConversationController.cs:69)
+        () (at Assets/Game/Scripts/Controller/ConversationController.cs:132)
 
-        Game.Scripts.Controller.ConversationController:Next
-        () (at Assets/Game/Scripts/Controller/ConversationController.cs:60)
+        Game.Scripts.Controller.ConversationController:<Sequence>b__18_0
+        (object,System.EventArgs) (at Assets/Game/Scripts/Controller/ConversationController.cs:125)
 
-        Game.Scripts.Controller.Level_State.IntroState:OnClick
-        (object,Game.Scripts.EventArguments.InfoEventArgs`1<UnityEngine.Vector3>)
-        (at Assets/Game/Scripts/Controller/Level State/IntroState.cs:51)
+        Game.Scripts.Common.Animation.EasingControl:Tick
+        (single) (at Assets/Game/Scripts/Common/Animation/EasingControl.cs:190)
 
-        Game.Scripts.Controller.InputController:CheckInput
-        (bool) (at Assets/Game/Scripts/Controller/InputController.cs:74)
+        Game.Scripts.Common.Animation.EasingControl/<Ticker>d__61:MoveNext
+        () (at Assets/Game/Scripts/Common/Animation/EasingControl.cs:138)
 
-        Game.Scripts.Controller.InputController:Update
-        () (at Assets/Game/Scripts/Controller/InputController.cs:32)
+        UnityEngine.GUIUtility:ProcessEvent
+        (int,intptr,bool&)
 
 '
       nativeFileName: Assets/Game/Scripts/Controller/Level State/MainGameState.cs
@@ -5014,19 +4996,19 @@ MonoBehaviour:
       watchName: 
       logText: Entering playing state
       logTruncatedText: Entering playing state
-      logColumnText: Entering playing state
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:32:05.135
-      timeFrame: 10400
-      timeStampDateTimeNow: 00:32:05.135
+      timeStamp: 14:12:38.717
+      timeFrame: 12787
+      timeStampDateTimeNow: 14:12:38.717
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/Level State/MainGameState.cs
         fileNameWithoutAssets: Game/Scripts/Controller/Level State/MainGameState.cs
@@ -5180,18 +5162,18 @@ MonoBehaviour:
         showSource: 1
       - fileName: Assets/Game/Scripts/Controller/ConversationController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/ConversationController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:69
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:132
         fileNameWithoutPath: ConversationController.cs
-        fileNameWithoutPathPlusLineNumber: ConversationController.cs:69
+        fileNameWithoutPathPlusLineNumber: ConversationController.cs:132
         fileNamePretty: ConversationController
         instanceID: -1
         className: ConversationController/<Sequence>d__18
         methodName: MoveNext
         namespaceName: Game.Scripts.Controller
-        lineNumberString: 69
+        lineNumberString: 132
         charNumber: 0
         stackLabel: ConversationController/<Sequence>d__18.MoveNext()
-        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:69'
+        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:132'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5210,18 +5192,18 @@ MonoBehaviour:
         showSource: 1
       - fileName: Assets/Game/Scripts/Controller/ConversationController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/ConversationController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:60
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:125
         fileNameWithoutPath: ConversationController.cs
-        fileNameWithoutPathPlusLineNumber: ConversationController.cs:60
+        fileNameWithoutPathPlusLineNumber: ConversationController.cs:125
         fileNamePretty: ConversationController
         instanceID: -1
         className: ConversationController
-        methodName: Next
+        methodName: <Sequence>b__18_0
         namespaceName: Game.Scripts.Controller
-        lineNumberString: 60
+        lineNumberString: 125
         charNumber: 0
-        stackLabel: ConversationController.Next()
-        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:60'
+        stackLabel: ConversationController.<Sequence>b__18_0()
+        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:125'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5238,20 +5220,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Game/Scripts/Controller/Level State/IntroState.cs
-        fileNameWithoutAssets: Game/Scripts/Controller/Level State/IntroState.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/Level State/IntroState.cs:51
-        fileNameWithoutPath: IntroState.cs
-        fileNameWithoutPathPlusLineNumber: IntroState.cs:51
-        fileNamePretty: IntroState
+      - fileName: Assets/Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssets: Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Common/Animation/EasingControl.cs:190
+        fileNameWithoutPath: EasingControl.cs
+        fileNameWithoutPathPlusLineNumber: EasingControl.cs:190
+        fileNamePretty: EasingControl
         instanceID: -1
-        className: IntroState
-        methodName: OnClick
-        namespaceName: Game.Scripts.Controller.Level_State
-        lineNumberString: 51
+        className: EasingControl
+        methodName: Tick
+        namespaceName: Game.Scripts.Common.Animation
+        lineNumberString: 190
         charNumber: 0
-        stackLabel: IntroState.OnClick()
-        stackLabel2: ' at /Game/Scripts/Controller/Level State/IntroState.cs:51'
+        stackLabel: EasingControl.Tick()
+        stackLabel2: ' at /Game/Scripts/Common/Animation/EasingControl.cs:190'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5268,20 +5250,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssets: Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/InputController.cs:74
-        fileNameWithoutPath: InputController.cs
-        fileNameWithoutPathPlusLineNumber: InputController.cs:74
-        fileNamePretty: InputController
+      - fileName: Assets/Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssets: Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Common/Animation/EasingControl.cs:138
+        fileNameWithoutPath: EasingControl.cs
+        fileNameWithoutPathPlusLineNumber: EasingControl.cs:138
+        fileNamePretty: EasingControl
         instanceID: -1
-        className: InputController
-        methodName: CheckInput
-        namespaceName: Game.Scripts.Controller
-        lineNumberString: 74
+        className: EasingControl/<Ticker>d__61
+        methodName: MoveNext
+        namespaceName: Game.Scripts.Common.Animation
+        lineNumberString: 138
         charNumber: 0
-        stackLabel: InputController.CheckInput()
-        stackLabel2: ' at /Game/Scripts/Controller/InputController.cs:74'
+        stackLabel: EasingControl/<Ticker>d__61.MoveNext()
+        stackLabel2: ' at /Game/Scripts/Common/Animation/EasingControl.cs:138'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5298,20 +5280,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssets: Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/InputController.cs:32
-        fileNameWithoutPath: InputController.cs
-        fileNameWithoutPathPlusLineNumber: InputController.cs:32
-        fileNamePretty: InputController
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
         instanceID: -1
-        className: InputController
-        methodName: Update
-        namespaceName: Game.Scripts.Controller
-        lineNumberString: 32
+        className: GUIUtility
+        methodName: ProcessEvent
+        namespaceName: UnityEngine
+        lineNumberString: 0
         charNumber: 0
-        stackLabel: InputController.Update()
-        stackLabel2: ' at /Game/Scripts/Controller/InputController.cs:32'
+        stackLabel: GUIUtility.ProcessEvent()
+        stackLabel2: 
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -5823,35 +5805,19 @@ MonoBehaviour:
 
         exit
         code: 1'
-      logColumnText: 'CommandInvokationFailure: Unity Remote requirements check failed
-
-        C:\Tools\AndroidSDK\platform-tools\adb.exe
-        forward tcp:7201 tcp:7201
-
-        stderr[
-
-        adb.exe: error: device
-        offline
-
-        ]
-
-        stdout[
-
-        ]
-
-        exit code: 1'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 8
       hasSourceCode: 0
-      timeStamp: 00:31:41.723
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.723
+      timeStamp: 14:12:11.630
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.630
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: <374d68101b9e4829844c8329406f32cc>
         fileNameWithoutAssets: <374d68101b9e4829844c8329406f32cc>
@@ -6463,19 +6429,19 @@ MonoBehaviour:
       watchName: 
       logText: 01_output (UnityEngine.VideoClip)
       logTruncatedText: 01_output (UnityEngine.VideoClip)
-      logColumnText: 01_output (UnityEngine.VideoClip)
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.741
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.741
+      timeStamp: 14:12:11.646
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.646
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/Level State/CutSceneState.cs
         fileNameWithoutAssets: Game/Scripts/Controller/Level State/CutSceneState.cs
@@ -6495,15 +6461,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 148
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/CutSceneState.cs:19'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 384.66666
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -6525,15 +6491,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 521.3333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -6555,15 +6521,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 489.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:25'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 389.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -6585,15 +6551,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 514
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:36'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 390
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -6615,15 +6581,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 261.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/InitGameLoopState.cs:16'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 410
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -6645,15 +6611,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 212.66667
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7088,19 +7054,19 @@ MonoBehaviour:
       watchName: 
       logText: 'Status: False, Video is not prepare'
       logTruncatedText: 'Status: False, Video is not prepare'
-      logColumnText: 'Status: False, Video is not prepare'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.741
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.741
+      timeStamp: 14:12:11.646
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.646
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -7120,15 +7086,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 306
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:53'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 339.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7150,15 +7116,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 199.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7180,15 +7146,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 219.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:44'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 339.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7210,15 +7176,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 139.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/CutSceneState.cs:35'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 386.66666
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7240,15 +7206,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 160.66667
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:54'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 390
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7270,15 +7236,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 205.33333
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:10'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 388
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7300,15 +7266,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 514
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Common/State Machine/StateMachine.cs:36'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 390
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7330,15 +7296,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 261.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/Level State/InitGameLoopState.cs:16'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 410
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7360,15 +7326,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 212.66667
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -7775,20 +7741,19 @@ MonoBehaviour:
         Please make sure tracks all start at 0 in C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets/Game/Textures/01_output.mp4'
       logTruncatedText: 'First video frame not zero: 4 (0.166667s). Result may be
         out of sync. Please make sure tracks all start at 0 in C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets/Game/Textures/01_output.mp4'
-      logColumnText: 'First video frame not zero: 4 (0.166667s). Result may be out
-        of sync. Please make sure tracks all start at 0 in C:/work/Unity/Project/PetTradeGame/PetTradeGame/Assets/Game/Textures/01_output.mp4'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.742
-      timeFrame: 2
-      timeStampDateTimeNow: 00:31:41.742
+      timeStamp: 14:12:11.647
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.647
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries: []
       ignoredStackEntries: []
       lastMatchedCount: 1
@@ -8198,19 +8163,19 @@ MonoBehaviour:
       watchName: 
       logText: 'Status: True, Video is prepared'
       logTruncatedText: 'Status: True, Video is prepared'
-      logColumnText: 'Status: True, Video is prepared'
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.849
-      timeFrame: 4
-      timeStampDateTimeNow: 00:31:41.849
+      timeStamp: 14:12:11.647
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.647
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -8230,15 +8195,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 381.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:60'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 339.33334
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -8260,15 +8225,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 350
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -8679,19 +8644,19 @@ MonoBehaviour:
       watchName: 
       logText: Video is playing
       logTruncatedText: Video is playing
-      logColumnText: Video is playing
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:31:41.849
-      timeFrame: 4
-      timeStampDateTimeNow: 00:31:41.849
+      timeStamp: 14:12:11.647
+      timeFrame: 6
+      timeStampDateTimeNow: 14:12:11.647
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -8711,15 +8676,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 381.33334
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
-          m_Text: ' at /Game/Scripts/Controller/CutsceneController.cs:62'
+          m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel2Width: 338.66666
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -8741,15 +8706,15 @@ MonoBehaviour:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
-        stackLabel1Width: 350
-        stackLabel1Height: 24
+        stackLabel1Width: 0
+        stackLabel1Height: 0
         stackLabel2Content:
           m_Text: 
           m_Image: {fileID: 0}
           m_Tooltip: 
         stackLabel2Width: 0
-        stackLabel2Height: 24
-        stackSourceLineHeight: 16
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
@@ -9160,19 +9125,19 @@ MonoBehaviour:
       watchName: 
       logText: Video is end.
       logTruncatedText: Video is end.
-      logColumnText: Video is end.
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:32:03.847
-      timeFrame: 9845
-      timeStampDateTimeNow: 00:32:03.847
+      timeStamp: 14:12:33.507
+      timeFrame: 10314
+      timeStampDateTimeNow: 14:12:33.507
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/CutsceneController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/CutsceneController.cs
@@ -9647,20 +9612,19 @@ MonoBehaviour:
         (object,System.EventArgs) (at Assets/Game/Scripts/Controller/Level State/IntroState.cs:56)
 
         Game.Scripts.Controller.ConversationController/<Sequence>d__18:MoveNext
-        () (at Assets/Game/Scripts/Controller/ConversationController.cs:69)
+        () (at Assets/Game/Scripts/Controller/ConversationController.cs:132)
 
-        Game.Scripts.Controller.ConversationController:Next
-        () (at Assets/Game/Scripts/Controller/ConversationController.cs:60)
+        Game.Scripts.Controller.ConversationController:<Sequence>b__18_0
+        (object,System.EventArgs) (at Assets/Game/Scripts/Controller/ConversationController.cs:125)
 
-        Game.Scripts.Controller.Level_State.IntroState:OnClick
-        (object,Game.Scripts.EventArguments.InfoEventArgs`1<UnityEngine.Vector3>)
-        (at Assets/Game/Scripts/Controller/Level State/IntroState.cs:51)
+        Game.Scripts.Common.Animation.EasingControl:Tick
+        (single) (at Assets/Game/Scripts/Common/Animation/EasingControl.cs:190)
 
-        Game.Scripts.Controller.InputController:CheckInput
-        (bool) (at Assets/Game/Scripts/Controller/InputController.cs:74)
+        Game.Scripts.Common.Animation.EasingControl/<Ticker>d__61:MoveNext
+        () (at Assets/Game/Scripts/Common/Animation/EasingControl.cs:138)
 
-        Game.Scripts.Controller.InputController:Update
-        () (at Assets/Game/Scripts/Controller/InputController.cs:32)
+        UnityEngine.GUIUtility:ProcessEvent
+        (int,intptr,bool&)
 
 '
       nativeFileName: Assets/Game/Scripts/Controller/Level State/MainGameState.cs
@@ -9669,19 +9633,19 @@ MonoBehaviour:
       watchName: 
       logText: Entering playing state
       logTruncatedText: Entering playing state
-      logColumnText: Entering playing state
+      logColumnText: 
       fileName: 
       className: 
       namespaceName: 
       lineCount: 1
       hasSourceCode: 0
-      timeStamp: 00:32:05.135
-      timeFrame: 10400
-      timeStampDateTimeNow: 00:32:05.135
+      timeStamp: 14:12:38.717
+      timeFrame: 12787
+      timeStampDateTimeNow: 14:12:38.717
       instanceID: 0
       collapsedCount: 1
       cachedHeight: -1
-      cachedHeightLogWidth: -1
+      cachedHeightLogWidth: 0
       stackEntries:
       - fileName: Assets/Game/Scripts/Controller/Level State/MainGameState.cs
         fileNameWithoutAssets: Game/Scripts/Controller/Level State/MainGameState.cs
@@ -9835,18 +9799,18 @@ MonoBehaviour:
         showSource: 1
       - fileName: Assets/Game/Scripts/Controller/ConversationController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/ConversationController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:69
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:132
         fileNameWithoutPath: ConversationController.cs
-        fileNameWithoutPathPlusLineNumber: ConversationController.cs:69
+        fileNameWithoutPathPlusLineNumber: ConversationController.cs:132
         fileNamePretty: ConversationController
         instanceID: -1
         className: ConversationController/<Sequence>d__18
         methodName: MoveNext
         namespaceName: Game.Scripts.Controller
-        lineNumberString: 69
+        lineNumberString: 132
         charNumber: 0
         stackLabel: ConversationController/<Sequence>d__18.MoveNext()
-        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:69'
+        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:132'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -9865,18 +9829,18 @@ MonoBehaviour:
         showSource: 1
       - fileName: Assets/Game/Scripts/Controller/ConversationController.cs
         fileNameWithoutAssets: Game/Scripts/Controller/ConversationController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:60
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/ConversationController.cs:125
         fileNameWithoutPath: ConversationController.cs
-        fileNameWithoutPathPlusLineNumber: ConversationController.cs:60
+        fileNameWithoutPathPlusLineNumber: ConversationController.cs:125
         fileNamePretty: ConversationController
         instanceID: -1
         className: ConversationController
-        methodName: Next
+        methodName: <Sequence>b__18_0
         namespaceName: Game.Scripts.Controller
-        lineNumberString: 60
+        lineNumberString: 125
         charNumber: 0
-        stackLabel: ConversationController.Next()
-        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:60'
+        stackLabel: ConversationController.<Sequence>b__18_0()
+        stackLabel2: ' at /Game/Scripts/Controller/ConversationController.cs:125'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -9893,20 +9857,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Game/Scripts/Controller/Level State/IntroState.cs
-        fileNameWithoutAssets: Game/Scripts/Controller/Level State/IntroState.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/Level State/IntroState.cs:51
-        fileNameWithoutPath: IntroState.cs
-        fileNameWithoutPathPlusLineNumber: IntroState.cs:51
-        fileNamePretty: IntroState
+      - fileName: Assets/Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssets: Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Common/Animation/EasingControl.cs:190
+        fileNameWithoutPath: EasingControl.cs
+        fileNameWithoutPathPlusLineNumber: EasingControl.cs:190
+        fileNamePretty: EasingControl
         instanceID: -1
-        className: IntroState
-        methodName: OnClick
-        namespaceName: Game.Scripts.Controller.Level_State
-        lineNumberString: 51
+        className: EasingControl
+        methodName: Tick
+        namespaceName: Game.Scripts.Common.Animation
+        lineNumberString: 190
         charNumber: 0
-        stackLabel: IntroState.OnClick()
-        stackLabel2: ' at /Game/Scripts/Controller/Level State/IntroState.cs:51'
+        stackLabel: EasingControl.Tick()
+        stackLabel2: ' at /Game/Scripts/Common/Animation/EasingControl.cs:190'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -9923,20 +9887,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssets: Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/InputController.cs:74
-        fileNameWithoutPath: InputController.cs
-        fileNameWithoutPathPlusLineNumber: InputController.cs:74
-        fileNamePretty: InputController
+      - fileName: Assets/Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssets: Game/Scripts/Common/Animation/EasingControl.cs
+        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Common/Animation/EasingControl.cs:138
+        fileNameWithoutPath: EasingControl.cs
+        fileNameWithoutPathPlusLineNumber: EasingControl.cs:138
+        fileNamePretty: EasingControl
         instanceID: -1
-        className: InputController
-        methodName: CheckInput
-        namespaceName: Game.Scripts.Controller
-        lineNumberString: 74
+        className: EasingControl/<Ticker>d__61
+        methodName: MoveNext
+        namespaceName: Game.Scripts.Common.Animation
+        lineNumberString: 138
         charNumber: 0
-        stackLabel: InputController.CheckInput()
-        stackLabel2: ' at /Game/Scripts/Controller/InputController.cs:74'
+        stackLabel: EasingControl/<Ticker>d__61.MoveNext()
+        stackLabel2: ' at /Game/Scripts/Common/Animation/EasingControl.cs:138'
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -9953,20 +9917,20 @@ MonoBehaviour:
         sourceCode: []
         sourceCodeUpdated: 0
         showSource: 1
-      - fileName: Assets/Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssets: Game/Scripts/Controller/InputController.cs
-        fileNameWithoutAssetsPlusLineNumber: Game/Scripts/Controller/InputController.cs:32
-        fileNameWithoutPath: InputController.cs
-        fileNameWithoutPathPlusLineNumber: InputController.cs:32
-        fileNamePretty: InputController
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
         instanceID: -1
-        className: InputController
-        methodName: Update
-        namespaceName: Game.Scripts.Controller
-        lineNumberString: 32
+        className: GUIUtility
+        methodName: ProcessEvent
+        namespaceName: UnityEngine
+        lineNumberString: 0
         charNumber: 0
-        stackLabel: InputController.Update()
-        stackLabel2: ' at /Game/Scripts/Controller/InputController.cs:32'
+        stackLabel: GUIUtility.ProcessEvent()
+        stackLabel2: 
         stackLabel1Content:
           m_Text: 
           m_Image: {fileID: 0}
@@ -10457,10 +10421,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1654
-    y: 809.3334
-    width: 912.33325
-    height: 597.00006
+    x: 1646
+    y: 801.3334
+    width: 912.99994
+    height: 597.6667
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -10471,7 +10435,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1368.4999, y: 770}
+  m_TargetSize: {x: 1369.4999, y: 770}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -10486,8 +10450,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -456.16663
-    m_HBaseRangeMax: 456.16663
+    m_HBaseRangeMin: -456.49997
+    m_HBaseRangeMax: 456.49997
     m_VBaseRangeMin: -256.6667
     m_VBaseRangeMax: 256.6667
     m_HAllowExceedBaseRangeMin: 1
@@ -10507,23 +10471,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 912.33325
-      height: 576.00006
+      width: 912.99994
+      height: 576.6667
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 456.16663, y: 288.00003}
+    m_Translation: {x: 456.49997, y: 288.33334}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -456.16663
-      y: -288.00003
-      width: 912.33325
-      height: 576.00006
+      x: -456.49997
+      y: -288.33334
+      width: 912.99994
+      height: 576.6667
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1368.4999, y: 895.5001}
+  m_LastWindowPixelSize: {x: 1369.4999, y: 896.5}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 00000000000000000000
