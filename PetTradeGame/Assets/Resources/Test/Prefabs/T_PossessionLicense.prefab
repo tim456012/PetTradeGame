@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: -309755596160297537}
   - component: {fileID: 1806480561605160281}
   - component: {fileID: 1806480561605160282}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: T_PossessionLicense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,9 +424,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -134051145
-  m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 125cf5d591145a9408ab546a86d4207e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -498,10 +498,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDocument: 1
+  isFunctionalObject: 0
+  isDraggable: 1
   objectType: 0
   paperType: 1
-  isDraggable: 1
-  isFunctionalObject: 0
 --- !u!1 &1806480561846837283
 GameObject:
   m_ObjectHideFlags: 0

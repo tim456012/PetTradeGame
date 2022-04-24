@@ -13,10 +13,10 @@ namespace Game.Scripts.Controller
 {
     public class ObjectController : MonoBehaviour
     {
-        private FactorySubController _factorySubController;
-        private DragAndDropSubController _dragAndDropSubController;
+        private FactorySubController factorySubController;
+        private DragAndDropSubController dragAndDropSubController;
 
-        //private IEnumerator enqueueObject; //?
+        //private IEnumerator enqueueObject;
         private readonly List<GameObject> documents = new();
         private static readonly List<Poolable> instances = new();
 
@@ -29,7 +29,7 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            _dragAndDropSubController = GetComponent<DragAndDropSubController>();
+            dragAndDropSubController = GetComponent<DragAndDropSubController>();
         }
 
         #region Initiation
@@ -38,11 +38,11 @@ namespace Game.Scripts.Controller
             var instance = gameObject.GetComponentInChildren<FactorySubController>();
             if (instance)
             {
-                _factorySubController = instance;
+                factorySubController = instance;
                 return;
             }
 
-            _factorySubController = gameObject.AddComponent<FactorySubController>();
+            factorySubController = gameObject.AddComponent<FactorySubController>();
             ProduceDocument(documentList);
         }
         
@@ -130,8 +130,8 @@ namespace Game.Scripts.Controller
             
             var p = col.GetComponent<Poolable>();
             EnqueueObject(p);
-            _dragAndDropSubController.TargetObj = null;
-            DequeueObject("License", null);
+            dragAndDropSubController.TargetObj = null;
+            DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
         }
         

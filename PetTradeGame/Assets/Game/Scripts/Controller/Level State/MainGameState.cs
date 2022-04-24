@@ -74,9 +74,7 @@ namespace Game.Scripts.Controller.Level_State
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
             if (e.info == 1)
-            {
                 uiController.setScore(++gamePlayController.Score);
-            }
         }
     }
 }
