@@ -21,12 +21,12 @@ namespace Game.Scripts.Common.State_Machine
 
         protected virtual void AddListeners()
         {
-        
+
         }
 
         protected virtual void RemoveListeners()
         {
-        
+
         }
     }
 }

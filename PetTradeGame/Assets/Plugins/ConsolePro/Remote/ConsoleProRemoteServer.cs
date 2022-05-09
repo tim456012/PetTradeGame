@@ -31,30 +31,27 @@ namespace FlyingWormConsole3
 	#if USECONSOLEPROREMOTESERVER
 public class ConsoleProRemoteServer : MonoBehaviour, INetEventListener
 	#else
-public class ConsoleProRemoteServer : MonoBehaviour
+    public class ConsoleProRemoteServer : MonoBehaviour
 	#endif
-{
-	public bool useNATPunch = false;
-	public int port = 51000;
+    {
+        public bool useNATPunch = false;
+        public int port = 51000;
 
 	#if UNITY_EDITOR && !USECONSOLEPROREMOTESERVER
 
 	#elif UNSUPPORTEDCONSOLEPROREMOTESERVER
-
 	public void Awake()
 	{
 		Debug.Log("Console Pro Remote Server is not supported on this platform");
 	}
 
 	#elif !USECONSOLEPROREMOTESERVER
-	
 	public void Awake()
 	{
 		Debug.Log("Console Pro Remote Server is disabled in release mode, please use a Development build or define DEBUG to use it");
 	}
 
 	#else
-
 	private NetManager _netServer;
 	private NetPeer _ourPeer;
 	private NetDataWriter _dataWriter;
@@ -237,5 +234,5 @@ public class ConsoleProRemoteServer : MonoBehaviour
 	}
 
 	#endif
-}
+    }
 }

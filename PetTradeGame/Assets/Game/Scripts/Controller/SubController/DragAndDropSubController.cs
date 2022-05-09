@@ -11,7 +11,7 @@ namespace Game.Scripts.Controller.SubController
         private Vector2 _screenPos;
         private Vector3 _gameWorldPos;
         private Vector3 _originalPos;
-        
+
         public GameObject TargetObj { get; set; }
 
         private void OnEnable()
@@ -36,7 +36,7 @@ namespace Game.Scripts.Controller.SubController
             _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
 
             var hit = Physics2D.Raycast(_gameWorldPos, Vector2.zero);
-            if (hit.collider == null) 
+            if (hit.collider == null)
                 return;
 
             TargetObj = hit.transform.gameObject;
@@ -54,7 +54,7 @@ namespace Game.Scripts.Controller.SubController
             //Debug.Log($"Dragging Event invoke.");
             if (!TargetObj || TargetObj == null)
                 return;
-            
+
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
             TargetObj.transform.localPosition = new Vector2(_gameWorldPos.x, _gameWorldPos.y);
@@ -65,17 +65,17 @@ namespace Game.Scripts.Controller.SubController
             //Debug.Log($"Drop Event invoke.");
             if (!TargetObj || TargetObj == null)
                 return;
-            
+
             var cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             InputController.IsDragActive = false;
             if (TargetObj.transform.localPosition.x > cameraWorld.x / 1.13
                 || TargetObj.transform.localPosition.y > cameraWorld.y / 1.13
                 || TargetObj.transform.localPosition.x < -cameraWorld.x / 1.13
                 || TargetObj.transform.localPosition.y < -cameraWorld.y / 1.13)
-            { 
+            {
                 TargetObj.transform.MoveToLocal(_originalPos, 1f, EasingEquations.EaseInOutExpo);
             }
-           
+
             TargetObj = null;
         }
     }

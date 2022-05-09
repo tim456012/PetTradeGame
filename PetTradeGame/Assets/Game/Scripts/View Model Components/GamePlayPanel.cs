@@ -10,7 +10,7 @@ namespace Game.Scripts.View_Model_Components
 
         private void Start()
         {
-            
+
         }
 
         public void setScore(int s)

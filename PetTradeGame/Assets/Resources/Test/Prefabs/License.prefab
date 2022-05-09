@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5812135187394343713}
   - component: {fileID: 5812135187394343714}
   - component: {fileID: 5520502874702729465}
+  - component: {fileID: 6883910978985695973}
   m_Layer: 10
   m_Name: License
   m_TagString: Untagged
@@ -168,6 +169,17 @@ MonoBehaviour:
   parts:
   - {fileID: 5282497321801330557, guid: 05cb3e1243fed534fad3fb8917d15327, type: 3}
   - {fileID: 4263020883730928041, guid: 74a5838bac26b9d418040877a68476cf, type: 3}
+--- !u!210 &6883910978985695973
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5812135187394343717}
+  m_Enabled: 1
+  m_SortingLayerID: -134051145
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &7227625670750315092
 GameObject:
   m_ObjectHideFlags: 0

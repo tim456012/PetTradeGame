@@ -11,11 +11,11 @@ namespace Game.Scripts.Controller
         [SerializeField] private GamePlayPanel gamePlayPanel;
 
         private Canvas canvas;
-        
+
         public static event EventHandler StartGameEvent;
-        
+
         //private Tweener transition;
-        
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -29,7 +29,7 @@ namespace Game.Scripts.Controller
             StartGameEvent?.Invoke(this, EventArgs.Empty);
             gamePlayPanel.gameObject.SetActive(true);
         }
-        
+
         public void setScore(int s)
         {
             gamePlayPanel.setScore(s);

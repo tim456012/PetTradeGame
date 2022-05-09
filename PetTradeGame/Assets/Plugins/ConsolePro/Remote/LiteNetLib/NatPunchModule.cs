@@ -23,7 +23,7 @@ namespace FlyingWormConsole3.LiteNetLib
 
         void INatPunchListener.OnNatIntroductionRequest(NetEndPoint localEndPoint, NetEndPoint remoteEndPoint, string token)
         {
-            if(NatIntroductionRequest != null)
+            if (NatIntroductionRequest != null)
                 NatIntroductionRequest(localEndPoint, remoteEndPoint, token);
         }
 
@@ -51,7 +51,7 @@ namespace FlyingWormConsole3.LiteNetLib
 
         private readonly NetManager _netBase;
         private readonly Queue<RequestEventData> _requestEvents;
-        private readonly Queue<SuccessEventData> _successEvents; 
+        private readonly Queue<SuccessEventData> _successEvents;
         private const byte HostByte = 1;
         private const byte ClientByte = 0;
         public const int MaxTokenLength = 256;

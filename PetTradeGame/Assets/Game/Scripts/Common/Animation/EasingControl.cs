@@ -45,7 +45,7 @@ namespace Game.Scripts.Common.Animation
         public float duration = 1.0f;
         public int loopCount = 0;
         public Func<float, float, float, float> equation = EasingEquations.Linear;
-        
+
         public float currentTime { get; private set; }
         public float currentValue { get; private set; }
         public float currentOffset { get; private set; }
@@ -110,7 +110,7 @@ namespace Game.Scripts.Common.Animation
         {
             SeekToTime(duration);
         }
-        
+
         private void SetPlayState(PlayState target)
         {
             if (playState == target)

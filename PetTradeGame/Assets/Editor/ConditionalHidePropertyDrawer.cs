@@ -12,16 +12,16 @@ namespace Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-        
+
             var condHAtt = (ConditionalHideAttribute)attribute;
-            bool enabled = GetConditionalHideAttributeResult(condHAtt, property);        
+            bool enabled = GetConditionalHideAttributeResult(condHAtt, property);
 
             bool wasEnabled = GUI.enabled;
             GUI.enabled = enabled;
             if (!condHAtt.HideInInspector || enabled)
             {
                 EditorGUI.PropertyField(position, property, label, true);
-            }        
+            }
 
             GUI.enabled = wasEnabled;
         }
@@ -77,13 +77,13 @@ namespace Editor
             {
                 //original implementation (doens't work with nested serializedObjects)
                 sourcePropertyValue = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField);
-            }     
+            }
 
 
             if (sourcePropertyValue != null)
             {
                 enabled = CheckPropertyType(sourcePropertyValue);
-                if (condHAtt.InverseCondition1) enabled = !enabled;             
+                if (condHAtt.InverseCondition1) enabled = !enabled;
             }
             else
             {
@@ -97,7 +97,7 @@ namespace Editor
             {
                 string propertyPath = property.propertyPath;                                                  //returns the property path of the property we want to apply the attribute to
                 string conditionPath = propertyPath.Replace(property.name, condHAtt.ConditionalSourceField2); //changes the path to the conditionalsource property path
-               
+
                 //if the find failed->fall back to the old system
                 sourcePropertyValue2 = property.serializedObject.FindProperty(conditionPath) ?? property.serializedObject.FindProperty(condHAtt.ConditionalSourceField2);
             }
@@ -106,7 +106,7 @@ namespace Editor
                 // original implementation(doens't work with nested serializedObjects) 
                 sourcePropertyValue2 = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField2);
             }
-            
+
             //Combine the results
             if (sourcePropertyValue2 != null)
             {
@@ -133,7 +133,7 @@ namespace Editor
                 {
                     string propertyPath = property.propertyPath;                                                    //returns the property path of the property we want to apply the attribute to
                     string conditionPath = propertyPath.Replace(property.name, conditionalSourceFieldArray[index]); //changes the path to the conditionalsource property path
-                    
+
                     //if the find failed->fall back to the old system
                     sourcePropertyValueFromArray = property.serializedObject.FindProperty(conditionPath) ?? property.serializedObject.FindProperty(conditionalSourceFieldArray[index]);
 
@@ -147,8 +147,8 @@ namespace Editor
                 //Combine the results
                 if (sourcePropertyValueFromArray != null)
                 {
-                    bool propertyEnabled = CheckPropertyType(sourcePropertyValueFromArray);                
-                    if (conditionalSourceFieldInverseArray.Length>= (index+1) && conditionalSourceFieldInverseArray[index]) propertyEnabled = !propertyEnabled;
+                    bool propertyEnabled = CheckPropertyType(sourcePropertyValueFromArray);
+                    if (conditionalSourceFieldInverseArray.Length >= (index + 1) && conditionalSourceFieldInverseArray[index]) propertyEnabled = !propertyEnabled;
 
                     if (condHAtt.UseOrLogic)
                         enabled = enabled || propertyEnabled;
@@ -172,11 +172,11 @@ namespace Editor
         {
             //Note: add others for custom handling if desired
             switch (sourcePropertyValue.propertyType)
-            {                
+            {
                 case SerializedPropertyType.Boolean:
-                    return sourcePropertyValue.boolValue;                
+                    return sourcePropertyValue.boolValue;
                 case SerializedPropertyType.ObjectReference:
-                    return sourcePropertyValue.objectReferenceValue != null;                
+                    return sourcePropertyValue.objectReferenceValue != null;
                 default:
                     Debug.LogError("Data type of the property used for conditional hiding [" + sourcePropertyValue.propertyType + "] is currently not supported");
                     return true;

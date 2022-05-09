@@ -11,7 +11,6 @@ namespace Game.Scripts.Controller.SubController
     public class GameObjectPoolSubController : MonoBehaviour
     {
         #region Fields / Properties
-
         private static GameObjectPoolSubController Instance
         {
             get
@@ -26,11 +25,9 @@ namespace Game.Scripts.Controller.SubController
         }
         private static GameObjectPoolSubController instance;
         private static readonly Dictionary<string, PoolData> pools = new();
-
         #endregion
 
         #region MonoBehaviour
-
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -42,11 +39,9 @@ namespace Game.Scripts.Controller.SubController
                 instance = this;
             }
         }
-
         #endregion
 
         #region Public
-
         /// <summary>
         /// Modify the max amount of specific objects in the dictionary. 
         /// </summary>
@@ -150,7 +145,6 @@ namespace Game.Scripts.Controller.SubController
         #endregion
 
         #region Private
-
         private static void CreateSharedInstance()
         {
             GameObject obj = new GameObject("GameObject Pool Controller");

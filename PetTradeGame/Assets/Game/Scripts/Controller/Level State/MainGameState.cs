@@ -12,7 +12,7 @@ namespace Game.Scripts.Controller.Level_State
         private GamePlayController gamePlayController;
         private ObjectController objectController;
         private UIController uiController;
-        
+
         private List<string> documents;
         private List<FunctionalObjectsData> functionalObjects;
 
@@ -34,7 +34,7 @@ namespace Game.Scripts.Controller.Level_State
 
             documents = owner.LevelData.DocumentsNeeded;
             functionalObjects = owner.LevelData.FunctionalObjectsData;
-            
+
             objectController.InitFactory(documents);
             objectController.InitObjectPool(functionalObjects);
 
@@ -65,7 +65,7 @@ namespace Game.Scripts.Controller.Level_State
         private void OnFunctObjCollision(object sender, InfoEventArgs<GameObject> col)
         {
             var original = sender as GameObject;
-            if(original == null)
+            if (original == null)
                 return;
 
             objectController.ProcessCollision(original, col.info);

@@ -58,7 +58,7 @@ namespace Game.Scripts.Common.Animation
         {
             return ScaleTo(t, scale, duration, Tweener.DefaultEquation);
         }
-        
+
         public static Tweener ScaleTo(this Transform t, Vector3 scale, float duration,
                                       Func<float, float, float, float> equation)
         {

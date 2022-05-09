@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7383092482802305368}
   - component: {fileID: 3278780523530120432}
   - component: {fileID: 3278780523530120435}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: T_GStamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDocument: 0
+  isFunctionalObject: 1
+  isDraggable: 1
   objectType: 1
   paperType: 0
-  isDraggable: 1
-  isFunctionalObject: 1

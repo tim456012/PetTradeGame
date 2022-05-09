@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 415326347976742615}
   - component: {fileID: 251078827160268447}
   - component: {fileID: 251078827160268432}
+  - component: {fileID: 3088842958145762026}
   m_Layer: 10
   m_Name: T_HealthCertificate
   m_TagString: Untagged
@@ -215,3 +216,14 @@ MonoBehaviour:
   isDraggable: 1
   objectType: 0
   paperType: 2
+--- !u!210 &3088842958145762026
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251078827160268444}
+  m_Enabled: 1
+  m_SortingLayerID: -134051145
+  m_SortingLayer: 1
+  m_SortingOrder: 0

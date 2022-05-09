@@ -23,7 +23,7 @@ namespace Game.Scripts.Tools
 
 
         // Use this for initialization
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -78,7 +78,7 @@ namespace Game.Scripts.Tools
         /// <param name="conditionalSourceFieldInverseBools"></param>
         /// <param name="hideInInspector"></param>
         /// <param name="inverse"></param>
-        public ConditionalHideAttribute(string[] conditionalSourceFields,bool[] conditionalSourceFieldInverseBools, bool hideInInspector, bool inverse)
+        public ConditionalHideAttribute(string[] conditionalSourceFields, bool[] conditionalSourceFieldInverseBools, bool hideInInspector, bool inverse)
         {
             ConditionalSourceFields = conditionalSourceFields;
             ConditionalSourceFieldInverseBools = conditionalSourceFieldInverseBools;
@@ -94,13 +94,9 @@ namespace Game.Scripts.Tools
         /// <param name="inverse"></param>
         public ConditionalHideAttribute(string[] conditionalSourceFields, bool hideInInspector, bool inverse)
         {
-            ConditionalSourceFields = conditionalSourceFields;        
+            ConditionalSourceFields = conditionalSourceFields;
             HideInInspector = hideInInspector;
             Inverse = inverse;
         }
-
     }
 }
-
-
-

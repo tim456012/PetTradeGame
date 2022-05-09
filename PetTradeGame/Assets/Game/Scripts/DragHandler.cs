@@ -8,7 +8,7 @@ namespace Game.Scripts
         public static GameObject targetObj;
         private Vector3 startPosition;
         private Transform startParent;
-    
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             targetObj = gameObject;
@@ -16,12 +16,12 @@ namespace Game.Scripts
             startParent = transform.parent;
             GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
-    
+
         public void OnDrag(PointerEventData eventData)
         {
             transform.position = Input.mousePosition;
         }
-    
+
         public void OnEndDrag(PointerEventData eventData)
         {
             targetObj = null;
@@ -31,6 +31,5 @@ namespace Game.Scripts
                 transform.position = startPosition;
             }
         }
-
     }
 }

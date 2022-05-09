@@ -5,7 +5,7 @@ namespace Game.Scripts.Controller.Level_State
     public class MainMenuState : GameLoopState
     {
         private UIController uiController;
-        
+
         protected override void Awake()
         {
             base.Awake();

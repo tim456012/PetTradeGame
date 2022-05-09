@@ -36,7 +36,7 @@ namespace Game.Scripts.Controller
 
             if (rightPanel.panel.CurrentPosition == null)
             {
-                rightPanel.panel.SetPosition(HideBottom, false );
+                rightPanel.panel.SetPosition(HideBottom, false);
             }
 
             if (centerPanel.panel.CurrentPosition == null)
@@ -56,7 +56,7 @@ namespace Game.Scripts.Controller
         {
             if (conversation == null || transition != null)
                 return;
-            
+
             conversation.MoveNext();
         }
 
@@ -70,7 +70,7 @@ namespace Game.Scripts.Controller
                 conversation = null;
                 yield break;
             }
-            
+
             foreach (var speakerData in data.speakerList)
             {
                 ConversationPanel currentPanel = speakerData.anchor switch
@@ -80,28 +80,28 @@ namespace Game.Scripts.Controller
                     TextAnchor.UpperRight or TextAnchor.MiddleRight or TextAnchor.LowerRight => rightPanel,
                     _ => centerPanel
                 };
-                
+
                 IEnumerator presenter = currentPanel.Display(speakerData);
                 presenter.MoveNext();
 
                 string show, hide;
-                
+
                 switch (speakerData.anchor)
                 {
                     case TextAnchor.UpperLeft:
                     case TextAnchor.UpperCenter:
-                    case TextAnchor.UpperRight: 
+                    case TextAnchor.UpperRight:
                         show = ShowTop;
                         hide = HideTop;
                         break;
                     case TextAnchor.MiddleLeft:
-                    case TextAnchor.MiddleCenter: 
+                    case TextAnchor.MiddleCenter:
                     case TextAnchor.MiddleRight:
                         show = ShowCenter;
                         hide = HideCenter;
                         break;
-                    case TextAnchor.LowerLeft: 
-                    case TextAnchor.LowerCenter: 
+                    case TextAnchor.LowerLeft:
+                    case TextAnchor.LowerCenter:
                     case TextAnchor.LowerRight:
                         show = ShowBottom;
                         hide = HideBottom;
@@ -116,7 +116,7 @@ namespace Game.Scripts.Controller
                 MovePanel(currentPanel, show);
 
                 yield return null;
-                while(presenter.MoveNext())
+                while (presenter.MoveNext())
                     yield return null;
 
                 MovePanel(currentPanel, hide);

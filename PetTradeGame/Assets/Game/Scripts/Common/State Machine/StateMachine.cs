@@ -43,7 +43,7 @@ namespace Game.Scripts.Common.State_Machine
                 return;
 
             _transition = true;
-            
+
             if (_currentState != null)
                 _currentState.Exit();
 

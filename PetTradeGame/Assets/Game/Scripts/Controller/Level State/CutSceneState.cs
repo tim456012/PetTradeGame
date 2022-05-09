@@ -45,7 +45,7 @@ namespace Game.Scripts.Controller.Level_State
             base.RemoveListeners();
             CutsceneController.CompleteEvent -= OnCompleteVideoPlaying;
         }
-        
+
         private void OnCompleteVideoPlaying(object sender, EventArgs e)
         {
             owner.ChangeState<IntroState>();

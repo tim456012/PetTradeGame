@@ -22,7 +22,7 @@ namespace Game.Scripts.TempCode
                         TextAnchor a1 = (TextAnchor)i;
                         TextAnchor a2 = (TextAnchor)j;
                         Debug.Log($"A1 : [{a1}], A2 : [{a2}]");
-                    
+
                         if (animated)
                         {
                             Tweener t = anchor.MoveToAnchorPosition(a1, a2, Vector2.zero);
@@ -40,6 +40,5 @@ namespace Game.Scripts.TempCode
                 }
             }
         }
-    
     }
 }

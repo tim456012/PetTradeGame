@@ -122,9 +122,9 @@ namespace FlyingWormConsole3.LiteNetLib
         {
             var property = Property;
             return property == PacketProperty.Reliable ||
-                   property == PacketProperty.ReliableOrdered ||
-                   property == PacketProperty.Unreliable ||
-                   property == PacketProperty.Sequenced;
+                property == PacketProperty.ReliableOrdered ||
+                property == PacketProperty.Unreliable ||
+                property == PacketProperty.Sequenced;
         }
 
         public static bool IsSequenced(PacketProperty property)
@@ -144,7 +144,7 @@ namespace FlyingWormConsole3.LiteNetLib
             //Reading property
             byte property = (byte)(data[start] & 0x7F);
             bool fragmented = (data[start] & 0x80) != 0;
-            int headerSize = GetHeaderSize((PacketProperty) property);
+            int headerSize = GetHeaderSize((PacketProperty)property);
 
             if (property > LastProperty ||
                 packetSize > NetConstants.PacketSizeLimit ||

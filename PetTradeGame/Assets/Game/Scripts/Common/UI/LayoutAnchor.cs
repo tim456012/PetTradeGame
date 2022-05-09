@@ -63,7 +63,7 @@ namespace Game.Scripts.Common.UI
         {
             Vector2 theOffset = GetPosition(rectTransform, anchor);
             Vector2 parentOffset = GetPosition(parentRT, parentAnchor);
-            Vector2 anchorCenter = new Vector2(Mathf.Lerp(rectTransform.anchorMin.x, rectTransform.anchorMax.x, rectTransform.pivot.x), 
+            Vector2 anchorCenter = new Vector2(Mathf.Lerp(rectTransform.anchorMin.x, rectTransform.anchorMax.x, rectTransform.pivot.x),
                 Mathf.Lerp(rectTransform.anchorMin.y, rectTransform.anchorMax.y, rectTransform.pivot.y));
             Vector2 anchorOffset = new Vector2(parentRT.rect.width * anchorCenter.x, parentRT.rect.height * anchorCenter.y);
             Vector2 pivotOffset = new Vector2(rectTransform.rect.width * rectTransform.pivot.x,
@@ -73,7 +73,7 @@ namespace Game.Scripts.Common.UI
             pos.y = Mathf.RoundToInt(pos.y);
             return pos;
         }
-    
+
         /// <summary>
         /// Determine where to place the RectTransform.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Game.Scripts.Common.UI
         {
             rectTransform.anchoredPosition = AnchorPosition(anchor, parentAnchor, offset);
         }
-    
+
         /// <summary>
         /// Moving RectTransform into position with animation.
         /// </summary>

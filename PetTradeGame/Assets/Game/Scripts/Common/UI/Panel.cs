@@ -29,13 +29,13 @@ namespace Game.Scripts.Common.UI
                 this.parentAnchor = parentAnchor;
             }
 
-            public Position(string name, TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset) 
+            public Position(string name, TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
                 : this(name, anchor, parentAnchor)
             {
                 this.offset = offset;
             }
         }
-        
+
         [SerializeField] private List<Position> positionList;
         private Dictionary<string, Position> _positionMap;
         private LayoutAnchor _anchor;
@@ -106,7 +106,7 @@ namespace Game.Scripts.Common.UI
             CurrentPosition = p;
             if (CurrentPosition == null)
                 return null;
-            
+
             if (InTransition)
             {
                 Transition.easingControl.Stop();

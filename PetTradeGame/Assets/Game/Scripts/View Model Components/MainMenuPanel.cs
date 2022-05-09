@@ -9,7 +9,7 @@ namespace Game.Scripts.View_Model_Components
         public Button btnStart;
         public Button btnExit;
 
-        
+
         private void Start()
         {
             btnStart.onClick.AddListener(OnBtnStartClicked);
@@ -19,7 +19,7 @@ namespace Game.Scripts.View_Model_Components
         private void OnBtnStartClicked()
         {
             Debug.Log("Start Game");
-            
+
             //StartGameEvent?.Invoke(this, EventArgs.Empty);
             gameObject.SetActive(false);
         }
@@ -27,13 +27,13 @@ namespace Game.Scripts.View_Model_Components
         private void OnBtnExitClicked()
         {
             Debug.Log("Exit Game");
-            
+
             #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
+            UnityEditor.EditorApplication.isPlaying = false;
             #else
                 Application.Quit(0);
             #endif
-            
+
             GC.Collect();
         }
     }

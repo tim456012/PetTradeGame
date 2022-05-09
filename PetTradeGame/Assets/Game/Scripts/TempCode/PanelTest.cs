@@ -10,7 +10,7 @@ namespace Game.Scripts.TempCode
         private const string Show = "Show";
         private const string Hide = "Hide";
         private const string Center = "Center";
-    
+
         // Start is called before the first frame update
         void Start()
         {

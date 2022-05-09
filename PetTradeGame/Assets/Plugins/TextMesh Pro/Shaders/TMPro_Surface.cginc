@@ -33,7 +33,6 @@ void VertShader(inout appdata_full v, out Input data)
 
 void PixShader(Input input, inout SurfaceOutput o)
 {
-
 #if USE_DERIVATIVE
 	float2 pixelSize = float2(ddx(input.uv_MainTex.y), ddy(input.uv_MainTex.y));
 	pixelSize *= _TextureWidth * .75;
@@ -45,8 +44,8 @@ void PixShader(Input input, inout SurfaceOutput o)
 	// Signed distance
 	float c = tex2D(_MainTex, input.uv_MainTex).a;
 	float sd = (.5 - c - input.param.x) * scale + .5;
-	float outline = _OutlineWidth*_ScaleRatioA * scale;
-	float softness = _OutlineSoftness*_ScaleRatioA * scale;
+	float outline = _OutlineWidth * _ScaleRatioA * scale;
+	float softness = _OutlineSoftness * _ScaleRatioA * scale;
 
 	// Color & Alpha
 	float4 faceColor = _FaceColor;
@@ -62,9 +61,9 @@ void PixShader(Input input, inout SurfaceOutput o)
 	float3 delta = float3(1.0 / _TextureWidth, 1.0 / _TextureHeight, 0.0);
 
 	float4 smp4x = {tex2D(_MainTex, input.uv_MainTex - delta.xz).a,
-					tex2D(_MainTex, input.uv_MainTex + delta.xz).a,
-					tex2D(_MainTex, input.uv_MainTex - delta.zy).a,
-					tex2D(_MainTex, input.uv_MainTex + delta.zy).a };
+	                tex2D(_MainTex, input.uv_MainTex + delta.xz).a,
+	                tex2D(_MainTex, input.uv_MainTex - delta.zy).a,
+	                tex2D(_MainTex, input.uv_MainTex + delta.zy).a};
 
 	// Face Normal
 	float3 n = GetSurfaceNormal(smp4x, input.param.x);
@@ -82,7 +81,7 @@ void PixShader(Input input, inout SurfaceOutput o)
 	float3 n = float3(0, 0, -1);
 	float3 emission = float3(0, 0, 0);
 #endif
-	
+
 #if GLOW_ON
 	float4 glowColor = GetGlowColor(sd, scale);
 	glowColor.a *= input.color.a;

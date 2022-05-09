@@ -45,7 +45,7 @@ namespace Game.Scripts.Controller
             factorySubController = gameObject.AddComponent<FactorySubController>();
             ProduceDocument(documentList);
         }
-        
+
         public void InitObjectPool(List<FunctionalObjectsData> objectList)
         {
             if (objectList == null)
@@ -60,7 +60,6 @@ namespace Game.Scripts.Controller
         #endregion
 
         #region Methods
-
         private void ProduceDocument(List<string> list)
         {
             foreach (string document in list)
@@ -77,7 +76,7 @@ namespace Game.Scripts.Controller
         private void DequeueObject(string key, string spawnPos)
         {
             var obj = GameObjectPoolSubController.Dequeue(key);
-            
+
             //Destroy(obj.gameObject.GetComponent<EasingControl>());
             //Destroy(obj.gameObject.GetComponent<TransformLocalPositionTweener>());
 
@@ -91,59 +90,58 @@ namespace Game.Scripts.Controller
             {
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-3, 3);
-                
-                obj.transform.localPosition = new Vector3(x,y,0);
+
+                obj.transform.localPosition = new Vector3(x, y, 0);
                 obj.gameObject.SetActive(true);
             }
-           
+
             instances.Add(obj);
         }
-        
+
         private void ReleaseInstances()
         {
             for (int i = instances.Count - 1; i >= 0; --i)
                 GameObjectPoolSubController.Enqueue(instances[i]);
             instances.Clear();
         }
-        
+
         private void ReleaseGameObjList()
         {
             for (int i = documents.Count - 1; i >= 0; --i)
                 Destroy(documents[i]);
             documents.Clear();
         }
-        
         #endregion
-        
+
         public void ProcessCollision(GameObject original, GameObject col)
         {
             if (col == null)
                 return;
 
-            if(original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
+            if (original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
                 return;
-            
+
             sbyte index = InteractionSubController.ExecuteObjBehavior(original, col);
-            
-            if(index == 0)
+
+            if (index == 0)
                 return;
-            
+
             var p = col.GetComponent<Poolable>();
             EnqueueObject(p);
             dragAndDropSubController.TargetObj = null;
             DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
         }
-        
+
         private static void EnqueueObject(Poolable target)
         {
             if (instances.Count <= 0 || target == null)
                 return;
-            
+
             int index = instances.IndexOf(target);
-            if(index < 0)
+            if (index < 0)
                 return;
-            
+
             instances.RemoveAt(index);
             GameObjectPoolSubController.Enqueue(target);
             InputController.IsDragActive = false;

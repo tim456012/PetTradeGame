@@ -27,7 +27,7 @@ namespace Game.Scripts.Factory
             Debug.Log("No Document Recipe found");
             return null;
         }
-        
+
         #region Document Process
         private static GameObject CreateDocument(DocumentRecipe recipe)
         {

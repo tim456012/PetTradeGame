@@ -44,7 +44,7 @@ namespace Game.Scripts.Common.Animation
         protected abstract void OnUpdate(object sender, EventArgs e);
         protected virtual void OnComplete(object sender, EventArgs e)
         {
-            if (!destroyOnComplete) 
+            if (!destroyOnComplete)
                 return;
             Destroy(this);
             Destroy(easingControl);

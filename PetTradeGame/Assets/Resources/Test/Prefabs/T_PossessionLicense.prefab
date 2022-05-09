@@ -361,6 +361,7 @@ GameObject:
   - component: {fileID: -309755596160297537}
   - component: {fileID: 1806480561605160281}
   - component: {fileID: 1806480561605160282}
+  - component: {fileID: 3903748197626840585}
   m_Layer: 10
   m_Name: T_PossessionLicense
   m_TagString: Untagged
@@ -502,6 +503,17 @@ MonoBehaviour:
   isDraggable: 1
   objectType: 0
   paperType: 1
+--- !u!210 &3903748197626840585
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806480561605160286}
+  m_Enabled: 1
+  m_SortingLayerID: -134051145
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1 &1806480561846837283
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ namespace Game.Scripts.View_Model_Components
         {
             Vector3 pos = arrow.transform.localPosition;
             arrow.transform.localPosition = new Vector3(pos.x, pos.y + 5, pos.z);
-            Tweener tweener = arrow.transform.MoveToLocal(new Vector3(pos.x, pos.y - 5, pos.z), 
+            Tweener tweener = arrow.transform.MoveToLocal(new Vector3(pos.x, pos.y - 5, pos.z),
                 0.5f, EasingEquations.EaseInOutQuad);
             tweener.easingControl.loopType = EasingControl.LoopType.PingPong;
             tweener.easingControl.loopCount = -1;
@@ -39,4 +39,3 @@ namespace Game.Scripts.View_Model_Components
         }
     }
 }
-

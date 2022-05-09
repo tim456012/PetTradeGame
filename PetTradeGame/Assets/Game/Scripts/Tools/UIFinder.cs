@@ -5,7 +5,7 @@ namespace Game.Scripts.Tools
     public static class UIFinder
     {
         private static GameObject canvasObj;
-    
+
         /// <summary>
         /// Find UI GameObject under the canvas.
         /// </summary>
@@ -37,7 +37,7 @@ namespace Game.Scripts.Tools
             return null;
         }
     }
-    
+
     public static class GameObjFinder
     {
         /// <summary>
@@ -51,7 +51,7 @@ namespace Game.Scripts.Tools
 
             if (temp != null)
                 return temp;
-            
+
             Debug.LogWarning($"GameObject[{objName}] does not exist in this scene.");
             return null;
         }
@@ -69,7 +69,7 @@ namespace Game.Scripts.Tools
                 Debug.LogError($"GameObjFinder : I can't find the child's container. (Null)");
                 return null;
             }
-            
+
             Transform objTran = null;
 
             if (container.name == objName)
@@ -83,7 +83,7 @@ namespace Game.Scripts.Tools
                 {
                     if (child.name != objName)
                         continue;
-                    
+
                     if (objTran == null)
                         objTran = child;
                     else
@@ -93,7 +93,7 @@ namespace Game.Scripts.Tools
 
             if (objTran != null)
                 return objTran.gameObject;
-            
+
             Debug.LogError($"GameObjFinder : I can't find the component[{objName}] in container[{container.name}].");
             return null;
         }

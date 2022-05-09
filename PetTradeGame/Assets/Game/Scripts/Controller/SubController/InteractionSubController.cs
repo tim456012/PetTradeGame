@@ -14,7 +14,6 @@ namespace Game.Scripts.Controller.SubController
     public class InteractionSubController : MonoBehaviour
     {
         #region Field / Properties
-        
         private static InteractionSubController Instance
         {
             get
@@ -27,13 +26,11 @@ namespace Game.Scripts.Controller.SubController
                 return instance;
             }
         }
-        
+
         private static InteractionSubController instance;
-        
         #endregion
 
         #region MonoBehaviour
-
         private void Awake()
         {
             if (instance != null && instance != this)
@@ -41,23 +38,21 @@ namespace Game.Scripts.Controller.SubController
             else
                 instance = this;
         }
-
         #endregion
-        
-        #region Methods
 
+        #region Methods
         public static sbyte ExecuteObjBehavior(GameObject original, GameObject target)
         {
             var oType = original.GetComponent<EntityAttribute>().objectType;
             var tType = target.GetComponent<EntityAttribute>().objectType;
 
             sbyte index = CheckObjectType(oType, tType);
-            
-            if(index == 0)
+
+            if (index == 0)
                 return 0;
 
             GameObject stamp, pos;
-            
+
             switch (index)
             {
                 case 1:
@@ -80,7 +75,7 @@ namespace Game.Scripts.Controller.SubController
 
             return 0;
         }
-        
+
         private static sbyte CheckObjectType(ObjectType original, ObjectType target)
         {
             //Debug.Log("Testing");
@@ -104,7 +99,7 @@ namespace Game.Scripts.Controller.SubController
 
             return 0;
         }
-        
+
         private static void ClearChildren(GameObject obj)
         {
             int i = 0;
@@ -123,7 +118,7 @@ namespace Game.Scripts.Controller.SubController
         }
         #endregion
 
-        
+
         private static void CreateSharedInstance()
         {
             var obj = new GameObject("Interaction Controller");

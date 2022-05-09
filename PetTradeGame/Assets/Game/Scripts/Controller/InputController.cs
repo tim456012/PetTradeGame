@@ -14,10 +14,9 @@ namespace Game.Scripts.Controller
 
         private bool _isHolding;
 
-        //TODO: Find some implementation that can split mouse and touch input action.
         private void Start()
         {
-            Input.simulateMouseWithTouches = false;
+            
         }
 
         private void Update()
@@ -25,7 +24,7 @@ namespace Game.Scripts.Controller
             if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
                 _isHolding = true;
             
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) || Input.touchCount < 0)
                 _isHolding = false;
             
             //Check Input
@@ -48,7 +47,7 @@ namespace Game.Scripts.Controller
                     case false:
                         DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
                         return;
-                    
+
                     //Invoke HoldingEvent when player still holding their input.
                     //Mobile Version
                     case true when Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary:
@@ -60,7 +59,7 @@ namespace Game.Scripts.Controller
                         return;
                 }
             }
-            
+
             //Invoke general ClickedEvent when player is not doing dragging.
             //Mobile Version
             if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Began or TouchPhase.Stationary)
@@ -68,9 +67,9 @@ namespace Game.Scripts.Controller
                 ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
                 return;
             }
-            
+
             //PC Version
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
                 ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
         }
     }

@@ -12,7 +12,7 @@ namespace Game.Scripts.TempCode
 
         private const string PoolKey = "Document.Prefab";
         private const int ObjCount = 5;
-        
+
         private List<Poolable> instances = new();
 
         // Start is called before the first frame update

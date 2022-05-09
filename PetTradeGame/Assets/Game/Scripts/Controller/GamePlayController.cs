@@ -6,7 +6,5 @@ namespace Game.Scripts.Controller
     public class GamePlayController : MonoBehaviour
     {
         public int Score { get; set; }
-        
-        
     }
 }
