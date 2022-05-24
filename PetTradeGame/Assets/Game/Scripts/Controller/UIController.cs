@@ -11,7 +11,8 @@ namespace Game.Scripts.Controller
         [SerializeField] private GamePlayPanel gamePlayPanel;
 
         private Canvas _canvas;
-
+        private bool _isDebugMode;
+        
         public static event EventHandler StartGameEvent;
 
         //private Tweener transition;
@@ -21,7 +22,6 @@ namespace Game.Scripts.Controller
         {
             _canvas = GetComponentInChildren<Canvas>();
             mainMenuPanel.btnStart.onClick.AddListener(OnBtnStartClicked);
-            gamePlayPanel.gameObject.SetActive(false);
         }
 
         private void OnBtnStartClicked()
@@ -33,6 +33,12 @@ namespace Game.Scripts.Controller
         public void SetScore(int s)
         {
             gamePlayPanel.setScore(s);
+        }
+
+        public void SetDebugMode()
+        {
+            gamePlayPanel.gameObject.SetActive(true);
+            _isDebugMode = true;
         }
     }
 }

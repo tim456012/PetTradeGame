@@ -8,8 +8,7 @@ namespace Game.Scripts.View_Model_Components
     {
         public Button btnStart;
         public Button btnExit;
-
-
+        
         private void Start()
         {
             btnStart.onClick.AddListener(OnBtnStartClicked);

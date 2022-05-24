@@ -27,8 +27,11 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
+            if(owner.debugMode)
+                _uiController.SetDebugMode();
+            
             _gamePlayController.enabled = true;
-
+            
             _objectController.gameObject.AddComponent<DragAndDropSubController>();
             _objectController.enabled = true;
 
