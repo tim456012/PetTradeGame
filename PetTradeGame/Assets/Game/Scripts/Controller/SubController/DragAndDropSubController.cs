@@ -3,6 +3,7 @@ using Game.Scripts.EventArguments;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Game.Scripts.Controller.SubController
 {
@@ -13,6 +14,7 @@ namespace Game.Scripts.Controller.SubController
         private Vector3 _originalPos;
 
         public GameObject TargetObj { get; set; }
+        public GameObject LastObj { get; set; }
 
         private void OnEnable()
         {
@@ -45,6 +47,8 @@ namespace Game.Scripts.Controller.SubController
             if (!temp.isDraggable)
                 return;
 
+            var sg = TargetObj.GetComponent<SortingGroup>();
+            sg.sortingOrder = 1;
             _originalPos = TargetObj.transform.localPosition;
             InputController.IsDragActive = true;
         }
@@ -66,6 +70,10 @@ namespace Game.Scripts.Controller.SubController
             if (!TargetObj || TargetObj == null)
                 return;
 
+            LastObj = TargetObj;
+            var sg = TargetObj.GetComponent<SortingGroup>();
+            sg.sortingOrder = 0;
+            
             var cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             InputController.IsDragActive = false;
             if (TargetObj.transform.localPosition.x > cameraWorld.x / 1.13

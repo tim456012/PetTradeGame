@@ -6,8 +6,9 @@ namespace Game.Scripts.Controller
 {
     public class GameManager : StateMachine
     {
-        public LevelData LevelData;
-
+        public LevelData levelData;
+        public bool debugMode;
+        
         private void Start()
         {
             ChangeState<InitGameLoopState>();

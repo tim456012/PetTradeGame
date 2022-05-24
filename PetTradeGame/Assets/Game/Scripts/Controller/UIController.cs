@@ -10,7 +10,7 @@ namespace Game.Scripts.Controller
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
 
-        private Canvas canvas;
+        private Canvas _canvas;
 
         public static event EventHandler StartGameEvent;
 
@@ -19,7 +19,7 @@ namespace Game.Scripts.Controller
         // Start is called before the first frame update
         private void Start()
         {
-            canvas = GetComponentInChildren<Canvas>();
+            _canvas = GetComponentInChildren<Canvas>();
             mainMenuPanel.btnStart.onClick.AddListener(OnBtnStartClicked);
             gamePlayPanel.gameObject.SetActive(false);
         }
@@ -30,7 +30,7 @@ namespace Game.Scripts.Controller
             gamePlayPanel.gameObject.SetActive(true);
         }
 
-        public void setScore(int s)
+        public void SetScore(int s)
         {
             gamePlayPanel.setScore(s);
         }

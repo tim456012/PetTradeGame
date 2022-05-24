@@ -9,7 +9,7 @@ namespace Game.Scripts.Controller.Level_State
     {
         protected GameManager owner;
 
-        public LevelData LevelData => owner.LevelData;
+        public LevelData LevelData => owner.levelData;
 
         protected virtual void Awake()
         {

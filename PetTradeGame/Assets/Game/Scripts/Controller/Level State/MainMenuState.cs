@@ -4,12 +4,12 @@ namespace Game.Scripts.Controller.Level_State
 {
     public class MainMenuState : GameLoopState
     {
-        private UIController uiController;
+        private UIController _uiController;
 
         protected override void Awake()
         {
             base.Awake();
-            uiController = owner.GetComponentInChildren<UIController>();
+            _uiController = owner.GetComponentInChildren<UIController>();
         }
 
         public override void Enter()

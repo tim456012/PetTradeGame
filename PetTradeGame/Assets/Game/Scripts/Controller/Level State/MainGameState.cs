@@ -9,34 +9,34 @@ namespace Game.Scripts.Controller.Level_State
 {
     public class MainGameState : GameLoopState
     {
-        private GamePlayController gamePlayController;
-        private ObjectController objectController;
-        private UIController uiController;
+        private GamePlayController _gamePlayController;
+        private ObjectController _objectController;
+        private UIController _uiController;
 
-        private List<string> documents;
-        private List<FunctionalObjectsData> functionalObjects;
+        private List<string> _documents;
+        private List<FunctionalObjectsData> _functionalObjects;
 
         protected override void Awake()
         {
             base.Awake();
-            gamePlayController = owner.GetComponentInChildren<GamePlayController>();
-            objectController = owner.GetComponentInChildren<ObjectController>();
-            uiController = owner.GetComponentInChildren<UIController>();
+            _gamePlayController = owner.GetComponentInChildren<GamePlayController>();
+            _objectController = owner.GetComponentInChildren<ObjectController>();
+            _uiController = owner.GetComponentInChildren<UIController>();
         }
 
         public override void Enter()
         {
             base.Enter();
-            gamePlayController.enabled = true;
+            _gamePlayController.enabled = true;
 
-            objectController.gameObject.AddComponent<DragAndDropSubController>();
-            objectController.enabled = true;
+            _objectController.gameObject.AddComponent<DragAndDropSubController>();
+            _objectController.enabled = true;
 
-            documents = owner.LevelData.DocumentsNeeded;
-            functionalObjects = owner.LevelData.FunctionalObjectsData;
+            _documents = owner.levelData.DocumentsNeeded;
+            _functionalObjects = owner.levelData.FunctionalObjectsData;
 
-            objectController.InitFactory(documents);
-            objectController.InitObjectPool(functionalObjects);
+            _objectController.InitFactory(_documents);
+            _objectController.InitObjectPool(_functionalObjects);
 
             Debug.Log("Entering playing state");
         }
@@ -68,13 +68,13 @@ namespace Game.Scripts.Controller.Level_State
             if (original == null)
                 return;
 
-            objectController.ProcessCollision(original, col.info);
+            _objectController.ProcessCollision(original, col.info);
         }
 
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
             if (e.info == 1)
-                uiController.setScore(++gamePlayController.Score);
+                _uiController.SetScore(++_gamePlayController.Score);
         }
     }
 }

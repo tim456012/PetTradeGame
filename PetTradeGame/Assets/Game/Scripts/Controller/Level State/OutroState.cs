@@ -14,7 +14,7 @@ namespace Game.Scripts.Controller.Level_State
         {
             base.Awake();
             conversationController = owner.GetComponentInChildren<ConversationController>();
-            conversationData = owner.LevelData.outroDialogue;
+            conversationData = owner.levelData.outroDialogue;
         }
 
         protected override void OnDestroy()

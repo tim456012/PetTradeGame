@@ -7,30 +7,30 @@ namespace Game.Scripts.Controller.Level_State
 {
     public class IntroState : GameLoopState
     {
-        private ConversationController conversationController;
-        private ConversationData conversationData;
+        private ConversationController _conversationController;
+        private ConversationData _conversationData;
 
         protected override void Awake()
         {
             base.Awake();
-            conversationController = owner.GetComponentInChildren<ConversationController>();
-            conversationData = owner.LevelData.introDialogue;
+            _conversationController = owner.GetComponentInChildren<ConversationController>();
+            _conversationData = owner.levelData.introDialogue;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            if (conversationData)
+            if (_conversationData)
             {
                 //Resources.UnloadAsset(conversationData);
-                conversationData = null;
+                _conversationData = null;
             }
         }
 
         public override void Enter()
         {
             base.Enter();
-            conversationController.Show(conversationData);
+            _conversationController.Show(_conversationData);
         }
 
         protected override void AddListeners()
@@ -48,7 +48,7 @@ namespace Game.Scripts.Controller.Level_State
         protected override void OnClick(object sender, InfoEventArgs<Vector3> e)
         {
             base.OnClick(sender, e);
-            conversationController.Next();
+            _conversationController.Next();
         }
 
         private void OnCompleteConversation(object sender, EventArgs e)

@@ -13,12 +13,12 @@ namespace Game.Scripts.Controller
 {
     public class ObjectController : MonoBehaviour
     {
-        private FactorySubController factorySubController;
-        private DragAndDropSubController dragAndDropSubController;
+        private FactorySubController _factorySubController;
+        private DragAndDropSubController _dragAndDropSubController;
 
         //private IEnumerator enqueueObject;
-        private readonly List<GameObject> documents = new();
-        private static readonly List<Poolable> instances = new();
+        private readonly List<GameObject> _documents = new List<GameObject>();
+        private static readonly List<Poolable> Instances = new List<Poolable>();
 
         public static event EventHandler<InfoEventArgs<int>> LicenseSubmittedEvent;
 
@@ -29,7 +29,7 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            dragAndDropSubController = GetComponent<DragAndDropSubController>();
+            _dragAndDropSubController = GetComponent<DragAndDropSubController>();
         }
 
         #region Initiation
@@ -38,11 +38,11 @@ namespace Game.Scripts.Controller
             var instance = gameObject.GetComponentInChildren<FactorySubController>();
             if (instance)
             {
-                factorySubController = instance;
+                _factorySubController = instance;
                 return;
             }
 
-            factorySubController = gameObject.AddComponent<FactorySubController>();
+            _factorySubController = gameObject.AddComponent<FactorySubController>();
             ProduceDocument(documentList);
         }
 
@@ -69,7 +69,7 @@ namespace Game.Scripts.Controller
                 float y = Random.Range(-2, 2);
                 obj.transform.localPosition = new Vector3(x, y, 0);
                 obj.SetActive(true);
-                documents.Add(obj);
+                _documents.Add(obj);
             }
         }
 
@@ -95,21 +95,21 @@ namespace Game.Scripts.Controller
                 obj.gameObject.SetActive(true);
             }
 
-            instances.Add(obj);
+            Instances.Add(obj);
         }
 
         private void ReleaseInstances()
         {
-            for (int i = instances.Count - 1; i >= 0; --i)
-                GameObjectPoolSubController.Enqueue(instances[i]);
-            instances.Clear();
+            for (int i = Instances.Count - 1; i >= 0; --i)
+                GameObjectPoolSubController.Enqueue(Instances[i]);
+            Instances.Clear();
         }
 
         private void ReleaseGameObjList()
         {
-            for (int i = documents.Count - 1; i >= 0; --i)
-                Destroy(documents[i]);
-            documents.Clear();
+            for (int i = _documents.Count - 1; i >= 0; --i)
+                Destroy(_documents[i]);
+            _documents.Clear();
         }
         #endregion
 
@@ -128,21 +128,21 @@ namespace Game.Scripts.Controller
 
             var p = col.GetComponent<Poolable>();
             EnqueueObject(p);
-            dragAndDropSubController.TargetObj = null;
+            _dragAndDropSubController.TargetObj = null;
             DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
         }
 
         private static void EnqueueObject(Poolable target)
         {
-            if (instances.Count <= 0 || target == null)
+            if (Instances.Count <= 0 || target == null)
                 return;
 
-            int index = instances.IndexOf(target);
+            int index = Instances.IndexOf(target);
             if (index < 0)
                 return;
 
-            instances.RemoveAt(index);
+            Instances.RemoveAt(index);
             GameObjectPoolSubController.Enqueue(target);
             InputController.IsDragActive = false;
         }
