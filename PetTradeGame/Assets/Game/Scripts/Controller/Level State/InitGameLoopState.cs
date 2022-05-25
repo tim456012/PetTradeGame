@@ -13,10 +13,10 @@ namespace Game.Scripts.Controller.Level_State
         private IEnumerator Init()
         {
             yield return null;
-            if(owner.debugMode) 
-                owner.ChangeState<IntroState>();
+            if(Owner.debugMode) 
+                Owner.ChangeState<IntroState>();
             else
-                owner.ChangeState<MainMenuState>();
+                Owner.ChangeState<MainMenuState>();
         }
     }
 }

@@ -7,13 +7,14 @@ namespace Game.Scripts.Model
     [CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObject/Level Data")]
     public class LevelData : ScriptableObject
     {
-        public VideoClip cutSceneVideo;
+        public VideoClip firstVideo;
+        public VideoClip secondVideo;
         public ConversationData introDialogue;
         public ConversationData middleDialogue;
         public ConversationData outroDialogue;
         public ConversationData otherDialogue;
 
-        public List<string> DocumentsNeeded;
-        public List<FunctionalObjectsData> FunctionalObjectsData;
+        public List<string> documentRecipeName;
+        public List<FunctionalObjectsData> functionalObjectsData;
     }
 }

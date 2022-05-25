@@ -19,15 +19,15 @@ namespace Game.Scripts.Controller.Level_State
         protected override void Awake()
         {
             base.Awake();
-            _gamePlayController = owner.GetComponentInChildren<GamePlayController>();
-            _objectController = owner.GetComponentInChildren<ObjectController>();
-            _uiController = owner.GetComponentInChildren<UIController>();
+            _gamePlayController = Owner.GetComponentInChildren<GamePlayController>();
+            _objectController = Owner.GetComponentInChildren<ObjectController>();
+            _uiController = Owner.GetComponentInChildren<UIController>();
         }
 
         public override void Enter()
         {
             base.Enter();
-            if(owner.debugMode)
+            if(Owner.debugMode)
                 _uiController.SetDebugMode();
             
             _gamePlayController.enabled = true;
@@ -35,8 +35,8 @@ namespace Game.Scripts.Controller.Level_State
             _objectController.gameObject.AddComponent<DragAndDropSubController>();
             _objectController.enabled = true;
 
-            _documents = owner.levelData.DocumentsNeeded;
-            _functionalObjects = owner.levelData.FunctionalObjectsData;
+            _documents = Owner.levelData.documentRecipeName;
+            _functionalObjects = Owner.levelData.functionalObjectsData;
 
             _objectController.InitFactory(_documents);
             _objectController.InitObjectPool(_functionalObjects);

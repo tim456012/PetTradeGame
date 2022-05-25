@@ -9,7 +9,7 @@ namespace Game.Scripts.Controller.Level_State
         protected override void Awake()
         {
             base.Awake();
-            _uiController = owner.GetComponentInChildren<UIController>();
+            _uiController = Owner.GetComponentInChildren<UIController>();
         }
 
         public override void Enter()
@@ -31,7 +31,7 @@ namespace Game.Scripts.Controller.Level_State
 
         private void OnStartGameEvent(object sender, EventArgs e)
         {
-            owner.ChangeState<CutSceneState>();
+            Owner.ChangeState<CutSceneState>();
         }
     }
 }

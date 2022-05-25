@@ -1,0 +1,33 @@
+﻿namespace Game.Scripts.Enum
+{
+    public enum DocumentComponentPositions
+    {
+        TM_BusinessName,
+        TM_BusinessNumber,
+        TM_AnimalName,
+        TM_AnimalMark,
+        TM_Date,
+        TM_LicenseNumber,
+        TM_Deadline,
+        TM_Name,
+        TM_Contract,
+        TM_Objective,
+        TM_Original,
+        TM_LocationName,
+        TM_AnimalCount,
+        TM_AnimalFeature,
+        CirclePos_1,
+        CirclePos_2,
+        CirclePos_3,
+        CirclePos_4,
+        CirclePos_5,
+        TickPos_1,
+        TickPos_2,
+        TickPos_3,
+        TickPos_4,
+        TickPos_5,
+        TickPos_6,
+        TickPos_7,
+        StampSignPos
+    }
+}

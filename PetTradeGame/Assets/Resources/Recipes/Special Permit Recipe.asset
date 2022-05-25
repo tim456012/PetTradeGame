@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00a82584ce1841a1ab5d545733091a11, type: 3}
+  m_Name: Special Permit Recipe
+  m_EditorClassIdentifier: 
+  specialPermitData:
+  - animalId: 
+    locationName: []
+    line1Position: 0
+    line2Position: 0
+    businessName: []
+    deadline: []
+    animalName: []
+    animalCount: []
+    animalFeature: []
+    prefab: []

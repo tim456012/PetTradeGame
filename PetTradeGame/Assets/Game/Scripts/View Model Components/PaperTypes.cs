@@ -5,6 +5,6 @@ namespace Game.Scripts.View_Model_Components
 {
     public class PaperTypes : MonoBehaviour
     {
-        public PaperType type;
+        public DocumentType type;
     }
 }

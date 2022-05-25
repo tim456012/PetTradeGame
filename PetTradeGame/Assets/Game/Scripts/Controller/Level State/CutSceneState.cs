@@ -14,8 +14,8 @@ namespace Game.Scripts.Controller.Level_State
         protected override void Awake()
         {
             base.Awake();
-            _cutsceneController = owner.GetComponentInChildren<CutsceneController>();
-            _video = owner.levelData.cutSceneVideo;
+            _cutsceneController = Owner.GetComponentInChildren<CutsceneController>();
+            _video = Owner.levelData.firstVideo;
         }
 
         protected override void OnDestroy()
@@ -48,7 +48,7 @@ namespace Game.Scripts.Controller.Level_State
 
         private void OnCompleteVideoPlaying(object sender, EventArgs e)
         {
-            owner.ChangeState<IntroState>();
+            Owner.ChangeState<IntroState>();
         }
     }
 }

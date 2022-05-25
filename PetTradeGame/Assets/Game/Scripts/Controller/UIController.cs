@@ -11,7 +11,7 @@ namespace Game.Scripts.Controller
         [SerializeField] private GamePlayPanel gamePlayPanel;
 
         private Canvas _canvas;
-        private bool _isDebugMode;
+        //private bool _isDebugMode;
         
         public static event EventHandler StartGameEvent;
 
@@ -38,7 +38,7 @@ namespace Game.Scripts.Controller
         public void SetDebugMode()
         {
             gamePlayPanel.gameObject.SetActive(true);
-            _isDebugMode = true;
+            //_isDebugMode = true;
         }
     }
 }

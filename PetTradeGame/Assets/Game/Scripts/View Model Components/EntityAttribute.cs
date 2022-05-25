@@ -21,7 +21,7 @@ namespace Game.Scripts.View_Model_Components
         public ObjectType objectType = ObjectType.None;
 
         [ConditionalHide("isDocument", true)]
-        public PaperType paperType = PaperType.None;
+        public DocumentType paperType = DocumentType.None;
 
         //If object enter others' collider, call ObjectController to process
         private void OnTriggerStay2D(Collider2D col)

@@ -9,14 +9,14 @@ namespace Game.Scripts.Model
     public class ConversationData : ScriptableObject
     {
         public string description;
-        public List<SpeakerData> speakerList = new();
+        public List<SpeakerData> speakerList = new List<SpeakerData>();
 
-        private static readonly Regex regex = new("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
 
         public void Load(string line)
         {
             var lines = new List<string>();
-            foreach (Match match in regex.Matches(line))
+            foreach (Match match in Regex.Matches(line))
             {
                 string current = match.Value;
                 if (0 == current.Length)
@@ -27,7 +27,7 @@ namespace Game.Scripts.Model
             var data = new SpeakerData(lines[0])
             {
                 dialogueId = Convert.ToInt32(lines[1]),
-                speaker = Resources.Load<Sprite>($"Test/NPC/{lines[2]}"),
+                speaker = Resources.Load<Sprite>($"NPC/{lines[2]}"),
                 anchor = Convert.ToString(lines[3]) switch
                 {
                     "Upper Left" => TextAnchor.UpperLeft,

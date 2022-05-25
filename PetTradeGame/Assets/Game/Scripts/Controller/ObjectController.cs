@@ -6,16 +6,23 @@ using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
     public class ObjectController : MonoBehaviour
     {
+        [SerializeField] private Button scalerButton;
+        
         private FactorySubController _factorySubController;
         private DragAndDropSubController _dragAndDropSubController;
-
+        private GameObject _lastObj;
+        private bool _isScaled;
+        
         //private IEnumerator enqueueObject;
         private readonly List<GameObject> _documents = new List<GameObject>();
         private static readonly List<Poolable> Instances = new List<Poolable>();
@@ -53,8 +60,8 @@ namespace Game.Scripts.Controller
 
             foreach (var data in objectList)
             {
-                GameObjectPoolSubController.AddEntry(data.Key, data.Object, data.Amount, data.MaxAmount);
-                DequeueObject(data.Key, data.SpawnPosition);
+                GameObjectPoolSubController.AddEntry(data.key, data.prefab, data.amount, data.maxAmount);
+                DequeueObject(data.key, data.spawnPosition);
             }
         }
         #endregion
@@ -131,6 +138,39 @@ namespace Game.Scripts.Controller
             _dragAndDropSubController.TargetObj = null;
             DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
+        }
+        
+        public void ScaleDocument()
+        {
+            var obj = _dragAndDropSubController.LastObj;
+            if(obj == null)
+                return;
+            if(!obj.GetComponent<EntityAttribute>().isDocument)
+                return;
+            if(_lastObj == null)
+                _lastObj = obj;
+            
+            if (_isScaled)
+            {
+                _lastObj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
+                _lastObj.GetComponent<SortingGroup>().sortingLayerName = "Default";
+                _lastObj = obj;
+            }
+
+            _isScaled = !_isScaled;
+            var sg = obj.GetComponent<SortingGroup>();
+            if (_isScaled)
+            {
+                scalerButton.GetComponentInChildren<TextMeshProUGUI>().text = "Put down";
+                obj.transform.localScale = new Vector3(0.5f, 0.5f, 0);
+                sg.sortingLayerName = "SelectedObjects";
+            }
+            else
+            {
+                scalerButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pick up";
+                obj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
+                sg.sortingLayerName = "Default";
+            }
         }
 
         private static void EnqueueObject(Poolable target)

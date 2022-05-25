@@ -7,13 +7,13 @@ namespace Game.Scripts.Controller.Level_State
 {
     public abstract class GameLoopState : State
     {
-        protected GameManager owner;
+        protected GameManager Owner;
 
-        public LevelData LevelData => owner.levelData;
+        public LevelData LevelData => Owner.levelData;
 
         protected virtual void Awake()
         {
-            owner = GetComponent<GameManager>();
+            Owner = GetComponent<GameManager>();
         }
 
         protected override void AddListeners()

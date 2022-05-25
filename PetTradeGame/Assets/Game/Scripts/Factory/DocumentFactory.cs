@@ -11,7 +11,7 @@ namespace Game.Scripts.Factory
     //TODO: Modify document generate algorithm
     public static class DocumentFactory
     {
-        private static readonly Random Random = new();
+        private static readonly Random Random = new Random();
 
         /// <summary>
         /// Create Document by loading recipe.
@@ -20,8 +20,7 @@ namespace Game.Scripts.Factory
         /// <returns>GameObject</returns>
         public static GameObject CreateDocument(string name)
         {
-            //TODO: Need to change loading path
-            var recipe = Resources.Load<DocumentRecipe>(name);
+            var recipe = Resources.Load<DealerLicenseRecipe>($"Recipes/{name}");
             if (recipe != null)
                 return CreateDocument(recipe);
             Debug.Log("No Document Recipe found");
@@ -29,16 +28,15 @@ namespace Game.Scripts.Factory
         }
 
         #region Document Process
-        private static GameObject CreateDocument(DocumentRecipe recipe)
+        private static GameObject CreateDocument(DealerLicenseRecipe recipe)
         {
-            //TODO: Need to change loading path
-            //Instantiate Document Base
-            var obj = InstantiateGameObj($"Test/Prefabs/{recipe.document}");
+            /*//Instantiate Document Base
+            var obj = InstantiateGameObj($"Documents/{recipe.documentType}");
             obj.name = recipe.name;
-            obj.GetComponent<EntityAttribute>().paperType = recipe.paperType;
+            obj.GetComponent<EntityAttribute>().paperType = recipe.documentType;
             AddContent(obj, recipe.components);
-
-            return obj;
+            return obj;*/
+            return null;
         }
 
         private static GameObject InstantiateGameObj(string name)
@@ -54,27 +52,27 @@ namespace Game.Scripts.Factory
             return gameObject;
         }
 
-        private static void AddContent(GameObject obj, List<DocumentPartsData> data)
+        private static void AddContent(GameObject obj, List<DocumentComponentData> data)
         {
-            //Place components to specific position by Random seed
+            /*//Place components to specific position by Random seed
             foreach (var partsData in data)
             {
                 int index = Random.Next(partsData.components.Count);
                 string selected = partsData.components[index];
-                //Debug.Log(selected);
+                Debug.Log(selected);
 
-                if (partsData.componentName == "Text")
+                /*if (partsData.componentType == "Text")
                 {
                     AddContentText(obj, selected);
                     return;
-                }
+                }#1#
 
                 var gameObject = InstantiateGameObj($"Test/Prefabs/{selected}");
-                index = Random.Next(partsData.positions.Count);
-                var temp = GameObjFinder.FindChildGameObject(obj, partsData.positions[index]);
-                gameObject.transform.SetParent(temp.transform);
+                //index = Random.Next(partsData.positions.Count);
+                //var temp = GameObjFinder.FindChildGameObject(obj, partsData.positions[index]);
+                //gameObject.transform.SetParent(temp.transform);
                 gameObject.transform.localPosition = Vector3.zero;
-            }
+            }*/
         }
 
         /*private static void RemoveContent(GameObject obj, string parts)

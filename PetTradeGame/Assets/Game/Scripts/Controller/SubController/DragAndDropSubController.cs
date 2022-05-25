@@ -47,8 +47,16 @@ namespace Game.Scripts.Controller.SubController
             if (!temp.isDraggable)
                 return;
 
-            var sg = TargetObj.GetComponent<SortingGroup>();
-            sg.sortingOrder = 1;
+            if (temp.isDocument)
+            {
+                var sg = TargetObj.GetComponent<SortingGroup>();
+                sg.sortingOrder = 1;
+            }
+            else
+            {
+                temp.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "SelectedObjects";
+            }
+            
             _originalPos = TargetObj.transform.localPosition;
             InputController.IsDragActive = true;
         }
@@ -71,8 +79,15 @@ namespace Game.Scripts.Controller.SubController
                 return;
 
             LastObj = TargetObj;
-            var sg = TargetObj.GetComponent<SortingGroup>();
-            sg.sortingOrder = 0;
+            if (TargetObj.GetComponent<EntityAttribute>().isDocument)
+            {
+                var sg = TargetObj.GetComponent<SortingGroup>();
+                sg.sortingOrder = 0;
+            }
+            else
+            {
+                TargetObj.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+            }
             
             var cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             InputController.IsDragActive = false;

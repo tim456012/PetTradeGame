@@ -13,8 +13,8 @@ namespace Game.Scripts.Controller.Level_State
         protected override void Awake()
         {
             base.Awake();
-            _conversationController = owner.GetComponentInChildren<ConversationController>();
-            _conversationData = owner.levelData.introDialogue;
+            _conversationController = Owner.GetComponentInChildren<ConversationController>();
+            _conversationData = Owner.levelData.introDialogue;
         }
 
         protected override void OnDestroy()
@@ -53,7 +53,7 @@ namespace Game.Scripts.Controller.Level_State
 
         private void OnCompleteConversation(object sender, EventArgs e)
         {
-            owner.ChangeState<MainGameState>();
+            Owner.ChangeState<MainGameState>();
         }
     }
 }
