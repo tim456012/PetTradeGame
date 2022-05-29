@@ -6,6 +6,7 @@ namespace Game.Scripts.TempCode
     public class LicenseInfo : MonoBehaviour
     {
         public List<GameObject> parts;
+        public bool isStamped;
         public bool isApproved;
     }
 }

@@ -13,30 +13,13 @@ MonoBehaviour:
   m_Name: SPTest
   m_EditorClassIdentifier: 
   specialPermitData:
-  - animalId: CA
-    locationName:
-    - 23252532
-    line1Position: 0
-    line2Position: 0
-    businessName:
-    - 2352525325
-    deadline:
-    - 253253252
-    animalName:
-    - 253255325
-    animalCount:
-    - 253252525
-    animalFeature:
-    - 3252352525
-    stampSign:
-    - 25325253252
   - animalId: KF
     locationName:
     - HK
     line1Position: 0
     line2Position: 0
-    businessName:
-    - 232632626
+    businessNumber:
+    - tftftyuftyfutf
     deadline:
     - 326232632623
     animalName:
@@ -45,5 +28,22 @@ MonoBehaviour:
     - 232342342424
     animalFeature:
     - 32325252
+    stampSign:
+    - I_Sign_1
+  - animalId: CA
+    locationName:
+    - 23252532
+    line1Position: 0
+    line2Position: 0
+    businessNumber:
+    - awawawawa
+    deadline:
+    - 253253252
+    animalName:
+    - 253255325
+    animalCount:
+    - 253252525
+    animalFeature:
+    - 3252352525
     stampSign:
     - I_Sign_1

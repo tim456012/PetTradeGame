@@ -18,7 +18,7 @@ MonoBehaviour:
   middleDialogue: {fileID: 0}
   outroDialogue: {fileID: 0}
   otherDialogue: {fileID: 0}
-  scoreData: {fileID: 11400000, guid: 6c9ddc56e4c10f4468e44df1525fadbf, type: 2}
+  scoreData: {fileID: 11400000, guid: 93b71353dbbb73c4cb6b2f9937c968a0, type: 2}
   documentRecipeData:
   - documentRecipeType: DealerLicenseRecipe
     documentRecipeName: DLTest

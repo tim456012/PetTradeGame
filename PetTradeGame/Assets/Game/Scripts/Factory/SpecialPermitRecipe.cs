@@ -35,7 +35,7 @@ namespace Game.Scripts.Factory
         public SpecialPermitPosition line2Position;
         
         [Header("Business Number")]
-        public List<string> businessName;
+        public List<string> businessNumber;
 
         [Header("Deadline")]
         public List<string> deadline;

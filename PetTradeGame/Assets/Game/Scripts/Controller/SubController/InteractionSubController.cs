@@ -59,6 +59,7 @@ namespace Game.Scripts.Controller.SubController
                     stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Approved");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
                     target.GetComponent<LicenseInfo>().isApproved = true;
+                    target.GetComponent<LicenseInfo>().isStamped = true;
                     ClearChildren(pos);
                     Instantiate(stamp, pos.transform);
                     break;
@@ -66,6 +67,7 @@ namespace Game.Scripts.Controller.SubController
                     stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Rejected");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
                     target.GetComponent<LicenseInfo>().isApproved = false;
+                    target.GetComponent<LicenseInfo>().isStamped = true;
                     ClearChildren(pos);
                     Instantiate(stamp, pos.transform);
                     break;
@@ -74,7 +76,7 @@ namespace Game.Scripts.Controller.SubController
                     ClearChildren(pos);
                     return 1;
             }
-
+            
             return 0;
         }
 
@@ -121,8 +123,7 @@ namespace Game.Scripts.Controller.SubController
             }
         }
         #endregion
-
-
+        
         private static void CreateSharedInstance()
         {
             var obj = new GameObject("Interaction Controller");

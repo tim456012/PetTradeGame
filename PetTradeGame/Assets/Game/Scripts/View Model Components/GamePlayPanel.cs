@@ -13,7 +13,7 @@ namespace Game.Scripts.View_Model_Components
 
         }
 
-        public void setScore(int s)
+        public void SetScore(int s)
         {
             score.text = $"Score : {s}";
         }

@@ -32,7 +32,7 @@ namespace Game.Scripts.Controller
 
         public void SetScore(int s)
         {
-            gamePlayPanel.setScore(s);
+            gamePlayPanel.SetScore(s);
         }
 
         public void SetDebugMode()

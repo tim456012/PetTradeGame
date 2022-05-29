@@ -4,6 +4,7 @@ using Game.Scripts.Common.Animation;
 using Game.Scripts.Controller.SubController;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
+using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using TMPro;
@@ -27,7 +28,7 @@ namespace Game.Scripts.Controller
         private readonly List<GameObject> _documents = new List<GameObject>();
         private static readonly List<Poolable> Instances = new List<Poolable>();
 
-        public static event EventHandler<InfoEventArgs<int>> LicenseSubmittedEvent;
+        public static event EventHandler<InfoEventArgs<sbyte>> LicenseSubmittedEvent;
 
         private void Awake()
         {
@@ -139,15 +140,15 @@ namespace Game.Scripts.Controller
                 return;
 
             var p = col.GetComponent<Poolable>();
+            if (!p.GetComponent<LicenseInfo>().isStamped)
+                return;
+
             EnqueueObject(p);
             _dragAndDropSubController.TargetObj = null;
-            //TODO: Check bool on license and send the score to the system
-            
-            
             DequeueObject("License", "LicensePos");
-            LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
+            LicenseSubmittedEvent?.Invoke(this, p.GetComponent<LicenseInfo>().isApproved ? new InfoEventArgs<sbyte>(0) : new InfoEventArgs<sbyte>(1));
         }
-        
+
         public void ScaleDocument()
         {
             var obj = _dragAndDropSubController.LastObj;
@@ -181,6 +182,11 @@ namespace Game.Scripts.Controller
             }
         }
 
+        public string GetGeneratedID()
+        {
+            return _factorySubController.generatedID;
+        }
+        
         private static void EnqueueObject(Poolable target)
         {
             if (Instances.Count <= 0 || target == null)

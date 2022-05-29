@@ -76,11 +76,17 @@ namespace Game.Scripts.Controller.Level_State
             _objectController.ProcessCollision(original, col.info);
         }
 
-        private void OnSubmitted(object sender, InfoEventArgs<int> e)
+        private void OnSubmitted(object sender, InfoEventArgs<sbyte> e)
         {
-            //TODO: Add score data
-            if (e.info == 1)
-                _uiController.SetScore(++_gamePlayController.Score);
+            string id = _objectController.GetGeneratedID();
+            var content = _scoreData.scoreContents;
+            foreach (var scoreContent in content)
+            {
+                if (!id.Equals(scoreContent.id))
+                    continue;
+                int score = _gamePlayController.CalculateScore(e.info, scoreContent.score);
+                _uiController.SetScore(score);
+            }
         }
     }
 }

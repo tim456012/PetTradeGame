@@ -17,5 +17,5 @@ MonoBehaviour:
     isCorrect: 1
     score: 10
   - id: CA
-    isCorrect: 1
-    score: 10
+    isCorrect: 0
+    score: 20

@@ -5,15 +5,12 @@ using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using TMPro;
 using UnityEngine;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Factory
 {
-    //TODO: Change random to unity random
     public static class DocumentFactory
     {
-        private static string _generatedID;
-
         #region Communicate Interface
         /// <summary>
         /// Create Dealer License by loading it recipe.
@@ -114,9 +111,6 @@ namespace Game.Scripts.Factory
 
         private static void AddDealerLicenseContent(GameObject obj, List<DealerLicenseData> data, string id)
         {
-            //Random draw a data from data list
-            var random = new Random();
-            
             //string selected = licenseData.components[index];
             //Debug.Log(selected);
             //_generatedID;
@@ -126,10 +120,11 @@ namespace Game.Scripts.Factory
                 if (dealerLicenseData.animalId != id)
                     continue;
 
-                int index = random.Next(0, dealerLicenseData.businessName.Count);
+                int index = Random.Range(0, dealerLicenseData.businessName.Count);
+                Debug.Log(index);
                 AddContentText(obj, "TM_BusinessName", dealerLicenseData.businessName[index]);
                 
-                index = random.Next(0, dealerLicenseData.businessNumber.Count);
+                index = Random.Range(0, dealerLicenseData.businessNumber.Count);
                 AddContentText(obj, "TM_BusinessNumber", dealerLicenseData.businessNumber[index]);
                 
                 AddContentPrefab(obj, dealerLicenseData.line1Position.ToString(), "I_DocumentCircle");
@@ -139,15 +134,13 @@ namespace Game.Scripts.Factory
                 AddContentPrefab(obj, dealerLicenseData.isProcess, "TickPos_6", "I_DocumentCircle");
                 AddContentPrefab(obj, dealerLicenseData.isTick, "TickPos_7", "I_DocumentCircle");
                 
-                index = random.Next(0, dealerLicenseData.stampSign.Count);
+                index = Random.Range(0, dealerLicenseData.stampSign.Count);
                 AddContentPrefab(obj, "StampSignPos", dealerLicenseData.stampSign[index]);
             }
         }
 
         private static void AddHealthCertificateContent(GameObject obj, List<HealthCertificateData> data, string id)
         {
-            var random = new Random();
-            
             foreach (var healthCertificateData in data)
             {
                 if (healthCertificateData.animalId != id)
@@ -156,16 +149,16 @@ namespace Game.Scripts.Factory
                 AddContentPrefab(obj, healthCertificateData.isOfficial, "TickPos_1", "I_DocumentCircle");
                 AddContentPrefab(obj, healthCertificateData.isLocal, "TickPos_2", "I_DocumentCircle");
                 
-                int index = random.Next(0, healthCertificateData.animalName.Count);
+                int index = Random.Range(0, healthCertificateData.animalName.Count);
                 AddContentText(obj, "TM_AnimalName", healthCertificateData.animalName[index]);
                 
-                index = random.Next(0, healthCertificateData.animalMark.Count);
+                index = Random.Range(0, healthCertificateData.animalMark.Count);
                 AddContentText(obj, "TM_AnimalMark", healthCertificateData.animalMark[index]);
                
-                index = random.Next(0, healthCertificateData.date.Count);
+                index = Random.Range(0, healthCertificateData.date.Count);
                 AddContentPrefab(obj, "TM_Date", healthCertificateData.date[index]);
 
-                index = random.Next(0, healthCertificateData.stampSign.Count);
+                index = Random.Range(0, healthCertificateData.stampSign.Count);
                 AddContentPrefab(obj, "StampSignPos", healthCertificateData.stampSign[index]);
 
             }
@@ -173,77 +166,73 @@ namespace Game.Scripts.Factory
 
         private static void AddPossessionLicenseContent(GameObject obj, List<PossessionLicenseData> data, string id)
         {
-            var random = new Random();
-            
             foreach (var possessionLicenseData in data)
             {
                 if (possessionLicenseData.animalId != id)
                     continue;
                 
-                int index = random.Next(0, possessionLicenseData.licenseNumber.Count);
+                int index = Random.Range(0, possessionLicenseData.licenseNumber.Count);
                 AddContentText(obj, "TM_LicenseNumber", possessionLicenseData.licenseNumber[index]);
                 
-                index = random.Next(0, possessionLicenseData.deadline.Count);
+                index = Random.Range(0, possessionLicenseData.deadline.Count);
                 AddContentText(obj, "TM_Deadline", possessionLicenseData.deadline[index]);
                
-                index = random.Next(0, possessionLicenseData.name.Count);
+                index = Random.Range(0, possessionLicenseData.name.Count);
                 AddContentText(obj, "TM_Name", possessionLicenseData.name[index]);
                 
-                index = random.Next(0, possessionLicenseData.id.Count);
+                index = Random.Range(0, possessionLicenseData.id.Count);
                 AddContentText(obj, "TM_ID", possessionLicenseData.id[index]);
                 
-                index = random.Next(0, possessionLicenseData.businessNumber.Count);
+                index = Random.Range(0, possessionLicenseData.businessNumber.Count);
                 AddContentText(obj, "TM_BusinessNumber", possessionLicenseData.businessNumber[index]);
 
-                index = random.Next(0, possessionLicenseData.animalName.Count);
+                index = Random.Range(0, possessionLicenseData.animalName.Count);
                 AddContentText(obj, "TM_AnimalName", possessionLicenseData.animalName[index]);
                 
-                index = random.Next(0, possessionLicenseData.contract.Count);
+                index = Random.Range(0, possessionLicenseData.contract.Count);
                 AddContentText(obj, "TM_Contract", possessionLicenseData.contract[index]);
                 
-                index = random.Next(0, possessionLicenseData.objective.Count);
+                index = Random.Range(0, possessionLicenseData.objective.Count);
                 AddContentText(obj, "TM_Contract", possessionLicenseData.objective[index]);
 
-                index = random.Next(0, possessionLicenseData.original.Count);
+                index = Random.Range(0, possessionLicenseData.original.Count);
                 AddContentText(obj, "TM_Contract", possessionLicenseData.original[index]);
                 
-                index = random.Next(0, possessionLicenseData.stampSign.Count);
-                AddContentText(obj, "StampSignPos", possessionLicenseData.stampSign[index]);
+                index = Random.Range(0, possessionLicenseData.stampSign.Count);
+                AddContentPrefab(obj, "StampSignPos", possessionLicenseData.stampSign[index]);
             }
         }
 
         private static void AddSpecialPermitContent(GameObject obj, List<SpecialPermitData> data, string id)
         {
-            var random = new Random();
-            
             foreach (var specialPermitData in data)
             {
                 if (specialPermitData.animalId != id)
                     continue;
                 
-                int index = random.Next(0, specialPermitData.locationName.Count);
+                int index = Random.Range(0, specialPermitData.locationName.Count);
                 AddContentText(obj, "TM_LocationName", specialPermitData.locationName[index]);
                 
                 AddContentPrefab(obj, specialPermitData.line1Position.ToString(), "I_DocumentCircle");
                 AddContentPrefab(obj, specialPermitData.line2Position.ToString(), "I_DocumentCircle");
                 
-                index = random.Next(0, specialPermitData.businessName.Count);
-                AddContentText(obj, "TM_BusinessName", specialPermitData.businessName[index]);
+                index = Random.Range(0, specialPermitData.businessNumber.Count);
+                AddContentText(obj, "TM_BusinessNumber", specialPermitData.businessNumber[index]);
                 
-                index = random.Next(0, specialPermitData.deadline.Count);
+                index = Random.Range(0, specialPermitData.deadline.Count);
                 AddContentText(obj, "TM_Deadline", specialPermitData.deadline[index]);
                 
-                index = random.Next(0, specialPermitData.animalName.Count);
+                index = Random.Range(0, specialPermitData.animalName.Count);
                 AddContentText(obj, "TM_AnimalName", specialPermitData.animalName[index]);
                 
-                index = random.Next(0, specialPermitData.animalCount.Count);
+                index = Random.Range(0, specialPermitData.animalCount.Count);
                 AddContentText(obj, "TM_AnimalCount", specialPermitData.animalCount[index]);
 
-                index = random.Next(0, specialPermitData.animalFeature.Count);
+                index = Random.Range(0, specialPermitData.animalFeature.Count);
                 AddContentText(obj, "TM_AnimalFeature", specialPermitData.animalFeature[index]);
                 
-                index = random.Next(0, specialPermitData.stampSign.Count);
-                AddContentText(obj, "StampSignPos", specialPermitData.stampSign[index]);
+                index = Random.Range(0, specialPermitData.stampSign.Count);
+                AddContentPrefab(obj, "StampSignPos", specialPermitData.stampSign[index]);
             }
         }
         
