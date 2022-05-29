@@ -40,7 +40,7 @@ namespace Game.Scripts.Controller
         }
 
         #region Initiation
-        public void InitFactory(List<string> documentList)
+        public void InitFactory(List<RecipeData> documentList, ScoreData scoreData)
         {
             var instance = gameObject.GetComponentInChildren<FactorySubController>();
             if (instance)
@@ -50,14 +50,15 @@ namespace Game.Scripts.Controller
             }
 
             _factorySubController = gameObject.AddComponent<FactorySubController>();
-            ProduceDocument(documentList);
+            ProduceDocument(documentList, scoreData.scoreContents);
         }
 
         public void InitObjectPool(List<FunctionalObjectsData> objectList)
         {
             if (objectList == null)
                 return;
-
+            
+            
             foreach (var data in objectList)
             {
                 GameObjectPoolSubController.AddEntry(data.key, data.prefab, data.amount, data.maxAmount);
@@ -67,16 +68,20 @@ namespace Game.Scripts.Controller
         #endregion
 
         #region Methods
-        private void ProduceDocument(List<string> list)
+        private void ProduceDocument(List<RecipeData> list, List<ScoreContent> scoreData)
         {
-            foreach (string document in list)
+            int index = Random.Range(0, scoreData.Count);
+            string id = scoreData[index].id;
+            Debug.Log(id);
+
+            foreach (var recipeData in list)
             {
-                var obj = FactorySubController.ProduceDocument(document);
+                var obj = _factorySubController.ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-2, 2);
                 obj.transform.localPosition = new Vector3(x, y, 0);
                 obj.SetActive(true);
-                _documents.Add(obj);
+                _documents.Add(obj); 
             }
         }
 
@@ -136,6 +141,9 @@ namespace Game.Scripts.Controller
             var p = col.GetComponent<Poolable>();
             EnqueueObject(p);
             _dragAndDropSubController.TargetObj = null;
+            //TODO: Check bool on license and send the score to the system
+            
+            
             DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(1));
         }
@@ -150,25 +158,25 @@ namespace Game.Scripts.Controller
             if(_lastObj == null)
                 _lastObj = obj;
             
-            if (_isScaled)
+            _isScaled = !_isScaled;
+            if (_lastObj != obj)
             {
                 _lastObj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                 _lastObj.GetComponent<SortingGroup>().sortingLayerName = "Default";
                 _lastObj = obj;
             }
 
-            _isScaled = !_isScaled;
-            var sg = obj.GetComponent<SortingGroup>();
+            var sg = _lastObj.GetComponent<SortingGroup>();
             if (_isScaled)
             {
                 scalerButton.GetComponentInChildren<TextMeshProUGUI>().text = "Put down";
-                obj.transform.localScale = new Vector3(0.5f, 0.5f, 0);
+                _lastObj.transform.localScale = new Vector3(0.5f, 0.5f, 0);
                 sg.sortingLayerName = "SelectedObjects";
             }
             else
             {
                 scalerButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pick up";
-                obj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
+                _lastObj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                 sg.sortingLayerName = "Default";
             }
         }

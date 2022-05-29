@@ -56,14 +56,16 @@ namespace Game.Scripts.Controller.SubController
             switch (index)
             {
                 case 1:
-                    stamp = target.GetComponent<AvailableParts>().parts.Find(part => part.name == "Approved");
+                    stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Approved");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    target.GetComponent<LicenseInfo>().isApproved = true;
                     ClearChildren(pos);
                     Instantiate(stamp, pos.transform);
                     break;
                 case 2:
-                    stamp = target.GetComponent<AvailableParts>().parts.Find(part => part.name == "Rejected");
+                    stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Rejected");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    target.GetComponent<LicenseInfo>().isApproved = false;
                     ClearChildren(pos);
                     Instantiate(stamp, pos.transform);
                     break;
@@ -93,6 +95,8 @@ namespace Game.Scripts.Controller.SubController
                     if (target == ObjectType.License)
                         return 3;
                     break;
+                case ObjectType.None:
+                case ObjectType.License:
                 default:
                     return 0;
             }

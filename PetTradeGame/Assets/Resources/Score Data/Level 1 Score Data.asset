@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f067fe373f34a0bbe269901d69add1e, type: 3}
+  m_Name: Level 1 Score Data
+  m_EditorClassIdentifier: 
+  scoreContents:
+  - id: KF
+    isCorrect: 1
+    score: 10
+  - id: CA
+    isCorrect: 1
+    score: 20
+  - id: GC
+    isCorrect: 1
+    score: 30
+  - id: PN
+    isCorrect: 1
+    score: 10
+  - id: BT
+    isCorrect: 1
+    score: 25
+  - id: EA
+    isCorrect: 1
+    score: 35

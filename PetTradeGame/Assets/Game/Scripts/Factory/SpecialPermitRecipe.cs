@@ -6,12 +6,12 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Special Permit Recipe", menuName = "ScriptableObject/Special Permit Recipe")]
     public class SpecialPermitRecipe : ScriptableObject
     {
-        public List<SpecialPermitInformation> specialPermitData;
+        public List<SpecialPermitData> specialPermitData;
 
     }
 
     [System.Serializable]
-    public class SpecialPermitInformation
+    public class SpecialPermitData
     {
         public enum SpecialPermitPosition
         {
@@ -50,6 +50,6 @@ namespace Game.Scripts.Factory
         public List<string> animalFeature;
         
         [Header("Stamp & Sign Position")]
-        public List<GameObject> prefab;
+        public List<string> stampSign;
     }
 }

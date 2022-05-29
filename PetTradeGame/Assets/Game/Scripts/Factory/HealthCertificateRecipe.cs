@@ -30,6 +30,6 @@ namespace Game.Scripts.Factory
         public List<string> date;
 
         [Header("Stamp & Sign Position")]
-        public List<GameObject> prefab;
+        public List<string> stampSign;
     }
 }

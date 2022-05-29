@@ -13,8 +13,8 @@ namespace Game.Scripts.Model
         public ConversationData middleDialogue;
         public ConversationData outroDialogue;
         public ConversationData otherDialogue;
-
-        public List<string> documentRecipeName;
+        public ScoreData scoreData;
+        public List<RecipeData> documentRecipeData;
         public List<FunctionalObjectsData> functionalObjectsData;
     }
 }

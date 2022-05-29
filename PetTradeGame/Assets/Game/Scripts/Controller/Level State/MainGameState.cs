@@ -13,9 +13,10 @@ namespace Game.Scripts.Controller.Level_State
         private ObjectController _objectController;
         private UIController _uiController;
 
-        private List<string> _documents;
+        private List<RecipeData> _documents;
         private List<FunctionalObjectsData> _functionalObjects;
-
+        private ScoreData _scoreData;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -35,10 +36,11 @@ namespace Game.Scripts.Controller.Level_State
             _objectController.gameObject.AddComponent<DragAndDropSubController>();
             _objectController.enabled = true;
 
-            _documents = Owner.levelData.documentRecipeName;
+            _documents = Owner.levelData.documentRecipeData;
             _functionalObjects = Owner.levelData.functionalObjectsData;
-
-            _objectController.InitFactory(_documents);
+            _scoreData = Owner.levelData.scoreData;
+                
+            _objectController.InitFactory(_documents, _scoreData);
             _objectController.InitObjectPool(_functionalObjects);
 
             Debug.Log("Entering playing state");
@@ -76,6 +78,7 @@ namespace Game.Scripts.Controller.Level_State
 
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
+            //TODO: Add score data
             if (e.info == 1)
                 _uiController.SetScore(++_gamePlayController.Score);
         }

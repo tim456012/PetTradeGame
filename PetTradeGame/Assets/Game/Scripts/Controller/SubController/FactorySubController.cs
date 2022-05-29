@@ -1,14 +1,23 @@
 using System.Collections.Generic;
 using Game.Scripts.Factory;
+using Game.Scripts.Model;
 using UnityEngine;
 
 namespace Game.Scripts.Controller.SubController
 {
     public class FactorySubController : MonoBehaviour
     {
-        public static GameObject ProduceDocument(string document)
+        public GameObject ProduceDocument(string documentType, string documentName, string id)
         {
-            var obj = DocumentFactory.CreateDocument(document);
+            var obj = documentType switch
+            {
+                "DealerLicenseRecipe" => DocumentFactory.CreateDealerLicense(documentName, id),
+                "HealthCertificateRecipe" => DocumentFactory.CreateHealthCertificate(documentName, id),
+                "PossessionLicenseRecipe" => DocumentFactory.CreatePossessionLicense(documentName, id),
+                "SpecialPermitRecipe" => DocumentFactory.CreateSpecialPermit(documentName, id),
+                _ => null
+            };
+            
             return obj;
         }
     }

@@ -15,6 +15,23 @@ MonoBehaviour:
   dealerLicenseData:
   - animalId: KF
     businessName:
+    - Sun Electronics
+    - Wave Motors
+    - Ecstaticorps
+    businessNumber:
+    - 34568439
+    - 74938272
+    - 82918374
+    line1Position: 3
+    line2Position: 5
+    line3Position: 8
+    line4Position: 9
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Sign_1
+  - animalId: CA
+    businessName:
     - Hello Company
     - World Inc.
     - 123 Business
@@ -24,11 +41,77 @@ MonoBehaviour:
     - 49357419
     line1Position: 2
     line2Position: 5
-    line3Position: 0
+    line3Position: 6
     line4Position: 10
-    isProcess: 0
+    isProcess: 1
     isTick: 1
-    prefab:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    stampSign:
+    - I_Sign_2
+  - animalId: GC
+    businessName:
+    - Hello Company
+    - World Inc.
+    - 123 Business
+    businessNumber:
+    - 12345678
+    - 28515285
+    - 49357419
+    line1Position: 2
+    line2Position: 5
+    line3Position: 7
+    line4Position: 9
+    isProcess: 0
+    isTick: 0
+    stampSign:
+    - I_Sign_4
+  - animalId: PN
+    businessName:
+    - Hello Company
+    - World Inc.
+    - 123 Business
+    businessNumber:
+    - 12345678
+    - 28515285
+    - 49357419
+    line1Position: 2
+    line2Position: 5
+    line3Position: 7
+    line4Position: 9
+    isProcess: 0
+    isTick: 0
+    stampSign:
+    - I_Sign_4
+  - animalId: BT
+    businessName:
+    - Hello Company
+    - World Inc.
+    - 123 Business
+    businessNumber:
+    - 12345678
+    - 28515285
+    - 49357419
+    line1Position: 2
+    line2Position: 5
+    line3Position: 7
+    line4Position: 9
+    isProcess: 0
+    isTick: 0
+    stampSign:
+    - I_Sign_4
+  - animalId: EA
+    businessName:
+    - Hello Company
+    - World Inc.
+    - 123 Business
+    businessNumber:
+    - 12345678
+    - 28515285
+    - 49357419
+    line1Position: 2
+    line2Position: 5
+    line3Position: 7
+    line4Position: 9
+    isProcess: 0
+    isTick: 0
+    stampSign:
+    - I_Sign_4

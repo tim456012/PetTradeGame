@@ -18,10 +18,29 @@ MonoBehaviour:
   middleDialogue: {fileID: 0}
   outroDialogue: {fileID: 0}
   otherDialogue: {fileID: 0}
-  documentRecipeName: []
+  scoreData: {fileID: 11400000, guid: 6c9ddc56e4c10f4468e44df1525fadbf, type: 2}
+  documentRecipeData:
+  - documentRecipeType: DealerLicenseRecipe
+    documentRecipeName: DLTest
+  - documentRecipeType: HealthCertificateRecipe
+    documentRecipeName: HCTest
+  - documentRecipeType: PossessionLicenseRecipe
+    documentRecipeName: PLTest
+  - documentRecipeType: SpecialPermitRecipe
+    documentRecipeName: SPTest
   functionalObjectsData:
-  - prefab: {fileID: 0}
-    key: 
-    amount: 0
-    maxAmount: 0
-    spawnPosition: 
+  - prefab: {fileID: 3278780523530120428, guid: 6ed189573a6c6d84c830df659366dfad, type: 3}
+    key: GStamp
+    amount: 1
+    maxAmount: 1
+    spawnPosition: StampPos1
+  - prefab: {fileID: 8072269054454794087, guid: 9624a96f6da7a8041a99da2e58497ee6, type: 3}
+    key: RStamp
+    amount: 1
+    maxAmount: 1
+    spawnPosition: StampPos2
+  - prefab: {fileID: 5812135187394343717, guid: d346dcd1142c1d547bb35d74ae0289c3, type: 3}
+    key: License
+    amount: 5
+    maxAmount: 5
+    spawnPosition: LicensePos

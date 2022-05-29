@@ -21,13 +21,16 @@ namespace Game.Scripts.Factory
         public List<string> deadline;
 
         [Header("Name")]
-        public List<string> date;
+        public List<string> name;
 
         [Header("ID")]
         public List<string> id;
 
         [Header("BusinessNumber")]
         public List<string> businessNumber;
+
+        [Header("Animal Name")]
+        public List<string> animalName;
 
         [Header("Contract")]
         public List<string> contract;
@@ -39,6 +42,6 @@ namespace Game.Scripts.Factory
         public List<string> original;
 
         [Header("Stamp & Sign Position")]
-        public List<GameObject> prefab;
+        public List<string> stampSign;
     }
 }
