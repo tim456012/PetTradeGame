@@ -11,7 +11,6 @@ namespace Game.Scripts.Controller.SubController
 
         public GameObject ProduceDocument(string documentType, string documentName, string id)
         {
-            //TODO: Check previous generated ID
             generatedID = id;
             
             var obj = documentType switch

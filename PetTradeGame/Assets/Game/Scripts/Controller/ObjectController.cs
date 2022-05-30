@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Controller.SubController;
@@ -23,10 +24,11 @@ namespace Game.Scripts.Controller
         private DragAndDropSubController _dragAndDropSubController;
         private GameObject _lastObj;
         private bool _isScaled;
-        
-        //private IEnumerator enqueueObject;
+        private IEnumerator reGenerateDocument;
         private readonly List<GameObject> _documents = new List<GameObject>();
         private static readonly List<Poolable> Instances = new List<Poolable>();
+        private List<RecipeData> recipeDataList;
+        private ScoreData scoreDataList;
 
         public static event EventHandler<InfoEventArgs<sbyte>> LicenseSubmittedEvent;
 
@@ -51,6 +53,8 @@ namespace Game.Scripts.Controller
             }
 
             _factorySubController = gameObject.AddComponent<FactorySubController>();
+            recipeDataList = documentList;
+            scoreDataList = scoreData;
             ProduceDocument(documentList, scoreData.scoreContents);
         }
 
@@ -71,10 +75,17 @@ namespace Game.Scripts.Controller
         #region Methods
         private void ProduceDocument(List<RecipeData> list, List<ScoreContent> scoreData)
         {
+            DrawID:
             int index = Random.Range(0, scoreData.Count);
             string id = scoreData[index].id;
             Debug.Log(id);
 
+            if (id == _factorySubController.generatedID)
+            {
+                Debug.Log($"Same ID result: {id}, Previous ID: {_factorySubController.generatedID}. Redraw.");
+                goto DrawID;
+            }
+            
             foreach (var recipeData in list)
             {
                 var obj = _factorySubController.ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
@@ -118,7 +129,7 @@ namespace Game.Scripts.Controller
             Instances.Clear();
         }
 
-        private void ReleaseGameObjList()
+        public void ReleaseDocuments()
         {
             for (int i = _documents.Count - 1; i >= 0; --i)
                 Destroy(_documents[i]);
@@ -185,6 +196,20 @@ namespace Game.Scripts.Controller
         public string GetGeneratedID()
         {
             return _factorySubController.generatedID;
+        }
+
+        public void ReGenerateDocument()
+        {
+            reGenerateDocument = GenerateDocuments();
+            StartCoroutine(reGenerateDocument);
+            reGenerateDocument = null;
+        }
+
+        private IEnumerator GenerateDocuments()
+        {
+            yield return new WaitForSeconds(2);
+            
+            ProduceDocument(recipeDataList, scoreDataList.scoreContents);
         }
         
         private static void EnqueueObject(Poolable target)

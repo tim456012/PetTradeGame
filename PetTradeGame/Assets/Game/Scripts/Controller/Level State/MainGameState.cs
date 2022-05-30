@@ -86,7 +86,9 @@ namespace Game.Scripts.Controller.Level_State
                     continue;
                 int score = _gamePlayController.CalculateScore(e.info, scoreContent.score);
                 _uiController.SetScore(score);
+                _objectController.ReleaseDocuments();
             }
+            _objectController.ReGenerateDocument();
         }
     }
 }

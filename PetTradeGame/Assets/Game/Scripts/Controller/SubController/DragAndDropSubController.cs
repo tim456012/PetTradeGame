@@ -1,5 +1,6 @@
 using Game.Scripts.Common.Animation;
 using Game.Scripts.EventArguments;
+using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
@@ -47,7 +48,7 @@ namespace Game.Scripts.Controller.SubController
             if (!temp.isDraggable)
                 return;
 
-            if (temp.isDocument)
+            if (temp.isDocument || temp.GetComponent<LicenseInfo>())
             {
                 var sg = TargetObj.GetComponent<SortingGroup>();
                 sg.sortingOrder = 1;
@@ -79,7 +80,7 @@ namespace Game.Scripts.Controller.SubController
                 return;
 
             LastObj = TargetObj;
-            if (TargetObj.GetComponent<EntityAttribute>().isDocument)
+            if (TargetObj.GetComponent<EntityAttribute>().isDocument || TargetObj.GetComponent<LicenseInfo>())
             {
                 var sg = TargetObj.GetComponent<SortingGroup>();
                 sg.sortingOrder = 0;
