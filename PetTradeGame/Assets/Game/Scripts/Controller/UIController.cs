@@ -35,6 +35,11 @@ namespace Game.Scripts.Controller
             gamePlayPanel.SetScore(s);
         }
 
+        public void SetTime(string text)
+        {
+            gamePlayPanel.SetTime(text);
+        }
+        
         public void SetDebugMode()
         {
             gamePlayPanel.gameObject.SetActive(true);

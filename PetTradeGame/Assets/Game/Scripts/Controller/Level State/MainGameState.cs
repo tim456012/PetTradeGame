@@ -51,6 +51,7 @@ namespace Game.Scripts.Controller.Level_State
             base.AddListeners();
             EntityAttribute.FunctionalObjCollisionEvent += OnFunctObjCollision;
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
+            GamePlayController.TimerEvent += OnTimerUpdated;
         }
 
         protected override void RemoveListeners()
@@ -58,6 +59,7 @@ namespace Game.Scripts.Controller.Level_State
             base.RemoveListeners();
             EntityAttribute.FunctionalObjCollisionEvent -= OnFunctObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
+            GamePlayController.TimerEvent -= OnTimerUpdated;
         }
 
         protected override void OnDestroy()
@@ -65,6 +67,7 @@ namespace Game.Scripts.Controller.Level_State
             base.OnDestroy();
             EntityAttribute.FunctionalObjCollisionEvent -= OnFunctObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
+            GamePlayController.TimerEvent -= OnTimerUpdated;
         }
 
         private void OnFunctObjCollision(object sender, InfoEventArgs<GameObject> col)
@@ -89,6 +92,11 @@ namespace Game.Scripts.Controller.Level_State
                 _objectController.ReleaseDocuments();
             }
             _objectController.ReGenerateDocument();
+        }
+
+        private void OnTimerUpdated(object sender, InfoEventArgs<string> e)
+        {
+            _uiController.SetTime(e.info);
         }
     }
 }

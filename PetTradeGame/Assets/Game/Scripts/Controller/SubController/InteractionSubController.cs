@@ -72,6 +72,10 @@ namespace Game.Scripts.Controller.SubController
                     Instantiate(stamp, pos.transform);
                     break;
                 case 3:
+                    if(!target.GetComponent<LicenseInfo>().isStamped)
+                        break;
+                    target.GetComponent<LicenseInfo>().isStamped = false;
+                    target.GetComponent<LicenseInfo>().isApproved = false;
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
                     ClearChildren(pos);
                     return 1;

@@ -6,8 +6,8 @@ namespace Game.Scripts.View_Model_Components
 {
     public class GamePlayPanel : MonoBehaviour
     {
-        public TextMeshProUGUI score;
-
+        public TextMeshProUGUI score, hourTimeText;
+        
         private void Start()
         {
 
@@ -16,6 +16,11 @@ namespace Game.Scripts.View_Model_Components
         public void SetScore(int s)
         {
             score.text = $"Score : {s}";
+        }
+
+        public void SetTime(string text)
+        {
+            hourTimeText.text = text;
         }
     }
 }

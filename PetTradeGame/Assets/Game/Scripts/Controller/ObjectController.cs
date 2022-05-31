@@ -22,13 +22,14 @@ namespace Game.Scripts.Controller
         
         private FactorySubController _factorySubController;
         private DragAndDropSubController _dragAndDropSubController;
+        
         private GameObject _lastObj;
-        private bool _isScaled;
-        private IEnumerator reGenerateDocument;
+        private bool _isScaled, _isNotReady;
+        private IEnumerator _reGenerateDocument;
         private readonly List<GameObject> _documents = new List<GameObject>();
         private static readonly List<Poolable> Instances = new List<Poolable>();
-        private List<RecipeData> recipeDataList;
-        private ScoreData scoreDataList;
+        private List<RecipeData> _recipeDataList;
+        private ScoreData _scoreDataList;
 
         public static event EventHandler<InfoEventArgs<sbyte>> LicenseSubmittedEvent;
 
@@ -53,8 +54,8 @@ namespace Game.Scripts.Controller
             }
 
             _factorySubController = gameObject.AddComponent<FactorySubController>();
-            recipeDataList = documentList;
-            scoreDataList = scoreData;
+            _recipeDataList = documentList;
+            _scoreDataList = scoreData;
             ProduceDocument(documentList, scoreData.scoreContents);
         }
 
@@ -147,13 +148,10 @@ namespace Game.Scripts.Controller
 
             sbyte index = InteractionSubController.ExecuteObjBehavior(original, col);
 
-            if (index == 0)
+            if (index == 0 || _isNotReady)
                 return;
 
             var p = col.GetComponent<Poolable>();
-            if (!p.GetComponent<LicenseInfo>().isStamped)
-                return;
-
             EnqueueObject(p);
             _dragAndDropSubController.TargetObj = null;
             DequeueObject("License", "LicensePos");
@@ -200,16 +198,18 @@ namespace Game.Scripts.Controller
 
         public void ReGenerateDocument()
         {
-            reGenerateDocument = GenerateDocuments();
-            StartCoroutine(reGenerateDocument);
-            reGenerateDocument = null;
+            _reGenerateDocument = GenerateDocuments();
+            StartCoroutine(_reGenerateDocument);
+            _reGenerateDocument = null;
         }
 
         private IEnumerator GenerateDocuments()
         {
+            _isNotReady = true;
             yield return new WaitForSeconds(2);
             
-            ProduceDocument(recipeDataList, scoreDataList.scoreContents);
+            ProduceDocument(_recipeDataList, _scoreDataList.scoreContents);
+            _isNotReady = false;
         }
         
         private static void EnqueueObject(Poolable target)
