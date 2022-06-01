@@ -16,6 +16,8 @@ using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
+    //TODO: Cleanup
+    //TODO: Store correct and wrong number of document
     public class ObjectController : MonoBehaviour
     {
         [SerializeField] private Button scalerButton;
@@ -123,7 +125,7 @@ namespace Game.Scripts.Controller
             Instances.Add(obj);
         }
 
-        private void ReleaseInstances()
+        public void ReleaseInstances()
         {
             for (int i = Instances.Count - 1; i >= 0; --i)
                 GameObjectPoolSubController.Enqueue(Instances[i]);

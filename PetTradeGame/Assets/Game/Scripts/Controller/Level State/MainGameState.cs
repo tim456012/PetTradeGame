@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Game.Scripts.Controller.SubController;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
@@ -43,34 +44,47 @@ namespace Game.Scripts.Controller.Level_State
             _objectController.InitFactory(_documents, _scoreData);
             _objectController.InitObjectPool(_functionalObjects);
 
+            _gamePlayController.StartTimer();
             Debug.Log("Entering playing state");
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _objectController.ReleaseDocuments();
+            _objectController.ReleaseInstances();
+            
+            _uiController.EndGame();
         }
 
         protected override void AddListeners()
         {
             base.AddListeners();
-            EntityAttribute.FunctionalObjCollisionEvent += OnFunctObjCollision;
+            EntityAttribute.FunctionalObjCollisionEvent += OnObjCollision;
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
             GamePlayController.TimerEvent += OnTimerUpdated;
+            GamePlayController.GameFinishEvent += OnGameFinishEvent;
         }
 
         protected override void RemoveListeners()
         {
             base.RemoveListeners();
-            EntityAttribute.FunctionalObjCollisionEvent -= OnFunctObjCollision;
+            EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
             GamePlayController.TimerEvent -= OnTimerUpdated;
+            GamePlayController.GameFinishEvent -= OnGameFinishEvent;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            EntityAttribute.FunctionalObjCollisionEvent -= OnFunctObjCollision;
+            EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
             GamePlayController.TimerEvent -= OnTimerUpdated;
+            GamePlayController.GameFinishEvent -= OnGameFinishEvent;
         }
 
-        private void OnFunctObjCollision(object sender, InfoEventArgs<GameObject> col)
+        private void OnObjCollision(object sender, InfoEventArgs<GameObject> col)
         {
             var original = sender as GameObject;
             if (original == null)
@@ -97,6 +111,12 @@ namespace Game.Scripts.Controller.Level_State
         private void OnTimerUpdated(object sender, InfoEventArgs<string> e)
         {
             _uiController.SetTime(e.info);
+        }
+
+        private void OnGameFinishEvent(object sender, EventArgs e)
+        {
+            Debug.Log("Game Over");
+            Owner.ChangeState<EndGameState>();
         }
     }
 }

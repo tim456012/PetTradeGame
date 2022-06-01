@@ -121,7 +121,7 @@ namespace Game.Scripts.Factory
                     continue;
 
                 int index = Random.Range(0, dealerLicenseData.businessName.Count);
-                Debug.Log(index);
+                //Debug.Log(index);
                 AddContentText(obj, "TM_BusinessName", dealerLicenseData.businessName[index]);
                 
                 index = Random.Range(0, dealerLicenseData.businessNumber.Count);

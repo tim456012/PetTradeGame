@@ -41,6 +41,6 @@ MonoBehaviour:
     spawnPosition: StampPos2
   - prefab: {fileID: 5812135187394343717, guid: d346dcd1142c1d547bb35d74ae0289c3, type: 3}
     key: License
-    amount: 5
+    amount: 1
     maxAmount: 5
     spawnPosition: LicensePos

@@ -43,7 +43,7 @@ namespace Game.Scripts.TempCode
         private void DisplayTime(float timeToDisplay)
         {
             if (timeToDisplay >= TargetTime)
-                timeToDisplay += TargetTime;
+                timeToDisplay = TargetTime;
 
             float minutes = Mathf.FloorToInt(timeToDisplay / 60f);
             float seconds = Mathf.FloorToInt(timeToDisplay % 60f);

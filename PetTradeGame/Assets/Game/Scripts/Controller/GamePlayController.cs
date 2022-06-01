@@ -6,13 +6,15 @@ namespace Game.Scripts.Controller
 {
     public class GamePlayController : MonoBehaviour
     {
-        private const float TargetTime = 360f;
+        private const float TargetTime = 10f;
         private const float UpdateTimeThreshold = 11.25f; //360 / (8 * 4)
 
         private int _score, _h = 9, _m;
         private float _time, _updateTime;
+        private bool _startTimer;
 
         public static event EventHandler<InfoEventArgs<string>> TimerEvent;
+        public static event EventHandler GameFinishEvent;
         
         private void Awake()
         {
@@ -26,15 +28,8 @@ namespace Game.Scripts.Controller
 
         private void Update()
         {
-            if(_time >= TargetTime)
-                _time = TargetTime;
-            else
-            {
-                _time += Time.deltaTime;
-                _updateTime += Time.deltaTime;
-            }
-            
-            DisplayTime(_time);
+            if(_startTimer)
+                UpdateTime();
         }
 
         public int CalculateScore(sbyte index, int score)
@@ -51,11 +46,29 @@ namespace Game.Scripts.Controller
             
             return _score;
         }
+
+        private void UpdateTime()
+        {
+            if(_time >= TargetTime)
+                _time = TargetTime;
+            else
+            {
+                _time += Time.deltaTime;
+                _updateTime += Time.deltaTime;
+            }
+            
+            DisplayTime(_time);
+        }
         
         private void DisplayTime(float timeToDisplay)
         {
-            if (timeToDisplay >= TargetTime)
+            if (timeToDisplay > TargetTime)
+            {
+                _time = TargetTime;
+                _startTimer = false;
+                GameFinishEvent?.Invoke(this, EventArgs.Empty);
                 return;
+            }
 
             //float minutes = Mathf.FloorToInt(timeToDisplay / 60f);
             //float seconds = Mathf.FloorToInt(timeToDisplay % 60f);
@@ -78,5 +91,14 @@ namespace Game.Scripts.Controller
             TimerEvent?.Invoke(this, new InfoEventArgs<string>(text));
         }
 
+        public void StartTimer()
+        {
+            _startTimer = true;
+        }
+
+        public int GetScore()
+        {
+            return _score;
+        }
     }
 }

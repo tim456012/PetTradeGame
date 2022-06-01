@@ -9,6 +9,7 @@ namespace Game.Scripts.Controller
     {
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
+        [SerializeField] private EndGamePanel endGamePanel;
 
         private Canvas _canvas;
         //private bool _isDebugMode;
@@ -35,6 +36,11 @@ namespace Game.Scripts.Controller
             gamePlayPanel.SetScore(s);
         }
 
+        public void SetScore(int cs, int ws)
+        {
+            endGamePanel.scoreText.text = cs.ToString();
+        }
+
         public void SetTime(string text)
         {
             gamePlayPanel.SetTime(text);
@@ -44,6 +50,11 @@ namespace Game.Scripts.Controller
         {
             gamePlayPanel.gameObject.SetActive(true);
             //_isDebugMode = true;
+        }
+
+        public void EndGame()
+        {
+            endGamePanel.gameObject.SetActive(true);
         }
     }
 }
