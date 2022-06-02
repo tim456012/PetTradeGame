@@ -16,22 +16,20 @@ using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
-    //TODO: Cleanup
     //TODO: Store correct and wrong number of document
     public class ObjectController : MonoBehaviour
     {
         [SerializeField] private Button scalerButton;
-        
+
         private FactorySubController _factorySubController;
         private DragAndDropSubController _dragAndDropSubController;
-        
         private GameObject _lastObj;
-        private bool _isScaled, _isNotReady;
         private IEnumerator _reGenerateDocument;
         private readonly List<GameObject> _documents = new List<GameObject>();
         private static readonly List<Poolable> Instances = new List<Poolable>();
         private List<RecipeData> _recipeDataList;
-        private ScoreData _scoreDataList;
+        private ScoreData _scoreData;
+        private bool _isScaled, _isNotReady;
 
         public static event EventHandler<InfoEventArgs<sbyte>> LicenseSubmittedEvent;
 
@@ -46,6 +44,7 @@ namespace Game.Scripts.Controller
         }
 
         #region Initiation
+        //TODO: Load next level data.
         public void InitFactory(List<RecipeData> documentList, ScoreData scoreData)
         {
             var instance = gameObject.GetComponentInChildren<FactorySubController>();
@@ -56,17 +55,16 @@ namespace Game.Scripts.Controller
             }
 
             _factorySubController = gameObject.AddComponent<FactorySubController>();
-            _recipeDataList = documentList;
-            _scoreDataList = scoreData;
-            ProduceDocument(documentList, scoreData.scoreContents);
+            _recipeDataList = new List<RecipeData>(documentList);
+            _scoreData = scoreData;
+            ProduceDocument(_recipeDataList, _scoreData.scoreContents);
         }
 
         public void InitObjectPool(List<FunctionalObjectsData> objectList)
         {
             if (objectList == null)
                 return;
-            
-            
+
             foreach (var data in objectList)
             {
                 GameObjectPoolSubController.AddEntry(data.key, data.prefab, data.amount, data.maxAmount);
@@ -75,38 +73,51 @@ namespace Game.Scripts.Controller
         }
         #endregion
 
-        #region Methods
-        private void ProduceDocument(List<RecipeData> list, List<ScoreContent> scoreData)
+        #region Factory Methods
+        private void ProduceDocument(List<RecipeData> list, IReadOnlyList<ScoreContent> scoreData)
         {
             DrawID:
             int index = Random.Range(0, scoreData.Count);
             string id = scoreData[index].id;
-            Debug.Log(id);
+            //Debug.Log(id);
 
             if (id == _factorySubController.generatedID)
             {
                 Debug.Log($"Same ID result: {id}, Previous ID: {_factorySubController.generatedID}. Redraw.");
                 goto DrawID;
             }
-            
+
             foreach (var recipeData in list)
             {
                 var obj = _factorySubController.ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
+                //TODO: Make animation
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-2, 2);
                 obj.transform.localPosition = new Vector3(x, y, 0);
                 obj.SetActive(true);
-                _documents.Add(obj); 
+                _documents.Add(obj);
             }
         }
 
+        public void ReleaseDocuments()
+        {
+            for (int i = _documents.Count - 1; i >= 0; --i)
+                Destroy(_documents[i]);
+            _documents.Clear();
+        }
+
+        public void Release()
+        {
+            _recipeDataList.Clear();
+            _scoreData = null;
+        }
+        #endregion
+
+        #region Object Pool Method
         private void DequeueObject(string key, string spawnPos)
         {
             var obj = GameObjectPoolSubController.Dequeue(key);
-
-            //Destroy(obj.gameObject.GetComponent<EasingControl>());
-            //Destroy(obj.gameObject.GetComponent<TransformLocalPositionTweener>());
-
+            
             if (!string.IsNullOrEmpty(spawnPos))
             {
                 var temp = GameObjFinder.FindChildGameObject(gameObject, spawnPos);
@@ -125,21 +136,37 @@ namespace Game.Scripts.Controller
             Instances.Add(obj);
         }
 
+        private static void EnqueueObject(Poolable target)
+        {
+            if (Instances.Count <= 0 || target == null)
+                return;
+
+            int index = Instances.IndexOf(target);
+            if (index < 0)
+                return;
+
+            Instances.RemoveAt(index);
+            GameObjectPoolSubController.Enqueue(target);
+            InputController.IsDragActive = false;
+        }
+
         public void ReleaseInstances()
         {
             for (int i = Instances.Count - 1; i >= 0; --i)
                 GameObjectPoolSubController.Enqueue(Instances[i]);
             Instances.Clear();
         }
-
-        public void ReleaseDocuments()
-        {
-            for (int i = _documents.Count - 1; i >= 0; --i)
-                Destroy(_documents[i]);
-            _documents.Clear();
-        }
         #endregion
 
+        #region Functions
+        private IEnumerator GenerateDocuments()
+        {
+            _isNotReady = true;
+            yield return new WaitForSeconds(2);
+            ProduceDocument(_recipeDataList, _scoreData.scoreContents);
+            _isNotReady = false;
+        }
+        
         public void ProcessCollision(GameObject original, GameObject col)
         {
             if (col == null)
@@ -163,13 +190,13 @@ namespace Game.Scripts.Controller
         public void ScaleDocument()
         {
             var obj = _dragAndDropSubController.LastObj;
-            if(obj == null)
+            if (obj == null)
                 return;
-            if(!obj.GetComponent<EntityAttribute>().isDocument)
+            if (!obj.GetComponent<EntityAttribute>().isDocument)
                 return;
-            if(_lastObj == null)
+            if (_lastObj == null)
                 _lastObj = obj;
-            
+
             _isScaled = !_isScaled;
             if (_lastObj != obj)
             {
@@ -192,7 +219,7 @@ namespace Game.Scripts.Controller
                 sg.sortingLayerName = "Default";
             }
         }
-
+        
         public string GetGeneratedID()
         {
             return _factorySubController.generatedID;
@@ -205,27 +232,13 @@ namespace Game.Scripts.Controller
             _reGenerateDocument = null;
         }
 
-        private IEnumerator GenerateDocuments()
+        public void StopProcess()
         {
-            _isNotReady = true;
-            yield return new WaitForSeconds(2);
-            
-            ProduceDocument(_recipeDataList, _scoreDataList.scoreContents);
-            _isNotReady = false;
-        }
-        
-        private static void EnqueueObject(Poolable target)
-        {
-            if (Instances.Count <= 0 || target == null)
+            if (_reGenerateDocument == null)
                 return;
-
-            int index = Instances.IndexOf(target);
-            if (index < 0)
-                return;
-
-            Instances.RemoveAt(index);
-            GameObjectPoolSubController.Enqueue(target);
-            InputController.IsDragActive = false;
+            StopCoroutine(_reGenerateDocument);
+            _reGenerateDocument = null;
         }
+        #endregion
     }
 }

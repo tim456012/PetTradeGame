@@ -62,7 +62,7 @@ namespace Game.Scripts.Controller
 
             //Invoke general ClickedEvent when player is not doing dragging.
             //Mobile Version
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Began or TouchPhase.Stationary)
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Began)
             {
                 ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
                 return;

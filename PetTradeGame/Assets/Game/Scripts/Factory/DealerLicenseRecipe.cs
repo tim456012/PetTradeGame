@@ -1,7 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 using Game.Scripts.Enum;
 using Game.Scripts.Model;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Factory
@@ -9,7 +12,83 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Dealer License Recipe", menuName = "ScriptableObject/Dealer License Recipe")]
     public class DealerLicenseRecipe : ScriptableObject
     {
-        public List<DealerLicenseData> dealerLicenseData;
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        
+        public List<DealerLicenseData> dealerLicenseData = new List<DealerLicenseData>();
+
+        public void Load(string line)
+        {
+            var lines = new List<string>();
+            foreach (Match match in Regex.Matches(line))
+            {
+                string current = match.Value;
+                if (0 == current.Length)
+                    lines.Add("");
+                lines.Add(current.Trim(',', '"'));
+            }
+            
+            var data = new DealerLicenseData(lines[0])
+            {
+                businessName = new List<string>(),
+                businessNumber = new List<string>(),
+                line1Position = lines[7] switch
+                {
+                    " " => DealerLicenseData.DealerLicensePosition.None,
+                    "C1" => DealerLicenseData.DealerLicensePosition.CirclePos1,
+                    "C2" => DealerLicenseData.DealerLicensePosition.CirclePos2,
+                    "C3" => DealerLicenseData.DealerLicensePosition.CirclePos3,
+                    _ => DealerLicenseData.DealerLicensePosition.None
+                },
+                line2Position = lines[8] switch
+                {
+                    " " => DealerLicenseData.DealerLicensePosition.None,
+                    "C4" => DealerLicenseData.DealerLicensePosition.CirclePos4,
+                    "C5" => DealerLicenseData.DealerLicensePosition.CirclePos5,
+                    _ => DealerLicenseData.DealerLicensePosition.None
+                },
+                line3Position = lines[9] switch
+                {
+                    " " => DealerLicenseData.DealerLicensePosition.None,
+                    "T1" => DealerLicenseData.DealerLicensePosition.TickPos1,
+                    "T2" => DealerLicenseData.DealerLicensePosition.TickPos2,
+                    "T3" => DealerLicenseData.DealerLicensePosition.TickPos3,
+                    _ => DealerLicenseData.DealerLicensePosition.None
+                },
+                line4Position = lines[10] switch
+                {
+                    " " => DealerLicenseData.DealerLicensePosition.None,
+                    "T4" => DealerLicenseData.DealerLicensePosition.TickPos4,
+                    "T5" => DealerLicenseData.DealerLicensePosition.TickPos5,
+                    _ => DealerLicenseData.DealerLicensePosition.None
+                },
+                isProcess = lines[11].Equals("1"),
+                isTick = lines[12].Equals("1"),
+                stampSign = new List<string>()
+            };
+
+            for (int i = 1; i <= 3; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.businessName.Add(lines[i]);    
+            }
+            
+            for (int i = 4; i <= 6; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.businessNumber.Add(lines[i]);    
+            }
+            
+            for (int i = 13; i <= 15; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.stampSign.Add(lines[i]);    
+            }
+            
+            dealerLicenseData.Add(data);
+        }
     }
 
     [System.Serializable]
@@ -58,5 +137,12 @@ namespace Game.Scripts.Factory
         
         [Header("Stamp & Sign Position")]
         public List<string> stampSign;
+
+        public DealerLicenseData() { }
+
+        public DealerLicenseData(string id)
+        {
+            animalId = id;
+        }
     }
 }

@@ -13,41 +13,132 @@ MonoBehaviour:
   m_Name: DLTest
   m_EditorClassIdentifier: 
   dealerLicenseData:
-  - animalId: KF
+  - animalId: HTa
     businessName:
-    - Sun Electronics
-    - Wave Motors
-    - Ecstaticorps
+    - "\u611B\u5BF5\u4E4B\u5BB6"
+    - "\u767C\u54E5\u9B5A\u5E97"
     businessNumber:
-    - 34568439
-    - 74938272
-    - 82918374
+    - 12345671
+    - 39856021
     line1Position: 3
     line2Position: 4
     line3Position: 0
-    line4Position: 10
-    isProcess: 0
+    line4Position: 5
+    isProcess: 1
     isTick: 1
     stampSign:
     - I_Sign_1
-    - I_Sign_2
-    - I_Sign_3
-  - animalId: CA
+  - animalId: HTaF
     businessName:
-    - Hello Company
-    - World Inc.
-    - 123 Business
+    - "\u611B\u5BF5\u4E4B\u5BB6"
+    - "\u767C\u54E5\u9B5A\u5E97"
     businessNumber:
-    - 12345678
-    - 28515285
-    - 49357419
-    line1Position: 1
+    - 12345671
+    - 39856021
+    line1Position: 3
     line2Position: 4
     line3Position: 0
     line4Position: 0
     isProcess: 0
-    isTick: 1
-    stampSign:
-    - I_Sign_1
-    - I_Sign_2
-    - I_Sign_3
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []
+  - animalId: 
+    businessName: []
+    businessNumber: []
+    line1Position: 0
+    line2Position: 0
+    line3Position: 0
+    line4Position: 0
+    isProcess: 0
+    isTick: 0
+    stampSign: []

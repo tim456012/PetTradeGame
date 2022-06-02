@@ -13,7 +13,6 @@ namespace Game.Scripts.Model
     public class ScoreContent
     {
         public string id;
-        public bool isCorrect;
         [Range(-100, 100)]
         public int score;
     }

@@ -9,7 +9,7 @@ namespace Game.Scripts.Controller
         private const float TargetTime = 10f;
         private const float UpdateTimeThreshold = 11.25f; //360 / (8 * 4)
 
-        private int _score, _h = 9, _m;
+        private int _score, _h = 9, _m, _correctDocuments, _wrongDocuments;
         private float _time, _updateTime;
         private bool _startTimer;
 
@@ -38,9 +38,11 @@ namespace Game.Scripts.Controller
             {
                 case 0:
                     _score += score;
+                    _correctDocuments++;
                     break;
                 case 1:
                     _score -= score;
+                    _wrongDocuments++;
                     break;
             }
             
@@ -99,6 +101,16 @@ namespace Game.Scripts.Controller
         public int GetScore()
         {
             return _score;
+        }
+
+        public int GetCorrectDoc()
+        {
+            return _correctDocuments;
+        }
+
+        public int GetWrongDoc()
+        {
+            return _wrongDocuments;
         }
     }
 }

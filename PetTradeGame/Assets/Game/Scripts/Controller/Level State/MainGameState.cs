@@ -13,10 +13,6 @@ namespace Game.Scripts.Controller.Level_State
         private GamePlayController _gamePlayController;
         private ObjectController _objectController;
         private UIController _uiController;
-
-        private List<RecipeData> _documents;
-        private List<FunctionalObjectsData> _functionalObjects;
-        private ScoreData _scoreData;
         
         protected override void Awake()
         {
@@ -37,12 +33,11 @@ namespace Game.Scripts.Controller.Level_State
             _objectController.gameObject.AddComponent<DragAndDropSubController>();
             _objectController.enabled = true;
 
-            _documents = Owner.levelData.documentRecipeData;
-            _functionalObjects = Owner.levelData.functionalObjectsData;
-            _scoreData = Owner.levelData.scoreData;
-                
-            _objectController.InitFactory(_documents, _scoreData);
-            _objectController.InitObjectPool(_functionalObjects);
+            var recipeDataList = Owner.levelData.documentRecipeData;
+            var scoreData = Owner.levelData.scoreData;
+            
+            _objectController.InitFactory(recipeDataList, scoreData);
+            _objectController.InitObjectPool(Owner.levelData.functionalObjectsData);
 
             _gamePlayController.StartTimer();
             Debug.Log("Entering playing state");
@@ -53,6 +48,7 @@ namespace Game.Scripts.Controller.Level_State
             base.Exit();
             _objectController.ReleaseDocuments();
             _objectController.ReleaseInstances();
+            _objectController.Release();
             
             _uiController.EndGame();
         }
@@ -96,7 +92,7 @@ namespace Game.Scripts.Controller.Level_State
         private void OnSubmitted(object sender, InfoEventArgs<sbyte> e)
         {
             string id = _objectController.GetGeneratedID();
-            var content = _scoreData.scoreContents;
+            var content = Owner.levelData.scoreData.scoreContents;
             foreach (var scoreContent in content)
             {
                 if (!id.Equals(scoreContent.id))
@@ -116,6 +112,7 @@ namespace Game.Scripts.Controller.Level_State
         private void OnGameFinishEvent(object sender, EventArgs e)
         {
             Debug.Log("Game Over");
+            _objectController.StopProcess();
             Owner.ChangeState<EndGameState>();
         }
     }

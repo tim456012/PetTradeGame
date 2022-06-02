@@ -19,7 +19,7 @@ namespace Game.Scripts.Controller.Level_State
             base.Enter();
 
             _score = _gamePlayController.GetScore();
-            _uiController.SetScore(_score, 0);
+            _uiController.SetScore(_score, _gamePlayController.GetCorrectDoc(), _gamePlayController.GetWrongDoc());
         }
     }
 }

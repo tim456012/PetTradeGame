@@ -15,7 +15,7 @@ namespace Game.Scripts.Controller.Level_State
         {
             Owner = GetComponent<GameManager>();
         }
-
+        
         protected override void AddListeners()
         {
             InputController.ClickedEvent += OnClick;

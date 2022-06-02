@@ -18,7 +18,6 @@ namespace Game.Scripts.Controller
 
         //private Tweener transition;
 
-        // Start is called before the first frame update
         private void Start()
         {
             _canvas = GetComponentInChildren<Canvas>();
@@ -36,9 +35,11 @@ namespace Game.Scripts.Controller
             gamePlayPanel.SetScore(s);
         }
 
-        public void SetScore(int cs, int ws)
+        public void SetScore(int cs, int correctDoc, int wrongDoc)
         {
             endGamePanel.scoreText.text = cs.ToString();
+            endGamePanel.correctDocText.text = correctDoc.ToString();
+            endGamePanel.wrongDocText.text = wrongDoc.ToString();
         }
 
         public void SetTime(string text)

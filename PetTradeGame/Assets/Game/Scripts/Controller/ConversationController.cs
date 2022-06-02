@@ -13,9 +13,9 @@ namespace Game.Scripts.Controller
         [SerializeField] private ConversationPanel rightPanel;
         [SerializeField] private ConversationPanel centerPanel;
 
-        private Canvas canvas;
-        private IEnumerator conversation;
-        private Tweener transition;
+        private Canvas _canvas;
+        private IEnumerator _conversation;
+        private Tweener _transition;
 
         private const string ShowTop = "Show Top";
         private const string ShowBottom = "Show Bottom";
@@ -28,7 +28,7 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            canvas = GetComponentInChildren<Canvas>();
+            _canvas = GetComponentInChildren<Canvas>();
             if (leftPanel.panel.CurrentPosition == null)
             {
                 leftPanel.panel.SetPosition(HideBottom, false);
@@ -47,17 +47,17 @@ namespace Game.Scripts.Controller
 
         public void Show(ConversationData data)
         {
-            canvas.gameObject.SetActive(true);
-            conversation = Sequence(data);
-            conversation.MoveNext();
+            _canvas.gameObject.SetActive(true);
+            _conversation = Sequence(data);
+            _conversation.MoveNext();
         }
 
         public void Next()
         {
-            if (conversation == null || transition != null)
+            if (_conversation == null || _transition != null)
                 return;
 
-            conversation.MoveNext();
+            _conversation.MoveNext();
         }
 
         private IEnumerator Sequence(ConversationData data)
@@ -65,9 +65,9 @@ namespace Game.Scripts.Controller
             if (data == null)
             {
                 yield return null;
-                canvas.gameObject.SetActive(false);
+                _canvas.gameObject.SetActive(false);
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
-                conversation = null;
+                _conversation = null;
                 yield break;
             }
 
@@ -120,23 +120,23 @@ namespace Game.Scripts.Controller
                     yield return null;
 
                 MovePanel(currentPanel, hide);
-                transition.easingControl.completedEvent += delegate
+                _transition.easingControl.completedEvent += delegate
                 {
-                    conversation.MoveNext();
+                    _conversation.MoveNext();
                 };
 
                 yield return null;
             }
 
-            canvas.gameObject.SetActive(false);
+            _canvas.gameObject.SetActive(false);
             CompleteEvent?.Invoke(this, EventArgs.Empty);
         }
 
         private void MovePanel(ConversationPanel conversationPanel, string pos)
         {
-            transition = conversationPanel.panel.SetPosition(pos, true);
-            transition.easingControl.duration = 0.5f;
-            transition.easingControl.equation = EasingEquations.EaseOutQuad;
+            _transition = conversationPanel.panel.SetPosition(pos, true);
+            _transition.easingControl.duration = 0.5f;
+            _transition.easingControl.equation = EasingEquations.EaseOutQuad;
         }
     }
 }
