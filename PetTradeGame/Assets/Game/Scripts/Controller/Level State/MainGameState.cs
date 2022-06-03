@@ -25,8 +25,11 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
-            if(Owner.debugMode)
+            if (Owner.debugMode)
+            {
                 _uiController.SetDebugMode();
+                _gamePlayController.SetDebugMode();
+            }
             
             _gamePlayController.enabled = true;
             

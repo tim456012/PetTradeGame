@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Game.Scripts.Factory
@@ -6,7 +7,106 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Possession License Recipe", menuName = "ScriptableObject/Possession License Recipe")]
     public class PossessionLicenseRecipe : ScriptableObject
     {
-        public List<PossessionLicenseData> possessionLicenseData;
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        
+        public List<PossessionLicenseData> possessionLicenseData = new List<PossessionLicenseData>();
+
+        public void Load(string line)
+        {
+            var lines = new List<string>();
+            foreach (Match match in Regex.Matches(line))
+            {
+                string current = match.Value;
+                if (0 == current.Length)
+                    lines.Add("");
+                lines.Add(current.Trim(',', '"'));
+            }
+
+            var data = new PossessionLicenseData(lines[0])
+            {
+                licenseNumber = new List<string>(),
+                deadline = new List<string>(),
+                name = new List<string>(),
+                id = new List<string>(),
+                businessNumber = new List<string>(),
+                animalName = new List<string>(),
+                contract = new List<string>(),
+                objective = new List<string>(),
+                original = new List<string>(),
+                stampSign = new List<string>()
+            };
+
+            for (int i = 1; i <= 3; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.licenseNumber.Add(lines[i]);
+            }
+            
+            for (int i = 4; i <= 6; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.deadline.Add(lines[i]);
+            }
+            
+            for (int i = 7; i <= 9; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.name.Add(lines[i]);
+            }
+            
+            for (int i = 10; i <= 12; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.id.Add(lines[i]);
+            }
+            
+            for (int i = 13; i <= 15; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.businessNumber.Add(lines[i]);
+            }
+            
+            for (int i = 16; i <= 18; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.animalName.Add(lines[i]);
+            }
+            
+            for (int i = 19; i <= 21; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.contract.Add(lines[i]);
+            }
+            
+            for (int i = 22; i <= 24; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.objective.Add(lines[i]);
+            }
+            
+            for (int i = 25; i <= 27; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.original.Add(lines[i]);
+            }
+            
+            for (int i = 28; i <= 30; i++)
+            {
+                if(string.IsNullOrEmpty(lines[i]))
+                    continue;
+                data.stampSign.Add(lines[i]);
+            }
+            possessionLicenseData.Add(data);
+        }
     }
 
     [System.Serializable]
@@ -43,5 +143,12 @@ namespace Game.Scripts.Factory
 
         [Header("Stamp & Sign Position")]
         public List<string> stampSign;
+        
+        public PossessionLicenseData() {}
+
+        public PossessionLicenseData(string id)
+        {
+            animalId = id;
+        }
     }
 }

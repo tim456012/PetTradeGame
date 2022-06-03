@@ -16,10 +16,11 @@ namespace Game.Scripts.Factory
         /// Create Dealer License by loading it recipe.
         /// </summary>
         /// <param name="name">Recipe name of Dealer License</param>
+        /// <param name="id"></param>
         /// <returns>GameObject</returns>
         public static GameObject CreateDealerLicense(string name, string id)
         {
-            var obj = Resources.Load<DealerLicenseRecipe>($"Recipes/{name}");
+            var obj = Resources.Load<DealerLicenseRecipe>($"Recipes/Dealer License/{name}");
             if (obj != null)
                 return CreateDealerLicense(obj, id);
             Debug.Log("No Document Recipe found");
@@ -30,10 +31,11 @@ namespace Game.Scripts.Factory
         /// 
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         public static GameObject CreateHealthCertificate(string name, string id)
         {
-            var obj = Resources.Load<HealthCertificateRecipe>($"Recipes/{name}");
+            var obj = Resources.Load<HealthCertificateRecipe>($"Recipes/Health Certificate/{name}");
             if (obj != null)
                 return CreateHealthCertificate(obj, id);
             Debug.Log("No Document Recipe found");
@@ -45,10 +47,11 @@ namespace Game.Scripts.Factory
         /// 
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         public static GameObject CreatePossessionLicense(string name, string id)
         {
-            var obj = Resources.Load<PossessionLicenseRecipe>($"Recipes/{name}");
+            var obj = Resources.Load<PossessionLicenseRecipe>($"Recipes/Possession License/{name}");
             if (obj != null)
                 return CreatePossessionLicense(obj, id);
             Debug.Log("No Document Recipe found");
@@ -60,10 +63,11 @@ namespace Game.Scripts.Factory
         /// 
         /// </summary>
         /// <param name="name"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
         public static GameObject CreateSpecialPermit(string name, string id)
         {
-            var obj = Resources.Load<SpecialPermitRecipe>($"Recipes/{name}");
+            var obj = Resources.Load<SpecialPermitRecipe>($"Recipes/Special Permit/{name}");
             if (obj != null)
                 return CreateSpecialPermit(obj, id);
             Debug.Log("No Document Recipe found");
@@ -111,10 +115,6 @@ namespace Game.Scripts.Factory
 
         private static void AddDealerLicenseContent(GameObject obj, List<DealerLicenseData> data, string id)
         {
-            //string selected = licenseData.components[index];
-            //Debug.Log(selected);
-            //_generatedID;
-
             foreach (var dealerLicenseData in data)
             {
                 if (dealerLicenseData.animalId != id)
@@ -156,7 +156,7 @@ namespace Game.Scripts.Factory
                 AddContentText(obj, "TM_AnimalMark", healthCertificateData.animalMark[index]);
                
                 index = Random.Range(0, healthCertificateData.date.Count);
-                AddContentPrefab(obj, "TM_Date", healthCertificateData.date[index]);
+                AddContentText(obj, "TM_Date", healthCertificateData.date[index]);
 
                 index = Random.Range(0, healthCertificateData.stampSign.Count);
                 AddContentPrefab(obj, "StampSignPos", healthCertificateData.stampSign[index]);
@@ -214,8 +214,10 @@ namespace Game.Scripts.Factory
                 AddContentText(obj, "TM_LocationName", specialPermitData.locationName[index]);
                 
                 AddContentPrefab(obj, specialPermitData.line1Position.ToString(), "I_DocumentCircle");
-                AddContentPrefab(obj, specialPermitData.line2Position.ToString(), "I_DocumentCircle");
-                
+
+                index = Random.Range(0, specialPermitData.businessNumber.Count);
+                AddContentText(obj, "TM_Objective", specialPermitData.objective[index]);
+
                 index = Random.Range(0, specialPermitData.businessNumber.Count);
                 AddContentText(obj, "TM_BusinessNumber", specialPermitData.businessNumber[index]);
                 

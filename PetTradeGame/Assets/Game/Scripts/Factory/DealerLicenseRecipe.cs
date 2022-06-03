@@ -61,8 +61,8 @@ namespace Game.Scripts.Factory
                     "T5" => DealerLicenseData.DealerLicensePosition.TickPos5,
                     _ => DealerLicenseData.DealerLicensePosition.None
                 },
-                isProcess = lines[11].Equals("1"),
-                isTick = lines[12].Equals("1"),
+                isProcess = lines[11].Equals("Yes"),
+                isTick = lines[12].Equals("Yes"),
                 stampSign = new List<string>()
             };
 

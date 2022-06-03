@@ -21,13 +21,13 @@ MonoBehaviour:
   scoreData: {fileID: 11400000, guid: 93b71353dbbb73c4cb6b2f9937c968a0, type: 2}
   documentRecipeData:
   - documentRecipeType: DealerLicenseRecipe
-    documentRecipeName: DLTest
+    documentRecipeName: DL_Day1
   - documentRecipeType: HealthCertificateRecipe
-    documentRecipeName: HCTest
+    documentRecipeName: HC_Day1
   - documentRecipeType: PossessionLicenseRecipe
-    documentRecipeName: PLTest
+    documentRecipeName: PL_Day1
   - documentRecipeType: SpecialPermitRecipe
-    documentRecipeName: SPTest
+    documentRecipeName: SP_Day1
   functionalObjectsData:
   - prefab: {fileID: 3278780523530120428, guid: 6ed189573a6c6d84c830df659366dfad, type: 3}
     key: GStamp

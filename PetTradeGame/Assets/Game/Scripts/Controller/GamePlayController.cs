@@ -11,7 +11,7 @@ namespace Game.Scripts.Controller
 
         private int _score, _h = 9, _m, _correctDocuments, _wrongDocuments;
         private float _time, _updateTime;
-        private bool _startTimer;
+        private bool _startTimer, _isDebugMode;
 
         public static event EventHandler<InfoEventArgs<string>> TimerEvent;
         public static event EventHandler GameFinishEvent;
@@ -28,7 +28,7 @@ namespace Game.Scripts.Controller
 
         private void Update()
         {
-            if(_startTimer)
+            if(_startTimer && !_isDebugMode)
                 UpdateTime();
         }
 
@@ -111,6 +111,11 @@ namespace Game.Scripts.Controller
         public int GetWrongDoc()
         {
             return _wrongDocuments;
+        }
+
+        public void SetDebugMode()
+        {
+            _isDebugMode = true;
         }
     }
 }

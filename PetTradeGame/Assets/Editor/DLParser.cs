@@ -41,10 +41,10 @@ namespace Editor
                 }
 
                 string[] readText = File.ReadAllLines(file.ToString());
-                var dlData = ScriptableObject.CreateInstance<DealerLicenseRecipe>();
+                var data = ScriptableObject.CreateInstance<DealerLicenseRecipe>();
                 for (int i = 1; i < readText.Length; ++i)
                 {
-                    dlData.Load(readText[i]);
+                    data.Load(readText[i]);
                 }
                 string assetName = file.Name;
                 int filExtPos = assetName.LastIndexOf('.');
@@ -54,7 +54,7 @@ namespace Editor
                 }
 
                 string fileName = $"{targetPath}{assetName}.asset";
-                AssetDatabase.CreateAsset(dlData, fileName);
+                AssetDatabase.CreateAsset(data, fileName);
             }
         }
     }
