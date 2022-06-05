@@ -28,3 +28,18 @@ MonoBehaviour:
     isTick: 1
     stampSign:
     - I_Sign_1
+  - animalId: HTb
+    businessName:
+    - "\u611B\u5BF5\u4E4B\u5BB6"
+    - "\u767C\u54E5\u9B5A\u5E97"
+    businessNumber:
+    - 12345671
+    - 39856021
+    line1Position: 3
+    line2Position: 4
+    line3Position: 0
+    line4Position: 10
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Sign_1

@@ -26,10 +26,10 @@ namespace Game.Scripts.Controller.Level_State
         {
             base.Enter();
             if (Owner.debugMode)
-            {
                 _uiController.SetDebugMode();
-                _gamePlayController.SetDebugMode();
-            }
+            
+            if (Owner.stopTimer)
+                _gamePlayController.SetTimerStop();
             
             _gamePlayController.enabled = true;
             
@@ -38,7 +38,7 @@ namespace Game.Scripts.Controller.Level_State
 
             var recipeDataList = Owner.levelData.documentRecipeData;
             var scoreData = Owner.levelData.scoreData;
-            
+
             _objectController.InitFactory(recipeDataList, scoreData);
             _objectController.InitObjectPool(Owner.levelData.functionalObjectsData);
 

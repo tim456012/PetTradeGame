@@ -34,3 +34,24 @@ MonoBehaviour:
     - HK
     stampSign:
     - I_Sign_1
+  - animalId: HTb
+    licenseNumber:
+    - 12345671
+    deadline:
+    - 123456
+    name:
+    - da
+    id:
+    - 123
+    businessNumber:
+    - 1234567
+    animalName:
+    - "\u63A5\u543B\u9B5A"
+    contract:
+    - 1
+    objective:
+    - IDK
+    original:
+    - HK
+    stampSign:
+    - I_Sign_1

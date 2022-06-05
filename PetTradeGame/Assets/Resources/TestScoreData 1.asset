@@ -15,3 +15,5 @@ MonoBehaviour:
   scoreContents:
   - id: HTa
     score: 1
+  - id: HTb
+    score: -1

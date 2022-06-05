@@ -32,3 +32,22 @@ MonoBehaviour:
     - "\u6DE1\u7C89\u8272, \u95778\u5398\u7C73"
     stampSign:
     - I_Sign_1
+  - animalId: HTb
+    locationName:
+    - "\u99AC\u4F86\u897F\u4E9E"
+    line1Position: 1
+    objective:
+    - "\u8CA9\u552E"
+    businessNumber:
+    - ATL00081
+    deadline:
+    - 9/10/2022
+    animalName:
+    - "\u63A5\u543B\u9B5A"
+    animalCount:
+    - 3
+    animalFeature:
+    - "\u4E73\u767D\u8272, \u5404\u9C2D\u5747\u900F\u660E\uFF0C\u95773\u5398\u7C73"
+    - "\u6DE1\u7C89\u8272, \u95778\u5398\u7C73"
+    stampSign:
+    - I_Sign_1

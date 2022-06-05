@@ -15,6 +15,8 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
+            _uiController.enabled = true;
+            
         }
 
         protected override void AddListeners()

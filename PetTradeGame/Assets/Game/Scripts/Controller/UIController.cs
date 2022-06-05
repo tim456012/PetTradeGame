@@ -12,15 +12,18 @@ namespace Game.Scripts.Controller
         [SerializeField] private EndGamePanel endGamePanel;
 
         private Canvas _canvas;
-        //private bool _isDebugMode;
         
         public static event EventHandler StartGameEvent;
-
+        public static event EventHandler NextDayEvent;
+        
         //private Tweener transition;
 
         private void Start()
         {
             _canvas = GetComponentInChildren<Canvas>();
+            _canvas.enabled = true;
+            
+            mainMenuPanel.gameObject.SetActive(true);
             mainMenuPanel.btnStart.onClick.AddListener(OnBtnStartClicked);
         }
 
@@ -28,6 +31,11 @@ namespace Game.Scripts.Controller
         {
             StartGameEvent?.Invoke(this, EventArgs.Empty);
             gamePlayPanel.gameObject.SetActive(true);
+        }
+
+        private void OnBtnNextDayClicked()
+        {
+            NextDayEvent?.Invoke(this, EventArgs.Empty);
         }
 
         public void SetScore(int s)
@@ -50,12 +58,13 @@ namespace Game.Scripts.Controller
         public void SetDebugMode()
         {
             gamePlayPanel.gameObject.SetActive(true);
-            //_isDebugMode = true;
+            mainMenuPanel.gameObject.SetActive(false);
         }
 
         public void EndGame()
         {
             endGamePanel.gameObject.SetActive(true);
+            endGamePanel.btnNextDay.onClick.AddListener(OnBtnNextDayClicked);
         }
     }
 }

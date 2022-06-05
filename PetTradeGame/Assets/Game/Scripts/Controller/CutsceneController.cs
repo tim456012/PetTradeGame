@@ -7,42 +7,42 @@ namespace Game.Scripts.Controller
 {
     public class CutsceneController : MonoBehaviour
     {
-        private VideoPlayer videoPlayer;
-        private Canvas canvas;
-
-        private IEnumerator routine;
+        private VideoPlayer _videoPlayer;
+        private Canvas _canvas;
+        private IEnumerator _routine;
 
         public static event EventHandler CompleteEvent;
 
         // Start is called before the first frame update
         private void Start()
         {
-            videoPlayer = GetComponent<VideoPlayer>();
-            canvas = GetComponentInChildren<Canvas>();
+            _videoPlayer = GetComponent<VideoPlayer>();
+            _canvas = GetComponentInChildren<Canvas>();
 
-            videoPlayer.playOnAwake = false;
-            videoPlayer.targetCameraAlpha = 1f;
+            _videoPlayer.playOnAwake = false;
+            _videoPlayer.targetCameraAlpha = 1f;
 
-            canvas.gameObject.SetActive(false);
+            _canvas.gameObject.SetActive(false);
         }
 
-        public void playCutScene(VideoClip video)
+        public void PlayCutScene(VideoClip introVideo)
         {
-            videoPlayer.clip = video;
-            if (routine != null)
-                StopCoroutine(routine);
+            _videoPlayer.enabled = true;
+            _videoPlayer.clip = introVideo;
+            if (_routine != null)
+                StopCoroutine(_routine);
 
-            canvas.gameObject.SetActive(true);
-            routine = Sequence(videoPlayer);
-            StartCoroutine(routine);
+            _canvas.gameObject.SetActive(true);
+            _routine = Sequence(_videoPlayer);
+            StartCoroutine(_routine);
         }
 
         private IEnumerator Sequence(VideoPlayer vp)
         {
-            if (videoPlayer.clip == null)
+            if (_videoPlayer.clip == null)
             {
                 yield return null;
-                canvas.gameObject.SetActive(false);
+                _canvas.gameObject.SetActive(false);
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
                 yield break;
             }
@@ -73,8 +73,9 @@ namespace Game.Scripts.Controller
                 Debug.Log("Video is end.");
                 player.clip = null;
                 player.enabled = false;
-
-                canvas.gameObject.SetActive(false);
+                
+                
+                _canvas.gameObject.SetActive(false);
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
             };
         }

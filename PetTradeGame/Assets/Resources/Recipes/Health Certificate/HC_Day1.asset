@@ -26,3 +26,16 @@ MonoBehaviour:
     stampSign:
     - I_Sign_1
     - I_Sign_3
+  - animalId: HTb
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u63A5\u543B\u9B5A"
+    animalMark:
+    - ' '
+    date:
+    - "\u6D77\u904B, 2022/9/24"
+    - "\u7A7A\u904B, 2022/9/25"
+    stampSign:
+    - I_Sign_1
+    - I_Sign_3

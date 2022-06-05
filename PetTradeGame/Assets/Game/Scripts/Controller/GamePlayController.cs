@@ -6,12 +6,12 @@ namespace Game.Scripts.Controller
 {
     public class GamePlayController : MonoBehaviour
     {
-        private const float TargetTime = 10f;
+        private const float TargetTime = 365f;
         private const float UpdateTimeThreshold = 11.25f; //360 / (8 * 4)
 
         private int _score, _h = 9, _m, _correctDocuments, _wrongDocuments;
         private float _time, _updateTime;
-        private bool _startTimer, _isDebugMode;
+        private bool _startTimer, _isTimerStop;
 
         public static event EventHandler<InfoEventArgs<string>> TimerEvent;
         public static event EventHandler GameFinishEvent;
@@ -20,15 +20,10 @@ namespace Game.Scripts.Controller
         {
             enabled = false;
         }
-
-        private void Start()
-        {
-            
-        }
-
+        
         private void Update()
         {
-            if(_startTimer && !_isDebugMode)
+            if(_startTimer && !_isTimerStop)
                 UpdateTime();
         }
 
@@ -113,9 +108,18 @@ namespace Game.Scripts.Controller
             return _wrongDocuments;
         }
 
-        public void SetDebugMode()
+        public void SetTimerStop()
         {
-            _isDebugMode = true;
+            _isTimerStop = true;
+        }
+
+        public void Reset()
+        {
+            _time = 0f;
+            _updateTime = 0f;
+            _score = 0;
+            _correctDocuments = 0;
+            _wrongDocuments = 0;
         }
     }
 }

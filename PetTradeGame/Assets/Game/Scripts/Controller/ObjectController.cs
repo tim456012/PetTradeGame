@@ -29,7 +29,7 @@ namespace Game.Scripts.Controller
         private static readonly List<Poolable> Instances = new List<Poolable>();
         private List<RecipeData> _recipeDataList;
         private ScoreData _scoreData;
-        private bool _isScaled, _isNotReady;
+        private bool _isScaled, _isNotReady, _isEnd;
 
         public static event EventHandler<InfoEventArgs<sbyte>> LicenseSubmittedEvent;
 
@@ -44,19 +44,20 @@ namespace Game.Scripts.Controller
         }
 
         #region Initiation
-        //TODO: Load next level data.
         public void InitFactory(List<RecipeData> documentList, ScoreData scoreData)
         {
             var instance = gameObject.GetComponentInChildren<FactorySubController>();
+            _recipeDataList = new List<RecipeData>(documentList);
+            _scoreData = scoreData;
+
             if (instance)
             {
                 _factorySubController = instance;
+                ProduceDocument(_recipeDataList, _scoreData.scoreContents);
                 return;
             }
 
             _factorySubController = gameObject.AddComponent<FactorySubController>();
-            _recipeDataList = new List<RecipeData>(documentList);
-            _scoreData = scoreData;
             ProduceDocument(_recipeDataList, _scoreData.scoreContents);
         }
 
@@ -163,6 +164,13 @@ namespace Game.Scripts.Controller
         {
             _isNotReady = true;
             yield return new WaitForSeconds(2);
+            if (_isEnd)
+            {
+                _isEnd = false;
+                _isNotReady = false;
+                yield break;
+            }
+            
             ProduceDocument(_recipeDataList, _scoreData.scoreContents);
             _isNotReady = false;
         }
@@ -234,6 +242,7 @@ namespace Game.Scripts.Controller
 
         public void StopProcess()
         {
+            _isEnd = true;
             if (_reGenerateDocument == null)
                 return;
             StopCoroutine(_reGenerateDocument);

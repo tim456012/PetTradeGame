@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 namespace Game.Scripts.View_Model_Components
 {
@@ -7,6 +8,17 @@ namespace Game.Scripts.View_Model_Components
     public class EndGamePanel : MonoBehaviour
     {
         public TextMeshProUGUI correctDocText, wrongDocText, scoreText;
+        public Button btnNextDay;
         
+        private void Start()
+        {
+            btnNextDay.onClick.AddListener(OnBtnNextDayClicked);
+        }
+
+        private void OnBtnNextDayClicked()
+        {
+            Debug.Log("Go to next day");
+            gameObject.SetActive(false);
+        }
     }
 }

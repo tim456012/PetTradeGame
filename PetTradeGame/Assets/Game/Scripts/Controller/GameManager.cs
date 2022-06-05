@@ -10,6 +10,7 @@ namespace Game.Scripts.Controller
         public LevelData levelData;
         public GameObject world;
         public bool debugMode;
+        public bool stopTimer;
         
         private void Start()
         {

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1086b88fc98ec614d9d2ec3578c51076, type: 3}
   m_Name: Test Level Data
   m_EditorClassIdentifier: 
-  firstVideo: {fileID: 0}
-  secondVideo: {fileID: 0}
-  introDialogue: {fileID: 0}
+  introVideo: {fileID: 32900000, guid: c0f2083cd6a935f468169597daed81a7, type: 3}
+  dayIntroVideo: {fileID: 32900000, guid: a8797c5fbf3be7e47a3ecf44b6a5530f, type: 3}
+  introDialogue: {fileID: 11400000, guid: 838e8c5706053ae49b29db459d23bf12, type: 2}
   middleDialogue: {fileID: 0}
   outroDialogue: {fileID: 0}
   otherDialogue: {fileID: 0}
@@ -41,6 +41,6 @@ MonoBehaviour:
     spawnPosition: StampPos2
   - prefab: {fileID: 5812135187394343717, guid: d346dcd1142c1d547bb35d74ae0289c3, type: 3}
     key: License
-    amount: 1
-    maxAmount: 5
+    amount: 5
+    maxAmount: 10
     spawnPosition: LicensePos

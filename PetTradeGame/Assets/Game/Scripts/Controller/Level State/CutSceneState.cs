@@ -9,13 +9,18 @@ namespace Game.Scripts.Controller.Level_State
     public class CutSceneState : GameLoopState
     {
         private CutsceneController _cutsceneController;
-        private VideoClip _video;
+        private VideoClip _introVideo, _dayIntroVideo;
+        private bool _isNextVideoPlay;
 
         protected override void Awake()
         {
             base.Awake();
             _cutsceneController = Owner.GetComponentInChildren<CutsceneController>();
-            _video = Owner.levelData.firstVideo;
+            _introVideo = Owner.levelData.introVideo;
+            _dayIntroVideo = Owner.levelData.dayIntroVideo;
+
+            if (_dayIntroVideo != null)
+                _isNextVideoPlay = true;
         }
 
         protected override void OnDestroy()
@@ -31,7 +36,7 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
-            _cutsceneController.playCutScene(_video);
+            _cutsceneController.PlayCutScene(_introVideo);
         }
 
         protected override void AddListeners()
@@ -48,6 +53,13 @@ namespace Game.Scripts.Controller.Level_State
 
         private void OnCompleteVideoPlaying(object sender, EventArgs e)
         {
+            if (_isNextVideoPlay)
+            {
+                _cutsceneController.PlayCutScene(_dayIntroVideo);
+                _isNextVideoPlay = false;
+                return;
+            }
+            
             Owner.ChangeState<IntroState>();
         }
     }
