@@ -92,7 +92,7 @@ namespace Game.Scripts.Controller.Level_State
             _objectController.ProcessCollision(original, col.info);
         }
 
-        private void OnSubmitted(object sender, InfoEventArgs<sbyte> e)
+        private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
             string id = _objectController.GetGeneratedID();
             var content = Owner.levelData.scoreData.scoreContents;

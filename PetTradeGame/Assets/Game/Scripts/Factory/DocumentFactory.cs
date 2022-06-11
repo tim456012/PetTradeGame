@@ -78,6 +78,12 @@ namespace Game.Scripts.Factory
         #region Document Process
         private static GameObject CreateDealerLicense(DealerLicenseRecipe recipe, string id)
         {
+            foreach (var data in recipe.dealerLicenseData)
+            {
+                if (data.animalId != id)
+                    return null;
+            }
+
             //Instantiate Document Base
             var obj = InstantiateGameObj($"Documents/I_DealerLicense");
             obj.name = recipe.name;
@@ -120,12 +126,15 @@ namespace Game.Scripts.Factory
                 if (dealerLicenseData.animalId != id)
                     continue;
 
-                int index = Random.Range(0, dealerLicenseData.businessName.Count);
-                //Debug.Log(index);
-                AddContentText(obj, "TM_BusinessName", dealerLicenseData.businessName[index]);
+                var businessName = dealerLicenseData.businessName;
+                var businessNumber = dealerLicenseData.businessNumber;
+                var stampSign = dealerLicenseData.stampSign;
                 
-                index = Random.Range(0, dealerLicenseData.businessNumber.Count);
-                AddContentText(obj, "TM_BusinessNumber", dealerLicenseData.businessNumber[index]);
+                int index = Random.Range(0, businessName.Count);
+                AddContentText(obj, "TM_BusinessName", businessName.Count == 0 ? businessName[0] : businessName[index]);
+                
+                index = Random.Range(0, businessNumber.Count);
+                AddContentText(obj, "TM_BusinessNumber",  businessNumber.Count == 0 ? businessNumber[0] : businessNumber[index]);
                 
                 AddContentPrefab(obj, dealerLicenseData.line1Position.ToString(), "I_DocumentCircle");
                 AddContentPrefab(obj, dealerLicenseData.line2Position.ToString(), "I_DocumentCircle");
@@ -135,7 +144,7 @@ namespace Game.Scripts.Factory
                 AddContentPrefab(obj, dealerLicenseData.isTick, "TickPos_7", "I_DocumentCircle");
                 
                 index = Random.Range(0, dealerLicenseData.stampSign.Count);
-                AddContentPrefab(obj, "StampSignPos", dealerLicenseData.stampSign[index]);
+                AddContentPrefab(obj, "StampSignPos", stampSign.Count == 0 ? stampSign[0] : stampSign[index]);
             }
         }
 
@@ -146,21 +155,25 @@ namespace Game.Scripts.Factory
                 if (healthCertificateData.animalId != id)
                     continue;
 
+                var animalName = healthCertificateData.animalName;
+                var animalMark = healthCertificateData.animalMark;
+                var date = healthCertificateData.date;
+                var stampSign = healthCertificateData.stampSign;
+                
                 AddContentPrefab(obj, healthCertificateData.isOfficial, "TickPos_1", "I_DocumentCircle");
                 AddContentPrefab(obj, healthCertificateData.isLocal, "TickPos_2", "I_DocumentCircle");
                 
                 int index = Random.Range(0, healthCertificateData.animalName.Count);
-                AddContentText(obj, "TM_AnimalName", healthCertificateData.animalName[index]);
+                AddContentText(obj, "TM_AnimalName",  animalName.Count == 0 ? animalName[0] : animalName[index]);
                 
                 index = Random.Range(0, healthCertificateData.animalMark.Count);
-                AddContentText(obj, "TM_AnimalMark", healthCertificateData.animalMark[index]);
-               
+                AddContentText(obj, "TM_AnimalMark", animalMark.Count == 0 ? animalMark[0] : animalMark[index]);
+                
                 index = Random.Range(0, healthCertificateData.date.Count);
-                AddContentText(obj, "TM_Date", healthCertificateData.date[index]);
+                AddContentText(obj, "TM_Date", date.Count == 0 ? date[0] : date[index]);
 
                 index = Random.Range(0, healthCertificateData.stampSign.Count);
-                AddContentPrefab(obj, "StampSignPos", healthCertificateData.stampSign[index]);
-
+                AddContentPrefab(obj, "StampSignPos", stampSign.Count == 0 ? stampSign[0] : stampSign[index]);
             }
         }
 
@@ -170,36 +183,47 @@ namespace Game.Scripts.Factory
             {
                 if (possessionLicenseData.animalId != id)
                     continue;
+
+                var licenseNumber = possessionLicenseData.licenseNumber;
+                var deadline = possessionLicenseData.deadline;
+                var name = possessionLicenseData.name;
+                var bId = possessionLicenseData.id;
+                var businessNumber = possessionLicenseData.businessNumber;
+                var animalName = possessionLicenseData.animalName;
+                var contract = possessionLicenseData.contract;
+                var objective = possessionLicenseData.objective;
+                var original = possessionLicenseData.original;
+                var stampSign = possessionLicenseData.stampSign;
                 
                 int index = Random.Range(0, possessionLicenseData.licenseNumber.Count);
-                AddContentText(obj, "TM_LicenseNumber", possessionLicenseData.licenseNumber[index]);
+                AddContentText(obj, "TM_LicenseNumber", licenseNumber.Count == 0 ? licenseNumber[0] : licenseNumber[index]);
                 
                 index = Random.Range(0, possessionLicenseData.deadline.Count);
-                AddContentText(obj, "TM_Deadline", possessionLicenseData.deadline[index]);
+                AddContentText(obj, "TM_Deadline", deadline.Count == 0 ? deadline[0] : deadline[index]);
                
                 index = Random.Range(0, possessionLicenseData.name.Count);
-                AddContentText(obj, "TM_Name", possessionLicenseData.name[index]);
+                AddContentText(obj, "TM_Name", name.Count == 0 ? name[0] : name[index]);
                 
                 index = Random.Range(0, possessionLicenseData.id.Count);
-                AddContentText(obj, "TM_ID", possessionLicenseData.id[index]);
+                AddContentText(obj, "TM_ID", bId.Count == 0 ? bId[0] : bId[index]);
                 
                 index = Random.Range(0, possessionLicenseData.businessNumber.Count);
-                AddContentText(obj, "TM_BusinessNumber", possessionLicenseData.businessNumber[index]);
+                AddContentText(obj, "TM_BusinessNumber", businessNumber.Count == 0 ? businessNumber[0] : businessNumber[index]);
 
                 index = Random.Range(0, possessionLicenseData.animalName.Count);
-                AddContentText(obj, "TM_AnimalName", possessionLicenseData.animalName[index]);
+                AddContentText(obj, "TM_AnimalName", animalName.Count == 0 ? animalName[0] : animalName[index]);
                 
                 index = Random.Range(0, possessionLicenseData.contract.Count);
-                AddContentText(obj, "TM_Contract", possessionLicenseData.contract[index]);
+                AddContentText(obj, "TM_Contract", contract.Count == 0 ? contract[0] : contract[index]);
                 
                 index = Random.Range(0, possessionLicenseData.objective.Count);
-                AddContentText(obj, "TM_Contract", possessionLicenseData.objective[index]);
+                AddContentText(obj, "TM_Objective", objective.Count == 0 ? objective[0] : objective[index]);
 
                 index = Random.Range(0, possessionLicenseData.original.Count);
-                AddContentText(obj, "TM_Contract", possessionLicenseData.original[index]);
-                
+                AddContentText(obj, "TM_Original", original.Count == 0 ? original[0] : original[index]);
+
                 index = Random.Range(0, possessionLicenseData.stampSign.Count);
-                AddContentPrefab(obj, "StampSignPos", possessionLicenseData.stampSign[index]);
+                AddContentPrefab(obj, "StampSignPos", stampSign.Count == 0 ? stampSign[0] : stampSign[index]);
             }
         }
 
@@ -209,32 +233,41 @@ namespace Game.Scripts.Factory
             {
                 if (specialPermitData.animalId != id)
                     continue;
+
+                var locationName = specialPermitData.locationName;
+                var objective = specialPermitData.objective;
+                var businessNumber = specialPermitData.businessNumber;
+                var deadline = specialPermitData.deadline;
+                var animalName = specialPermitData.animalName;
+                var animalCount = specialPermitData.animalCount;
+                var animalFeature = specialPermitData.animalFeature;
+                var stampSign = specialPermitData.stampSign;
                 
                 int index = Random.Range(0, specialPermitData.locationName.Count);
-                AddContentText(obj, "TM_LocationName", specialPermitData.locationName[index]);
+                AddContentText(obj, "TM_LocationName", locationName.Count == 0 ? locationName[0] : locationName[index]);
                 
                 AddContentPrefab(obj, specialPermitData.line1Position.ToString(), "I_DocumentCircle");
 
-                index = Random.Range(0, specialPermitData.businessNumber.Count);
-                AddContentText(obj, "TM_Objective", specialPermitData.objective[index]);
+                index = Random.Range(0, specialPermitData.objective.Count);
+                AddContentText(obj, "TM_Objective", objective.Count == 0 ? objective[0] : objective[index]);
 
                 index = Random.Range(0, specialPermitData.businessNumber.Count);
-                AddContentText(obj, "TM_BusinessNumber", specialPermitData.businessNumber[index]);
+                AddContentText(obj, "TM_BusinessNumber", businessNumber.Count == 0 ? businessNumber[0] : businessNumber[index]);
                 
                 index = Random.Range(0, specialPermitData.deadline.Count);
-                AddContentText(obj, "TM_Deadline", specialPermitData.deadline[index]);
+                AddContentText(obj, "TM_Deadline", deadline.Count == 0 ? deadline[0] : deadline[index]);
                 
                 index = Random.Range(0, specialPermitData.animalName.Count);
-                AddContentText(obj, "TM_AnimalName", specialPermitData.animalName[index]);
+                AddContentText(obj, "TM_AnimalName", animalName.Count == 0 ? animalName[0] : animalName[index]);
                 
                 index = Random.Range(0, specialPermitData.animalCount.Count);
-                AddContentText(obj, "TM_AnimalCount", specialPermitData.animalCount[index]);
+                AddContentText(obj, "TM_AnimalCount", animalCount.Count == 0 ? animalCount[0] : animalCount[index]);
 
                 index = Random.Range(0, specialPermitData.animalFeature.Count);
-                AddContentText(obj, "TM_AnimalFeature", specialPermitData.animalFeature[index]);
+                AddContentText(obj, "TM_AnimalFeature", animalFeature.Count == 0 ? animalFeature[0] : animalFeature[index]);
                 
                 index = Random.Range(0, specialPermitData.stampSign.Count);
-                AddContentPrefab(obj, "StampSignPos", specialPermitData.stampSign[index]);
+                AddContentPrefab(obj, "StampSignPos", stampSign.Count == 0 ? stampSign[0] : stampSign[index]);
             }
         }
         

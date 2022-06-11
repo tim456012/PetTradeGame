@@ -1,25 +1,25 @@
-AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Name 3,Animal Mark,Animal Mark 2,Animal Mark 3,Date,Date 2,Date 3,Stamp And Sign,Stamp And Sign 2,Stamp And Sign 3
-HTa,Yes,No,接吻魚,,,,,,"海運, 2022/9/24","空運, 2022/9/25",,I_Sign_1,I_Sign_3,
-HTb,No,Yes,接吻魚,,,,,,"空運, 2022/9/25","空運, 2022/9/25","海運, 2022/9/28",I_Sign_1,I_Sign_3,I_Sign_4
-HTaF,Yes,No,接吻魚,,,,,,"海運, 2022/9/24","空運, 2022/9/25",,I_Sign_1,I_Sign_2,
-HTbF,No,No,接吻魚,,,,,,"空運, 2022/9/25","空運, 2022/9/25","海運, 2022/9/28",I_Sign_1,none,
-TSa,Yes,No,金絲貓,,,,,,"陸運, 2022/9/24","陸運, 2022/9/24","陸運, 2022/9/25",I_Sign_1,I_Sign_3,I_Sign_4
-TSb,No,Yes,豹虎,,,,,,"陸運, 2022/9/26","陸運, 2022/9/26",,I_Sign_1,I_Sign_3,
-TSaF,Yes,No,金絲貓,,,,,,"海運, 2022/9/24","陸運, 2022/9/24","陸運, 2022/9/25",I_Sign_1,I_Sign_3,I_Sign_4
-TSbF,Yes,No,金絲貓,金絲雀,,,,,"陸運, 2022/9/26","陸運, 2022/9/27",,I_Sign_1,I_Sign_3,
-SCa,No,Yes,金絲雀,,,已植入晶片,,,"海運, 2022/9/24","空運, 2022/9/25","空運, 2022/9/25",I_Sign_1,I_Sign_3,I_Sign_4
-SCb,No,Yes,金絲雀,,,已植入晶片,,,"空運, 2022/9/25","海運, 2022/9/28",,I_Sign_1,I_Sign_3,
-SCaF,No,Yes,金絲雀,,,已植入晶片,,,"海運, 2022/9/24","空運, 2022/9/25","空運, 2022/9/25",I_Sign_1,I_Sign_3,
-SCbF,Yes,No,金絲雀,,,已植入晶片,,,"空運, 2022/9/25","海運, 2022/9/28",,I_Sign_1,I_Sign_3,
-PHa,No,Yes,水虎魚,紅肚食人鯧,,,,,"海運, 2022/10/23","海運, 2022/10/24","空運, 2022/10/25",I_Sign_1,I_Sign_3,I_Sign_4
-PHb,Yes,No,紅肚食人鯧,,,,,,"空運, 2022/10/26","海運, 2022/10/27",,I_Sign_1,I_Sign_3,
-PHaF,Yes,No,水虎魚,紅肚食人鯧,,,,,"海運, 2022/10/23","海運, 2022/10/24","空運, 2022/10/25",I_Sign_1,I_Sign_2,I_Sign_3
-PHbF,Yes,No,接吻魚,紅肚食人鯧,,,,,"空運, 2022/10/26","空運, 2022/10/27",,I_Sign_1,I_Sign_3,
-BTa,No,Yes,黃唇魚,,,,,,"陸運, 2022/9/10","陸運, 2022/9/11","陸運, 2022/9/12",I_Sign_1,I_Sign_3,I_Sign_4
-BTb,No,Yes,黃唇魚,,,,,,"陸運, 2022/9/13","陸運, 2022/9/14",,I_Sign_1,I_Sign_3,
-BTaF,Yes,No,黃唇魚,,,,,,"陸運, 2022/9/10","陸運, 2022/9/11","陸運, 2022/9/12",I_Sign_1,I_Sign_3,I_Sign_4
-BTbF,No,Yes,黃唇魚,,,,,,"陸運, 2022/8/10","陸運, 2022/9/14",,I_Sign_3,none,
-EAa,No,Yes,紅斑魚,,,,,,"海運, 2022/9/20","海運, 2022/9/21","陸運, 2022/9/20",I_Sign_1,I_Sign_2,I_Sign_3
-EAb,Yes,No,紅斑魚,,,,,,"陸運, 2022/9/21","陸運, 2022/9/22",,I_Sign_1,I_Sign_2,
-EAaF,No,Yes,紅斑魚,,,,,,"海運, 2022/9/20","海運, 2022/9/21","陸運, 2022/9/20",I_Sign_1,I_Sign_2,I_Sign_3
-EAbF,Yes,No,紅斑魚,,,,,,"陸運, 2012/9/21","陸運, 2022/9/22",,I_Sign_1,I_Sign_2,
+AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Mark,Animal Mark 2,Date,Date 2,Date 3,Stamp And Sign,Stamp And Sign 2,Stamp And Sign 3
+HTa,Yes,No,接吻魚,, ,,2022/9/24,2022/9/25,,I_Sign_1,I_Sign_2,
+HTb,No,Yes,接吻魚,, ,,2022/9/25,2022/9/25,2022/9/28,I_Sign_1,I_Sign_2,
+HTaF,Yes,No,接吻魚,, ,,2022/9/24,2022/9/25,,I_Sign_1,I_Sign_5,
+HTbF,No,No,接吻魚,, ,,2022/9/25,2022/9/25,2022/9/28,I_Sign_1, ,I_Sign_4
+TSa,Yes,No,金絲貓,豹虎, ,,2022/9/24,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2,
+TSb,No,Yes,豹虎,金絲貓, ,,2022/9/26,2022/9/26,,I_Sign_1,I_Sign_2,
+TSaF,Yes,No,金絲貓,, ,,2022/9/24,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2,I_Sign_3
+TSbF,Yes,No,金絲貓,金絲雀, ,,2022/9/26,2022/9/27,,I_Sign_1,I_Sign_2,
+SCa,No,Yes,金絲雀,,已植入晶片,已帶晶片手環,2022/9/24,2022/9/25,2022/9/25,I_Sign_1,I_Sign_2,
+SCb,No,Yes,金絲雀,,已植入晶片,已帶晶片手環,2022/9/25,2022/9/28,,I_Sign_1,I_Sign_2,
+SCaF,No,Yes,金絲雀,,已植入晶片,已帶晶片手環,2022/9/24,2022/9/25,2022/9/25,I_Sign_1,I_Sign_2,
+SCbF,Yes,No,金絲雀,,已植入晶片,,2022/9/25,2022/9/28,,I_Sign_1,I_Sign_2,
+PHa,No,Yes,水虎魚,紅肚食人鯧, ,,2022/10/23,2022/10/24,2022/10/25,I_Sign_1,I_Sign_2,
+PHb,Yes,No,紅肚食人鯧,, ,,2022/10/26,2022/10/27,,I_Sign_1,I_Sign_2,
+PHaF,Yes,No,水虎魚,紅肚食人鯧, ,,2022/10/23,2022/10/24,2022/10/25,I_Sign_1,I_Sign_5,I_Sign_4
+PHbF,Yes,No,接吻魚,紅肚食人鯧, ,,2022/10/26,2022/10/27,,I_Sign_1,I_Sign_2,
+BTa,No,Yes,黃唇魚,, ,,2022/9/10,2022/9/11,2022/9/12,I_Sign_1,I_Sign_2,
+BTb,No,Yes,黃唇魚,, ,,2022/9/13,2022/9/14,,I_Sign_1,I_Sign_2,
+BTaF,Yes,No,黃唇魚,, ,,2022/9/10,2022/9/11,2022/9/12,I_Sign_1,I_Sign_2,I_Sign_3
+BTbF,No,Yes,黃唇魚,, ,,2022/8/10,2022/9/14,,I_Sign_2, ,
+EAa,No,Yes,紅斑魚,, ,,2022/9/20,2022/9/21,2022/9/20,I_Sign_1,I_Sign_2,
+EAb,Yes,No,紅斑魚,, ,,2022/9/21,2022/9/22,,I_Sign_1,I_Sign_2,
+EAaF,No,Yes,紅斑魚,, ,,2022/9/20,2022/9/21,2022/9/20,I_Sign_1,I_Sign_2,
+EAbF,Yes,No,紅斑魚,, ,,2012/9/21,2022/9/22,,I_Sign_1,I_Sign_2,

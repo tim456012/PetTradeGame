@@ -12,20 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1086b88fc98ec614d9d2ec3578c51076, type: 3}
   m_Name: Test Level Data
   m_EditorClassIdentifier: 
-  introVideo: {fileID: 32900000, guid: c0f2083cd6a935f468169597daed81a7, type: 3}
-  dayIntroVideo: {fileID: 32900000, guid: a8797c5fbf3be7e47a3ecf44b6a5530f, type: 3}
-  introDialogue: {fileID: 11400000, guid: 838e8c5706053ae49b29db459d23bf12, type: 2}
+  introVideo: {fileID: 0}
+  dayIntroVideo: {fileID: 0}
+  introDialogue: {fileID: 0}
   middleDialogue: {fileID: 0}
   outroDialogue: {fileID: 0}
   otherDialogue: {fileID: 0}
-  scoreData: {fileID: 11400000, guid: 93b71353dbbb73c4cb6b2f9937c968a0, type: 2}
+  scoreData: {fileID: 11400000, guid: 6c9ddc56e4c10f4468e44df1525fadbf, type: 2}
   documentRecipeData:
   - documentRecipeType: DealerLicenseRecipe
     documentRecipeName: DL_Day1
   - documentRecipeType: HealthCertificateRecipe
     documentRecipeName: HC_Day1
-  - documentRecipeType: PossessionLicenseRecipe
-    documentRecipeName: PL_Day1
   - documentRecipeType: SpecialPermitRecipe
     documentRecipeName: SP_Day1
   functionalObjectsData:

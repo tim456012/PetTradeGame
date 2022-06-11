@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Controller.SubController;
+using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
 using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -16,23 +18,28 @@ using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
-    //TODO: Store correct and wrong number of document
     public class ObjectController : MonoBehaviour
     {
+        #region Field
+        
         [SerializeField] private Button scalerButton;
 
-        private FactorySubController _factorySubController;
+        private readonly List<GameObject> _documents = new List<GameObject>();
+        private readonly static List<Poolable> Instances = new List<Poolable>();
+
+        private FactoryController _factoryController;
         private DragAndDropSubController _dragAndDropSubController;
         private GameObject _lastObj;
         private IEnumerator _reGenerateDocument;
-        private readonly List<GameObject> _documents = new List<GameObject>();
-        private static readonly List<Poolable> Instances = new List<Poolable>();
         private List<RecipeData> _recipeDataList;
         private ScoreData _scoreData;
         private bool _isScaled, _isNotReady, _isEnd;
+        private int _index;
+        
+        public static event EventHandler<InfoEventArgs<int>> LicenseSubmittedEvent;
+        #endregion
 
-        public static event EventHandler<InfoEventArgs<sbyte>> LicenseSubmittedEvent;
-
+        #region MonoBehavior
         private void Awake()
         {
             enabled = false;
@@ -42,22 +49,24 @@ namespace Game.Scripts.Controller
         {
             _dragAndDropSubController = GetComponent<DragAndDropSubController>();
         }
-
+        
+        #endregion
+        
         #region Initiation
         public void InitFactory(List<RecipeData> documentList, ScoreData scoreData)
         {
-            var instance = gameObject.GetComponentInChildren<FactorySubController>();
+            var instance = gameObject.GetComponentInChildren<FactoryController>();
             _recipeDataList = new List<RecipeData>(documentList);
             _scoreData = scoreData;
 
             if (instance)
             {
-                _factorySubController = instance;
+                _factoryController = instance;
                 ProduceDocument(_recipeDataList, _scoreData.scoreContents);
                 return;
             }
 
-            _factorySubController = gameObject.AddComponent<FactorySubController>();
+            _factoryController = gameObject.AddComponent<FactoryController>();
             ProduceDocument(_recipeDataList, _scoreData.scoreContents);
         }
 
@@ -80,17 +89,20 @@ namespace Game.Scripts.Controller
             DrawID:
             int index = Random.Range(0, scoreData.Count);
             string id = scoreData[index].id;
-            //Debug.Log(id);
+            Debug.Log($"ID of this documents: {id}");
 
-            if (id == _factorySubController.generatedID)
+            if (id == _factoryController.generatedID)
             {
-                Debug.Log($"Same ID result: {id}, Previous ID: {_factorySubController.generatedID}. Redraw.");
+                //Debug.Log($"Same ID result: {id}, Previous ID: {_factorySubController.generatedID}. Redraw.");
                 goto DrawID;
             }
 
             foreach (var recipeData in list)
             {
-                var obj = _factorySubController.ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
+                var obj = _factoryController.ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
+                if(obj == null)
+                    continue;
+                
                 //TODO: Make animation
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-2, 2);
@@ -98,19 +110,6 @@ namespace Game.Scripts.Controller
                 obj.SetActive(true);
                 _documents.Add(obj);
             }
-        }
-
-        public void ReleaseDocuments()
-        {
-            for (int i = _documents.Count - 1; i >= 0; --i)
-                Destroy(_documents[i]);
-            _documents.Clear();
-        }
-
-        public void Release()
-        {
-            _recipeDataList.Clear();
-            _scoreData = null;
         }
         #endregion
 
@@ -150,13 +149,6 @@ namespace Game.Scripts.Controller
             GameObjectPoolSubController.Enqueue(target);
             InputController.IsDragActive = false;
         }
-
-        public void ReleaseInstances()
-        {
-            for (int i = Instances.Count - 1; i >= 0; --i)
-                GameObjectPoolSubController.Enqueue(Instances[i]);
-            Instances.Clear();
-        }
         #endregion
 
         #region Functions
@@ -175,6 +167,94 @@ namespace Game.Scripts.Controller
             _isNotReady = false;
         }
         
+        private static int ExecuteObjBehavior(GameObject original, GameObject target, out int i)
+        {
+            var oType = original.GetComponent<EntityAttribute>().objectType;
+            var tType = target.GetComponent<EntityAttribute>().objectType;
+            i = 0;
+
+            int index = CheckObjectType(oType, tType);
+
+            if (index == 0)
+                return 0;
+
+            GameObject stamp, pos;
+
+            switch (index)
+            {
+                case 1:
+                    stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Approved");
+                    pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    target.GetComponent<LicenseInfo>().isApproved = true;
+                    target.GetComponent<LicenseInfo>().isStamped = true;
+                    ClearChildren(pos);
+                    Instantiate(stamp, pos.transform);
+                    break;
+                case 2:
+                    stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Rejected");
+                    pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    target.GetComponent<LicenseInfo>().isApproved = false;
+                    target.GetComponent<LicenseInfo>().isStamped = true;
+                    ClearChildren(pos);
+                    Instantiate(stamp, pos.transform);
+                    break;
+                case 3:
+                    if(!target.GetComponent<LicenseInfo>().isStamped)
+                        break;
+
+                    i = target.GetComponent<LicenseInfo>().isApproved ? 0 : 1;
+                    target.GetComponent<LicenseInfo>().isStamped = false;
+                    target.GetComponent<LicenseInfo>().isApproved = false;
+                    pos = GameObjFinder.FindChildGameObject(target, "Pos");
+                    ClearChildren(pos);
+                    return 1;
+            }
+
+            return 0;
+        }
+        
+        private static int CheckObjectType(ObjectType original, ObjectType target)
+        {
+            switch (original)
+            {
+                case ObjectType.GreenStamp:
+                    if (target == ObjectType.License)
+                        return 1;
+                    break;
+                case ObjectType.RedStamp:
+                    if (target == ObjectType.License)
+                        return 2;
+                    break;
+                case ObjectType.CollectBox:
+                    if (target == ObjectType.License)
+                        return 3;
+                    break;
+                case ObjectType.None:
+                case ObjectType.License:
+                default:
+                    return 0;
+            }
+
+            return 0;
+        }
+
+        private static void ClearChildren(GameObject obj)
+        {
+            int i = 0;
+            var allChild = new GameObject[obj.transform.childCount];
+
+            foreach (Transform child in obj.transform)
+            {
+                allChild[i] = child.gameObject;
+                i++;
+            }
+
+            foreach (var child in allChild)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        
         public void ProcessCollision(GameObject original, GameObject col)
         {
             if (col == null)
@@ -183,7 +263,7 @@ namespace Game.Scripts.Controller
             if (original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
                 return;
 
-            sbyte index = InteractionSubController.ExecuteObjBehavior(original, col);
+            int index = ExecuteObjBehavior(original, col, out _index);
 
             if (index == 0 || _isNotReady)
                 return;
@@ -192,7 +272,7 @@ namespace Game.Scripts.Controller
             EnqueueObject(p);
             _dragAndDropSubController.TargetObj = null;
             DequeueObject("License", "LicensePos");
-            LicenseSubmittedEvent?.Invoke(this, p.GetComponent<LicenseInfo>().isApproved ? new InfoEventArgs<sbyte>(0) : new InfoEventArgs<sbyte>(1));
+            LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(_index));
         }
 
         public void ScaleDocument()
@@ -230,7 +310,7 @@ namespace Game.Scripts.Controller
         
         public string GetGeneratedID()
         {
-            return _factorySubController.generatedID;
+            return _factoryController.generatedID;
         }
 
         public void ReGenerateDocument()
@@ -247,6 +327,28 @@ namespace Game.Scripts.Controller
                 return;
             StopCoroutine(_reGenerateDocument);
             _reGenerateDocument = null;
+        }
+        #endregion
+
+        #region Release Methods
+        public void ReleaseInstances()
+        {
+            for (int i = Instances.Count - 1; i >= 0; --i)
+                GameObjectPoolSubController.Enqueue(Instances[i]);
+            Instances.Clear();
+        }
+        
+        public void ReleaseDocuments()
+        {
+            for (int i = _documents.Count - 1; i >= 0; --i)
+                Destroy(_documents[i]);
+            _documents.Clear();
+        }
+
+        public void Release()
+        {
+            _recipeDataList.Clear();
+            _scoreData = null;
         }
         #endregion
     }

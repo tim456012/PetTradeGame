@@ -31,7 +31,7 @@ namespace Game.Scripts.Controller.Level_State
 
         private void ScaleGameWorld()
         {
-            var background = GameObjFinder.FindChildGameObject(Owner.world.gameObject, "Background");
+            GameObject background = GameObjFinder.FindChildGameObject(Owner.world.gameObject, "Background");
             _spriteRenderer = background.GetComponent<SpriteRenderer>();
             
             float worldScreenHeight = Camera.main.orthographicSize * 2;

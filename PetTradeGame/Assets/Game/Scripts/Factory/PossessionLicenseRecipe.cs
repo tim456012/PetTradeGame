@@ -7,7 +7,7 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Possession License Recipe", menuName = "ScriptableObject/Possession License Recipe")]
     public class PossessionLicenseRecipe : ScriptableObject
     {
-        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
         
         public List<PossessionLicenseData> possessionLicenseData = new List<PossessionLicenseData>();
 

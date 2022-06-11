@@ -2320,8 +2320,8 @@ Canvas:
   m_GameObject: {fileID: 1081800417}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1583426783}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2903,7 +2903,7 @@ Camera:
   m_GameObject: {fileID: 1583426781}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4306,8 +4306,8 @@ Canvas:
   m_GameObject: {fileID: 5105011262152273709}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1583426783}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4591,7 +4591,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: 20359fda6f872fc4f99075e785b0d050, type: 2}
   world: {fileID: 389334950}
-  debugMode: 0
+  debugMode: 1
   stopTimer: 0
 --- !u!4 &5105011262412261254
 Transform:
@@ -4792,8 +4792,8 @@ Canvas:
   m_GameObject: {fileID: 5105011263044489752}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 1583426783}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

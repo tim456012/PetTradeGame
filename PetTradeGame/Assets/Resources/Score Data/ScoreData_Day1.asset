@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f067fe373f34a0bbe269901d69add1e, type: 3}
+  m_Name: ScoreData_Day1
+  m_EditorClassIdentifier: 
+  scoreContents:
+  - id: HTa
+    score: 1
+  - id: HTb
+    score: 1
+  - id: HTaF
+    score: -1
+  - id: HTbF
+    score: -1
+  - id: TSa
+    score: 1
+  - id: TSb
+    score: 1
+  - id: TSaF
+    score: -1
+  - id: TSbF
+    score: -1
+  - id: SCa
+    score: 1
+  - id: SCb
+    score: 1
+  - id: SCaF
+    score: -1
+  - id: SCbF
+    score: -1
+  - id: PHa
+    score: 1
+  - id: PHb
+    score: 1
+  - id: PHaF
+    score: -1
+  - id: PHbF
+    score: -1
+  - id: BTa
+    score: 1
+  - id: BTb
+    score: 1
+  - id: BTaF
+    score: -1
+  - id: BTbF
+    score: -1
+  - id: EAa
+    score: 1
+  - id: EAb
+    score: 1
+  - id: EAaF
+    score: -1
+  - id: EAbF
+    score: -1

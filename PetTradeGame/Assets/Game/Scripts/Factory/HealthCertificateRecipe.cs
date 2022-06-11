@@ -8,7 +8,7 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Health Certificate Recipe", menuName = "ScriptableObject/Health Certificate Recipe")]
     public class HealthCertificateRecipe : ScriptableObject
     { 
-        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
         
         public List<HealthCertificateData> healthCertificateData = new List<HealthCertificateData>();
 
@@ -33,28 +33,28 @@ namespace Game.Scripts.Factory
                 stampSign = new List<string>()
             };
 
-            for (int i = 3; i <= 5; i++)
+            for (int i = 3; i <= 4; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalName.Add(lines[i]);
             }
             
-            for (int i = 6; i <= 8; i++)
+            for (int i = 5; i <= 6; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalMark.Add(lines[i]);
             }
             
-            for (int i = 9; i <= 11; i++)
+            for (int i = 7; i <= 9; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.date.Add(lines[i]);
             }
             
-            for (int i = 12; i <= 14; i++)
+            for (int i = 10; i <= 12; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;

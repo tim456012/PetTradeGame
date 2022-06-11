@@ -7,7 +7,7 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Special Permit Recipe", menuName = "ScriptableObject/Special Permit Recipe")]
     public class SpecialPermitRecipe : ScriptableObject
     {
-        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
         
         public List<SpecialPermitData> specialPermitData = new List<SpecialPermitData>();
 
@@ -70,28 +70,28 @@ namespace Game.Scripts.Factory
                 data.deadline.Add(lines[i]);
             }
             
-            for (int i = 14; i <= 16; i++)
+            for (int i = 14; i <= 15; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalName.Add(lines[i]);
             }
             
-            for (int i = 17; i <= 19; i++)
+            for (int i = 16; i <= 17; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalCount.Add(lines[i]);
             }
             
-            for (int i = 20; i <= 22; i++)
+            for (int i = 18; i <= 19; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalFeature.Add(lines[i]);
             }
             
-            for (int i = 23; i <= 25; i++)
+            for (int i = 20; i <= 22; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;

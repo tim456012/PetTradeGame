@@ -1,10 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
-using Game.Scripts.Enum;
-using Game.Scripts.Model;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Game.Scripts.Factory
@@ -12,7 +7,7 @@ namespace Game.Scripts.Factory
     [CreateAssetMenu(fileName = "Dealer License Recipe", menuName = "ScriptableObject/Dealer License Recipe")]
     public class DealerLicenseRecipe : ScriptableObject
     {
-        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
         
         public List<DealerLicenseData> dealerLicenseData = new List<DealerLicenseData>();
 

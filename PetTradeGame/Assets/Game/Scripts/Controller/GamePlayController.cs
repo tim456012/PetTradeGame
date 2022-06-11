@@ -27,8 +27,9 @@ namespace Game.Scripts.Controller
                 UpdateTime();
         }
 
-        public int CalculateScore(sbyte index, int score)
+        public int CalculateScore(int index, int score)
         {
+            Debug.Log(index);
             switch (index)
             {
                 case 0:
