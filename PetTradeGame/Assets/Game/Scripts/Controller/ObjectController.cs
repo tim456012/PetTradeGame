@@ -10,7 +10,6 @@ using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
@@ -22,8 +21,6 @@ namespace Game.Scripts.Controller
     {
         #region Field
         
-        [SerializeField] private Button scalerButton;
-
         private readonly List<GameObject> _documents = new List<GameObject>();
         private readonly static List<Poolable> Instances = new List<Poolable>();
 
@@ -296,13 +293,11 @@ namespace Game.Scripts.Controller
             var sg = _lastObj.GetComponent<SortingGroup>();
             if (_isScaled)
             {
-                scalerButton.GetComponentInChildren<TextMeshProUGUI>().text = "Put down";
                 _lastObj.transform.localScale = new Vector3(0.5f, 0.5f, 0);
                 sg.sortingLayerName = "SelectedObjects";
             }
             else
             {
-                scalerButton.GetComponentInChildren<TextMeshProUGUI>().text = "Pick up";
                 _lastObj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                 sg.sortingLayerName = "Default";
             }

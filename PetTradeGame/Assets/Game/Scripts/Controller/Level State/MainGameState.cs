@@ -26,14 +26,18 @@ namespace Game.Scripts.Controller.Level_State
         {
             base.Enter();
             if (Owner.debugMode)
+            {                
                 _uiController.SetDebugMode();
+                _gamePlayController.SetDebugMode();
+            }
             
             if (Owner.stopTimer)
                 _gamePlayController.SetTimerStop();
             
             _gamePlayController.enabled = true;
             
-            _objectController.gameObject.AddComponent<DragAndDropSubController>();
+            if(!_objectController.gameObject.GetComponent<DragAndDropSubController>())
+                _objectController.gameObject.AddComponent<DragAndDropSubController>();
             _objectController.enabled = true;
 
             var recipeDataList = Owner.levelData.documentRecipeData;
@@ -100,8 +104,7 @@ namespace Game.Scripts.Controller.Level_State
             {
                 if (!id.Equals(scoreContent.id))
                     continue;
-                int score = _gamePlayController.CalculateScore(e.info, scoreContent.score);
-                _uiController.SetScore(score);
+                _gamePlayController.CalculateScore(e.info, scoreContent.score);
                 _objectController.ReleaseDocuments();
             }
             _objectController.ReGenerateDocument();

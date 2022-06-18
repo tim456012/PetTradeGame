@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Game.Scripts.Factory
 {
-    [CreateAssetMenu(fileName = "Possession License Recipe", menuName = "ScriptableObject/Possession License Recipe")]
     public class PossessionLicenseRecipe : ScriptableObject
     {
         private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
@@ -36,70 +35,70 @@ namespace Game.Scripts.Factory
                 stampSign = new List<string>()
             };
 
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.licenseNumber.Add(lines[i]);
             }
             
-            for (int i = 4; i <= 6; i++)
+            for (int i = 3; i <= 4; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.deadline.Add(lines[i]);
             }
             
-            for (int i = 7; i <= 9; i++)
+            for (int i = 5; i <= 6; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.name.Add(lines[i]);
             }
             
-            for (int i = 10; i <= 12; i++)
+            for (int i = 7; i <= 8; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.id.Add(lines[i]);
             }
             
-            for (int i = 13; i <= 15; i++)
+            for (int i = 9; i <= 10; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.businessNumber.Add(lines[i]);
             }
             
-            for (int i = 16; i <= 18; i++)
+            for (int i = 11; i <= 12; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalName.Add(lines[i]);
             }
             
-            for (int i = 19; i <= 21; i++)
+            for (int i = 13; i <= 14; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.contract.Add(lines[i]);
             }
             
-            for (int i = 22; i <= 24; i++)
+            for (int i = 15; i <= 16; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.objective.Add(lines[i]);
             }
             
-            for (int i = 25; i <= 27; i++)
+            for (int i = 17; i <= 18; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.original.Add(lines[i]);
             }
             
-            for (int i = 28; i <= 30; i++)
+            for (int i = 19; i <= 20; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;

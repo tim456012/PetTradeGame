@@ -1,6 +1,6 @@
 using System;
+using Game.Scripts.EventArguments;
 using Game.Scripts.View_Model_Components;
-using TMPro;
 using UnityEngine;
 
 namespace Game.Scripts.Controller
@@ -37,12 +37,7 @@ namespace Game.Scripts.Controller
         {
             NextDayEvent?.Invoke(this, EventArgs.Empty);
         }
-
-        public void SetScore(int s)
-        {
-            gamePlayPanel.SetScore(s);
-        }
-
+        
         public void SetScore(int cs, int correctDoc, int wrongDoc)
         {
             endGamePanel.scoreText.text = cs.ToString();

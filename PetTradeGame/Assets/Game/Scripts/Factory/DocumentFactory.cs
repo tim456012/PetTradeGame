@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Game.Scripts.Enum;
 using Game.Scripts.Model;
 using Game.Scripts.Tools;
@@ -78,12 +79,9 @@ namespace Game.Scripts.Factory
         #region Document Process
         private static GameObject CreateDealerLicense(DealerLicenseRecipe recipe, string id)
         {
-            foreach (var data in recipe.dealerLicenseData)
-            {
-                if (data.animalId != id)
-                    return null;
-            }
-
+            if (recipe.dealerLicenseData.All(data => data.animalId != id))
+                return null;
+            
             //Instantiate Document Base
             var obj = InstantiateGameObj($"Documents/I_DealerLicense");
             obj.name = recipe.name;
@@ -103,6 +101,9 @@ namespace Game.Scripts.Factory
 
         private static GameObject CreatePossessionLicense(PossessionLicenseRecipe recipe, string id)
         {   
+            if (recipe.possessionLicenseData.All(data => data.animalId != id))
+                return null;
+            
             var obj = InstantiateGameObj($"Documents/I_PossessionLicense");
             obj.name = recipe.name;
             obj.GetComponent<EntityAttribute>().paperType = DocumentType.PossessionLicense;
@@ -292,6 +293,9 @@ namespace Game.Scripts.Factory
 
         private static void AddContentPrefab(GameObject obj, string pos, string name)
         {
+            if(name == " ")
+                return;
+            
             string posName = CheckPosition(pos);
             if(posName == null)
                 return;
@@ -299,7 +303,7 @@ namespace Game.Scripts.Factory
             var temp = GameObjFinder.FindChildGameObject(obj, posName);
             var prefab = InstantiateGameObj($"Components/{name}");
             prefab.transform.SetParent(temp.transform);
-            prefab.transform.localScale = Vector3.one;
+            //prefab.transform.localScale = Vector3.one;
             prefab.transform.localPosition = Vector3.zero;
         }
 
@@ -311,7 +315,7 @@ namespace Game.Scripts.Factory
             var temp = GameObjFinder.FindChildGameObject(obj, posName);
             var prefab = InstantiateGameObj($"Components/{name}");
             prefab.transform.SetParent(temp.transform);
-            prefab.transform.localScale = Vector3.one;
+            //prefab.transform.localScale = Vector3.one;
             prefab.transform.localPosition = Vector3.zero;
         }
         

@@ -6,12 +6,14 @@ namespace Game.Scripts.Controller
 {
     public class GamePlayController : MonoBehaviour
     {
-        private const float TargetTime = 365f;
         private const float UpdateTimeThreshold = 11.25f; //360 / (8 * 4)
+        
+        [SerializeField] private float targetTime = 365f;
+        [SerializeField] private float debugTargetTime = 20f;
 
-        private int _score, _h = 9, _m, _correctDocuments, _wrongDocuments;
+        private int _score, _h, _m, _correctDocuments, _wrongDocuments;
         private float _time, _updateTime;
-        private bool _startTimer, _isTimerStop;
+        private bool _startTimer, _isTimerStop, _isDebugMode;
 
         public static event EventHandler<InfoEventArgs<string>> TimerEvent;
         public static event EventHandler GameFinishEvent;
@@ -20,14 +22,23 @@ namespace Game.Scripts.Controller
         {
             enabled = false;
         }
-        
+
+        private void Start()
+        {
+            _h = 9;
+            _m = 0;
+            string text = $"{_h:00}:{_m:00}";
+            TimerEvent?.Invoke(this, new InfoEventArgs<string>(text));
+        }
+
         private void Update()
         {
-            if(_startTimer && !_isTimerStop)
+            if (_startTimer && !_isTimerStop)
                 UpdateTime();
         }
 
-        public int CalculateScore(int index, int score)
+        //TODO: Need to change logic
+        public void CalculateScore(int index, int score)
         {
             Debug.Log(index);
             switch (index)
@@ -41,38 +52,32 @@ namespace Game.Scripts.Controller
                     _wrongDocuments++;
                     break;
             }
-            
-            return _score;
+
         }
 
         private void UpdateTime()
         {
-            if(_time >= TargetTime)
-                _time = TargetTime;
-            else
+            switch (_isDebugMode)
             {
-                _time += Time.deltaTime;
-                _updateTime += Time.deltaTime;
+                case true when _time >= debugTargetTime:
+                    _time = debugTargetTime;
+                    _startTimer = false;
+                    GameFinishEvent?.Invoke(this, EventArgs.Empty);
+                    return;
+                case false when _time >= targetTime:
+                    _time = targetTime;
+                    _startTimer = false;
+                    GameFinishEvent?.Invoke(this, EventArgs.Empty);
+                    return;
             }
             
-            DisplayTime(_time);
+            _time += Time.deltaTime;
+            _updateTime += Time.deltaTime;
+            DisplayTime();
         }
-        
-        private void DisplayTime(float timeToDisplay)
+
+        private void DisplayTime()
         {
-            if (timeToDisplay > TargetTime)
-            {
-                _time = TargetTime;
-                _startTimer = false;
-                GameFinishEvent?.Invoke(this, EventArgs.Empty);
-                return;
-            }
-
-            //float minutes = Mathf.FloorToInt(timeToDisplay / 60f);
-            //float seconds = Mathf.FloorToInt(timeToDisplay % 60f);
-            
-            //timeText.text = $"{minutes:00}:{seconds:00}";
-
             if (!(_updateTime >= UpdateTimeThreshold))
                 return;
             
@@ -114,8 +119,15 @@ namespace Game.Scripts.Controller
             _isTimerStop = true;
         }
 
+        public void SetDebugMode()
+        {
+            _isDebugMode = true;
+        }
+        
         public void Reset()
         {
+            _h = 9;
+            _m = 0;
             _time = 0f;
             _updateTime = 0f;
             _score = 0;

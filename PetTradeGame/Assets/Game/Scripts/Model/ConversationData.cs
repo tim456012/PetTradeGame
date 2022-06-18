@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Game.Scripts.Model
 {
-    [CreateAssetMenu(fileName = "Conversation Data", menuName = "ScriptableObject/Conversation Data")]
+    [CreateAssetMenu(fileName = "ConversationData", menuName = "ScriptableObject/Conversation Data")]
     public class ConversationData : ScriptableObject
     {
         public string description;
         public List<SpeakerData> speakerList = new List<SpeakerData>();
 
-        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
 
         public void Load(string line)
         {

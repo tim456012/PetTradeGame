@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Model
 {
-    [CreateAssetMenu(fileName = "Score Data", menuName = "Score Data")]
+    [CreateAssetMenu(fileName = "ScoreData", menuName = "ScriptableObject/Score Data")]
     public class ScoreData : ScriptableObject
     {
         public List<ScoreContent> scoreContents;

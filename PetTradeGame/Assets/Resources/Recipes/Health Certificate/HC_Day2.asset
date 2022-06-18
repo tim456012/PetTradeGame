@@ -1,0 +1,394 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fdd28ae6534a6bb7e04740c0c472ff, type: 3}
+  m_Name: HC_Day2
+  m_EditorClassIdentifier: 
+  healthCertificateData:
+  - animalId: HHa
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u9999\u6E2F\u534A\u8449\u8DBE\u864E"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/25
+    - 2022/9/26
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: HHb
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u9999\u6E2F\u534A\u8449\u8DBE\u864E"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/25
+    - 2022/9/26
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: HHaF
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u9999\u6E2F\u534A\u8449\u8DBE\u864E"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/25
+    - 2022/9/26
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: HHbF
+    isOfficial: 0
+    isLocal: 0
+    animalName:
+    - "\u864E"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/25
+    - 2022/9/26
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: DBa
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u9B91\u6C0F\u96D9\u8DB3\u8725"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/13
+    - 2022/9/14
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: DBb
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u9B91\u6C0F\u96D9\u8DB3\u8725"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/15
+    - 2022/9/16
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: DBaF
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u9B91\u6C0F\u96D9\u8DB3\u8725"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/13
+    - 2022/9/34
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: DBbF
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u9B91\u6C0F\u96D9\u8DB3\u8725"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/34
+    - 2022/9/16
+    stampSign:
+    - I_Sign_3
+    - I_Sign_2
+  - animalId: XHa
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u7D05\u7BAD\u9B5A"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/13
+    - 2022/9/9
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: XHb
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u7D05\u7BAD\u9B5A"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/11
+    - 2022/9/10
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: XHaF
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u7D05\u7BAD\u9B5A"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/13
+    - 2022/9/9
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: XHbF
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u7D05\u7BAD\u9B5A"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/11
+    - 2022/9/10
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: EMa
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u8C79\u7D0B\u5B88\u5BAE"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/12
+    - 2022/9/13
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: EMb
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u8C79\u7D0B\u5B88\u5BAE"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/14
+    - 2022/9/15
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: EMaF
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u8C79\u7D0B\u5B88\u5BAE"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/12
+    - 2022/9/13
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: EMbF
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u8C79\u7D0B\u5B88\u5BAE"
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/14
+    - 2022/9/15
+    stampSign:
+    - I_Sign_4
+    - I_Sign_5
+  - animalId: GCa
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u756B\u7709\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/1
+    - 2022/9/3
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: GCb
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u756B\u7709\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/2
+    - 2022/9/4
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: GCaF
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u756B\u7709\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/1
+    - 2022/9/3
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: GCbF
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u756B\u7709\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/2
+    - 2022/9/4
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: SAa
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u7070\u6797\u9D1E "
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/15
+    - 2022/9/16
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: SAb
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u7070\u6797\u9D1E "
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/17
+    - 2022/9/18
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: SAaF
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u7070\u6797\u9D1E "
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/15
+    - 2022/9/16
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: SAbF
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u7070\u6797\u9D1E "
+    animalMark:
+    - ' '
+    date:
+    - 2022/9/17
+    - 2022/9/22
+    stampSign:
+    - I_Sign_3
+    - I_Sign_2
+  - animalId: ALa
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u6B50\u4E9E\u96F2\u96C0"
+    - "\u544A\u5929\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/17
+    - 2022/9/18
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: ALb
+    isOfficial: 1
+    isLocal: 0
+    animalName:
+    - "\u6B50\u4E9E\u96F2\u96C0"
+    - "\u544A\u5929\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/18
+    - 2022/9/19
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: ALaF
+    isOfficial: 0
+    isLocal: 1
+    animalName:
+    - "\u6B50\u4E9E\u96F2\u96C0"
+    - "\u544A\u5929\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/17
+    - 2022/9/18
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2
+  - animalId: ALbF
+    isOfficial: 0
+    isLocal: 0
+    animalName:
+    - "\u6B50\u4E9E\u96F2\u96C0"
+    - "\u544A\u5929\u9CE5"
+    animalMark:
+    - "\u5DF2\u690D\u5165\u6676\u7247"
+    - "\u5DF2\u5E36\u6676\u7247\u624B\u74B0"
+    date:
+    - 2022/9/18
+    - 2022/9/19
+    stampSign:
+    - I_Sign_1
+    - I_Sign_2

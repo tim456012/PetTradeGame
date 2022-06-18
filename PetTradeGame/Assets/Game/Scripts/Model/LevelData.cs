@@ -4,7 +4,7 @@ using UnityEngine.Video;
 
 namespace Game.Scripts.Model
 {
-    [CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObject/Level Data")]
+    [CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObject/Level Data")]
     public class LevelData : ScriptableObject
     {
         public VideoClip introVideo;

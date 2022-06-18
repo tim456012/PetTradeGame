@@ -1,0 +1,336 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d3dc756245470c8d84c38b59a9ab4a, type: 3}
+  m_Name: PL_Day2
+  m_EditorClassIdentifier: 
+  possessionLicenseData:
+  - animalId: GCa
+    licenseNumber:
+    - CL-001
+    - CL-002
+    deadline:
+    - 2022/11/11
+    - 2022/11/12
+    name:
+    - "\u6D2A\u4E2D\u5DDE"
+    - "\u984F\u78A7\u5E73"
+    id:
+    - P11111
+    - P20941
+    businessNumber:
+    - 70528471
+    - 23654801
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u81FA\u7063"
+    stampSign:
+    - I_Stamp_3
+  - animalId: GCb
+    licenseNumber:
+    - PL-001
+    - PL-002
+    deadline:
+    - 2022/11/13
+    - 2022/11/14
+    name:
+    - "\u912D\u4FCA\u8CE2"
+    - "\u5433\u541B\u5982"
+    id:
+    - P89311
+    - P78893
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    original:
+    - "\u81FA\u7063"
+    stampSign:
+    - I_Stamp_3
+  - animalId: GCaF
+    licenseNumber:
+    - CL-001
+    - CL-002
+    deadline:
+    - 2022/11/11
+    - 2022/11/12
+    name:
+    - "\u6D2A\u4E2D\u5DDE"
+    - "\u984F\u78A7\u5E73"
+    id:
+    - P11111
+    - P20941
+    businessNumber:
+    - 70528471
+    - 23654801
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u5BF5\u7269"
+    original:
+    - "\u81FA\u7063"
+    stampSign:
+    - I_Stamp_3
+  - animalId: GCbF
+    licenseNumber:
+    - PL-001
+    - PL-002
+    deadline:
+    - 2022/11/13
+    - 2022/4/14
+    name:
+    - "\u912D\u4FCA\u8CE2"
+    - "\u5433\u541B\u5982"
+    id:
+    - P89311
+    - P78893
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Garrulax canorus
+    contract:
+    - III
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    original:
+    - "\u81FA\u7063"
+    stampSign:
+    - I_Stamp_3
+  - animalId: SAa
+    licenseNumber:
+    - CL-003
+    - CL-004
+    deadline:
+    - 2022/11/2
+    - 2022/11/3
+    name:
+    - "\u5433\u71D5\u7956"
+    - "\u66FE\u73EE\u73CA"
+    id:
+    - P12342
+    - P34562
+    businessNumber:
+    - 50693062
+    - 10495042
+    animalName:
+    - Strix aluco
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_3
+  - animalId: SAb
+    licenseNumber:
+    - PL-003
+    - PL-004
+    deadline:
+    - 2022/11/4
+    - 2022/11/5
+    name:
+    - "\u5F90\u5609\u6AFB"
+    - "\u5F35\u89D2"
+    id:
+    - P11242
+    - P19972
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Strix aluco
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_3
+  - animalId: SAaF
+    licenseNumber:
+    - CL-003
+    - CL-004
+    deadline:
+    - 2022/11/2
+    - 2022/11/3
+    name:
+    - "\u5433\u71D5\u7956"
+    - "\u66FE\u73EE\u73CA"
+    id:
+    - P12342
+    - P34562
+    businessNumber:
+    - 50693062
+    - 10495042
+    animalName:
+    - Strix aluco
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_3
+    - I_Stamp_4
+  - animalId: SAbF
+    licenseNumber:
+    - PL-003
+    - PL-004
+    deadline:
+    - 2022/11/4
+    - 2022/11/5
+    name:
+    - "\u5F90\u5609\u6AFB"
+    - "\u5F35\u89D2"
+    id:
+    - P11242
+    - P19972
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Strix aluco
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_3
+  - animalId: ALa
+    licenseNumber:
+    - CL-005
+    - CL-006
+    deadline:
+    - 2022/11/2
+    - 2022/11/3
+    name:
+    - "\u6881\u9759\u5982"
+    - "\u859B\u5BF6\u731C"
+    id:
+    - P14223
+    - P45623
+    businessNumber:
+    - 45678963
+    - 10495042
+    animalName:
+    - Alauda arvensis
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u5967\u5730\u5229"
+    stampSign:
+    - I_Stamp_3
+  - animalId: ALb
+    licenseNumber:
+    - PL-005
+    - PL-006
+    deadline:
+    - 2022/11/4
+    - 2022/11/5
+    name:
+    - "\u5F90\u5609\u65D7"
+    - "\u738B\u83BD\u4E4B"
+    id:
+    - P12243
+    - P15673
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Alauda arvensis
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    original:
+    - "\u5967\u5730\u5229"
+    stampSign:
+    - I_Stamp_3
+  - animalId: ALaF
+    licenseNumber:
+    - CL-005
+    - PL-006
+    deadline:
+    - 2022/11/2
+    - 2022/11/3
+    name:
+    - "\u6881\u9759\u5982"
+    - "\u859B\u5BF6\u731C"
+    id:
+    - P14223
+    - P45623
+    businessNumber:
+    - 45678963
+    - 10495042
+    animalName:
+    - Alauda arvensis
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u5967\u5730\u5229"
+    stampSign:
+    - I_Stamp_3
+  - animalId: ALbF
+    licenseNumber:
+    - PL-005
+    - PL-006
+    deadline:
+    - 2022/11/4
+    - 2022/11/5
+    name:
+    - "\u5F90\u5609\u65D7"
+    - "\u738B\u83BD\u4E4B"
+    id:
+    - P12243
+    - P15673
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Alauda arvensis
+    contract:
+    - II
+    objective:
+    - none
+    - "\u5BF5\u7269"
+    original:
+    - "\u5967\u5730\u5229"
+    stampSign:
+    - I_Stamp_3

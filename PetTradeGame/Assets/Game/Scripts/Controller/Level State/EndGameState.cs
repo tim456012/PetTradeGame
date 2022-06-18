@@ -1,4 +1,5 @@
 using System;
+using Game.Scripts.Model;
 using UnityEngine;
 
 namespace Game.Scripts.Controller.Level_State
@@ -48,13 +49,14 @@ namespace Game.Scripts.Controller.Level_State
             UIController.NextDayEvent -= OnNextDayEvent;
         }
         
-        //TODO: Load next level data.
         private void OnNextDayEvent(object sender, EventArgs e)
         {
-            Debug.Log("Loading next day data");
-            //Owner.levelData = Resources.Load<>();
-            //Owner.ChangeState<IntroState>();
-            Owner.ChangeState<MainGameState>();
+            Owner.levelData = null;
+            GC.Collect();
+            string dataName = $"LevelData_Day{++Owner.LevelCount}";
+            Debug.Log($"Loading next day data : {dataName}");
+            Owner.levelData = Resources.Load<LevelData>($"Level Data/{dataName}");
+            Owner.ChangeState<IntroState>();
         }
     }
 }

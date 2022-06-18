@@ -1,0 +1,15 @@
+AnimalID,Business Name,Business Name 2,Business Number,Business Number 2,Line 1,Line 2,Line 3,Line 4,Line 5,Line 6,Stamp And Sign,Stamp And Sign 2
+HHa,野仔迷,動物世界,70592567,33336987,C2,C4  ,T1,,Yes,Yes,I_Stamp_1,
+HHaF,野仔迷,動物世界,70592567,33336987,C2,C4,T2,,No,Yes,I_Stamp_1,
+DBa,濕地物語,珍奇館,19385738,43948598,C2,C4,,T4,Yes,Yes,I_Stamp_1,
+DBaF,濕地物語,珍奇館,19385738,43948598,C2,C4,T1,T4,Yes,Yes,I_Stamp_1,I_Stamp_2
+XHa,年年有魚,多多魚,90007899,70592569,C3,C4,,T5,Yes,Yes,I_Stamp_1,
+XHaF,年年有魚,多多魚,900078g9,70592569,C3,C4,,,Yes,Yes,I_Stamp_1,I_Stamp_2
+EMa,謎之屋,香城爬爬,75915280,38998820,C2,C4,T1,,Yes,Yes,I_Stamp_1,
+EMaF,謎之屋,香城爬爬,75915280,38998820,C2,C4,,,Yes,Yes,I_Stamp_1,
+GCa,爪爪屋,東哥街舖,70528471,23654801,C1,C4,,,Yes,Yes,I_Stamp_1,
+GCaF,爪爪屋,東哥街舖,70528471,23654801,C1,C4,,,Yes,No,I_Stamp_1,
+SAa,雀舍,鳥之鄉,50693062,10495042,C1,C4,,,Yes,Yes,I_Stamp_1,
+SAaF,雀舍,鳥之鄉,50693062,none,C1,C4,,,Yes,Yes,I_Stamp_1,
+ALa,喜雀帖,鳥之鄉,45678963,10495042,C1,C4,,,Yes,Yes,I_Stamp_1,
+ALaF,喜雀帖,鳥之鄉,45678963,10495042,C1,C4,,,Yes,Yes,I_Stamp_1,I_Stamp_2

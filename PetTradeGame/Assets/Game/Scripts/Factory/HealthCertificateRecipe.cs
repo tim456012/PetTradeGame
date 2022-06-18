@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Game.Scripts.Factory
 {
-    [CreateAssetMenu(fileName = "Health Certificate Recipe", menuName = "ScriptableObject/Health Certificate Recipe")]
     public class HealthCertificateRecipe : ScriptableObject
     { 
         private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
@@ -47,14 +46,14 @@ namespace Game.Scripts.Factory
                 data.animalMark.Add(lines[i]);
             }
             
-            for (int i = 7; i <= 9; i++)
+            for (int i = 7; i <= 8; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.date.Add(lines[i]);
             }
             
-            for (int i = 10; i <= 12; i++)
+            for (int i = 9; i <= 10; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;

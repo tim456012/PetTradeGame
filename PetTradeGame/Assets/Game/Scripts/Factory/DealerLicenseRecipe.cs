@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Game.Scripts.Factory
 {
-    [CreateAssetMenu(fileName = "Dealer License Recipe", menuName = "ScriptableObject/Dealer License Recipe")]
     public class DealerLicenseRecipe : ScriptableObject
     {
         private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
@@ -54,6 +53,7 @@ namespace Game.Scripts.Factory
                     " " => DealerLicenseData.DealerLicensePosition.None,
                     "T4" => DealerLicenseData.DealerLicensePosition.TickPos4,
                     "T5" => DealerLicenseData.DealerLicensePosition.TickPos5,
+                    "T6" => DealerLicenseData.DealerLicensePosition.TickPos6,
                     _ => DealerLicenseData.DealerLicensePosition.None
                 },
                 isProcess = lines[11].Equals("Yes"),
@@ -61,21 +61,21 @@ namespace Game.Scripts.Factory
                 stampSign = new List<string>()
             };
 
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.businessName.Add(lines[i]);    
             }
             
-            for (int i = 4; i <= 6; i++)
+            for (int i = 3; i <= 4; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.businessNumber.Add(lines[i]);    
             }
             
-            for (int i = 13; i <= 15; i++)
+            for (int i = 11; i <= 12; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
@@ -102,6 +102,7 @@ namespace Game.Scripts.Factory
             TickPos3,
             TickPos4,
             TickPos5,
+            TickPos6
         }
 
         public string animalId;

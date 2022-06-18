@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Game.Scripts.Factory
 {
-    [CreateAssetMenu(fileName = "Special Permit Recipe", menuName = "ScriptableObject/Special Permit Recipe")]
     public class SpecialPermitRecipe : ScriptableObject
     {
         private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
@@ -25,7 +24,7 @@ namespace Game.Scripts.Factory
             var data = new SpecialPermitData(lines[0])
             {
                 locationName = new List<string>(),
-                line1Position = lines[1] switch
+                line1Position = lines[3] switch
                 {
                     " " => SpecialPermitData.SpecialPermitPosition.None,
                     "C1" => SpecialPermitData.SpecialPermitPosition.CirclePos1,
@@ -42,56 +41,56 @@ namespace Game.Scripts.Factory
                 stampSign = new List<string>()
             };
             
-            for (int i = 1; i <= 3; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.locationName.Add(lines[i]);
             }
             
-            for (int i = 5; i <= 7; i++)
+            for (int i = 4; i <= 5; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.objective.Add(lines[i]);
             }
             
-            for (int i = 8; i <= 10; i++)
+            for (int i = 6; i <= 7; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.businessNumber.Add(lines[i]);
             }
             
-            for (int i = 11; i <= 13; i++)
+            for (int i = 8; i <= 9; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.deadline.Add(lines[i]);
             }
             
-            for (int i = 14; i <= 15; i++)
+            for (int i = 10; i <= 11; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalName.Add(lines[i]);
             }
             
-            for (int i = 16; i <= 17; i++)
+            for (int i = 12; i <= 13; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalCount.Add(lines[i]);
             }
             
-            for (int i = 18; i <= 19; i++)
+            for (int i = 14; i <= 15; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalFeature.Add(lines[i]);
             }
             
-            for (int i = 20; i <= 22; i++)
+            for (int i = 16; i <= 17; i++)
             {
                 if(string.IsNullOrEmpty(lines[i]))
                     continue;
