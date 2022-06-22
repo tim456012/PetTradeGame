@@ -104,7 +104,7 @@ namespace Game.Scripts.Controller.Level_State
             {
                 if (!id.Equals(scoreContent.id))
                     continue;
-                _gamePlayController.CalculateScore(e.info, scoreContent.score);
+                _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
                 _objectController.ReleaseDocuments();
             }
             _objectController.ReGenerateDocument();

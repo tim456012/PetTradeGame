@@ -164,21 +164,20 @@ namespace Game.Scripts.Controller
             _isNotReady = false;
         }
         
-        private static int ExecuteObjBehavior(GameObject original, GameObject target, out int i)
+        private static void ExecuteObjBehavior(GameObject original, GameObject target, out int i)
         {
             var oType = original.GetComponent<EntityAttribute>().objectType;
             var tType = target.GetComponent<EntityAttribute>().objectType;
-            i = 0;
+            i = -1;
 
             int index = CheckObjectType(oType, tType);
-
             if (index == 0)
-                return 0;
+                return;
 
             GameObject stamp, pos;
-
             switch (index)
             {
+                //Green Stamp
                 case 1:
                     stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Approved");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
@@ -186,7 +185,8 @@ namespace Game.Scripts.Controller
                     target.GetComponent<LicenseInfo>().isStamped = true;
                     ClearChildren(pos);
                     Instantiate(stamp, pos.transform);
-                    break;
+                    return;
+                //Red Stamp
                 case 2:
                     stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Rejected");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
@@ -194,7 +194,8 @@ namespace Game.Scripts.Controller
                     target.GetComponent<LicenseInfo>().isStamped = true;
                     ClearChildren(pos);
                     Instantiate(stamp, pos.transform);
-                    break;
+                    return;
+                //CollectBox
                 case 3:
                     if(!target.GetComponent<LicenseInfo>().isStamped)
                         break;
@@ -204,10 +205,8 @@ namespace Game.Scripts.Controller
                     target.GetComponent<LicenseInfo>().isApproved = false;
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
                     ClearChildren(pos);
-                    return 1;
+                    break;
             }
-
-            return 0;
         }
         
         private static int CheckObjectType(ObjectType original, ObjectType target)
@@ -260,9 +259,8 @@ namespace Game.Scripts.Controller
             if (original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
                 return;
 
-            int index = ExecuteObjBehavior(original, col, out _index);
-
-            if (index == 0 || _isNotReady)
+            ExecuteObjBehavior(original, col, out _index);
+            if (_index == -1 || _isNotReady)
                 return;
 
             var p = col.GetComponent<Poolable>();

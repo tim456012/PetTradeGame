@@ -16,8 +16,6 @@ namespace Game.Scripts.Controller.Level_State
         {
             base.Awake();
             _cutsceneController = Owner.GetComponentInChildren<CutsceneController>();
-            _introVideo = Owner.levelData.introVideo;
-            _dayIntroVideo = Owner.levelData.dayIntroVideo;
 
             if (_dayIntroVideo != null)
                 _isNextVideoPlay = true;
@@ -36,6 +34,9 @@ namespace Game.Scripts.Controller.Level_State
         public override void Enter()
         {
             base.Enter();
+            _introVideo = Owner.levelData.introVideo;
+            _dayIntroVideo = Owner.levelData.dayIntroVideo;
+
             _cutsceneController.PlayCutScene(_introVideo);
         }
 

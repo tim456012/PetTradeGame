@@ -15,5 +15,6 @@ namespace Game.Scripts.Model
         public string id;
         [Range(-100, 100)]
         public int score;
+        public bool isWrongDocument;
     }
 }

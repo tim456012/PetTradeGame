@@ -37,22 +37,35 @@ namespace Game.Scripts.Controller
                 UpdateTime();
         }
 
-        //TODO: Need to change logic
-        public void CalculateScore(int index, int score)
+        public void CalculateScore(int index, int score, bool isWrongDoc)
         {
-            Debug.Log(index);
             switch (index)
             {
-                case 0:
+                //Approved Correct Document
+                case 0 when !isWrongDoc:
                     _score += score;
                     _correctDocuments++;
+                    Debug.Log($"Approved Correct Document, score : {_score}, Correct Count : {_correctDocuments}");
                     break;
-                case 1:
+                //Approved Wrong Document
+                case 0 when true:
                     _score -= score;
                     _wrongDocuments++;
+                    Debug.Log($"Approved Wrong Document, score : {_score}, Fail Count : {_wrongDocuments}");
+                    break;
+                //Rejected Correct Document
+                case 1 when !isWrongDoc:
+                    _score -= score;
+                    _wrongDocuments++;
+                    Debug.Log($"Rejected Correct Document, score : {_score}, Fail Count : {_wrongDocuments} ");
+                    break;
+                //Rejected Wrong Document
+                case 1 when true:
+                    _score += score;
+                    _correctDocuments++;
+                    Debug.Log($"Rejected Wrong Document, score : {_score}, Correct Count : {_correctDocuments}");
                     break;
             }
-
         }
 
         private void UpdateTime()

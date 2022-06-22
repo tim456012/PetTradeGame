@@ -56,7 +56,7 @@ namespace Game.Scripts.Controller.Level_State
             string dataName = $"LevelData_Day{++Owner.LevelCount}";
             Debug.Log($"Loading next day data : {dataName}");
             Owner.levelData = Resources.Load<LevelData>($"Level Data/{dataName}");
-            Owner.ChangeState<IntroState>();
+            Owner.ChangeState<CutSceneState>();
         }
     }
 }
