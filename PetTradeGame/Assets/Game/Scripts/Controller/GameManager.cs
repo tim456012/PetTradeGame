@@ -1,5 +1,5 @@
 using Game.Scripts.Common.State_Machine;
-using Game.Scripts.Controller.Level_State;
+using Game.Scripts.Level_State;
 using Game.Scripts.Model;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace Game.Scripts.Controller
         private void Start()
         {
             LevelCount = 1;
-            ChangeState<InitGameLoopState>();
+            ChangeState<InitState>();
         }
     }
 }

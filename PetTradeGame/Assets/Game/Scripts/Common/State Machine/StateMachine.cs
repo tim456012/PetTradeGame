@@ -34,7 +34,6 @@ namespace Game.Scripts.Common.State_Machine
         public virtual void ChangeState<T>() where T : State
         {
             CurrentState = GetState<T>();
-            //Debug.Log(CurrentState);
         }
 
         protected virtual void Transition(State value)

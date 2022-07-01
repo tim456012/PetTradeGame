@@ -20,10 +20,10 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: HHaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: HHbF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: DBa
     score: 1
@@ -32,10 +32,10 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: DBaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: DBbF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: XHa
     score: 1
@@ -44,10 +44,10 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: XHaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: XHbF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: EMa
     score: 1
@@ -56,10 +56,10 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: EMaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: EMbF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: GCa
     score: 1
@@ -68,10 +68,10 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: GCaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: GCbF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: SAa
     score: 1
@@ -80,10 +80,10 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: SAaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: SAbF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: ALa
     score: 1
@@ -92,8 +92,8 @@ MonoBehaviour:
     score: 1
     isWrongDocument: 0
   - id: ALaF
-    score: -1
+    score: 1
     isWrongDocument: 1
   - id: ALbF
-    score: -1
+    score: 1
     isWrongDocument: 1

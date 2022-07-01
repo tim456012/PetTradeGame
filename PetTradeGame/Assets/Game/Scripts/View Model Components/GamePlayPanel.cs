@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Game.Scripts.Common.Animation;
+using Game.Scripts.Controller;
 using Game.Scripts.Tools;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,6 @@ namespace Game.Scripts.View_Model_Components
 {
     public class GamePlayPanel : MonoBehaviour
     {
-        public TextMeshProUGUI hourTimeText;
         public Button btnSetting, btnIpadOn, btnIpadOff, btnAnimalSearch, btnDocSearch;
 
         private Transform _btnPos1, _btnPos2, _originPos;
@@ -52,12 +52,7 @@ namespace Game.Scripts.View_Model_Components
 
             MoveOptions(false);
         }
-
-        public void SetTime(string text)
-        {
-            hourTimeText.text = text;
-        }
-
+        
         private void MoveOptions(bool isShow)
         {
             _isAnimate = true;
@@ -75,6 +70,9 @@ namespace Game.Scripts.View_Model_Components
 
         private IEnumerator DoShowButtonAnimation()
         {
+            GamePlayController.IsPause = true;
+            InputController.IsPause = true;
+            
             btnAnimalSearch.gameObject.SetActive(true);
             btnDocSearch.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
@@ -105,7 +103,12 @@ namespace Game.Scripts.View_Model_Components
             btnIpadOn.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
             
-            _buttonAnimationRoutine.Stopped += (_, _) => _isAnimate = false;
+            _buttonAnimationRoutine.Stopped += (_, _) =>
+            {
+                _isAnimate = false;
+                GamePlayController.IsPause = false;
+                InputController.IsPause = false;
+            };
         }
     }
 }

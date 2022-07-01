@@ -1,5 +1,5 @@
 using System;
-using Game.Scripts.Controller.SubController;
+using Game.Scripts.Controller;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -9,7 +9,7 @@ namespace Game.Scripts.TempCode
 {
     public class ScaleTest : MonoBehaviour
     {
-        public DragAndDropSubController dragAndDropSubController;
+        public DragAndDropController dragAndDropController;
         public Button button;
 
         private GameObject _lastObj;
@@ -22,7 +22,7 @@ namespace Game.Scripts.TempCode
 
         public void ScaleDocument()
         {
-            var obj = dragAndDropSubController.LastObj;
+            var obj = dragAndDropController.LastObj;
             if(obj == null)
                 return;
             if(_lastObj == null)

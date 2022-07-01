@@ -9,7 +9,7 @@ namespace Game.Scripts.Controller
     {
         private VideoPlayer _videoPlayer;
         private Canvas _canvas;
-        private IEnumerator _routine;
+        private MonoRoutine _routine;
 
         public static event EventHandler CompleteEvent;
 
@@ -23,45 +23,51 @@ namespace Game.Scripts.Controller
             _videoPlayer.targetCameraAlpha = 1f;
 
             _canvas.gameObject.SetActive(false);
+
+            _routine = new MonoRoutine(PlayVideo, this);
+            _routine.Started += OnRoutineStarted;
+            _routine.Stopped += OnRoutineFinished;
+        }
+        
+        private void OnDisable()
+        {
+            _routine.Started -= OnRoutineStarted;
+            _routine.Stopped -= OnRoutineFinished;
         }
 
-        public void PlayCutScene(VideoClip introVideo)
+        public void PlayCutScene(VideoClip video)
         {
             _videoPlayer.enabled = true;
-            _videoPlayer.clip = introVideo;
-            if (_routine != null)
-                StopCoroutine(_routine);
-
+            _videoPlayer.clip = video;
+            Debug.Log($"{_videoPlayer.clip}");
             _canvas.gameObject.SetActive(true);
-            _routine = Sequence(_videoPlayer);
-            StartCoroutine(_routine);
+            
+            //if(!_routine.IsRunning)
+                _routine.Start();
         }
 
-        private IEnumerator Sequence(VideoPlayer vp)
+        private IEnumerator PlayVideo()
         {
-            if (_videoPlayer.clip == null)
-            {
-                yield return null;
-                _canvas.gameObject.SetActive(false);
-                CompleteEvent?.Invoke(this, EventArgs.Empty);
-                yield break;
-            }
-
+            var vp = _videoPlayer;
             vp.Prepare();
 
-            if (!vp.isPrepared)
+            while (!vp.isPrepared)
             {
                 Debug.Log($"Status: {vp.isPrepared}, Video is not prepare");
-                //vp.Prepare();
-                yield return null;
+                //yield return null;
             }
-
+            
             vp.prepareCompleted += player =>
             {
                 Debug.Log($"Status: {vp.isPrepared}, Video is prepared");
                 player.Play();
-                Debug.Log("Video is playing");
             };
+            
+            while (vp.isPlaying)
+            {                
+                Debug.Log("Video is playing");
+                yield return null;
+            }
 
             vp.errorReceived += (player, message) =>
             {
@@ -73,11 +79,23 @@ namespace Game.Scripts.Controller
                 Debug.Log("Video is end.");
                 player.clip = null;
                 player.enabled = false;
-                
-                
-                _canvas.gameObject.SetActive(false);
-                CompleteEvent?.Invoke(this, EventArgs.Empty);
             };
+        }
+
+        private void OnRoutineStarted(object sender, EventArgs e)
+        {
+            //if (_videoPlayer.clip != null)
+            //    return;
+            
+            //_canvas.gameObject.SetActive(false);
+            //_routine.Stop();
+        }
+        
+        private void OnRoutineFinished(object sender, EventArgs e)
+        {
+            //_canvas.gameObject.SetActive(false);
+            //_routine.Stop();
+            //CompleteEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

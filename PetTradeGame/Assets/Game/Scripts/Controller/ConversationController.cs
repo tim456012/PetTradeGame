@@ -12,7 +12,7 @@ namespace Game.Scripts.Controller
         [SerializeField] private ConversationPanel leftPanel;
         [SerializeField] private ConversationPanel rightPanel;
         [SerializeField] private ConversationPanel centerPanel;
-
+        
         private Canvas _canvas;
         private IEnumerator _conversation;
         private Tweener _transition;
@@ -48,6 +48,9 @@ namespace Game.Scripts.Controller
         public void Show(ConversationData data)
         {
             _canvas.gameObject.SetActive(true);
+            if (data == null)
+                ConversationCompleted();
+            
             _conversation = Sequence(data);
             _conversation.MoveNext();
         }
@@ -127,9 +130,7 @@ namespace Game.Scripts.Controller
 
                 yield return null;
             }
-
-            _canvas.gameObject.SetActive(false);
-            CompleteEvent?.Invoke(this, EventArgs.Empty);
+            ConversationCompleted();
         }
 
         private void MovePanel(ConversationPanel conversationPanel, string pos)
@@ -137,6 +138,12 @@ namespace Game.Scripts.Controller
             _transition = conversationPanel.panel.SetPosition(pos, true);
             _transition.easingControl.duration = 0.5f;
             _transition.easingControl.equation = EasingEquations.EaseOutQuad;
+        }
+
+        public void ConversationCompleted()
+        {
+            _canvas.gameObject.SetActive(false);
+            CompleteEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -1,5 +1,4 @@
 using System;
-using Game.Scripts.EventArguments;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
@@ -7,6 +6,8 @@ namespace Game.Scripts.Controller
 {
     public class UIController : MonoBehaviour
     {
+        public static bool IsDebugMode = false;
+
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
         [SerializeField] private EndGamePanel endGamePanel;
@@ -15,29 +16,25 @@ namespace Game.Scripts.Controller
         
         public static event EventHandler StartGameEvent;
         public static event EventHandler NextDayEvent;
-        
-        //private Tweener transition;
 
-        private void Start()
+        private void Awake()
         {
             _canvas = GetComponentInChildren<Canvas>();
             _canvas.enabled = true;
-            
-            mainMenuPanel.gameObject.SetActive(true);
-            mainMenuPanel.btnStart.onClick.AddListener(OnBtnStartClicked);
         }
 
-        private void OnBtnStartClicked()
+        public void Init()
         {
-            StartGameEvent?.Invoke(this, EventArgs.Empty);
-            gamePlayPanel.gameObject.SetActive(true);
+            if(IsDebugMode)
+            {
+                gamePlayPanel.gameObject.SetActive(true);
+                mainMenuPanel.gameObject.SetActive(false);
+            }
+            else
+                mainMenuPanel.gameObject.SetActive(true);
         }
 
-        private void OnBtnNextDayClicked()
-        {
-            NextDayEvent?.Invoke(this, EventArgs.Empty);
-        }
-        
+        #region UI Behavior
         public void SetScore(int cs, int correctDoc, int wrongDoc)
         {
             endGamePanel.scoreText.text = cs.ToString();
@@ -45,21 +42,39 @@ namespace Game.Scripts.Controller
             endGamePanel.wrongDocText.text = wrongDoc.ToString();
         }
 
-        public void SetTime(string text)
-        {
-            gamePlayPanel.SetTime(text);
-        }
-        
-        public void SetDebugMode()
+        public void StartLevel()
         {
             gamePlayPanel.gameObject.SetActive(true);
-            mainMenuPanel.gameObject.SetActive(false);
         }
 
-        public void EndGame()
+        public void EndLevel()
         {
+            gamePlayPanel.gameObject.SetActive(false);
             endGamePanel.gameObject.SetActive(true);
-            endGamePanel.btnNextDay.onClick.AddListener(OnBtnNextDayClicked);
         }
+        
+        public void OnBtnStartClicked()
+        {
+            //gamePlayPanel.gameObject.SetActive(true);
+            StartGameEvent?.Invoke(this, EventArgs.Empty);
+        }
+        
+        public void OnBtnNextLevelClicked()
+        {
+            NextDayEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        //TODO: Setting UI
+        /*public void OnBtnSettingClicked()
+        {
+            
+        }
+
+        public void OnBtnCancelClicked()
+        {
+            
+        }*/
+        
+        #endregion
     }
 }

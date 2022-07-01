@@ -50,6 +50,9 @@ TagManager:
   - name: SelectedObjects
     uniqueID: 96248161
     locked: 0
+  - name: UI
+    uniqueID: 3415930415
+    locked: 0
   - name: Foreground
     uniqueID: 393984461
     locked: 0

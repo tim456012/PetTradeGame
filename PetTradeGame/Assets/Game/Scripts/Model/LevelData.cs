@@ -7,8 +7,9 @@ namespace Game.Scripts.Model
     [CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObject/Level Data")]
     public class LevelData : ScriptableObject
     {
-        public VideoClip introVideo;
-        public VideoClip dayIntroVideo;
+        public VideoClip video1;
+        public VideoClip video2;
+        public VideoClip video3;
         public ConversationData introDialogue;
         public ConversationData middleDialogue;
         public ConversationData outroDialogue;

@@ -1,42 +1,70 @@
 using System;
-using Game.Scripts.EventArguments;
+using Game.Scripts.TempCode;
 using UnityEngine;
 
 namespace Game.Scripts.Controller
 {
     public class GamePlayController : MonoBehaviour
     {
-        private const float UpdateTimeThreshold = 11.25f; //360 / (8 * 4)
+        private const float WorldTimeThreshold = 1.3f;
         
-        [SerializeField] private float targetTime = 365f;
-        [SerializeField] private float debugTargetTime = 20f;
-
-        private int _score, _h, _m, _correctDocuments, _wrongDocuments;
-        private float _time, _updateTime;
-        private bool _startTimer, _isTimerStop, _isDebugMode;
-
-        public static event EventHandler<InfoEventArgs<string>> TimerEvent;
+        public static bool IsDebugMode, IsPause;
         public static event EventHandler GameFinishEvent;
+
+        [SerializeField] private Clock clock;
+        [SerializeField] private float targetTime = 360f;
+        [SerializeField] private float debugTargetTime = 20f;
+        
+        private int _score, _correctDocuments, _wrongDocuments;
+        private float _time, _timeThreshold;
+        private bool _isTimerStop, _isReadyFinish;
         
         private void Awake()
         {
             enabled = false;
         }
-
-        private void Start()
-        {
-            _h = 9;
-            _m = 0;
-            string text = $"{_h:00}:{_m:00}";
-            TimerEvent?.Invoke(this, new InfoEventArgs<string>(text));
-        }
-
+        
         private void Update()
         {
-            if (_startTimer && !_isTimerStop)
+            _isTimerStop = IsPause;
+            if(!_isTimerStop)
                 UpdateTime();
+
+            if (!_isReadyFinish)
+                return;
+            
+            _timeThreshold += Time.deltaTime;
+            if (!(_timeThreshold >= WorldTimeThreshold))
+                return;
+            
+            _isReadyFinish = false;
+            GameFinishEvent?.Invoke(this, EventArgs.Empty);
+        }
+        
+        private void UpdateTime()
+        {
+            switch (IsDebugMode)
+            {
+                case true when _time >= debugTargetTime:
+                    _time = debugTargetTime;
+                    FinishedCall();
+                    return;
+                case false when _time >= targetTime:
+                    _time = targetTime;
+                    FinishedCall();
+                    return;
+            }
+            
+            _time += Time.deltaTime;
+            clock.UpdateTime(_time);
         }
 
+        private void FinishedCall()
+        {
+            _isReadyFinish = true;
+            _isTimerStop = true;
+        }
+        
         public void CalculateScore(int index, int score, bool isWrongDoc)
         {
             switch (index)
@@ -57,59 +85,23 @@ namespace Game.Scripts.Controller
                 case 1 when !isWrongDoc:
                     _score -= score;
                     _wrongDocuments++;
-                    Debug.Log($"Rejected Correct Document, score : {_score}, Fail Count : {_wrongDocuments} ");
+                    Debug.Log($"Rejected Wrong Document, score : {_score}, Fail Count : {_wrongDocuments} ");
                     break;
                 //Rejected Wrong Document
                 case 1 when true:
                     _score += score;
                     _correctDocuments++;
-                    Debug.Log($"Rejected Wrong Document, score : {_score}, Correct Count : {_correctDocuments}");
+                    Debug.Log($"Rejected Correct Document, score : {_score}, Correct Count : {_correctDocuments}");
                     break;
             }
         }
-
-        private void UpdateTime()
+        
+        public void SetTimer(bool isStop)
         {
-            switch (_isDebugMode)
-            {
-                case true when _time >= debugTargetTime:
-                    _time = debugTargetTime;
-                    _startTimer = false;
-                    GameFinishEvent?.Invoke(this, EventArgs.Empty);
-                    return;
-                case false when _time >= targetTime:
-                    _time = targetTime;
-                    _startTimer = false;
-                    GameFinishEvent?.Invoke(this, EventArgs.Empty);
-                    return;
-            }
+            if(!isStop)
+                clock.gameObject.SetActive(true);
             
-            _time += Time.deltaTime;
-            _updateTime += Time.deltaTime;
-            DisplayTime();
-        }
-
-        private void DisplayTime()
-        {
-            if (!(_updateTime >= UpdateTimeThreshold))
-                return;
-            
-            _m += 15;
-            if (_m == 60)
-            {
-                _h++;
-                _m = 0;
-            }
-
-            string text = $"{_h:00}:{_m:00}";
-            _updateTime = 0;
-            
-            TimerEvent?.Invoke(this, new InfoEventArgs<string>(text));
-        }
-
-        public void StartTimer()
-        {
-            _startTimer = true;
+            _isTimerStop = isStop;
         }
 
         public int GetScore()
@@ -126,23 +118,11 @@ namespace Game.Scripts.Controller
         {
             return _wrongDocuments;
         }
-
-        public void SetTimerStop()
-        {
-            _isTimerStop = true;
-        }
-
-        public void SetDebugMode()
-        {
-            _isDebugMode = true;
-        }
         
         public void Reset()
         {
-            _h = 9;
-            _m = 0;
+            _timeThreshold = 0f;
             _time = 0f;
-            _updateTime = 0f;
             _score = 0;
             _correctDocuments = 0;
             _wrongDocuments = 0;

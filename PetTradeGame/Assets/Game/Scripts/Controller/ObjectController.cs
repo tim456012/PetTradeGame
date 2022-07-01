@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Common.Animation;
-using Game.Scripts.Controller.SubController;
 using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
@@ -25,7 +24,7 @@ namespace Game.Scripts.Controller
         private readonly static List<Poolable> Instances = new List<Poolable>();
 
         private FactoryController _factoryController;
-        private DragAndDropSubController _dragAndDropSubController;
+        private DragAndDropController _dragAndDropController;
         private GameObject _lastObj;
         private IEnumerator _reGenerateDocument;
         private List<RecipeData> _recipeDataList;
@@ -44,7 +43,7 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            _dragAndDropSubController = GetComponent<DragAndDropSubController>();
+            _dragAndDropController = GetComponent<DragAndDropController>();
         }
         
         #endregion
@@ -265,14 +264,14 @@ namespace Game.Scripts.Controller
 
             var p = col.GetComponent<Poolable>();
             EnqueueObject(p);
-            _dragAndDropSubController.TargetObj = null;
+            _dragAndDropController.TargetObj = null;
             DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(_index));
         }
 
         public void ScaleDocument()
         {
-            var obj = _dragAndDropSubController.LastObj;
+            var obj = _dragAndDropController.LastObj;
             if (obj == null)
                 return;
             if (!obj.GetComponent<EntityAttribute>().isDocument)
