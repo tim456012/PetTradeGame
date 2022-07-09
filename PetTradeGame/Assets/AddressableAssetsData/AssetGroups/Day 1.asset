@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Day 1
+  m_EditorClassIdentifier: 
+  m_GroupName: Day 1
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 8ef43b98075e95d4fad75555956dc87d
+  m_SerializeEntries:
+  - m_GUID: 20b05194bede8d74fa8a5fee1d3838f4
+    m_Address: Video Data/Intro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ed5b7e9a0afc18f41aea78e5a6bc0c55
+    m_Address: Video Data/Day1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a17089e3dcdf26d43afe299e600c61c4
+    m_Address: Video Data/Day1_Second
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b55998a7c07f21440b07227fd897e94f
+    m_Address: Level Data/LevelData_Day1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 838e8c5706053ae49b29db459d23bf12
+    m_Address: Conversations Data/Day1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e47758c45a6acc545a43eab3bbb40c2c
+    m_Address: Conversations Data/Day1_Middle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b36388a396f93394c872f57b685c989f, type: 2}
+    - {fileID: 11400000, guid: 665c55379e15981479482f52c747ea66, type: 2}

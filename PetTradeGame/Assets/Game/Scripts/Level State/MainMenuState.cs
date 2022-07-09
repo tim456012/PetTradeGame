@@ -3,7 +3,7 @@ using Game.Scripts.Controller;
 
 namespace Game.Scripts.Level_State
 {
-    public class MainMenuState : GameCoreState
+    public class MainMenuState : GameCore
     {
         private UIController _uiController;
 

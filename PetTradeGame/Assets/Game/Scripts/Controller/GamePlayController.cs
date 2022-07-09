@@ -26,17 +26,21 @@ namespace Game.Scripts.Controller
         
         private void Update()
         {
-            _isTimerStop = IsPause;
+            if (IsPause)
+                _isTimerStop = false;
+            
             if(!_isTimerStop)
                 UpdateTime();
 
             if (!_isReadyFinish)
                 return;
-            
-            _timeThreshold += Time.deltaTime;
+
             if (!(_timeThreshold >= WorldTimeThreshold))
+            {
+                _timeThreshold += Time.deltaTime;
                 return;
-            
+            }
+
             _isReadyFinish = false;
             GameFinishEvent?.Invoke(this, EventArgs.Empty);
         }
@@ -100,7 +104,7 @@ namespace Game.Scripts.Controller
         {
             if(!isStop)
                 clock.gameObject.SetActive(true);
-            
+
             _isTimerStop = isStop;
         }
 
@@ -126,6 +130,7 @@ namespace Game.Scripts.Controller
             _score = 0;
             _correctDocuments = 0;
             _wrongDocuments = 0;
+            clock.gameObject.SetActive(false);
         }
     }
 }

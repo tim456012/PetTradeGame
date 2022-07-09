@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1086b88fc98ec614d9d2ec3578c51076, type: 3}
+  m_Name: LevelData_Day1
+  m_EditorClassIdentifier: 
+  videoAddress:
+  - Video Data/Intro
+  - Video Data/Day1
+  - Video Data/Day1_Second
+  introDialogue:
+    m_AssetGUID: 838e8c5706053ae49b29db459d23bf12
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  middleDialogue:
+    m_AssetGUID: e47758c45a6acc545a43eab3bbb40c2c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  documentRecipeData:
+  - documentRecipeType: DealerLicenseRecipe
+    documentRecipeName: DL_Day1
+  - documentRecipeType: HealthCertificateRecipe
+    documentRecipeName: HC_Day1
+  - documentRecipeType: SpecialPermitRecipe
+    documentRecipeName: SP_Day1
+  functionalObjectsData:
+  - prefab:
+      m_AssetGUID: 6ed189573a6c6d84c830df659366dfad
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: GStamp
+    amount: 1
+    maxAmount: 1
+    spawnPosition: StampPos1
+  - prefab:
+      m_AssetGUID: 9624a96f6da7a8041a99da2e58497ee6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: RStamp
+    amount: 1
+    maxAmount: 1
+    spawnPosition: StampPos2
+  - prefab:
+      m_AssetGUID: d346dcd1142c1d547bb35d74ae0289c3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: License
+    amount: 5
+    maxAmount: 10
+    spawnPosition: LicensePos
+  scoreData:
+  - id: HTa
+    score: 1
+    isWrongDocument: 0
+  - id: HTb
+    score: 1
+    isWrongDocument: 0
+  - id: HTaF
+    score: 1
+    isWrongDocument: 1
+  - id: HTbF
+    score: 1
+    isWrongDocument: 1
+  - id: TSa
+    score: 1
+    isWrongDocument: 0
+  - id: TSb
+    score: 1
+    isWrongDocument: 0
+  - id: TSaF
+    score: 1
+    isWrongDocument: 1
+  - id: TSbF
+    score: 1
+    isWrongDocument: 1
+  - id: SCa
+    score: 1
+    isWrongDocument: 0
+  - id: SCb
+    score: 1
+    isWrongDocument: 0
+  - id: SCaF
+    score: 1
+    isWrongDocument: 1
+  - id: SCbF
+    score: 1
+    isWrongDocument: 1
+  - id: PHa
+    score: 1
+    isWrongDocument: 0
+  - id: PHb
+    score: 1
+    isWrongDocument: 0
+  - id: PHaF
+    score: 1
+    isWrongDocument: 1
+  - id: PHbF
+    score: 1
+    isWrongDocument: 1
+  - id: BTa
+    score: 1
+    isWrongDocument: 0
+  - id: BTb
+    score: 1
+    isWrongDocument: 0
+  - id: BTaF
+    score: 1
+    isWrongDocument: 1
+  - id: BTbF
+    score: 1
+    isWrongDocument: 1
+  - id: EAa
+    score: 0
+    isWrongDocument: 0
+  - id: EAb
+    score: 0
+    isWrongDocument: 0
+  - id: EAaF
+    score: 1
+    isWrongDocument: 1
+  - id: EAbF
+    score: 1
+    isWrongDocument: 1

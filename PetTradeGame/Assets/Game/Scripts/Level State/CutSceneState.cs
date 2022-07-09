@@ -1,57 +1,51 @@
 ﻿using System;
+using System.Collections;
+using System.IO;
 using Game.Scripts.Controller;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.Video;
 
 namespace Game.Scripts.Level_State
 {
-    public class CutSceneState : GameCoreState
+    public class CutSceneState : GameCore
     {
         private CutsceneController _cutsceneController;
-        private VideoClip _video1, _video2, _video3;
-        private bool _hasVideo2, _hasVideo3;
-
+        private IEnumerator _loadCutsceneRoutine;
+        private string[] _videoList;
+        private int _currentVideoIndex;
+        
         protected override void Awake()
         {
             base.Awake();
             _cutsceneController = Owner.GetComponentInChildren<CutsceneController>();
+            _currentVideoIndex = 0;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            if (!_video1)
-                return;
-
-            Resources.UnloadAsset(_video1);
-            _video1 = null;
-            if (!_video2)
-                return;
-            
-            Resources.UnloadAsset(_video2);
-            _video2 = null;
-            if(!_video3)
-                return;
-            
-            Resources.UnloadAsset(_video3);
-            _video3 = null;
+            _videoList = null;
+            _currentVideoIndex = 0;
         }
-
+        
         public override void Enter()
         {
             base.Enter();
-            _video1 = Owner.levelData.video1;
-            _video2 = Owner.levelData.video2;
-            _video3 = Owner.levelData.video3;
-
-            if (_video2 != null)
-                _hasVideo2 = true;
-
-            if (_video3 != null)
-                _hasVideo3 = true;
+            Debug.Log(Owner.LevelData.name);
+            _videoList = new string[Owner.LevelData.videoAddress.Length];
+            _videoList = Owner.LevelData.videoAddress;
             
-            _cutsceneController.PlayCutScene(_video1);
-            //CheckVideoToPlay();
+            //Load first video
+            LoadVideo(_videoList[0]);
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _videoList = null;
+            _currentVideoIndex = 0;
         }
 
         protected override void AddListeners()
@@ -66,26 +60,55 @@ namespace Game.Scripts.Level_State
             CutsceneController.CompleteEvent -= OnCompleteVideoPlaying;
         }
 
-        private void CheckVideoToPlay()
+        private void LoadVideo(string path)
         {
-            if (!_hasVideo2 && !_hasVideo3)
-                return;
-           
-            _cutsceneController.PlayCutScene(_video2);
-            _hasVideo2 = false;
-
-            //if (!_hasVideo3)
-            //    return;
-            
-            //_cutsceneController.PlayCutScene(_video3);
-            //_hasVideo3 = false;
+            _loadCutsceneRoutine = LoadVideoData(path);
+            StartCoroutine(_loadCutsceneRoutine);
         }
-
+        
         private void OnCompleteVideoPlaying(object sender, EventArgs e)
         {
-            //CheckVideoToPlay();
-            if(!_hasVideo2 && !_hasVideo3)
-              Owner.ChangeState<IntroState>();
+            _currentVideoIndex++;
+            if(_videoList.Length > _currentVideoIndex)
+            {
+                if (!string.IsNullOrEmpty(_videoList[_currentVideoIndex]))
+                {
+                    //Reload video
+                    LoadVideo(_videoList[_currentVideoIndex]);
+                    return;
+                }            
+            }
+            
+            _videoList = null;
+            Owner.ChangeState<DialogueState>();
+        }
+        
+        private IEnumerator LoadVideoData(string addressPath)
+        {
+            var video = Addressables.LoadAssetAsync<TextAsset>(addressPath);
+            yield return null;
+
+            video.Completed += data =>
+            {
+                if (data.Status is AsyncOperationStatus.Failed or AsyncOperationStatus.None)
+                {
+                    Debug.LogError("Video not found");
+                    return;
+                }
+
+                var textAsset = video.Result;
+                if (!Directory.Exists(Application.persistentDataPath + "/Video Data/"))
+                    Directory.CreateDirectory(Application.persistentDataPath + "/Video Data/");
+                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, addressPath + ".mp4"), textAsset.bytes);
+                
+                string url = Application.persistentDataPath + "/" + addressPath + ".mp4";
+                Debug.Log(url);
+                _cutsceneController.GetComponent<VideoPlayer>().url = url;
+                Addressables.Release(video);
+            };
+            yield return null;
+            
+            _cutsceneController.PlayCutScene();
         }
     }
 }

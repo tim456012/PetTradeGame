@@ -3,17 +3,11 @@ using UnityEngine;
 
 namespace Game.Scripts.Model
 {
-    [CreateAssetMenu(fileName = "ScoreData", menuName = "ScriptableObject/Score Data")]
-    public class ScoreData : ScriptableObject
-    {
-        public List<ScoreContent> scoreContents;
-    }
-
     [System.Serializable]
-    public class ScoreContent
+    public class ScoreData
     {
         public string id;
-        [Range(-100, 100)]
+        [Range(1, 10)]
         public int score;
         public bool isWrongDocument;
     }

@@ -6,10 +6,11 @@ using UnityEngine;
 
 namespace Game.Scripts.Level_State
 {
-    public class MainGameState : GameCoreState
+    public class MainGameState : GameCore
     {
         private GamePlayController _gamePlayController;
         private ObjectController _objectController;
+        private FactoryController _factoryController;
         private UIController _uiController;
         
         protected override void Awake()
@@ -17,34 +18,32 @@ namespace Game.Scripts.Level_State
             base.Awake();
             _gamePlayController = Owner.GetComponentInChildren<GamePlayController>();
             _objectController = Owner.GetComponentInChildren<ObjectController>();
+            _factoryController = Owner.GetComponentInChildren<FactoryController>();
             _uiController = Owner.GetComponentInChildren<UIController>();
         }
 
         public override void Enter()
         {
             base.Enter();
-
             Init();
-            _uiController.StartLevel();
+            _uiController.ShowGameplayPanel();
             
-            var recipeDataList = Owner.levelData.documentRecipeData;
-            var scoreData = Owner.levelData.scoreData;
+            var recipeDataList = Owner.LevelData.documentRecipeData;
+            var scoreData = Owner.LevelData.scoreData;
 
-            _objectController.InitFactory(recipeDataList, scoreData);
-            _objectController.InitObjectPool(Owner.levelData.functionalObjectsData);
-            
-            _gamePlayController.SetTimer(false);
+            _factoryController.InitFactory(recipeDataList, scoreData);
+            _objectController.InitObjectPool(Owner.LevelData.functionalObjectsData);
+
             Debug.Log("Entering playing state");
         }
 
         public override void Exit()
         {
             base.Exit();
-            _objectController.ReleaseDocuments();
-            _objectController.ReleaseInstances();
+            _factoryController.Release();
             _objectController.Release();
             
-            _uiController.EndLevel();
+            _uiController.ShowEndGamePanel();
         }
 
         protected override void AddListeners()
@@ -76,11 +75,10 @@ namespace Game.Scripts.Level_State
             _gamePlayController.enabled = true;
             _objectController.enabled = true;
             _uiController.enabled = true;
-            
-            if (Owner.stopTimer)
-                _gamePlayController.SetTimer(true);
 
-            if(!_objectController.gameObject.GetComponent<DragAndDropController>())
+            _gamePlayController.SetTimer(Owner.stopTimer);
+            
+            if (!_objectController.gameObject.GetComponent<DragAndDropController>())
                 _objectController.gameObject.AddComponent<DragAndDropController>();
         }
 
@@ -98,13 +96,13 @@ namespace Game.Scripts.Level_State
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
             string id = _objectController.GetGeneratedID();
-            var content = Owner.levelData.scoreData.scoreContents;
+            var content = Owner.LevelData.scoreData;
             foreach (var scoreContent in content)
             {
                 if (!id.Equals(scoreContent.id))
                     continue;
                 _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
-                _objectController.ReleaseDocuments();
+                _factoryController.Release();
             }
             _objectController.ReGenerateDocument();
         }

@@ -42,12 +42,12 @@ namespace Game.Scripts.Controller
             endGamePanel.wrongDocText.text = wrongDoc.ToString();
         }
 
-        public void StartLevel()
+        public void ShowGameplayPanel()
         {
             gamePlayPanel.gameObject.SetActive(true);
         }
 
-        public void EndLevel()
+        public void ShowEndGamePanel()
         {
             gamePlayPanel.gameObject.SetActive(false);
             endGamePanel.gameObject.SetActive(true);

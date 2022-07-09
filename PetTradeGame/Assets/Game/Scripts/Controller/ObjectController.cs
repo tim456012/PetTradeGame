@@ -8,10 +8,10 @@ using Game.Scripts.Model;
 using Game.Scripts.TempCode;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
-using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
-using UnityEngine.UI;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
@@ -19,16 +19,12 @@ namespace Game.Scripts.Controller
     public class ObjectController : MonoBehaviour
     {
         #region Field
-        
-        private readonly List<GameObject> _documents = new List<GameObject>();
         private readonly static List<Poolable> Instances = new List<Poolable>();
 
         private FactoryController _factoryController;
         private DragAndDropController _dragAndDropController;
         private GameObject _lastObj;
         private IEnumerator _reGenerateDocument;
-        private List<RecipeData> _recipeDataList;
-        private ScoreData _scoreData;
         private bool _isScaled, _isNotReady, _isEnd;
         private int _index;
         
@@ -43,72 +39,30 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
+            _factoryController = GetComponent<FactoryController>();
             _dragAndDropController = GetComponent<DragAndDropController>();
         }
         
         #endregion
         
-        #region Initiation
-        public void InitFactory(List<RecipeData> documentList, ScoreData scoreData)
-        {
-            var instance = gameObject.GetComponentInChildren<FactoryController>();
-            _recipeDataList = new List<RecipeData>(documentList);
-            _scoreData = scoreData;
-
-            if (instance)
-            {
-                _factoryController = instance;
-                ProduceDocument(_recipeDataList, _scoreData.scoreContents);
-                return;
-            }
-
-            _factoryController = gameObject.AddComponent<FactoryController>();
-            ProduceDocument(_recipeDataList, _scoreData.scoreContents);
-        }
-
         public void InitObjectPool(List<FunctionalObjectsData> objectList)
         {
             if (objectList == null)
                 return;
-
+            
             foreach (var data in objectList)
             {
-                GameObjectPoolSubController.AddEntry(data.key, data.prefab, data.amount, data.maxAmount);
+                GameObject prefab = null;
+                Addressables.LoadAssetAsync<GameObject>(data.prefab).Completed += obj =>
+                {
+                    if(obj.Status == AsyncOperationStatus.Succeeded)
+                        prefab = obj.Result;
+                };
+                GameObjectPoolSubController.AddEntry(data.key, prefab, data.amount, data.maxAmount);
                 DequeueObject(data.key, data.spawnPosition);
             }
         }
-        #endregion
-
-        #region Factory Methods
-        private void ProduceDocument(List<RecipeData> list, IReadOnlyList<ScoreContent> scoreData)
-        {
-            DrawID:
-            int index = Random.Range(0, scoreData.Count);
-            string id = scoreData[index].id;
-            Debug.Log($"ID of this documents: {id}");
-
-            if (id == _factoryController.generatedID)
-            {
-                //Debug.Log($"Same ID result: {id}, Previous ID: {_factorySubController.generatedID}. Redraw.");
-                goto DrawID;
-            }
-
-            foreach (var recipeData in list)
-            {
-                var obj = _factoryController.ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
-                if(obj == null)
-                    continue;
-                
-                //TODO: Make animation
-                float x = Random.Range(-3, 3);
-                float y = Random.Range(-2, 2);
-                obj.transform.localPosition = new Vector3(x, y, 0);
-                obj.SetActive(true);
-                _documents.Add(obj);
-            }
-        }
-        #endregion
-
+        
         #region Object Pool Method
         private void DequeueObject(string key, string spawnPos)
         {
@@ -159,7 +113,7 @@ namespace Game.Scripts.Controller
                 yield break;
             }
             
-            ProduceDocument(_recipeDataList, _scoreData.scoreContents);
+            _factoryController.ReGenerateDocument();
             _isNotReady = false;
         }
         
@@ -323,24 +277,11 @@ namespace Game.Scripts.Controller
         #endregion
 
         #region Release Methods
-        public void ReleaseInstances()
+        public void Release()
         {
             for (int i = Instances.Count - 1; i >= 0; --i)
                 GameObjectPoolSubController.Enqueue(Instances[i]);
             Instances.Clear();
-        }
-        
-        public void ReleaseDocuments()
-        {
-            for (int i = _documents.Count - 1; i >= 0; --i)
-                Destroy(_documents[i]);
-            _documents.Clear();
-        }
-
-        public void Release()
-        {
-            _recipeDataList.Clear();
-            _scoreData = null;
         }
         #endregion
     }

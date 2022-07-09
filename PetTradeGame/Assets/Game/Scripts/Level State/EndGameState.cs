@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Level_State
 {
-    public class EndGameState : GameCoreState
+    public class EndGameState : GameCore
     {
         private GamePlayController _gamePlayController;
         private UIController _uiController;
@@ -53,10 +53,9 @@ namespace Game.Scripts.Level_State
         private void OnNextDayEvent(object sender, EventArgs e)
         {
             GC.Collect();
-            string dataName = $"LevelData_Day{++Owner.LevelCount}";
+            string dataName = $"Day{++Owner.LevelCount}";
             Debug.Log($"Loading next day data : {dataName}");
-            Owner.levelData = Resources.Load<LevelData>($"Level Data/{dataName}");
-            Owner.ChangeState<CutSceneState>();
+            Owner.ChangeLevel(dataName);
         }
     }
 }
