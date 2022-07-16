@@ -7,14 +7,13 @@ namespace Game.Scripts.Controller
 {
     public class FactoryController : MonoBehaviour
     {
+
+        public string generatedID;
         private readonly List<GameObject> _documents = new List<GameObject>();
 
         private List<RecipeData> _recipeDataList;
         private List<ScoreData> _scoreData;
-        
-        public string generatedID;
 
-        
         private void ProduceDocument(List<RecipeData> list, IReadOnlyList<ScoreData> scoreData)
         {
             DrawID:
@@ -28,12 +27,12 @@ namespace Game.Scripts.Controller
                 goto DrawID;
             }
 
-            foreach (var recipeData in list)
+            foreach (RecipeData recipeData in list)
             {
-                var obj = ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
-                if(obj == null)
+                GameObject obj = ProduceDocument(recipeData.documentRecipeType, recipeData.documentRecipeName, id);
+                if (obj == null)
                     continue;
-                
+
                 //TODO: Make animation
                 float x = Random.Range(-3, 3);
                 float y = Random.Range(-2, 2);
@@ -42,20 +41,12 @@ namespace Game.Scripts.Controller
                 _documents.Add(obj);
             }
         }
-        
-        public void InitFactory(IEnumerable<RecipeData> documentList, IEnumerable<ScoreData> scoreData)
-        {
-            _recipeDataList = new List<RecipeData>(documentList);
-            _scoreData = new List<ScoreData>(scoreData);
-            
-            ProduceDocument(_recipeDataList, _scoreData);
-        }
-        
-        public GameObject ProduceDocument(string documentType, string documentName, string id)
+
+        private GameObject ProduceDocument(string documentType, string documentName, string id)
         {
             generatedID = id;
-            
-            var obj = documentType switch
+
+            GameObject obj = documentType switch
             {
                 "DealerLicenseRecipe" => DocumentFactory.CreateDealerLicense(documentName, id),
                 "HealthCertificateRecipe" => DocumentFactory.CreateHealthCertificate(documentName, id),
@@ -63,21 +54,29 @@ namespace Game.Scripts.Controller
                 "SpecialPermitRecipe" => DocumentFactory.CreateSpecialPermit(documentName, id),
                 _ => null
             };
-            
+
             return obj;
         }
-        
+
+        public void InitFactory(List<RecipeData> documentList, List<ScoreData> scoreData)
+        {
+            _recipeDataList = new List<RecipeData>(documentList);
+            _scoreData = new List<ScoreData>(scoreData);
+
+            ProduceDocument(_recipeDataList, _scoreData);
+        }
+
         public void ReGenerateDocument()
         {
-            foreach (var document in _documents)
+            foreach (GameObject document in _documents)
             {
                 document.SetActive(false);
             }
-            
+
             _documents.Clear();
             ProduceDocument(_recipeDataList, _scoreData);
         }
-        
+
         public void Release()
         {
             for (int i = _documents.Count - 1; i >= 0; --i)

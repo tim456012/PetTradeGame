@@ -8,14 +8,14 @@ namespace Game.Scripts.Model
     [CreateAssetMenu(fileName = "ConversationData", menuName = "ScriptableObject/Conversation Data")]
     public class ConversationData : ScriptableObject
     {
+
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
         public string description;
         public List<SpeakerData> speakerList = new List<SpeakerData>();
 
-        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-
         public void Load(string line)
         {
-            var lines = new List<string>();
+            List<string> lines = new List<string>();
             foreach (Match match in Regex.Matches(line))
             {
                 string current = match.Value;
@@ -39,7 +39,7 @@ namespace Game.Scripts.Model
                     "Lower Left" => TextAnchor.LowerLeft,
                     "Lower Center" => TextAnchor.LowerCenter,
                     "Lower Right" => TextAnchor.LowerRight,
-                    _ => TextAnchor.UpperLeft,
+                    _ => TextAnchor.UpperLeft
                 }
             };
 

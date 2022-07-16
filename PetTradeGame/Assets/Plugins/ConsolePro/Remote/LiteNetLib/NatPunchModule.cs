@@ -18,9 +18,6 @@ namespace FlyingWormConsole3.LiteNetLib
         public delegate void OnNatIntroductionRequest(NetEndPoint localEndPoint, NetEndPoint remoteEndPoint, string token);
         public delegate void OnNatIntroductionSuccess(NetEndPoint targetEndPoint, string token);
 
-        public event OnNatIntroductionRequest NatIntroductionRequest;
-        public event OnNatIntroductionSuccess NatIntroductionSuccess;
-
         void INatPunchListener.OnNatIntroductionRequest(NetEndPoint localEndPoint, NetEndPoint remoteEndPoint, string token)
         {
             if (NatIntroductionRequest != null)
@@ -32,29 +29,20 @@ namespace FlyingWormConsole3.LiteNetLib
             if (NatIntroductionSuccess != null)
                 NatIntroductionSuccess(targetEndPoint, token);
         }
+
+        public event OnNatIntroductionRequest NatIntroductionRequest;
+        public event OnNatIntroductionSuccess NatIntroductionSuccess;
     }
 
     public sealed class NatPunchModule
     {
-        struct RequestEventData
-        {
-            public NetEndPoint LocalEndPoint;
-            public NetEndPoint RemoteEndPoint;
-            public string Token;
-        }
-
-        struct SuccessEventData
-        {
-            public NetEndPoint TargetEndPoint;
-            public string Token;
-        }
+        private const byte HostByte = 1;
+        private const byte ClientByte = 0;
+        public const int MaxTokenLength = 256;
 
         private readonly NetManager _netBase;
         private readonly Queue<RequestEventData> _requestEvents;
         private readonly Queue<SuccessEventData> _successEvents;
-        private const byte HostByte = 1;
-        private const byte ClientByte = 0;
-        public const int MaxTokenLength = 256;
 
         private INatPunchListener _natPunchListener;
 
@@ -77,7 +65,7 @@ namespace FlyingWormConsole3.LiteNetLib
             NetEndPoint clientExternal,
             string additionalInfo)
         {
-            NetDataWriter dw = new NetDataWriter();
+            var dw = new NetDataWriter();
 
             //First packet (server)
             //send to client
@@ -86,7 +74,7 @@ namespace FlyingWormConsole3.LiteNetLib
             dw.Put(hostExternal);
             dw.Put(additionalInfo, MaxTokenLength);
 
-            var packet = _netBase.PacketPool.GetWithData(PacketProperty.NatIntroduction, dw);
+            NetPacket packet = _netBase.PacketPool.GetWithData(PacketProperty.NatIntroduction, dw);
             _netBase.SendRawAndRecycle(packet, clientExternal);
 
             //Second packet (client)
@@ -109,7 +97,7 @@ namespace FlyingWormConsole3.LiteNetLib
             {
                 while (_successEvents.Count > 0)
                 {
-                    var evt = _successEvents.Dequeue();
+                    SuccessEventData evt = _successEvents.Dequeue();
                     _natPunchListener.OnNatIntroductionSuccess(evt.TargetEndPoint, evt.Token);
                 }
             }
@@ -117,7 +105,7 @@ namespace FlyingWormConsole3.LiteNetLib
             {
                 while (_requestEvents.Count > 0)
                 {
-                    var evt = _requestEvents.Dequeue();
+                    RequestEventData evt = _requestEvents.Dequeue();
                     _natPunchListener.OnNatIntroductionRequest(evt.LocalEndPoint, evt.RemoteEndPoint, evt.Token);
                 }
             }
@@ -129,19 +117,19 @@ namespace FlyingWormConsole3.LiteNetLib
                 return;
 
             //prepare outgoing data
-            NetDataWriter dw = new NetDataWriter();
+            var dw = new NetDataWriter();
             string networkIp = NetUtils.GetLocalIp(LocalAddrType.IPv4);
             if (string.IsNullOrEmpty(networkIp))
             {
                 networkIp = NetUtils.GetLocalIp(LocalAddrType.IPv6);
             }
             int networkPort = _netBase.LocalEndPoint.Port;
-            NetEndPoint localEndPoint = new NetEndPoint(networkIp, networkPort);
+            var localEndPoint = new NetEndPoint(networkIp, networkPort);
             dw.Put(localEndPoint);
             dw.Put(additionalInfo, MaxTokenLength);
 
             //prepare packet
-            var packet = _netBase.PacketPool.GetWithData(PacketProperty.NatIntroductionRequest, dw);
+            NetPacket packet = _netBase.PacketPool.GetWithData(PacketProperty.NatIntroductionRequest, dw);
             _netBase.SendRawAndRecycle(packet, masterServerEndPoint);
         }
 
@@ -174,12 +162,12 @@ namespace FlyingWormConsole3.LiteNetLib
             string token = dr.GetString(MaxTokenLength);
 
             NetUtils.DebugWrite(ConsoleColor.Cyan, "[NAT] introduction received; we are designated " + (hostByte == HostByte ? "host" : "client"));
-            NetDataWriter writer = new NetDataWriter();
+            var writer = new NetDataWriter();
 
             // send internal punch
             writer.Put(hostByte);
             writer.Put(token);
-            var packet = _netBase.PacketPool.GetWithData(PacketProperty.NatPunchMessage, writer);
+            NetPacket packet = _netBase.PacketPool.GetWithData(PacketProperty.NatPunchMessage, writer);
             _netBase.SendRawAndRecycle(packet, remoteInternal);
             NetUtils.DebugWrite(ConsoleColor.Cyan, "[NAT] internal punch sent to " + remoteInternal);
 
@@ -225,6 +213,18 @@ namespace FlyingWormConsole3.LiteNetLib
                     HandleNatPunch(senderEndPoint, dr);
                     break;
             }
+        }
+        private struct RequestEventData
+        {
+            public NetEndPoint LocalEndPoint;
+            public NetEndPoint RemoteEndPoint;
+            public string Token;
+        }
+
+        private struct SuccessEventData
+        {
+            public NetEndPoint TargetEndPoint;
+            public string Token;
         }
     }
 }

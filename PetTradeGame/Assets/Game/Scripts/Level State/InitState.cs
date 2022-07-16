@@ -6,12 +6,12 @@ using UnityEngine;
 namespace Game.Scripts.Level_State
 {
     /// <summary>
-    /// Init every controllers in the game.
+    ///     Init every controllers in the game.
     /// </summary>
-    public class InitControllerState : GameCore
+    public class InitState : GameCore
     {
         private SpriteRenderer _spriteRenderer;
-        
+
         protected override void Awake()
         {
             base.Awake();
@@ -21,31 +21,34 @@ namespace Game.Scripts.Level_State
         public override void Enter()
         {
             base.Enter();
-            StartCoroutine(Init());
+            //StartCoroutine(Init());
         }
 
+        //Init as debug mode or general mode.
         private IEnumerator Init()
         {
             yield return null;
-            if(Owner.debugMode)
+            if (Owner.debugMode)
             {
                 GamePlayController.IsDebugMode = true;
                 UIController.IsDebugMode = true;
                 Owner.ChangeState<DialogueState>();
             }
             else
+            {
                 Owner.ChangeState<MainMenuState>();
+            }
         }
 
         private void ScaleGameWorld()
         {
-            var background = GameObjFinder.FindChildGameObject(Owner.world.gameObject, "Background");
+            GameObject background = GameObjFinder.FindChildGameObject(Owner.world.gameObject, "Background");
             _spriteRenderer = background.GetComponent<SpriteRenderer>();
-            
+
             float worldScreenHeight = Camera.main!.orthographicSize * 2;
             float worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
 
-            var sprite = _spriteRenderer.sprite;
+            Sprite sprite = _spriteRenderer.sprite;
             background.transform.localScale = new Vector3(
                 worldScreenWidth / sprite.bounds.size.x,
                 worldScreenHeight / sprite.bounds.size.y, 1);

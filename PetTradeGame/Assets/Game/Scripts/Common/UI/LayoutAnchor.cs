@@ -4,13 +4,13 @@ using UnityEngine;
 namespace Game.Scripts.Common.UI
 {
     /// <summary>
-    /// Provide an easy way to modify the relationship of RectTransform via the inspector.
+    ///     Provide an easy way to modify the relationship of RectTransform via the inspector.
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public class LayoutAnchor : MonoBehaviour
     {
-        private RectTransform rectTransform; //itself
         private RectTransform parentRT;
+        private RectTransform rectTransform; //itself
 
         private void Awake()
         {
@@ -63,10 +63,10 @@ namespace Game.Scripts.Common.UI
         {
             Vector2 theOffset = GetPosition(rectTransform, anchor);
             Vector2 parentOffset = GetPosition(parentRT, parentAnchor);
-            Vector2 anchorCenter = new Vector2(Mathf.Lerp(rectTransform.anchorMin.x, rectTransform.anchorMax.x, rectTransform.pivot.x),
+            var anchorCenter = new Vector2(Mathf.Lerp(rectTransform.anchorMin.x, rectTransform.anchorMax.x, rectTransform.pivot.x),
                 Mathf.Lerp(rectTransform.anchorMin.y, rectTransform.anchorMax.y, rectTransform.pivot.y));
-            Vector2 anchorOffset = new Vector2(parentRT.rect.width * anchorCenter.x, parentRT.rect.height * anchorCenter.y);
-            Vector2 pivotOffset = new Vector2(rectTransform.rect.width * rectTransform.pivot.x,
+            var anchorOffset = new Vector2(parentRT.rect.width * anchorCenter.x, parentRT.rect.height * anchorCenter.y);
+            var pivotOffset = new Vector2(rectTransform.rect.width * rectTransform.pivot.x,
                 rectTransform.rect.height * rectTransform.pivot.y);
             Vector2 pos = parentOffset - anchorOffset - theOffset + pivotOffset + offset;
             pos.x = Mathf.RoundToInt(pos.x);
@@ -75,7 +75,7 @@ namespace Game.Scripts.Common.UI
         }
 
         /// <summary>
-        /// Determine where to place the RectTransform.
+        ///     Determine where to place the RectTransform.
         /// </summary>
         /// <param name="anchor">The anchor of GameObject itself.</param>
         /// <param name="parentAnchor">The anchor of parent GameObject.</param>
@@ -86,7 +86,7 @@ namespace Game.Scripts.Common.UI
         }
 
         /// <summary>
-        /// Moving RectTransform into position with animation.
+        ///     Moving RectTransform into position with animation.
         /// </summary>
         /// <param name="anchor">The anchor of GameObject itself.</param>
         /// <param name="parentAnchor">The anchor of parent GameObject.</param>

@@ -1,6 +1,5 @@
 using System;
 using Game.Scripts.Controller;
-using Game.Scripts.Model;
 using UnityEngine;
 
 namespace Game.Scripts.Level_State
@@ -8,15 +7,21 @@ namespace Game.Scripts.Level_State
     public class EndGameState : GameCore
     {
         private GamePlayController _gamePlayController;
-        private UIController _uiController;
 
         private int _score;
+        private UIController _uiController;
 
         protected override void Awake()
         {
             base.Awake();
             _gamePlayController = Owner.GetComponentInChildren<GamePlayController>();
             _uiController = Owner.GetComponentInChildren<UIController>();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            UIController.NextDayEvent -= OnNextDayEvent;
         }
 
         public override void Enter()
@@ -44,12 +49,6 @@ namespace Game.Scripts.Level_State
             UIController.NextDayEvent -= OnNextDayEvent;
         }
 
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            UIController.NextDayEvent -= OnNextDayEvent;
-        }
-        
         private void OnNextDayEvent(object sender, EventArgs e)
         {
             GC.Collect();

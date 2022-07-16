@@ -7,25 +7,24 @@ using UnityEngine;
 namespace Game.Scripts.Tools
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
-        AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
+                    AttributeTargets.Class | AttributeTargets.Struct)]
     public class ConditionalHideAttribute : PropertyAttribute
     {
         public readonly string ConditionalSourceField = "";
-        public string ConditionalSourceField2 = "";
-        public readonly string[] ConditionalSourceFields = { };
         public readonly bool[] ConditionalSourceFieldInverseBools = { };
-        public readonly bool HideInInspector = false;
-        public readonly bool Inverse = false;
-        public bool UseOrLogic = false;
+        public readonly string[] ConditionalSourceFields = { };
+        public readonly bool HideInInspector;
+        public readonly bool Inverse;
+        public string ConditionalSourceField2 = "";
 
         public bool InverseCondition1 = false;
         public bool InverseCondition2 = false;
+        public bool UseOrLogic = false;
 
 
         // Use this for initialization
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="conditionalSourceField"></param>
         public ConditionalHideAttribute(string conditionalSourceField)
@@ -36,7 +35,6 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="conditionalSourceField"></param>
         /// <param name="hideInInspector"></param>
@@ -48,7 +46,6 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="conditionalSourceField"></param>
         /// <param name="hideInInspector"></param>
@@ -61,7 +58,6 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="hideInInspector"></param>
         public ConditionalHideAttribute(bool hideInInspector = false)
@@ -72,7 +68,6 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="conditionalSourceFields"></param>
         /// <param name="conditionalSourceFieldInverseBools"></param>
@@ -87,7 +82,6 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="conditionalSourceFields"></param>
         /// <param name="hideInInspector"></param>

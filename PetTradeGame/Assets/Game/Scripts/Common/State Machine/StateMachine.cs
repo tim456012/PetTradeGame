@@ -4,16 +4,16 @@ namespace Game.Scripts.Common.State_Machine
 {
     public class StateMachine : MonoBehaviour
     {
+        protected State _currentState;
+        protected bool _transition;
         public virtual State CurrentState
         {
             get => _currentState;
             set => Transition(value);
         }
-        protected State _currentState;
-        protected bool _transition;
 
         /// <summary>
-        /// Get the specific state on the controller. Add as new component if it doesn't exists.  
+        ///     Get the specific state on the controller. Add as new component if it doesn't exists.
         /// </summary>
         /// <typeparam name="T">The State class name</typeparam>
         /// <returns>T</returns>
@@ -28,7 +28,7 @@ namespace Game.Scripts.Common.State_Machine
         }
 
         /// <summary>
-        /// Change the current state to target state.
+        ///     Change the current state to target state.
         /// </summary>
         /// <typeparam name="T">The State class name</typeparam>
         public virtual void ChangeState<T>() where T : State

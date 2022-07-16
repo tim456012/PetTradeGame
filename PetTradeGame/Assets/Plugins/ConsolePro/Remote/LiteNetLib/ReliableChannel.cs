@@ -7,44 +7,26 @@ namespace FlyingWormConsole3.LiteNetLib
 {
     internal sealed class ReliableChannel
     {
-        private class PendingPacket
-        {
-            public NetPacket Packet;
-            public DateTime? TimeStamp;
-
-            public NetPacket GetAndClear()
-            {
-                var packet = Packet;
-                Packet = null;
-                TimeStamp = null;
-                return packet;
-            }
-        }
-
-        private readonly Queue<NetPacket> _outgoingPackets;
-        private readonly bool[] _outgoingAcks;            //for send acks
-        private readonly PendingPacket[] _pendingPackets; //for unacked packets and duplicates
-        private readonly NetPacket[] _receivedPackets;    //for order
-        private readonly bool[] _earlyReceived;           //for unordered
-
-        private int _localSeqence;
-        private int _remoteSequence;
-        private int _localWindowStart;
-        private int _remoteWindowStart;
-
-        private readonly NetPeer _peer;
-        private bool _mustSendAcks;
+        private const int BitsInByte = 8;
+        private readonly bool[] _earlyReceived; //for unordered
 
         private readonly bool _ordered;
+        private readonly bool[] _outgoingAcks; //for send acks
+
+        private readonly Queue<NetPacket> _outgoingPackets;
+
+        private readonly NetPeer _peer;
+        private readonly PendingPacket[] _pendingPackets; //for unacked packets and duplicates
+        private readonly NetPacket[] _receivedPackets;    //for order
         private readonly int _windowSize;
-        private const int BitsInByte = 8;
+
+        private int _localSeqence;
+        private int _localWindowStart;
+        private bool _mustSendAcks;
 
         private int _queueIndex;
-
-        public int PacketsInQueue
-        {
-            get { return _outgoingPackets.Count; }
-        }
+        private int _remoteSequence;
+        private int _remoteWindowStart;
 
         public ReliableChannel(NetPeer peer, bool ordered, int windowSize)
         {
@@ -71,6 +53,8 @@ namespace FlyingWormConsole3.LiteNetLib
             _remoteSequence = 0;
             _remoteWindowStart = 0;
         }
+
+        public int PacketsInQueue => _outgoingPackets.Count;
 
         //ProcessAck in packet
         public void ProcessAck(NetPacket packet)
@@ -114,7 +98,7 @@ namespace FlyingWormConsole3.LiteNetLib
                 int currentByte = startByte + i / BitsInByte;
                 int currentBit = i % BitsInByte;
 
-                if ((acksData[currentByte] & (1 << currentBit)) == 0)
+                if ((acksData[currentByte] & 1 << currentBit) == 0)
                 {
                     //NetUtils.DebugWrite(ConsoleColor.Cyan, "[PA] SKIP FALSE: " + ackSequence);
                     //Skip false ack
@@ -231,7 +215,7 @@ namespace FlyingWormConsole3.LiteNetLib
             //Init packet
             int bytesCount = (_windowSize - 1) / BitsInByte + 1;
             PacketProperty property = _ordered ? PacketProperty.AckReliableOrdered : PacketProperty.AckReliable;
-            var acksPacket = _peer.GetPacketFromPool(property, bytesCount);
+            NetPacket acksPacket = _peer.GetPacketFromPool(property, bytesCount);
 
             //For quick access
             byte[] data = acksPacket.RawData; //window start + acks size
@@ -368,6 +352,19 @@ namespace FlyingWormConsole3.LiteNetLib
             {
                 _earlyReceived[packet.Sequence % _windowSize] = true;
                 _peer.AddIncomingPacket(packet);
+            }
+        }
+        private class PendingPacket
+        {
+            public NetPacket Packet;
+            public DateTime? TimeStamp;
+
+            public NetPacket GetAndClear()
+            {
+                NetPacket packet = Packet;
+                Packet = null;
+                TimeStamp = null;
+                return packet;
             }
         }
     }

@@ -9,10 +9,10 @@ namespace Game.Scripts.Controller
 {
     public class DragAndDropController : MonoBehaviour
     {
-        private Vector2 _screenPos;
         private Vector3 _gameWorldPos;
         private Vector3 _originalPos;
-        
+        private Vector2 _screenPos;
+
         public GameObject TargetObj { get; set; }
         public GameObject LastObj { get; set; }
 
@@ -37,7 +37,7 @@ namespace Game.Scripts.Controller
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
 
-            var hit = Physics2D.Raycast(_gameWorldPos, Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(_gameWorldPos, Vector2.zero);
             if (hit.collider == null)
                 return;
 
@@ -56,7 +56,7 @@ namespace Game.Scripts.Controller
             {
                 temp.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "SelectedObjects";
             }
-            
+
             _originalPos = TargetObj.transform.localPosition;
             InputController.IsDragActive = true;
         }
@@ -88,8 +88,8 @@ namespace Game.Scripts.Controller
             {
                 TargetObj.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
             }
-            
-            var cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+            Vector3 cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             InputController.IsDragActive = false;
             if (TargetObj.transform.localPosition.x > cameraWorld.x / 1.13
                 || TargetObj.transform.localPosition.y > cameraWorld.y / 1.13

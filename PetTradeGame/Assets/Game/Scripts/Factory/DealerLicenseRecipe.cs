@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -6,13 +7,13 @@ namespace Game.Scripts.Factory
 {
     public class DealerLicenseRecipe : ScriptableObject
     {
-        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-        
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+
         public List<DealerLicenseData> dealerLicenseData = new List<DealerLicenseData>();
 
         public void Load(string line)
         {
-            var lines = new List<string>();
+            List<string> lines = new List<string>();
             foreach (Match match in Regex.Matches(line))
             {
                 string current = match.Value;
@@ -20,7 +21,7 @@ namespace Game.Scripts.Factory
                     lines.Add("");
                 lines.Add(current.Trim(',', '"'));
             }
-            
+
             var data = new DealerLicenseData(lines[0])
             {
                 businessName = new List<string>(),
@@ -63,30 +64,30 @@ namespace Game.Scripts.Factory
 
             for (int i = 1; i <= 2; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
-                data.businessName.Add(lines[i]);    
+                data.businessName.Add(lines[i]);
             }
-            
+
             for (int i = 3; i <= 4; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
-                data.businessNumber.Add(lines[i]);    
+                data.businessNumber.Add(lines[i]);
             }
-            
+
             for (int i = 11; i <= 12; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
-                data.stampSign.Add(lines[i]);    
+                data.stampSign.Add(lines[i]);
             }
-            
+
             dealerLicenseData.Add(data);
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class DealerLicenseData
     {
         public enum DealerLicensePosition
@@ -130,7 +131,7 @@ namespace Game.Scripts.Factory
 
         [Header("Line 6")]
         public bool isTick;
-        
+
         [Header("Stamp & Sign Position")]
         public List<string> stampSign;
 

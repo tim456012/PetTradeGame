@@ -5,10 +5,10 @@ namespace FlyingWormConsole3.LiteNetLib
 {
     internal sealed class SequencedChannel
     {
-        private ushort _localSequence;
-        private ushort _remoteSequence;
         private readonly Queue<NetPacket> _outgoingPackets;
         private readonly NetPeer _peer;
+        private ushort _localSequence;
+        private ushort _remoteSequence;
 
         public SequencedChannel(NetPeer peer)
         {

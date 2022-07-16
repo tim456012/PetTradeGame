@@ -9,23 +9,17 @@ namespace FlyingWormConsole3.LiteNetLib
 {
     internal sealed class NetSocket
     {
-        private Socket _udpSocketv4;
-        private Socket _udpSocketv6;
-        private NetEndPoint _localEndPoint;
-        private Thread _threadv4;
-        private Thread _threadv6;
-        private bool _running;
-        private readonly NetManager.OnMessageReceived _onMessageReceived;
-
-        private static readonly IPAddress MulticastAddressV6 = IPAddress.Parse(NetConstants.MulticastGroupIPv6);
-        private static readonly bool IPv6Support;
         private const int SocketReceivePollTime = 100000;
         private const int SocketSendPollTime = 5000;
 
-        public NetEndPoint LocalEndPoint
-        {
-            get { return _localEndPoint; }
-        }
+        private static readonly IPAddress MulticastAddressV6 = IPAddress.Parse(NetConstants.MulticastGroupIPv6);
+        private static readonly bool IPv6Support;
+        private readonly NetManager.OnMessageReceived _onMessageReceived;
+        private bool _running;
+        private Thread _threadv4;
+        private Thread _threadv6;
+        private Socket _udpSocketv4;
+        private Socket _udpSocketv6;
 
         static NetSocket()
         {
@@ -46,11 +40,13 @@ namespace FlyingWormConsole3.LiteNetLib
             _onMessageReceived = onMessageReceived;
         }
 
+        public NetEndPoint LocalEndPoint { get; private set; }
+
         private void ReceiveLogic(object state)
         {
-            Socket socket = (Socket)state;
+            var socket = (Socket)state;
             EndPoint bufferEndPoint = new IPEndPoint(socket.AddressFamily == AddressFamily.InterNetwork ? IPAddress.Any : IPAddress.IPv6Any, 0);
-            NetEndPoint bufferNetEndPoint = new NetEndPoint((IPEndPoint)bufferEndPoint);
+            var bufferNetEndPoint = new NetEndPoint((IPEndPoint)bufferEndPoint);
             byte[] receiveBuffer = new byte[NetConstants.PacketSizeLimit];
 
             while (_running)
@@ -120,7 +116,7 @@ namespace FlyingWormConsole3.LiteNetLib
             {
                 return false;
             }
-            _localEndPoint = new NetEndPoint((IPEndPoint)_udpSocketv4.LocalEndPoint);
+            LocalEndPoint = new NetEndPoint((IPEndPoint)_udpSocketv4.LocalEndPoint);
 
             _running = true;
             _threadv4 = new Thread(ReceiveLogic);
@@ -133,7 +129,7 @@ namespace FlyingWormConsole3.LiteNetLib
                 return true;
 
             //Use one port for two sockets
-            port = _localEndPoint.Port;
+            port = LocalEndPoint.Port;
 
             _udpSocketv6 = new Socket(AddressFamily.InterNetworkV6, SocketType.Dgram, ProtocolType.Udp);
             _udpSocketv6.Blocking = false;
@@ -144,7 +140,7 @@ namespace FlyingWormConsole3.LiteNetLib
 
             if (BindSocket(_udpSocketv6, new IPEndPoint(IPAddress.IPv6Any, port)))
             {
-                _localEndPoint = new NetEndPoint((IPEndPoint)_udpSocketv6.LocalEndPoint);
+                LocalEndPoint = new NetEndPoint((IPEndPoint)_udpSocketv6.LocalEndPoint);
 
                 try
                 {

@@ -10,17 +10,17 @@ namespace Game.Scripts.TempCode
         [SerializeField] private bool animated;
         [SerializeField] private float delay = 0.5f;
 
-        IEnumerator Start()
+        private IEnumerator Start()
         {
-            LayoutAnchor anchor = GetComponent<LayoutAnchor>();
+            var anchor = GetComponent<LayoutAnchor>();
             while (true)
             {
                 for (int i = 0; i < 9; ++i)
                 {
                     for (int j = 0; j < 9; ++j)
                     {
-                        TextAnchor a1 = (TextAnchor)i;
-                        TextAnchor a2 = (TextAnchor)j;
+                        var a1 = (TextAnchor)i;
+                        var a2 = (TextAnchor)j;
                         Debug.Log($"A1 : [{a1}], A2 : [{a2}]");
 
                         if (animated)

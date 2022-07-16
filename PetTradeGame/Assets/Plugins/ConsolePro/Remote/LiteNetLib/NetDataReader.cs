@@ -7,28 +7,36 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
     public class NetDataReader
     {
         protected byte[] _data;
-        protected int _position;
         protected int _dataSize;
+        protected int _position;
 
-        public byte[] Data
+        public NetDataReader()
         {
-            get { return _data; }
+
         }
 
-        public int Position
+        public NetDataReader(byte[] source)
         {
-            get { return _position; }
+            SetSource(source);
         }
 
-        public bool EndOfData
+        public NetDataReader(byte[] source, int offset)
         {
-            get { return _position == _dataSize; }
+            SetSource(source, offset);
         }
 
-        public int AvailableBytes
+        public NetDataReader(byte[] source, int offset, int maxSize)
         {
-            get { return _dataSize - _position; }
+            SetSource(source, offset, maxSize);
         }
+
+        public byte[] Data => _data;
+
+        public int Position => _position;
+
+        public bool EndOfData => _position == _dataSize;
+
+        public int AvailableBytes => _dataSize - _position;
 
         public void SetSource(NetDataWriter dataWriter)
         {
@@ -58,27 +66,15 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
             _dataSize = dataSize;
         }
 
-        public NetDataReader()
+        public void Clear()
         {
-
-        }
-
-        public NetDataReader(byte[] source)
-        {
-            SetSource(source);
-        }
-
-        public NetDataReader(byte[] source, int offset)
-        {
-            SetSource(source, offset);
-        }
-
-        public NetDataReader(byte[] source, int offset, int maxSize)
-        {
-            SetSource(source, offset, maxSize);
+            _position = 0;
+            _dataSize = 0;
+            _data = null;
         }
 
         #region GetMethods
+
         public NetEndPoint GetNetEndPoint()
         {
             string host = GetString(1000);
@@ -95,7 +91,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
 
         public sbyte GetSByte()
         {
-            var b = (sbyte)_data[_position];
+            sbyte b = (sbyte)_data[_position];
             _position++;
             return b;
         }
@@ -104,7 +100,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new bool[size];
+            bool[] arr = new bool[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetBool();
@@ -116,7 +112,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new ushort[size];
+            ushort[] arr = new ushort[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetUShort();
@@ -128,7 +124,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new short[size];
+            short[] arr = new short[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetShort();
@@ -140,7 +136,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new long[size];
+            long[] arr = new long[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetLong();
@@ -152,7 +148,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new ulong[size];
+            ulong[] arr = new ulong[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetULong();
@@ -164,7 +160,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new int[size];
+            int[] arr = new int[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetInt();
@@ -176,7 +172,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new uint[size];
+            uint[] arr = new uint[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetUInt();
@@ -188,7 +184,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new float[size];
+            float[] arr = new float[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetFloat();
@@ -200,7 +196,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new double[size];
+            double[] arr = new double[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetDouble();
@@ -212,7 +208,7 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
         {
             ushort size = BitConverter.ToUInt16(_data, _position);
             _position += 2;
-            var arr = new string[size];
+            string[] arr = new string[size];
             for (int i = 0; i < size; i++)
             {
                 arr[i] = GetString(maxLength);
@@ -343,9 +339,11 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
             _position += length;
             return outgoingData;
         }
+
         #endregion
 
         #region PeekMethods
+
         public byte PeekByte()
         {
             return _data[_position];
@@ -430,14 +428,8 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
             string result = Encoding.UTF8.GetString(_data, _position + 4, bytesCount);
             return result;
         }
-        #endregion
 
-        public void Clear()
-        {
-            _position = 0;
-            _dataSize = 0;
-            _data = null;
-        }
+        #endregion
     }
 }
 #endif

@@ -6,16 +6,16 @@ namespace Game.Scripts.TempCode
 {
     public class PanelTest : MonoBehaviour
     {
-        private Panel panel;
         private const string Show = "Show";
         private const string Hide = "Hide";
         private const string Center = "Center";
+        private Panel panel;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             panel = GetComponent<Panel>();
-            Panel.Position centerPos = new Panel.Position(Center, TextAnchor.MiddleCenter, TextAnchor.MiddleCenter);
+            var centerPos = new Panel.Position(Center, TextAnchor.MiddleCenter, TextAnchor.MiddleCenter);
             panel.AddPosition(centerPos);
         }
 

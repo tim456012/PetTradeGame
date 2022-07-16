@@ -6,11 +6,11 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
 {
     public class NetDataWriter
     {
+        private readonly bool _autoResize;
         protected byte[] _data;
-        protected int _position;
 
         private int _maxLength;
-        private readonly bool _autoResize;
+        protected int _position;
 
         public NetDataWriter()
         {
@@ -32,6 +32,10 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
             _data = new byte[_maxLength];
             _autoResize = autoResize;
         }
+
+        public byte[] Data => _data;
+
+        public int Length => _position;
 
         public void ResizeIfNeed(int newSize)
         {
@@ -61,16 +65,6 @@ namespace FlyingWormConsole3.LiteNetLib.Utils
             byte[] resultData = new byte[_position];
             Buffer.BlockCopy(_data, 0, resultData, 0, _position);
             return resultData;
-        }
-
-        public byte[] Data
-        {
-            get { return _data; }
-        }
-
-        public int Length
-        {
-            get { return _position; }
         }
 
         public void Put(float value)

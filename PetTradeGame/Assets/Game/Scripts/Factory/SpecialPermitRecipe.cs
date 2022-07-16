@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -6,13 +7,13 @@ namespace Game.Scripts.Factory
 {
     public class SpecialPermitRecipe : ScriptableObject
     {
-        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-        
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+
         public List<SpecialPermitData> specialPermitData = new List<SpecialPermitData>();
 
         public void Load(string line)
         {
-            var lines = new List<string>();
+            List<string> lines = new List<string>();
             foreach (Match match in Regex.Matches(line))
             {
                 string current = match.Value;
@@ -40,68 +41,68 @@ namespace Game.Scripts.Factory
                 animalFeature = new List<string>(),
                 stampSign = new List<string>()
             };
-            
+
             for (int i = 1; i <= 2; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.locationName.Add(lines[i]);
             }
-            
+
             for (int i = 4; i <= 5; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.objective.Add(lines[i]);
             }
-            
+
             for (int i = 6; i <= 7; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.businessNumber.Add(lines[i]);
             }
-            
+
             for (int i = 8; i <= 9; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.deadline.Add(lines[i]);
             }
-            
+
             for (int i = 10; i <= 11; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalName.Add(lines[i]);
             }
-            
+
             for (int i = 12; i <= 13; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalCount.Add(lines[i]);
             }
-            
+
             for (int i = 14; i <= 15; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalFeature.Add(lines[i]);
             }
-            
+
             for (int i = 16; i <= 17; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.stampSign.Add(lines[i]);
             }
-            
+
             specialPermitData.Add(data);
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SpecialPermitData
     {
         public enum SpecialPermitPosition
@@ -109,7 +110,7 @@ namespace Game.Scripts.Factory
             None,
             CirclePos1,
             CirclePos2,
-            CirclePos3,
+            CirclePos3
         }
 
         public string animalId;
@@ -137,11 +138,11 @@ namespace Game.Scripts.Factory
 
         [Header("Animal Feature")]
         public List<string> animalFeature;
-        
+
         [Header("Stamp & Sign Position")]
         public List<string> stampSign;
-        
-        public SpecialPermitData() {}
+
+        public SpecialPermitData() { }
 
         public SpecialPermitData(string id)
         {

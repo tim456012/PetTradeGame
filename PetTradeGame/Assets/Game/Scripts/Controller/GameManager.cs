@@ -11,25 +11,23 @@ namespace Game.Scripts.Controller
 {
     public class GameManager : StateMachine
     {
-        public LevelData LevelData { get; private set; }
-        public int LevelCount { get; set; }
-        
+
         public GameObject world;
         public bool debugMode;
         public bool stopTimer;
 
         private IEnumerator _changeLevelRoutine;
         private AsyncOperationHandle<LevelData> _levelDataHandle;
+        public LevelData LevelData { get; private set; }
+        public int LevelCount { get; set; }
 
         private void Start()
         {
-            _levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_Day1");
-            _levelDataHandle.Completed += OnLoadLevelDataCompleted;
             LevelCount = 1;
-            
-            ChangeState<InitControllerState>();
+            ChangeLevel("Day1");
+            ChangeState<InitState>();
         }
-        
+
         private void OnLoadLevelDataCompleted(AsyncOperationHandle<LevelData> data)
         {
             switch (data.Status)
@@ -49,24 +47,35 @@ namespace Game.Scripts.Controller
 
         private IEnumerator ChangeLevelData(string levelName)
         {
-            Addressables.Release(_levelDataHandle);
+            if (_levelDataHandle.IsValid())
+                Addressables.Release(_levelDataHandle);
             yield return null;
 
             _levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_" + levelName);
             if (_levelDataHandle.OperationException is InvalidKeyException invalidKeyException)
             {
-                Debug.Log($"No level data found : Go back to main menu. Exception: {invalidKeyException}");
-                StopCoroutine(_changeLevelRoutine);
+                Debug.Log($"No level data found : Go back to main menu and reload Day 1 Data.\n Exception: {invalidKeyException}");
                 LevelCount = 1;
-                ChangeState<MainMenuState>();
+                _levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_Day1");
             }
-            
+
             _levelDataHandle.Completed += OnLoadLevelDataCompleted;
             yield return _levelDataHandle;
-            ChangeState<CutSceneState>();
+
+            if (GetState<InitState>() && debugMode)
+            {
+                GamePlayController.IsDebugMode = true;
+                UIController.IsDebugMode = true;
+            }
+
+            if (debugMode)
+                ChangeState<DialogueState>();
+            else
+                ChangeState<MainMenuState>();
+
             StopCoroutine(_changeLevelRoutine);
         }
-        
+
         public void ChangeLevel(string levelName)
         {
             _changeLevelRoutine = ChangeLevelData(levelName);

@@ -16,7 +16,6 @@ namespace Game.Scripts.Level_State
         public override void Enter()
         {
             base.Enter();
-            _uiController.gameObject.SetActive(true);
             _uiController.Init();
         }
 

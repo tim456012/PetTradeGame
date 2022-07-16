@@ -29,9 +29,9 @@ namespace Editor
             Debug.Log(readPath);
 
             var directoryInfo = new DirectoryInfo(readPath);
-            var fileInfos = directoryInfo.GetFiles("*.csv");
+            FileInfo[] fileInfos = directoryInfo.GetFiles("*.csv");
 
-            foreach (var file in fileInfos)
+            foreach (FileInfo file in fileInfos)
             {
                 Debug.Log(file.Name);
                 if (!File.Exists(file.ToString()))

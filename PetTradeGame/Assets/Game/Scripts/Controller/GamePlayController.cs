@@ -7,29 +7,38 @@ namespace Game.Scripts.Controller
     public class GamePlayController : MonoBehaviour
     {
         private const float WorldTimeThreshold = 1.3f;
-        
+
         public static bool IsDebugMode, IsPause;
-        public static event EventHandler GameFinishEvent;
 
         [SerializeField] private Clock clock;
         [SerializeField] private float targetTime = 360f;
         [SerializeField] private float debugTargetTime = 20f;
-        
+        private bool _isTimerStop, _isReadyFinish;
+
         private int _score, _correctDocuments, _wrongDocuments;
         private float _time, _timeThreshold;
-        private bool _isTimerStop, _isReadyFinish;
-        
+
         private void Awake()
         {
             enabled = false;
         }
-        
+
+        public void Reset()
+        {
+            _timeThreshold = 0f;
+            _time = 0f;
+            _score = 0;
+            _correctDocuments = 0;
+            _wrongDocuments = 0;
+            clock.gameObject.SetActive(false);
+        }
+
         private void Update()
         {
             if (IsPause)
                 _isTimerStop = false;
-            
-            if(!_isTimerStop)
+
+            if (!_isTimerStop)
                 UpdateTime();
 
             if (!_isReadyFinish)
@@ -44,7 +53,8 @@ namespace Game.Scripts.Controller
             _isReadyFinish = false;
             GameFinishEvent?.Invoke(this, EventArgs.Empty);
         }
-        
+        public static event EventHandler GameFinishEvent;
+
         private void UpdateTime()
         {
             switch (IsDebugMode)
@@ -58,7 +68,7 @@ namespace Game.Scripts.Controller
                     FinishedCall();
                     return;
             }
-            
+
             _time += Time.deltaTime;
             clock.UpdateTime(_time);
         }
@@ -68,7 +78,7 @@ namespace Game.Scripts.Controller
             _isReadyFinish = true;
             _isTimerStop = true;
         }
-        
+
         public void CalculateScore(int index, int score, bool isWrongDoc)
         {
             switch (index)
@@ -99,10 +109,10 @@ namespace Game.Scripts.Controller
                     break;
             }
         }
-        
+
         public void SetTimer(bool isStop)
         {
-            if(!isStop)
+            if (!isStop)
                 clock.gameObject.SetActive(true);
 
             _isTimerStop = isStop;
@@ -122,15 +132,10 @@ namespace Game.Scripts.Controller
         {
             return _wrongDocuments;
         }
-        
-        public void Reset()
+
+        public void Init()
         {
-            _timeThreshold = 0f;
-            _time = 0f;
-            _score = 0;
-            _correctDocuments = 0;
-            _wrongDocuments = 0;
-            clock.gameObject.SetActive(false);
+            enabled = true;
         }
     }
 }

@@ -1,7 +1,5 @@
-using System;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 namespace Game.Scripts.TempCode
 {
@@ -13,14 +11,14 @@ namespace Game.Scripts.TempCode
         //time second / 3 answer
 
         private const float TargetTime = 360f;
-        
+
         //360 / (8 * 4)
         private const float UpdateTimeThreshold = 11.25f;
-        
+
         public TextMeshProUGUI timeText, hourTimeText;
+        private int _h = 9, _m;
 
         private float _time, _updateTime;
-        private int _h = 9, _m;
 
         private void Start()
         {
@@ -29,14 +27,14 @@ namespace Game.Scripts.TempCode
         // Update is called once per frame
         private void Update()
         {
-            if(_time >= TargetTime)
+            if (_time >= TargetTime)
                 _time = TargetTime;
             else
             {
                 _time += Time.deltaTime;
                 _updateTime += Time.deltaTime;
             }
-            
+
             DisplayTime(_time);
         }
 
@@ -47,12 +45,12 @@ namespace Game.Scripts.TempCode
 
             float minutes = Mathf.FloorToInt(timeToDisplay / 60f);
             float seconds = Mathf.FloorToInt(timeToDisplay % 60f);
-            
+
             timeText.text = $"{minutes:00}:{seconds:00}";
 
             if (!(_updateTime >= UpdateTimeThreshold))
                 return;
-            
+
             _m += 15;
             if (_m == 60)
             {

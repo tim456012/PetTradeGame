@@ -9,13 +9,6 @@ namespace Game.Scripts.Controller
 {
     public class ConversationController : MonoBehaviour
     {
-        [SerializeField] private ConversationPanel leftPanel;
-        [SerializeField] private ConversationPanel rightPanel;
-        [SerializeField] private ConversationPanel centerPanel;
-        
-        private Canvas _canvas;
-        private IEnumerator _conversation;
-        private Tweener _transition;
 
         private const string ShowTop = "Show Top";
         private const string ShowBottom = "Show Bottom";
@@ -23,8 +16,13 @@ namespace Game.Scripts.Controller
         private const string HideTop = "Hide Top";
         private const string HideBottom = "Hide Bottom";
         private const string HideCenter = "Hide Center";
+        [SerializeField] private ConversationPanel leftPanel;
+        [SerializeField] private ConversationPanel rightPanel;
+        [SerializeField] private ConversationPanel centerPanel;
 
-        public static event EventHandler CompleteEvent;
+        private Canvas _canvas;
+        private IEnumerator _conversation;
+        private Tweener _transition;
 
         private void Start()
         {
@@ -45,12 +43,14 @@ namespace Game.Scripts.Controller
             }
         }
 
+        public static event EventHandler CompleteEvent;
+
         public void Show(ConversationData data)
         {
             _canvas.gameObject.SetActive(true);
             if (data == null)
                 ConversationCompleted();
-            
+
             _conversation = Sequence(data);
             _conversation.MoveNext();
         }
@@ -74,7 +74,7 @@ namespace Game.Scripts.Controller
                 yield break;
             }
 
-            foreach (var speakerData in data.speakerList)
+            foreach (SpeakerData speakerData in data.speakerList)
             {
                 ConversationPanel currentPanel = speakerData.anchor switch
                 {
@@ -140,7 +140,7 @@ namespace Game.Scripts.Controller
             _transition.easingControl.equation = EasingEquations.EaseOutQuad;
         }
 
-        public void ConversationCompleted()
+        private void ConversationCompleted()
         {
             _canvas.gameObject.SetActive(false);
             CompleteEvent?.Invoke(this, EventArgs.Empty);

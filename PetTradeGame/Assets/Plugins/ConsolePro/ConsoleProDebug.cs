@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using System.Reflection;
 #endif
@@ -19,14 +20,14 @@ public static class ConsoleProDebug
 
     // Send a log to a specific filter regardless of contents
     // Ex: ConsoleProDebug.LogToFilter("Hi", "CustomFilter");
-    public static void LogToFilter(string inLog, string inFilterName, UnityEngine.Object inContext = null)
+    public static void LogToFilter(string inLog, string inFilterName, Object inContext = null)
     {
         Debug.Log(inLog + "\nCPAPI:{\"cmd\":\"Filter\", \"name\":\"" + inFilterName + "\"}", inContext);
     }
 
     // Send a log as a regular log but change its type in ConsolePro
     // Ex: ConsoleProDebug.LogAsType("Hi", "Error");
-    public static void LogAsType(string inLog, string inTypeName, UnityEngine.Object inContext = null)
+    public static void LogAsType(string inLog, string inTypeName, Object inContext = null)
     {
         Debug.Log(inLog + "\nCPAPI:{\"cmd\":\"LogType\", \"name\":\"" + inTypeName + "\"}", inContext);
     }
@@ -48,8 +49,8 @@ public static class ConsoleProDebug
 
 	#if UNITY_EDITOR
     // Reflection calls to access Console Pro from runtime
-    private static bool _checkedConsoleClearMethod = false;
-    private static MethodInfo _consoleClearMethod = null;
+    private static bool _checkedConsoleClearMethod;
+    private static MethodInfo _consoleClearMethod;
     private static MethodInfo ConsoleClearMethod
     {
         get
@@ -69,8 +70,8 @@ public static class ConsoleProDebug
         }
     }
 
-    private static bool _checkedConsoleWindowType = false;
-    private static Type _consoleWindowType = null;
+    private static bool _checkedConsoleWindowType;
+    private static Type _consoleWindowType;
     private static Type ConsoleWindowType
     {
         get
@@ -78,7 +79,7 @@ public static class ConsoleProDebug
             if (_consoleWindowType == null || !_checkedConsoleWindowType)
             {
                 _checkedConsoleWindowType = true;
-                Assembly[] assemblies = System.AppDomain.CurrentDomain.GetAssemblies();
+                Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
                 for (int iAssembly = 0; iAssembly < assemblies.Length; iAssembly++)
                 {
                     Type[] types = assemblies[iAssembly].GetTypes();

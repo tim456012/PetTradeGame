@@ -5,7 +5,6 @@
 
 using System;
 using System.Threading;
-
 #if USE_WINRT
 using Windows.Foundation;
 using Windows.System.Threading;
@@ -26,13 +25,9 @@ namespace FlyingWormConsole3.LiteNetLib
         private readonly Action _callback;
 
         public int SleepTime;
-        private bool _running;
         private readonly string _name;
 
-        public bool IsRunning
-        {
-            get { return _running; }
-        }
+        public bool IsRunning { get; private set; }
 
         public NetThread(string name, int sleepTime, Action callback)
         {
@@ -43,9 +38,9 @@ namespace FlyingWormConsole3.LiteNetLib
 
         public void Start()
         {
-            if (_running)
+            if (IsRunning)
                 return;
-            _running = true;
+            IsRunning = true;
 #if USE_WINRT
             var thread = new PreallocatedWorkItem(ThreadLogic, WorkItemPriority.Normal, WorkItemOptions.TimeSliced);
             thread.RunAsync().AsTask();
@@ -61,9 +56,9 @@ namespace FlyingWormConsole3.LiteNetLib
 
         public void Stop()
         {
-            if (!_running)
+            if (!IsRunning)
                 return;
-            _running = false;
+            IsRunning = false;
 
 #if USE_WINRT
             _joinWaiter.WaitOne();
@@ -85,7 +80,7 @@ namespace FlyingWormConsole3.LiteNetLib
 #else
         private void ThreadLogic()
         {
-            while (_running)
+            while (IsRunning)
             {
                 _callback();
                 Thread.Sleep(SleepTime);

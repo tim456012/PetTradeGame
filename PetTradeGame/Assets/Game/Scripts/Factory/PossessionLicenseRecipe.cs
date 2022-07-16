@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -6,13 +7,13 @@ namespace Game.Scripts.Factory
 {
     public class PossessionLicenseRecipe : ScriptableObject
     {
-        private readonly static Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-        
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+
         public List<PossessionLicenseData> possessionLicenseData = new List<PossessionLicenseData>();
 
         public void Load(string line)
         {
-            var lines = new List<string>();
+            List<string> lines = new List<string>();
             foreach (Match match in Regex.Matches(line))
             {
                 string current = match.Value;
@@ -37,70 +38,70 @@ namespace Game.Scripts.Factory
 
             for (int i = 1; i <= 2; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.licenseNumber.Add(lines[i]);
             }
-            
+
             for (int i = 3; i <= 4; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.deadline.Add(lines[i]);
             }
-            
+
             for (int i = 5; i <= 6; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.name.Add(lines[i]);
             }
-            
+
             for (int i = 7; i <= 8; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.id.Add(lines[i]);
             }
-            
+
             for (int i = 9; i <= 10; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.businessNumber.Add(lines[i]);
             }
-            
+
             for (int i = 11; i <= 12; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.animalName.Add(lines[i]);
             }
-            
+
             for (int i = 13; i <= 14; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.contract.Add(lines[i]);
             }
-            
+
             for (int i = 15; i <= 16; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.objective.Add(lines[i]);
             }
-            
+
             for (int i = 17; i <= 18; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.original.Add(lines[i]);
             }
-            
+
             for (int i = 19; i <= 20; i++)
             {
-                if(string.IsNullOrEmpty(lines[i]))
+                if (string.IsNullOrEmpty(lines[i]))
                     continue;
                 data.stampSign.Add(lines[i]);
             }
@@ -108,7 +109,7 @@ namespace Game.Scripts.Factory
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class PossessionLicenseData
     {
         public string animalId;
@@ -142,8 +143,8 @@ namespace Game.Scripts.Factory
 
         [Header("Stamp & Sign Position")]
         public List<string> stampSign;
-        
-        public PossessionLicenseData() {}
+
+        public PossessionLicenseData() { }
 
         public PossessionLicenseData(string id)
         {

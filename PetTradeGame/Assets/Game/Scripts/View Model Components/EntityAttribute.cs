@@ -1,21 +1,18 @@
 using System;
-using System.Collections;
-using Game.Scripts.Controller;
-using UnityEngine;
-using Game.Scripts.Tools;
 using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
+using Game.Scripts.Tools;
+using UnityEngine;
 
 namespace Game.Scripts.View_Model_Components
 {
     public class EntityAttribute : MonoBehaviour
     {
-        public static event EventHandler<InfoEventArgs<GameObject>> FunctionalObjCollisionEvent;
 
         [Header("Features")]
         public bool isDocument;
-        public bool isFunctionalObject = false;
-        public bool isDraggable = false;
+        public bool isFunctionalObject;
+        public bool isDraggable;
 
         [ConditionalHide("isFunctionalObject", true)]
         public ObjectType objectType = ObjectType.None;
@@ -31,5 +28,6 @@ namespace Game.Scripts.View_Model_Components
 
             FunctionalObjCollisionEvent?.Invoke(gameObject, new InfoEventArgs<GameObject>(col.gameObject));
         }
+        public static event EventHandler<InfoEventArgs<GameObject>> FunctionalObjCollisionEvent;
     }
 }

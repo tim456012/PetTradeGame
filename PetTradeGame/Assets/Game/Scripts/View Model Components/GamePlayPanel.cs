@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Controller;
 using Game.Scripts.Tools;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,8 +20,8 @@ namespace Game.Scripts.View_Model_Components
             _btnPos1 = GameObjFinder.FindChildGameObject(gameObject, "BtnPos1").transform;
             _btnPos2 = GameObjFinder.FindChildGameObject(gameObject, "BtnPos2").transform;
             _originPos = GameObjFinder.FindChildGameObject(gameObject, "OriginPos").transform;
-            
-            var position = _originPos.position;
+
+            Vector3 position = _originPos.position;
             btnAnimalSearch.transform.position = position;
             btnDocSearch.transform.position = position;
 
@@ -41,7 +39,7 @@ namespace Game.Scripts.View_Model_Components
         {
             if (_isAnimate)
                 return;
-            
+
             MoveOptions(true);
         }
 
@@ -52,7 +50,7 @@ namespace Game.Scripts.View_Model_Components
 
             MoveOptions(false);
         }
-        
+
         private void MoveOptions(bool isShow)
         {
             _isAnimate = true;
@@ -72,25 +70,25 @@ namespace Game.Scripts.View_Model_Components
         {
             GamePlayController.IsPause = true;
             InputController.IsPause = true;
-            
+
             btnAnimalSearch.gameObject.SetActive(true);
             btnDocSearch.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
-            
+
             btnAnimalSearch.transform.MoveTo(_btnPos1.position, 0.5f, EasingEquations.EaseInQuad);
             btnDocSearch.transform.MoveTo(_btnPos2.position, 0.5f, EasingEquations.EaseInQuad);
             yield return new WaitForSeconds(0.8f);
-            
+
             btnIpadOn.gameObject.SetActive(false);
             btnIpadOff.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
-            
+
             _buttonAnimationRoutine.Stopped += (_, _) => _isAnimate = false;
         }
 
         private IEnumerator DoHideButtonAnimation()
         {
-            var position = _originPos.position;
+            Vector3 position = _originPos.position;
             btnAnimalSearch.transform.MoveTo(position, 0.5f, EasingEquations.EaseInQuad);
             btnDocSearch.transform.MoveTo(position, 0.5f, EasingEquations.EaseInQuad);
             yield return new WaitForSeconds(0.8f);
@@ -98,11 +96,11 @@ namespace Game.Scripts.View_Model_Components
             btnAnimalSearch.gameObject.SetActive(false);
             btnDocSearch.gameObject.SetActive(false);
             yield return new WaitForSeconds(0.2f);
-            
+
             btnIpadOff.gameObject.SetActive(false);
             btnIpadOn.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
-            
+
             _buttonAnimationRoutine.Stopped += (_, _) =>
             {
                 _isAnimate = false;

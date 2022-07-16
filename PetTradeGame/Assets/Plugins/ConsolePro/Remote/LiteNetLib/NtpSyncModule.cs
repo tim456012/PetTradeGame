@@ -6,9 +6,8 @@ namespace FlyingWormConsole3.LiteNetLib
 {
     public class NtpSyncModule
     {
-        public DateTime? SyncedTime { get; private set; }
-        private readonly NetSocket _socket;
         private readonly NetEndPoint _ntpEndPoint;
+        private readonly NetSocket _socket;
         private readonly ManualResetEvent _waiter = new ManualResetEvent(false);
 
         public NtpSyncModule(string ntpServer)
@@ -18,6 +17,7 @@ namespace FlyingWormConsole3.LiteNetLib
             _socket.Bind(0, false);
             SyncedTime = null;
         }
+        public DateTime? SyncedTime { get; private set; }
 
         private void OnMessageReceived(byte[] data, int length, int errorCode, NetEndPoint remoteEndPoint)
         {
@@ -27,11 +27,11 @@ namespace FlyingWormConsole3.LiteNetLib
                 return;
             }
 
-            ulong intPart = (ulong)data[40] << 24 | (ulong)data[41] << 16 | (ulong)data[42] << 8 | (ulong)data[43];
-            ulong fractPart = (ulong)data[44] << 24 | (ulong)data[45] << 16 | (ulong)data[46] << 8 | (ulong)data[47];
+            ulong intPart = (ulong)data[40] << 24 | (ulong)data[41] << 16 | (ulong)data[42] << 8 | data[43];
+            ulong fractPart = (ulong)data[44] << 24 | (ulong)data[45] << 16 | (ulong)data[46] << 8 | data[47];
 
-            var milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000L);
-            SyncedTime = (new DateTime(1900, 1, 1)).AddMilliseconds((long)milliseconds);
+            ulong milliseconds = intPart * 1000 + fractPart * 1000 / 0x100000000L;
+            SyncedTime = new DateTime(1900, 1, 1).AddMilliseconds((long)milliseconds);
 
             _waiter.Set();
         }
@@ -41,7 +41,7 @@ namespace FlyingWormConsole3.LiteNetLib
             if (SyncedTime != null)
                 return;
 
-            var ntpData = new byte[48];
+            byte[] ntpData = new byte[48];
             //LeapIndicator = 0 (no warning)
             //VersionNum = 3
             //Mode = 3 (Client Mode)

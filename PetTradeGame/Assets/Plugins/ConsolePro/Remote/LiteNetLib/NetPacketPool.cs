@@ -16,14 +16,14 @@ namespace FlyingWormConsole3.LiteNetLib
 
         public NetPacket GetWithData(PacketProperty property, NetDataWriter writer)
         {
-            var packet = Get(property, writer.Length);
+            NetPacket packet = Get(property, writer.Length);
             Buffer.BlockCopy(writer.Data, 0, packet.RawData, NetPacket.GetHeaderSize(property), writer.Length);
             return packet;
         }
 
         public NetPacket GetWithData(PacketProperty property, byte[] data, int start, int length)
         {
-            var packet = Get(property, length);
+            NetPacket packet = Get(property, length);
             Buffer.BlockCopy(data, start, packet.RawData, NetPacket.GetHeaderSize(property), length);
             return packet;
         }

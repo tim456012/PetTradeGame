@@ -7,26 +7,27 @@ namespace Game.Scripts.Controller
     public class InputController : MonoBehaviour
     {
         public static bool IsDragActive = false, IsPause;
-        public static event EventHandler<InfoEventArgs<Vector3>> ClickedEvent;
-        public static event EventHandler<InfoEventArgs<Vector3>> DraggingEvent;
-        public static event EventHandler<InfoEventArgs<Vector3>> DroppingEvent;
 
         private bool _isHolding;
-        
+
         private void Update()
         {
-            if(IsPause)
+            if (IsPause)
                 return;
-            
+
             if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
                 _isHolding = true;
-            
+
             if (Input.GetMouseButtonUp(0) || Input.touchCount < 0)
                 _isHolding = false;
-            
+
+            Debug.Log(IsDragActive);
             //Check Input
             CheckInput(IsDragActive);
         }
+        public static event EventHandler<InfoEventArgs<Vector3>> ClickedEvent;
+        public static event EventHandler<InfoEventArgs<Vector3>> DraggingEvent;
+        public static event EventHandler<InfoEventArgs<Vector3>> DroppingEvent;
 
         private void CheckInput(bool dragging)
         {

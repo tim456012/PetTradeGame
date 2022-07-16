@@ -20,7 +20,6 @@ using System.Collections.Generic;
 #endif
 
 using UnityEngine;
-
 #if USECONSOLEPROREMOTESERVER
 using FlyingWormConsole3.LiteNetLib;
 using FlyingWormConsole3.LiteNetLib.Utils;
@@ -34,7 +33,7 @@ public class ConsoleProRemoteServer : MonoBehaviour, INetEventListener
     public class ConsoleProRemoteServer : MonoBehaviour
 	#endif
     {
-        public bool useNATPunch = false;
+        public bool useNATPunch;
         public int port = 51000;
 
 	#if UNITY_EDITOR && !USECONSOLEPROREMOTESERVER

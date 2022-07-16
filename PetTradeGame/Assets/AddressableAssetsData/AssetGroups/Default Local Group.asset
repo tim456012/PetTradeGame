@@ -21,12 +21,12 @@ MonoBehaviour:
     m_Address: Assets/Game/Scenes/Main Scene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9624a96f6da7a8041a99da2e58497ee6
-    m_Address: Assets/Game/Data/Objects/I_RedStamp.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 6ed189573a6c6d84c830df659366dfad
     m_Address: Assets/Game/Data/Objects/I_GreenStamp.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9624a96f6da7a8041a99da2e58497ee6
+    m_Address: Assets/Game/Data/Objects/I_RedStamp.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: d346dcd1142c1d547bb35d74ae0289c3

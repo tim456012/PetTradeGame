@@ -32,6 +32,11 @@ namespace FlyingWormConsole3.LiteNetLib
         public const int MinPacketDataSize = MinPacketSize - HeaderSize;
         public const int MinSequencedPacketDataSize = MinPacketSize - SequencedHeaderSize;
 
+        //peer specific
+        public const int FlowUpdateTime = 1000;
+        public const int FlowIncreaseThreshold = 4;
+        public const int DefaultPingInterval = 1000;
+
         public static readonly int[] PossibleMtu =
         {
             576 - MaxUdpHeaderSize,  //Internet Path MTU for X.25 (RFC 879)
@@ -43,11 +48,6 @@ namespace FlyingWormConsole3.LiteNetLib
         };
 
         public static int MaxPacketSize = PossibleMtu[PossibleMtu.Length - 1];
-
-        //peer specific
-        public const int FlowUpdateTime = 1000;
-        public const int FlowIncreaseThreshold = 4;
-        public const int DefaultPingInterval = 1000;
     }
 }
 #endif

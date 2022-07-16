@@ -1,16 +1,17 @@
 #if DEBUG && !UNITY_WP_8_1 && !UNITY_WSA
 #define UNITY
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 #if WINRT && !UNITY_EDITOR
 using Windows.Networking;
 using Windows.Networking.Connectivity;
 #else
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
+using Debug = UnityEngine.Debug;
 #endif
 
 namespace FlyingWormConsole3.LiteNetLib
@@ -41,6 +42,10 @@ namespace FlyingWormConsole3.LiteNetLib
 
     public static class NetUtils
     {
+
+        private static readonly List<string> IpList = new List<string>();
+
+        private static readonly object DebugLogLock = new object();
         internal static int RelativeSequenceNumber(int number, int expected)
         {
             return (number - expected + NetConstants.MaxSequence + NetConstants.HalfMaxSequence) % NetConstants.MaxSequence - NetConstants.HalfMaxSequence;
@@ -48,7 +53,7 @@ namespace FlyingWormConsole3.LiteNetLib
 
         internal static int GetDividedPacketsCount(int size, int mtu)
         {
-            return (size / mtu) + (size % mtu == 0 ? 0 : 1);
+            return size / mtu + (size % mtu == 0 ? 0 : 1);
         }
 
         public static void PrintInterfaceInfos()
@@ -105,7 +110,7 @@ namespace FlyingWormConsole3.LiteNetLib
                     if (ni.NetworkInterfaceType == NetworkInterfaceType.Loopback)
                         continue;
 
-                    var ipProps = ni.GetIPProperties();
+                    IPInterfaceProperties ipProps = ni.GetIPProperties();
 
                     //Skip address without gateway
                     if (ipProps.GatewayAddresses.Count == 0)
@@ -113,9 +118,9 @@ namespace FlyingWormConsole3.LiteNetLib
 
                     foreach (UnicastIPAddressInformation ip in ipProps.UnicastAddresses)
                     {
-                        var address = ip.Address;
-                        if ((ipv4 && address.AddressFamily == AddressFamily.InterNetwork) ||
-                            (ipv6 && address.AddressFamily == AddressFamily.InterNetworkV6))
+                        IPAddress address = ip.Address;
+                        if (ipv4 && address.AddressFamily == AddressFamily.InterNetwork ||
+                            ipv6 && address.AddressFamily == AddressFamily.InterNetworkV6)
                             targetList.Add(address.ToString());
                     }
                 }
@@ -133,12 +138,12 @@ namespace FlyingWormConsole3.LiteNetLib
                 hostTask.Wait();
                 var host = hostTask.Result;
 #else
-                var host = Dns.GetHostEntry(Dns.GetHostName());
+                IPHostEntry host = Dns.GetHostEntry(Dns.GetHostName());
 #endif
                 foreach (IPAddress ip in host.AddressList)
                 {
-                    if ((ipv4 && ip.AddressFamily == AddressFamily.InterNetwork) ||
-                        (ipv6 && ip.AddressFamily == AddressFamily.InterNetworkV6))
+                    if (ipv4 && ip.AddressFamily == AddressFamily.InterNetwork ||
+                        ipv6 && ip.AddressFamily == AddressFamily.InterNetworkV6)
                         targetList.Add(ip.ToString());
                 }
             }
@@ -151,8 +156,6 @@ namespace FlyingWormConsole3.LiteNetLib
                     targetList.Add("::1");
             }
         }
-
-        private static readonly List<string> IpList = new List<string>();
         public static string GetLocalIp(LocalAddrType addrType)
         {
             lock (IpList)
@@ -163,8 +166,6 @@ namespace FlyingWormConsole3.LiteNetLib
             }
         }
 
-        private static readonly object DebugLogLock = new object();
-
         private static void DebugWriteLogic(ConsoleColor color, string str, params object[] args)
         {
             lock (DebugLogLock)
@@ -174,7 +175,7 @@ namespace FlyingWormConsole3.LiteNetLib
                 {
 #if UNITY
 #if !UNITY_4_0
-                    UnityEngine.Debug.LogFormat(str, args);
+                    Debug.LogFormat(str, args);
 #endif
 #elif WINRT
                     Debug.WriteLine(str, args);
@@ -203,13 +204,13 @@ namespace FlyingWormConsole3.LiteNetLib
             DebugWriteLogic(color, str, args);
         }
 
-        [Conditional("DEBUG_MESSAGES"), Conditional("DEBUG")]
+        [Conditional("DEBUG_MESSAGES")][Conditional("DEBUG")]
         internal static void DebugWriteForce(ConsoleColor color, string str, params object[] args)
         {
             DebugWriteLogic(color, str, args);
         }
 
-        [Conditional("DEBUG_MESSAGES"), Conditional("DEBUG")]
+        [Conditional("DEBUG_MESSAGES")][Conditional("DEBUG")]
         internal static void DebugWriteError(string str, params object[] args)
         {
             DebugWriteLogic(ConsoleColor.Red, str, args);

@@ -7,7 +7,7 @@ namespace Game.Scripts.Tools
         private static GameObject canvasObj;
 
         /// <summary>
-        /// Find UI GameObject under the canvas.
+        ///     Find UI GameObject under the canvas.
         /// </summary>
         /// <param name="UIName">GameObject name that you want to search.</param>
         /// <returns>GameObject</returns>
@@ -20,7 +20,7 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// Find GameObject's component.
+        ///     Find GameObject's component.
         /// </summary>
         /// <param name="container">Target GameObject</param>
         /// <param name="componentName">Component that you want to find.</param>
@@ -28,7 +28,7 @@ namespace Game.Scripts.Tools
         /// <returns>Component type</returns>
         public static T GetObjComponent<T>(GameObject container, string componentName) where T : Component
         {
-            var childGameObject = GameObjFinder.FindChildGameObject(container, componentName);
+            GameObject childGameObject = GameObjFinder.FindChildGameObject(container, componentName);
 
             var temp = childGameObject.GetComponent<T>();
             if (temp != null)
@@ -41,13 +41,13 @@ namespace Game.Scripts.Tools
     public static class GameObjFinder
     {
         /// <summary>
-        /// Find the GameObject.
+        ///     Find the GameObject.
         /// </summary>
         /// <param name="objName">Target GameObject</param>
         /// <returns>GameObject</returns>
         public static GameObject FindGameObject(string objName)
         {
-            var temp = GameObject.Find(objName);
+            GameObject temp = GameObject.Find(objName);
 
             if (temp != null)
                 return temp;
@@ -57,7 +57,7 @@ namespace Game.Scripts.Tools
         }
 
         /// <summary>
-        /// Find the child GameObject under the parent
+        ///     Find the child GameObject under the parent
         /// </summary>
         /// <param name="container">Parent GameObject</param>
         /// <param name="objName">Target GameObject</param>
@@ -66,7 +66,7 @@ namespace Game.Scripts.Tools
         {
             if (container == null)
             {
-                Debug.LogError($"GameObjFinder : I can't find the child's container. (Null)");
+                Debug.LogError("GameObjFinder : I can't find the child's container. (Null)");
                 return null;
             }
 
@@ -78,8 +78,8 @@ namespace Game.Scripts.Tools
             }
             else
             {
-                var allChildren = container.transform.GetComponentsInChildren<Transform>();
-                foreach (var child in allChildren)
+                Transform[] allChildren = container.transform.GetComponentsInChildren<Transform>();
+                foreach (Transform child in allChildren)
                 {
                     if (child.name != objName)
                         continue;

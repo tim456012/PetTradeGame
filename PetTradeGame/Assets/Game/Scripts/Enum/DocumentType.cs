@@ -6,6 +6,6 @@ namespace Game.Scripts.Enum
         PossessionLicense,
         HealthCertificate,
         SpecialPermit,
-        DealerLicense,
+        DealerLicense
     }
 }

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Day 1
+  m_Name: Video_Data
   m_EditorClassIdentifier: 
-  m_GroupName: Day 1
+  m_GroupName: Video_Data
   m_Data:
     m_SerializedData: []
-  m_GUID: 8ef43b98075e95d4fad75555956dc87d
+  m_GUID: b1f85cd5e04248a4999bc31afcead930
   m_SerializeEntries:
   - m_GUID: 20b05194bede8d74fa8a5fee1d3838f4
     m_Address: Video Data/Intro
@@ -29,21 +29,17 @@ MonoBehaviour:
     m_Address: Video Data/Day1_Second
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b55998a7c07f21440b07227fd897e94f
-    m_Address: Level Data/LevelData_Day1
+  - m_GUID: 6ce329c0867db0847a6fa912ba8fc384
+    m_Address: Video Data/Day2
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 838e8c5706053ae49b29db459d23bf12
-    m_Address: Conversations Data/Day1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e47758c45a6acc545a43eab3bbb40c2c
-    m_Address: Conversations Data/Day1_Middle
+  - m_GUID: 2f5fd33d42d204b4da0eeec8ee223221
+    m_Address: Video Data/Day2_Second
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: b36388a396f93394c872f57b685c989f, type: 2}
-    - {fileID: 11400000, guid: 665c55379e15981479482f52c747ea66, type: 2}
+    - {fileID: 11400000, guid: 3b95f949c085a2c4da7fa0c4010c7c87, type: 2}
+    - {fileID: 11400000, guid: 530ed0f8dae49ae489e62690e0d4c14b, type: 2}

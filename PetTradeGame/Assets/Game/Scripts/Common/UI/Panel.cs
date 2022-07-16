@@ -6,42 +6,19 @@ using UnityEngine;
 namespace Game.Scripts.Common.UI
 {
     /// <summary>
-    /// The component to define target positions and work with LayoutAnchor to snap or move the UI GameObjet.
+    ///     The component to define target positions and work with LayoutAnchor to snap or move the UI GameObjet.
     /// </summary>
     [RequireComponent(typeof(LayoutAnchor))]
     public class Panel : MonoBehaviour
     {
-        [Serializable] public class Position
-        {
-            public string name;
-            public TextAnchor anchor;
-            public TextAnchor parentAnchor;
-            public Vector2 offset;
-
-            public Position(string name)
-            {
-                this.name = name;
-            }
-
-            public Position(string name, TextAnchor anchor, TextAnchor parentAnchor) : this(name)
-            {
-                this.anchor = anchor;
-                this.parentAnchor = parentAnchor;
-            }
-
-            public Position(string name, TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
-                : this(name, anchor, parentAnchor)
-            {
-                this.offset = offset;
-            }
-        }
 
         [SerializeField] private List<Position> positionList;
-        private Dictionary<string, Position> _positionMap;
         private LayoutAnchor _anchor;
+        private Dictionary<string, Position> _positionMap;
         public Position CurrentPosition { get; private set; }
         public Tweener Transition { get; private set; }
         public bool InTransition => Transition != null;
+
         public Position this[string name] => _positionMap.ContainsKey(name) ? _positionMap[name] : null;
 
         private void Awake()
@@ -64,7 +41,7 @@ namespace Game.Scripts.Common.UI
         }
 
         /// <summary>
-        /// Add a new Position dynamically in the scripts.
+        ///     Add a new Position dynamically in the scripts.
         /// </summary>
         /// <param name="p">The Position.</param>
         public void AddPosition(Position p)
@@ -73,7 +50,7 @@ namespace Game.Scripts.Common.UI
         }
 
         /// <summary>
-        /// Remove the Position dynamically in the scripts.
+        ///     Remove the Position dynamically in the scripts.
         /// </summary>
         /// <param name="p">The Position.</param>
         public void RemovePosition(Position p)
@@ -85,7 +62,7 @@ namespace Game.Scripts.Common.UI
         }
 
         /// <summary>
-        /// Move the Panel to specified positions.
+        ///     Move the Panel to specified positions.
         /// </summary>
         /// <param name="positionName">The name of specified position.</param>
         /// <param name="animated">Does it have animation?</param>
@@ -96,7 +73,7 @@ namespace Game.Scripts.Common.UI
         }
 
         /// <summary>
-        /// Move the Panel to specified positions.
+        ///     Move the Panel to specified positions.
         /// </summary>
         /// <param name="p">The specified position.</param>
         /// <param name="animated">Does it have animation?</param>
@@ -117,10 +94,31 @@ namespace Game.Scripts.Common.UI
                 Transition = _anchor.MoveToAnchorPosition(p.anchor, p.parentAnchor, p.offset);
                 return Transition;
             }
-            else
+            _anchor.SnapToAnchorPosition(p.anchor, p.parentAnchor, p.offset);
+            return null;
+        }
+        [Serializable] public class Position
+        {
+            public string name;
+            public TextAnchor anchor;
+            public TextAnchor parentAnchor;
+            public Vector2 offset;
+
+            public Position(string name)
             {
-                _anchor.SnapToAnchorPosition(p.anchor, p.parentAnchor, p.offset);
-                return null;
+                this.name = name;
+            }
+
+            public Position(string name, TextAnchor anchor, TextAnchor parentAnchor) : this(name)
+            {
+                this.anchor = anchor;
+                this.parentAnchor = parentAnchor;
+            }
+
+            public Position(string name, TextAnchor anchor, TextAnchor parentAnchor, Vector2 offset)
+                : this(name, anchor, parentAnchor)
+            {
+                this.offset = offset;
             }
         }
     }

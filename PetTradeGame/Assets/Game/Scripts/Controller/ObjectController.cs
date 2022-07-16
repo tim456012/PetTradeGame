@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
@@ -12,96 +13,103 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
     public class ObjectController : MonoBehaviour
     {
         #region Field
-        private readonly static List<Poolable> Instances = new List<Poolable>();
 
+        private static readonly Dictionary<string, GameObject> Instances = new Dictionary<string, GameObject>();
+        
+        private List<FunctionalObjectsData> _objectList = new List<FunctionalObjectsData>();
         private FactoryController _factoryController;
         private DragAndDropController _dragAndDropController;
         private GameObject _lastObj;
-        private IEnumerator _reGenerateDocument;
+        private IEnumerator _reGenerateDocument, _reGenerateLicense;
         private bool _isScaled, _isNotReady, _isEnd;
         private int _index;
-        
+
         public static event EventHandler<InfoEventArgs<int>> LicenseSubmittedEvent;
+
         #endregion
 
-        #region MonoBehavior
         private void Awake()
-        {
-            enabled = false;
-        }
-
-        private void Start()
         {
             _factoryController = GetComponent<FactoryController>();
             _dragAndDropController = GetComponent<DragAndDropController>();
+
+            _factoryController.enabled = false;
+            _dragAndDropController.enabled = false;
+            enabled = false;
         }
-        
-        #endregion
-        
-        public void InitObjectPool(List<FunctionalObjectsData> objectList)
+
+        public async void InitFunctionalObject(List<FunctionalObjectsData> objectList)
         {
             if (objectList == null)
                 return;
-            
-            foreach (var data in objectList)
+
+            _objectList = objectList;
+            foreach (FunctionalObjectsData data in objectList)
             {
-                GameObject prefab = null;
-                Addressables.LoadAssetAsync<GameObject>(data.prefab).Completed += obj =>
-                {
-                    if(obj.Status == AsyncOperationStatus.Succeeded)
-                        prefab = obj.Result;
-                };
-                GameObjectPoolSubController.AddEntry(data.key, prefab, data.amount, data.maxAmount);
-                DequeueObject(data.key, data.spawnPosition);
+                GameObject prefabAsset = await data.prefab.LoadAssetAsync<GameObject>().Task;
+                Transform p = GameObjFinder.FindChildGameObject(gameObject, data.spawnPosition).transform;
+                
+                prefabAsset.transform.localPosition = p.position;
+                Instantiate(prefabAsset, p.position, Quaternion.identity);
+                Instances.Add(data.key, prefabAsset);
+                prefabAsset.SetActive(true);
+                Addressables.Release(prefabAsset);
             }
         }
-        
-        #region Object Pool Method
-        private void DequeueObject(string key, string spawnPos)
+
+        public void Init()
         {
-            var obj = GameObjectPoolSubController.Dequeue(key);
-            
-            if (!string.IsNullOrEmpty(spawnPos))
-            {
-                var temp = GameObjFinder.FindChildGameObject(gameObject, spawnPos);
-                obj.transform.localPosition = temp.transform.position;
-                obj.gameObject.SetActive(true);
-            }
-            else
-            {
-                float x = Random.Range(-3, 3);
-                float y = Random.Range(-3, 3);
-
-                obj.transform.localPosition = new Vector3(x, y, 0);
-                obj.gameObject.SetActive(true);
-            }
-
-            Instances.Add(obj);
+            enabled = true;
+            _factoryController.enabled = true;
+            _dragAndDropController.enabled = true;
         }
 
-        private static void EnqueueObject(Poolable target)
+        #region Release Methods
+
+        public void Release()
         {
-            if (Instances.Count <= 0 || target == null)
-                return;
-
-            int index = Instances.IndexOf(target);
-            if (index < 0)
-                return;
-
-            Instances.RemoveAt(index);
-            GameObjectPoolSubController.Enqueue(target);
-            InputController.IsDragActive = false;
+            foreach (var instance in Instances)
+            {
+                instance.Value.SetActive(false);
+                Destroy(instance.Value);
+                Instances.Remove(instance.Key);
+            }
+            Instances.Clear();
         }
+
         #endregion
 
-        #region Functions
+        public void ReGenerateDocument()
+        {
+            _reGenerateDocument = GenerateDocuments();
+            StartCoroutine(_reGenerateDocument);
+            _reGenerateDocument = null;
+        }
+
+        public async void ReGenerateLicense()
+        {
+            foreach (FunctionalObjectsData data in _objectList)
+            {
+                if (data.key != "License")
+                    continue;
+
+                GameObject prefabAsset = await data.prefab.LoadAssetAsync<GameObject>().Task;
+                Transform p = GameObjFinder.FindChildGameObject(gameObject, data.spawnPosition).transform;
+
+                prefabAsset.transform.localPosition = p.position;
+                Instantiate(prefabAsset, p.position, Quaternion.identity);
+                Instances.Add(data.key, prefabAsset);
+                prefabAsset.gameObject.SetActive(true);
+                Addressables.Release(prefabAsset);
+            }
+        }
+
         private IEnumerator GenerateDocuments()
         {
             _isNotReady = true;
@@ -112,15 +120,29 @@ namespace Game.Scripts.Controller
                 _isNotReady = false;
                 yield break;
             }
-            
+
             _factoryController.ReGenerateDocument();
             _isNotReady = false;
         }
         
+        private void DestroyLicense(GameObject target)
+        {
+            InputController.IsDragActive = false;
+            if (target == null)
+                return;
+
+            Instances.Remove("License");
+            target.SetActive(false);
+            Debug.Log("Disable");
+            Destroy(target);
+        }
+        
+        #region Functions
+        
         private static void ExecuteObjBehavior(GameObject original, GameObject target, out int i)
         {
-            var oType = original.GetComponent<EntityAttribute>().objectType;
-            var tType = target.GetComponent<EntityAttribute>().objectType;
+            ObjectType oType = original.GetComponent<EntityAttribute>().objectType;
+            ObjectType tType = target.GetComponent<EntityAttribute>().objectType;
             i = -1;
 
             int index = CheckObjectType(oType, tType);
@@ -150,7 +172,7 @@ namespace Game.Scripts.Controller
                     return;
                 //CollectBox
                 case 3:
-                    if(!target.GetComponent<LicenseInfo>().isStamped)
+                    if (!target.GetComponent<LicenseInfo>().isStamped)
                         break;
 
                     i = target.GetComponent<LicenseInfo>().isApproved ? 0 : 1;
@@ -161,7 +183,7 @@ namespace Game.Scripts.Controller
                     break;
             }
         }
-        
+
         private static int CheckObjectType(ObjectType original, ObjectType target)
         {
             switch (original)
@@ -190,7 +212,7 @@ namespace Game.Scripts.Controller
         private static void ClearChildren(GameObject obj)
         {
             int i = 0;
-            var allChild = new GameObject[obj.transform.childCount];
+            GameObject[] allChild = new GameObject[obj.transform.childCount];
 
             foreach (Transform child in obj.transform)
             {
@@ -198,12 +220,12 @@ namespace Game.Scripts.Controller
                 i++;
             }
 
-            foreach (var child in allChild)
+            foreach (GameObject child in allChild)
             {
                 Destroy(child.gameObject);
             }
         }
-        
+
         public void ProcessCollision(GameObject original, GameObject col)
         {
             if (col == null)
@@ -216,16 +238,14 @@ namespace Game.Scripts.Controller
             if (_index == -1 || _isNotReady)
                 return;
 
-            var p = col.GetComponent<Poolable>();
-            EnqueueObject(p);
+            DestroyLicense(col);
             _dragAndDropController.TargetObj = null;
-            DequeueObject("License", "LicensePos");
             LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(_index));
         }
 
         public void ScaleDocument()
         {
-            var obj = _dragAndDropController.LastObj;
+            GameObject obj = _dragAndDropController.LastObj;
             if (obj == null)
                 return;
             if (!obj.GetComponent<EntityAttribute>().isDocument)
@@ -253,19 +273,13 @@ namespace Game.Scripts.Controller
                 sg.sortingLayerName = "Default";
             }
         }
-        
+
+        //Need Optimize
         public string GetGeneratedID()
         {
             return _factoryController.generatedID;
         }
-
-        public void ReGenerateDocument()
-        {
-            _reGenerateDocument = GenerateDocuments();
-            StartCoroutine(_reGenerateDocument);
-            _reGenerateDocument = null;
-        }
-
+        
         public void StopProcess()
         {
             _isEnd = true;
@@ -274,15 +288,7 @@ namespace Game.Scripts.Controller
             StopCoroutine(_reGenerateDocument);
             _reGenerateDocument = null;
         }
-        #endregion
 
-        #region Release Methods
-        public void Release()
-        {
-            for (int i = Instances.Count - 1; i >= 0; --i)
-                GameObjectPoolSubController.Enqueue(Instances[i]);
-            Instances.Clear();
-        }
         #endregion
     }
 }

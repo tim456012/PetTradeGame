@@ -8,33 +8,12 @@ namespace FlyingWormConsole3.LiteNetLib
 {
     public sealed class NetEndPoint
     {
-        public string Host { get { return EndPoint.Address.ToString(); } }
-        public int Port { get { return EndPoint.Port; } }
 
         internal readonly IPEndPoint EndPoint;
 
         internal NetEndPoint(IPEndPoint ipEndPoint)
         {
             EndPoint = ipEndPoint;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is NetEndPoint))
-            {
-                return false;
-            }
-            return EndPoint.Equals(((NetEndPoint)obj).EndPoint);
-        }
-
-        public override string ToString()
-        {
-            return EndPoint.ToString();
-        }
-
-        public override int GetHashCode()
-        {
-            return EndPoint.GetHashCode();
         }
 
         public NetEndPoint(string hostStr, int port)
@@ -65,6 +44,29 @@ namespace FlyingWormConsole3.LiteNetLib
             EndPoint = new IPEndPoint(ipAddress, port);
         }
 
+        public string Host => EndPoint.Address.ToString();
+
+        public int Port => EndPoint.Port;
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is NetEndPoint))
+            {
+                return false;
+            }
+            return EndPoint.Equals(((NetEndPoint)obj).EndPoint);
+        }
+
+        public override string ToString()
+        {
+            return EndPoint.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            return EndPoint.GetHashCode();
+        }
+
         private IPAddress ResolveAddress(string hostStr, AddressFamily addressFamily)
         {
 #if NETCORE
@@ -72,7 +74,7 @@ namespace FlyingWormConsole3.LiteNetLib
             hostTask.Wait();
             var host = hostTask.Result;
 #else
-            var host = Dns.GetHostEntry(hostStr);
+            IPHostEntry host = Dns.GetHostEntry(hostStr);
 #endif
             foreach (IPAddress ip in host.AddressList)
             {

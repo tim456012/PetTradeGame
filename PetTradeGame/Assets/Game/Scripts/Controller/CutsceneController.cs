@@ -7,51 +7,51 @@ namespace Game.Scripts.Controller
 {
     public class CutsceneController : MonoBehaviour
     {
-        private VideoPlayer _videoPlayer;
         //private AudioSource _audioSource;
         private Canvas _canvas;
         private MonoRoutine _routine;
-
-        public static event EventHandler CompleteEvent;
+        private VideoPlayer _videoPlayer;
 
         // Start is called before the first frame update
         private void Start()
         {
             _videoPlayer = GetComponent<VideoPlayer>();
             _canvas = GetComponentInChildren<Canvas>();
-            
+
             _videoPlayer.playOnAwake = true;
             //_audioSource.playOnAwake = false;
-            
+
             _videoPlayer.targetCameraAlpha = 1f;
             //_videoPlayer.SetTargetAudioSource(0, _audioSource);
             _videoPlayer.Stop();
-            
+
             _canvas.gameObject.SetActive(false);
 
             _routine = new MonoRoutine(PlayVideo, this);
             _routine.Started += OnRoutineStarted;
             _routine.Stopped += OnRoutineFinished;
         }
-        
+
         private void OnDisable()
         {
             _routine.Started -= OnRoutineStarted;
             _routine.Stopped -= OnRoutineFinished;
         }
 
+        public static event EventHandler CompleteEvent;
+
         public void PlayCutScene()
         {
             _videoPlayer.enabled = true;
             _canvas.gameObject.SetActive(true);
-            
+
             //if(!_routine.IsRunning)
-                _routine.Start();
+            _routine.Start();
         }
 
         private IEnumerator PlayVideo()
         {
-            var vp = _videoPlayer;
+            VideoPlayer vp = _videoPlayer;
             vp.Prepare();
 
             //var waitTime = new WaitForSeconds(5f);
@@ -62,20 +62,20 @@ namespace Game.Scripts.Controller
                 //yield return waitTime;
                 //break;
             }
-            
+
             Debug.Log($"Status: {vp.isPrepared}, Video is prepared");
             vp.Play();
             //_audioSource.Play();
-            
+
             Debug.Log("Video is playing");
             while (vp.isPlaying)
-            {                
+            {
                 Debug.Log($"Video Time : {Mathf.FloorToInt((float)vp.time)}");
                 yield return null;
             }
 
             Debug.Log("Video is finished");
-            
+
             vp.errorReceived += (player, message) =>
             {
                 Debug.Log($"Error received : {message}");
@@ -86,11 +86,11 @@ namespace Game.Scripts.Controller
         {
             if (_videoPlayer.url != null)
                 return;
-            
+
             _canvas.gameObject.SetActive(false);
             _routine.Stop();
         }
-        
+
         private void OnRoutineFinished(object sender, EventArgs e)
         {
             _videoPlayer.Stop();

@@ -32,22 +32,32 @@ namespace FlyingWormConsole3.LiteNetLib
     {
         private const int LastProperty = 19;
 
+        //Data
+        public readonly byte[] RawData;
+        public int Size;
+
+        public NetPacket(int size)
+        {
+            RawData = new byte[size];
+            Size = 0;
+        }
+
         //Header
         public PacketProperty Property
         {
-            get { return (PacketProperty)(RawData[0] & 0x7F); }
-            set { RawData[0] = (byte)((RawData[0] & 0x80) | ((byte)value & 0x7F)); }
+            get => (PacketProperty)(RawData[0] & 0x7F);
+            set => RawData[0] = (byte)(RawData[0] & 0x80 | (byte)value & 0x7F);
         }
 
         public ushort Sequence
         {
-            get { return BitConverter.ToUInt16(RawData, 1); }
-            set { FastBitConverter.GetBytes(RawData, 1, value); }
+            get => BitConverter.ToUInt16(RawData, 1);
+            set => FastBitConverter.GetBytes(RawData, 1, value);
         }
 
         public bool IsFragmented
         {
-            get { return (RawData[0] & 0x80) != 0; }
+            get => (RawData[0] & 0x80) != 0;
             set
             {
                 if (value)
@@ -59,30 +69,20 @@ namespace FlyingWormConsole3.LiteNetLib
 
         public ushort FragmentId
         {
-            get { return BitConverter.ToUInt16(RawData, 3); }
-            set { FastBitConverter.GetBytes(RawData, 3, value); }
+            get => BitConverter.ToUInt16(RawData, 3);
+            set => FastBitConverter.GetBytes(RawData, 3, value);
         }
 
         public ushort FragmentPart
         {
-            get { return BitConverter.ToUInt16(RawData, 5); }
-            set { FastBitConverter.GetBytes(RawData, 5, value); }
+            get => BitConverter.ToUInt16(RawData, 5);
+            set => FastBitConverter.GetBytes(RawData, 5, value);
         }
 
         public ushort FragmentsTotal
         {
-            get { return BitConverter.ToUInt16(RawData, 7); }
-            set { FastBitConverter.GetBytes(RawData, 7, value); }
-        }
-
-        //Data
-        public readonly byte[] RawData;
-        public int Size;
-
-        public NetPacket(int size)
-        {
-            RawData = new byte[size];
-            Size = 0;
+            get => BitConverter.ToUInt16(RawData, 7);
+            set => FastBitConverter.GetBytes(RawData, 7, value);
         }
 
         public static bool GetPacketProperty(byte[] data, out PacketProperty property)
@@ -120,22 +120,22 @@ namespace FlyingWormConsole3.LiteNetLib
 
         public bool IsClientData()
         {
-            var property = Property;
+            PacketProperty property = Property;
             return property == PacketProperty.Reliable ||
-                property == PacketProperty.ReliableOrdered ||
-                property == PacketProperty.Unreliable ||
-                property == PacketProperty.Sequenced;
+                   property == PacketProperty.ReliableOrdered ||
+                   property == PacketProperty.Unreliable ||
+                   property == PacketProperty.Sequenced;
         }
 
         public static bool IsSequenced(PacketProperty property)
         {
             return property == PacketProperty.ReliableOrdered ||
-                property == PacketProperty.Reliable ||
-                property == PacketProperty.Sequenced ||
-                property == PacketProperty.Ping ||
-                property == PacketProperty.Pong ||
-                property == PacketProperty.AckReliable ||
-                property == PacketProperty.AckReliableOrdered;
+                   property == PacketProperty.Reliable ||
+                   property == PacketProperty.Sequenced ||
+                   property == PacketProperty.Ping ||
+                   property == PacketProperty.Pong ||
+                   property == PacketProperty.AckReliable ||
+                   property == PacketProperty.AckReliableOrdered;
         }
 
         //Packet contstructor from byte array
@@ -149,7 +149,7 @@ namespace FlyingWormConsole3.LiteNetLib
             if (property > LastProperty ||
                 packetSize > NetConstants.PacketSizeLimit ||
                 packetSize < headerSize ||
-                (fragmented && packetSize < headerSize + NetConstants.FragmentHeaderSize))
+                fragmented && packetSize < headerSize + NetConstants.FragmentHeaderSize)
             {
                 return false;
             }

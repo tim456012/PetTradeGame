@@ -1,9 +1,10 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Scripts.Model
 {
-    [System.Serializable]
+    [Serializable]
     public class SpeakerData
     {
         public string speakerName;

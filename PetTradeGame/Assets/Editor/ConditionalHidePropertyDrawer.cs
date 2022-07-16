@@ -35,13 +35,10 @@ namespace Editor
             {
                 return EditorGUI.GetPropertyHeight(property, label);
             }
-            else
-            {
-                //The property is not being drawn
-                //We want to undo the spacing added before and after the property
-                return -EditorGUIUtility.standardVerticalSpacing;
-                //return 0.0f;
-            }
+            //The property is not being drawn
+            //We want to undo the spacing added before and after the property
+            return -EditorGUIUtility.standardVerticalSpacing;
+            //return 0.0f;
 
 
             /*
@@ -60,7 +57,7 @@ namespace Editor
 
         private bool GetConditionalHideAttributeResult(ConditionalHideAttribute condHAtt, SerializedProperty property)
         {
-            bool enabled = (!condHAtt.UseOrLogic);
+            bool enabled = !condHAtt.UseOrLogic;
 
             //Handle primary property
             SerializedProperty sourcePropertyValue = null;
@@ -84,10 +81,6 @@ namespace Editor
             {
                 enabled = CheckPropertyType(sourcePropertyValue);
                 if (condHAtt.InverseCondition1) enabled = !enabled;
-            }
-            else
-            {
-                //Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
             }
 
 
@@ -118,10 +111,6 @@ namespace Editor
                 else
                     enabled = enabled && prop2Enabled;
             }
-            else
-            {
-                //Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
-            }
 
             //Handle the unlimited property array
             string[] conditionalSourceFieldArray = condHAtt.ConditionalSourceFields;
@@ -148,16 +137,12 @@ namespace Editor
                 if (sourcePropertyValueFromArray != null)
                 {
                     bool propertyEnabled = CheckPropertyType(sourcePropertyValueFromArray);
-                    if (conditionalSourceFieldInverseArray.Length >= (index + 1) && conditionalSourceFieldInverseArray[index]) propertyEnabled = !propertyEnabled;
+                    if (conditionalSourceFieldInverseArray.Length >= index + 1 && conditionalSourceFieldInverseArray[index]) propertyEnabled = !propertyEnabled;
 
                     if (condHAtt.UseOrLogic)
                         enabled = enabled || propertyEnabled;
                     else
                         enabled = enabled && propertyEnabled;
-                }
-                else
-                {
-                    //Debug.LogWarning("Attempting to use a ConditionalHideAttribute but no matching SourcePropertyValue found in object: " + condHAtt.ConditionalSourceField);
                 }
             }
 

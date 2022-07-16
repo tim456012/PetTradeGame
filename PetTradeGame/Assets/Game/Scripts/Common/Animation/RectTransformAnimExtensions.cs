@@ -15,10 +15,12 @@ namespace Game.Scripts.Common.Animation
             return AnchorTo(t, position, duration, Tweener.DefaultEquation);
         }
 
-        public static Tweener AnchorTo(this RectTransform t, Vector3 position, float duration,
-                                       Func<float, float, float, float> equation)
+        public static Tweener AnchorTo(this RectTransform t,
+            Vector3 position,
+            float duration,
+            Func<float, float, float, float> equation)
         {
-            RectTransformAnchorPositionTweener tweener = t.gameObject.AddComponent<RectTransformAnchorPositionTweener>();
+            var tweener = t.gameObject.AddComponent<RectTransformAnchorPositionTweener>();
             tweener.startValue = t.anchoredPosition;
             tweener.endValue = position;
             tweener.easingControl.duration = duration;

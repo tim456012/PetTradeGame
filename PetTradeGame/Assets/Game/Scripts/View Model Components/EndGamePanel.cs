@@ -1,5 +1,5 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game.Scripts.View_Model_Components
@@ -9,7 +9,7 @@ namespace Game.Scripts.View_Model_Components
     {
         public TextMeshProUGUI correctDocText, wrongDocText, scoreText;
         public Button btnNextDay;
-        
+
         private void Start()
         {
             btnNextDay.onClick.AddListener(OnBtnNextDayClicked);

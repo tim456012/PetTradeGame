@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: Day 1_BundledAssetGroupSchema
+  m_Name: Video_Data_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: b8265236908df7b4fb3c60648ff6ed87, type: 2}
+  m_Group: {fileID: 11400000, guid: 7bfe2daa0f82c1942b969f02b8e1c36b, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1

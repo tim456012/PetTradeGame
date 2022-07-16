@@ -1,5 +1,3 @@
-using System;
-
 namespace Game.Scripts.Enum
 {
     public enum ObjectType
@@ -8,6 +6,6 @@ namespace Game.Scripts.Enum
         GreenStamp,
         RedStamp,
         License,
-        CollectBox,
+        CollectBox
     }
 }

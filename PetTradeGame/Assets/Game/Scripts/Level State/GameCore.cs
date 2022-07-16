@@ -3,7 +3,6 @@ using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Game.Scripts.Level_State
 {
@@ -17,7 +16,7 @@ namespace Game.Scripts.Level_State
         {
             Owner = GetComponent<GameManager>();
         }
-        
+
         protected override void AddListeners()
         {
             InputController.ClickedEvent += OnClick;

@@ -1,4 +1,3 @@
-using System;
 using Game.Scripts.Controller;
 using TMPro;
 using UnityEngine;
@@ -11,10 +10,10 @@ namespace Game.Scripts.TempCode
     {
         public DragAndDropController dragAndDropController;
         public Button button;
+        private bool _isScaled;
 
         private GameObject _lastObj;
-        private bool _isScaled;
-        
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -22,12 +21,12 @@ namespace Game.Scripts.TempCode
 
         public void ScaleDocument()
         {
-            var obj = dragAndDropController.LastObj;
-            if(obj == null)
+            GameObject obj = dragAndDropController.LastObj;
+            if (obj == null)
                 return;
-            if(_lastObj == null)
+            if (_lastObj == null)
                 _lastObj = obj;
-            
+
             _isScaled = !_isScaled;
             if (_lastObj != obj)
             {
@@ -35,7 +34,7 @@ namespace Game.Scripts.TempCode
                 _lastObj.GetComponent<SortingGroup>().sortingLayerName = "Default";
                 _lastObj = obj;
             }
-            
+
             var sg = obj.GetComponent<SortingGroup>();
             if (_isScaled)
             {

@@ -6,45 +6,41 @@ namespace Game.Scripts.Common.Animation
 {
     public class EasingControl : MonoBehaviour
     {
-        public event EventHandler updateEvent;
-        public event EventHandler stateChangeEvent;
-        public event EventHandler completedEvent;
-        public event EventHandler loopedEvent;
-        public enum TimeType
+        public enum EndBehaviour
         {
-            Normal,
-            Real,
-            Fixed,
+            Constant,
+            Reset
+        }
+        public enum LoopType
+        {
+            Repeat,
+            PingPong
         }
         public enum PlayState
         {
             Stopped,
             Paused,
             Playing,
-            Reversing,
+            Reversing
         }
-        public enum EndBehaviour
+        public enum TimeType
         {
-            Constant,
-            Reset,
-        }
-        public enum LoopType
-        {
-            Repeat,
-            PingPong,
+            Normal,
+            Real,
+            Fixed
         }
         public TimeType timeType = TimeType.Normal;
-        public PlayState playState { get; private set; }
-        public PlayState previousPlayState { get; private set; }
         public EndBehaviour endBehaviour = EndBehaviour.Constant;
         public LoopType loopType = LoopType.Repeat;
-        public bool IsPlaying => playState is PlayState.Playing or PlayState.Reversing;
 
-        public float startValue = 0.0f;
+        public float startValue;
         public float endValue = 1.0f;
         public float duration = 1.0f;
-        public int loopCount = 0;
+        public int loopCount;
         public Func<float, float, float, float> equation = EasingEquations.Linear;
+        public PlayState playState { get; private set; }
+        public PlayState previousPlayState { get; private set; }
+        public bool IsPlaying => playState is PlayState.Playing or PlayState.Reversing;
 
         public float currentTime { get; private set; }
         public float currentValue { get; private set; }
@@ -60,6 +56,10 @@ namespace Game.Scripts.Common.Animation
         {
             Pause();
         }
+        public event EventHandler updateEvent;
+        public event EventHandler stateChangeEvent;
+        public event EventHandler completedEvent;
+        public event EventHandler loopedEvent;
 
         public void Play()
         {
@@ -155,12 +155,12 @@ namespace Game.Scripts.Common.Animation
             bool finished = false;
             if (playState == PlayState.Playing)
             {
-                currentTime = Mathf.Clamp01(currentTime + (time / duration));
+                currentTime = Mathf.Clamp01(currentTime + time / duration);
                 finished = Mathf.Approximately(currentTime, 1.0f);
             }
             else
             {
-                currentTime = Mathf.Clamp01(currentTime - (time / duration));
+                currentTime = Mathf.Clamp01(currentTime - time / duration);
                 finished = Mathf.Approximately(currentTime, 0.0f);
             }
 

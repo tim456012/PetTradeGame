@@ -15,8 +15,16 @@ MonoBehaviour:
   videoAddress:
   - Video Data/Day2
   - Video Data/Day2_Second
-  introDialogue: {fileID: 11400000, guid: 838e8c5706053ae49b29db459d23bf12, type: 2}
-  middleDialogue: {fileID: 0}
+  introDialogue:
+    m_AssetGUID: e47758c45a6acc545a43eab3bbb40c2c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  middleDialogue:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   documentRecipeData:
   - documentRecipeType: DealerLicenseRecipe
     documentRecipeName: DL_Day2
