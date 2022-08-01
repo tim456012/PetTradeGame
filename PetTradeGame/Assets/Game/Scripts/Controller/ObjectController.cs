@@ -54,9 +54,11 @@ namespace Game.Scripts.Controller
             {
                 GameObject prefabAsset = await data.prefab.LoadAssetAsync<GameObject>().Task;
                 Transform p = GameObjFinder.FindChildGameObject(gameObject, data.spawnPosition).transform;
+
+                Vector3 position = p.position;
+                prefabAsset.transform.localPosition = position;
                 
-                prefabAsset.transform.localPosition = p.position;
-                Instantiate(prefabAsset, p.position, Quaternion.identity);
+                Instantiate(prefabAsset, position, Quaternion.identity);
                 Instances.Add(data.key, prefabAsset);
                 prefabAsset.SetActive(true);
                 Addressables.Release(prefabAsset);
@@ -76,9 +78,9 @@ namespace Game.Scripts.Controller
         {
             foreach (var instance in Instances)
             {
-                instance.Value.SetActive(false);
-                Destroy(instance.Value);
                 Instances.Remove(instance.Key);
+                instance.Value.SetActive(false);
+                //Destroy(instance.Value);
             }
             Instances.Clear();
         }
@@ -102,8 +104,10 @@ namespace Game.Scripts.Controller
                 GameObject prefabAsset = await data.prefab.LoadAssetAsync<GameObject>().Task;
                 Transform p = GameObjFinder.FindChildGameObject(gameObject, data.spawnPosition).transform;
 
-                prefabAsset.transform.localPosition = p.position;
-                Instantiate(prefabAsset, p.position, Quaternion.identity);
+                Vector3 position = p.position;
+                prefabAsset.transform.localPosition = position;
+                
+                Instantiate(prefabAsset, position, Quaternion.identity);
                 Instances.Add(data.key, prefabAsset);
                 prefabAsset.gameObject.SetActive(true);
                 Addressables.Release(prefabAsset);
@@ -133,7 +137,6 @@ namespace Game.Scripts.Controller
 
             Instances.Remove("License");
             target.SetActive(false);
-            Debug.Log("Disable");
             Destroy(target);
         }
         
@@ -145,7 +148,7 @@ namespace Game.Scripts.Controller
             ObjectType tType = target.GetComponent<EntityAttribute>().objectType;
             i = -1;
 
-            int index = CheckObjectType(oType, tType);
+            var index = CheckObjectType(oType, tType);
             if (index == 0)
                 return;
 
@@ -272,12 +275,6 @@ namespace Game.Scripts.Controller
                 _lastObj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
                 sg.sortingLayerName = "Default";
             }
-        }
-
-        //Need Optimize
-        public string GetGeneratedID()
-        {
-            return _factoryController.generatedID;
         }
         
         public void StopProcess()

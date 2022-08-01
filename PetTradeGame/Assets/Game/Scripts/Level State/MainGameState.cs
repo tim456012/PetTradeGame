@@ -15,6 +15,8 @@ namespace Game.Scripts.Level_State
         private ObjectController _objectController;
         private UIController _uiController;
 
+        private bool _isBusy;
+
         protected override void Awake()
         {
             base.Awake();
@@ -50,10 +52,6 @@ namespace Game.Scripts.Level_State
         public override void Exit()
         {
             base.Exit();
-            _factoryController.Release();
-            _objectController.Release();
-
-
             _uiController.ShowEndGamePanel();
         }
 
@@ -63,6 +61,7 @@ namespace Game.Scripts.Level_State
             EntityAttribute.FunctionalObjCollisionEvent += OnObjCollision;
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
             GamePlayController.GameFinishEvent += OnGameFinishEvent;
+            GamePlayController.OnGamePause += OnGamePauseEvent;
         }
 
         protected override void RemoveListeners()
@@ -71,6 +70,7 @@ namespace Game.Scripts.Level_State
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
             GamePlayController.GameFinishEvent -= OnGameFinishEvent;
+            GamePlayController.OnGamePause -= OnGamePauseEvent;
         }
 
         private void Init()
@@ -98,24 +98,41 @@ namespace Game.Scripts.Level_State
 
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
-            string id = _objectController.GetGeneratedID();
-            List<ScoreData> content = Owner.LevelData.scoreData;
+            _isBusy = true;
+            var id = _factoryController.generatedID;
+            var content = Owner.LevelData.scoreData;
             foreach (ScoreData scoreContent in content)
             {
                 if (!id.Equals(scoreContent.id))
                     continue;
                 _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
-                _factoryController.Release();
             }
+            _factoryController.Release();
+            
             _objectController.ReGenerateLicense();
             _objectController.ReGenerateDocument();
+            _isBusy = false;
         }
 
         private void OnGameFinishEvent(object sender, EventArgs e)
         {
             Debug.Log("Game Over");
+            while (_isBusy)
+            {
+                Debug.Log("System is busy.");
+            }
+            
             _objectController.StopProcess();
+            _factoryController.Release();
+            _objectController.Release();
+            
             Owner.ChangeState<EndGameState>();
+        }
+        
+        private void OnGamePauseEvent(object sender, EventArgs e)
+        {
+            Debug.Log("Game Paused");
+            _uiController.ShowIpadPanel();
         }
 
         #endregion

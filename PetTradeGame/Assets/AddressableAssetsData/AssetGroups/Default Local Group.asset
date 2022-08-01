@@ -33,6 +33,78 @@ MonoBehaviour:
     m_Address: Assets/Game/Data/Objects/I_License.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 8cd8f4c73c09847408c2a7f576fc446b
+    m_Address: Documents/I_DealerLicense
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1769c96d8805dcc43be9fb2f9d4426a4
+    m_Address: Documents/I_HealthCertificate
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: caab1b44a24eac243a143e51b5e0efc0
+    m_Address: Documents/I_SpecialPermit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ceea2f9357c0e5142a00e4b5a5331160
+    m_Address: Documents/I_PossessionLicense
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 98ff0d99c78090842b710911ebfb9892
+    m_Address: Assets/Game/Data/Recipes
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de84c59cc2b82e245b8179ed6796a39d
+    m_Address: Components/I_Stamp_5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d069b651a7a58d748a135f6c81b2ba7c
+    m_Address: Components/I_Stamp_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8da0e5ea225b27446bdf0d4d5fa426eb
+    m_Address: Components/I_DocumentCircle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c988c04cf92d239469a832a6004a941d
+    m_Address: Components/I_Stamp_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a6bd485be0c1dc543a51a818aafc9e0d
+    m_Address: Components/I_Sign_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1ba7194bbe64ffb4e8306eb9ef6de478
+    m_Address: Components/I_Sign_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a05b7ad9e92fdd247844cc6210d73c0f
+    m_Address: Components/I_Sign_5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 818b629492683d443b2ecff896aa1eae
+    m_Address: Components/I_Sign_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3cc2b6346749e7f409c17e25a518ab33
+    m_Address: Components/I_Stamp_6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: df2c083d4edfe3e4f8cbe93248b4d743
+    m_Address: Components/I_Stamp_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5994bf36fc7f7a946b357309dd06cb96
+    m_Address: Components/I_Stamp_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 00124e1833407ce44a41a93a2ac11446
+    m_Address: Components/I_Stamp_7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02ffd98d9db4d7345aa1370f478e50fb
+    m_Address: Components/I_Tick
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
   m_SchemaSet:

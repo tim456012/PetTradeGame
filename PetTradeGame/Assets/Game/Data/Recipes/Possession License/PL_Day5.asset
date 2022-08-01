@@ -1,0 +1,776 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d3dc756245470c8d84c38b59a9ab4a, type: 3}
+  m_Name: PL_Day5
+  m_EditorClassIdentifier: 
+  possessionLicenseData:
+  - animalId: GEa
+    licenseNumber:
+    - PL-124
+    - PL-125
+    deadline:
+    - 2022/11/18
+    - 2022/11/17
+    name:
+    - "\u8076\u5C0F\u60C5"
+    - "\u897F\u9580\u5E0C"
+    id:
+    - P32357
+    - P38727
+    businessNumber:
+    - 48428451
+    - 57481665
+    animalName:
+    - Geochelone elegans
+    contract:
+    - I
+    objective:
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: GEb
+    licenseNumber:
+    - PL-028
+    - PL-029
+    deadline:
+    - 2022/11/18
+    - 2022/11/17
+    name:
+    - "\u6B66\u677E\u9F61"
+    - "\u6F58\u91D1\u9F8D"
+    id:
+    - P66778
+    - P89865
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Geochelone elegans
+    contract:
+    - I
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: GEaF
+    licenseNumber:
+    - PL-124
+    - PL-125
+    deadline:
+    - 2022/11/17
+    - 2022/11/18
+    name:
+    - "\u8076\u5C0F\u60C5"
+    - "\u897F\u9580\u5E0C"
+    id:
+    - P32357
+    - P38727
+    businessNumber:
+    - 48428451
+    - 57481665
+    animalName:
+    - Geochelone elegans
+    - Geochelone platynota
+    contract:
+    - I
+    objective:
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: GEbF
+    licenseNumber:
+    - PL-028
+    - PL-029
+    deadline:
+    - 2022/4/4
+    - 2022/11/17
+    name:
+    - "\u6B66\u677E\u9F61"
+    - "\u6F58\u91D1\u9F8D"
+    id:
+    - P66778
+    - P89865
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Geochelone elegans
+    contract:
+    - I
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TCa
+    licenseNumber:
+    - CL-125
+    - CL-026
+    deadline:
+    - 2023/7/6
+    - 2023/7/7
+    name:
+    - "\u842C\u91D1\u6CB9"
+    - "\u674E\u864E\u5F6A"
+    id:
+    - P12828
+    - P12829
+    businessNumber:
+    - 27844617
+    - 36737200
+    animalName:
+    - Terrapene carolina
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u5FB7\u514B\u85A9\u65AF"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TCb
+    licenseNumber:
+    - PL-030
+    - PL-031
+    deadline:
+    - 2023/7/6
+    - 2023/7/7
+    name:
+    - "\u99AC\u53CB"
+    - "\u67E5\u5BB6\u6FA4"
+    id:
+    - P12830
+    - P12831
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Terrapene carolina
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u5FB7\u514B\u85A9\u65AF"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TCaF
+    licenseNumber:
+    - CL-125
+    - CL-026
+    deadline:
+    - 2023/7/6
+    - 2023/7/7
+    name:
+    - "\u842C\u91D1\u6CB9"
+    - "\u674E\u864E\u5F6A"
+    id:
+    - P12828
+    - P12829
+    businessNumber:
+    - 27844617
+    - 36737967
+    animalName:
+    - Terrapene carolina
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u5FB7\u514B\u85A9\u65AF"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TCbF
+    licenseNumber:
+    - PL-030
+    - PL-031
+    deadline:
+    - 2023/7/6
+    - 2023/7/7
+    name:
+    - "\u99AC\u53CB"
+    - "\u67E5\u5BB6\u6FA4"
+    id:
+    - P12830
+    - P12831
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Terrapene carolina
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u5FB7\u514B\u85A9\u65AF"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PMa
+    licenseNumber:
+    - CL-027
+    - CL-028
+    deadline:
+    - 2023/7/26
+    - 2023/7/27
+    name:
+    - "\u9102\u60E0\u5A1F"
+    - "\u65B9\u5F65\u5EF7"
+    id:
+    - P48293
+    - P48294
+    businessNumber:
+    - 23453426
+    - 89057672
+    animalName:
+    - Poecilotheria metallica
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u5370\u5EA6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PMb
+    licenseNumber:
+    - PL-032
+    - PL-033
+    deadline:
+    - 2023/7/26
+    - 2023/7/27
+    name:
+    - "\u6C5F\u7D2B\u59B9"
+    - "\u4F59\u4E7E\u6CB9"
+    id:
+    - P48295
+    - P48296
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Poecilotheria metallica
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u5370\u5EA6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PMaF
+    licenseNumber:
+    - CI-027
+    - CL-028
+    deadline:
+    - 2023/7/26
+    - 2023/7/27
+    name:
+    - "\u9102\u60E0\u5A1F"
+    - "\u65B9\u5F65\u5EF7"
+    id:
+    - P48293
+    - P48294
+    businessNumber:
+    - 23453426
+    - 89057672
+    animalName:
+    - Poecilotheria metallica
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u5370\u5EA6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PMbF
+    licenseNumber:
+    - PL-032
+    - PL-033
+    deadline:
+    - 2023/7/26
+    - 2023/7/27
+    name:
+    - "\u6C5F\u7D2B\u59B9"
+    - "\u4F59\u4E7E\u6CB9"
+    id:
+    - P48295
+    - P48296
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Brachypelma klaasi
+    - Poecilotheria metallica
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u5370\u5EA6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TAa
+    licenseNumber:
+    - CL-029
+    - CL-030
+    deadline:
+    - 2023/1/21
+    - 2023/1/22
+    name:
+    - "\u5468\u65B0\u65B0"
+    - "\u91D1\u52A9\u638C"
+    id:
+    - P25568
+    - P43549
+    businessNumber:
+    - 39432134
+    - 72492042
+    animalName:
+    - Tyto alba
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TAb
+    licenseNumber:
+    - PL-034
+    - PL-035
+    deadline:
+    - 2023/1/21
+    - 2023/1/22
+    name:
+    - "\u91D1\u99AC\u638C"
+    - "\u5965\u65AF\u5361\xB7\u8523"
+    id:
+    - P43550
+    - P43551
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Tyto alba
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TAaF
+    licenseNumber:
+    - CL-029
+    - CL-030
+    deadline:
+    - 2023/1/21
+    - 2023/1/22
+    name:
+    - "\u5468\u65B0\u65B0"
+    - "\u91D1\u52A9\u638C"
+    id:
+    - P25568
+    - P43549
+    businessNumber:
+    - 39432134
+    - 72492042
+    animalName:
+    - Tyto alba
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_5
+  - animalId: TAbF
+    licenseNumber:
+    - PL-034
+    - PL-035
+    deadline:
+    - 2023/1/21
+    - 2023/1/22
+    name:
+    - "\u91D1\u99AC\u638C"
+    - "\u5965\u65AF\u5361\xB7\u8523"
+    id:
+    - P43550
+    - P43551
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Tyto alba
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - none
+    - "\u82F1\u570B"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AAa
+    licenseNumber:
+    - PL-131
+    - PL-132
+    deadline:
+    - 2023/1/31
+    - 2023/2/1
+    name:
+    - "\u590F\u4E09\u5EA6"
+    - "\u5C1A\u5169\u5EA6"
+    id:
+    - P775572
+    - P775573
+    businessNumber:
+    - 12736842
+    - 52638112
+    animalName:
+    - ara rubrogenys
+    contract:
+    - I
+    objective:
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AAb
+    licenseNumber:
+    - PL-036
+    - PL-037
+    deadline:
+    - 2023/1/31
+    - 2023/2/1
+    name:
+    - "\u6797\u7A7A\u689D"
+    - "\u95DC\u660C\u6236"
+    id:
+    - P775574
+    - P775575
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - ara rubrogenys
+    contract:
+    - I
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AAaF
+    licenseNumber:
+    - CL-031
+    - CL-032
+    deadline:
+    - 2023/1/31
+    - 2023/2/1
+    name:
+    - "\u590F\u4E09\u5EA6"
+    - "\u5C1A\u5169\u5EA6"
+    id:
+    - P775572
+    - P775573
+    businessNumber:
+    - 12736842
+    - 52638112
+    animalName:
+    - ara rubrogenys
+    contract:
+    - II
+    - I
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AAbF
+    licenseNumber:
+    - PL-036
+    - PL-037
+    deadline:
+    - 2023/1/31
+    - 2023/2/1
+    name:
+    - "\u6797\u7A7A\u689D"
+    - "\u95DC\u660C\u6236"
+    id:
+    - P775574
+    - P775575
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - ara rubrogenys
+    contract:
+    - I
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: LLa
+    licenseNumber:
+    - CL-033
+    - CL-117
+    deadline:
+    - 2023/1/25
+    - 2023/1/26
+    name:
+    - "\u5468\u6A39\u4EC1"
+    - "\u5468\u65B0\u65B0"
+    id:
+    - P54848
+    - P25568
+    businessNumber:
+    - 65382852
+    - 39432134
+    animalName:
+    - Leiothrix lutea
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u4E0D\u4E39"
+    stampSign:
+    - I_Stamp_5
+  - animalId: LLb
+    licenseNumber:
+    - PL-038
+    - PL-039
+    deadline:
+    - 2023/1/25
+    - 2023/1/26
+    name:
+    - "\u937E\u610F\u68A8"
+    - "\u66FE\u8C6A\u4EBA"
+    id:
+    - P53841
+    - P53842
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Leiothrix lutea
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u4E0D\u4E39"
+    stampSign:
+    - I_Stamp_5
+  - animalId: LLaF
+    licenseNumber:
+    - CL-033
+    - CL-117
+    deadline:
+    - 2023/1/25
+    - 2023/1/26
+    name:
+    - "\u5468\u6A39\u4EC1"
+    - K
+    id:
+    - P54848
+    - P25568
+    businessNumber:
+    - 65382852
+    - 39432134
+    animalName:
+    - Leiothrix lutea
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u4E0D\u4E39"
+    stampSign:
+    - I_Stamp_5
+  - animalId: LLbF
+    licenseNumber:
+    - PL-038
+    - PL-039
+    deadline:
+    - 2023/1/25
+    - 2023/1/26
+    name:
+    - "\u937E\u610F\u68A8"
+    - "\u66FE\u8C6A\u4EBA"
+    id:
+    - P53841
+    - P53842
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Leiothrix lutea
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - none
+    - "\u7DEC\u7538"
+    stampSign:
+    - I_Stamp_5
+  - animalId: OHa
+    licenseNumber:
+    - CL-034
+    - CL-035
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u9F8D\u9DF2\u96EA"
+    - "\u674E\u5929\u7948"
+    id:
+    - P48530
+    - P38290
+    businessNumber:
+    - 46643201
+    - 53280731
+    animalName:
+    - Ophiophagus hanna
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u83F2\u5F8B\u8CD3"
+    stampSign:
+    - I_Stamp_5
+  - animalId: OHb
+    licenseNumber:
+    - PL-040
+    - PL-041
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u6797\u8056\u592B"
+    - "\u5F35\u8A69\u73B2"
+    id:
+    - P58290
+    - P49390
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Ophiophagus hanna
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u83F2\u5F8B\u8CD3"
+    stampSign:
+    - I_Stamp_5
+  - animalId: OHaF
+    licenseNumber:
+    - CL-034
+    - CL-035
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u9F8D\u9DF2\u96EA"
+    - "\u674E\u5929\u7948"
+    id:
+    - P48530
+    - P38290
+    businessNumber:
+    - 46643201
+    - 53280731
+    animalName:
+    - Ophiophagus hanna
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u83F2\u5F8B\u8CD3"
+    stampSign:
+    - I_Stamp_5
+  - animalId: OHbF
+    licenseNumber:
+    - PL-040
+    - CL-041
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u6797\u8056\u592B"
+    - "\u5F35\u8A69\u73B2"
+    id:
+    - P58290
+    - P49390
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Ophiophagus hanna
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u83F2\u5F8B\u8CD3"
+    stampSign:
+    - I_Stamp_5

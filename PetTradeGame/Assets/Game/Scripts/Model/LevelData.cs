@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Scripts.Enum;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -26,16 +27,15 @@ namespace Game.Scripts.Model
     {
         public AssetReference prefab;
         public string key;
-        public int amount;
-        public int maxAmount;
         public string spawnPosition;
     }
 
     [Serializable]
     public class RecipeData
     {
-        public string documentRecipeType;
-        public string documentRecipeName;
+        public DocumentType documentRecipeType;
+        public AssetReference documentRecipe;
+        //public string documentRecipeName;
     }
 
     [Serializable]

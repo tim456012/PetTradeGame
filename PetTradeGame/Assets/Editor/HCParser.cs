@@ -18,14 +18,14 @@ namespace Editor
 
         private static void Initialize()
         {
-            if (!AssetDatabase.IsValidFolder("Assets/Resources/Recipes"))
-                AssetDatabase.CreateFolder("Assets/Resources", "Recipes");
+            if (!AssetDatabase.IsValidFolder("Assets/Game/Data/Recipes"))
+                AssetDatabase.CreateFolder("Assets/Game/Data", "Recipes");
         }
 
         private static void ParseData()
         {
             string readPath = $"{Application.dataPath}/Game/Settings/Recipes/Health Certificate";
-            const string targetPath = "Assets/Resources/Recipes/Health Certificate/";
+            const string targetPath = "Assets/Game/Data/Recipes/Health Certificate/";
             Debug.Log(readPath);
 
             var directoryInfo = new DirectoryInfo(readPath);

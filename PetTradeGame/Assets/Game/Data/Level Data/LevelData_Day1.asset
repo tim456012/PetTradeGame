@@ -27,12 +27,24 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   documentRecipeData:
-  - documentRecipeType: DealerLicenseRecipe
-    documentRecipeName: DL_Day1
-  - documentRecipeType: HealthCertificateRecipe
-    documentRecipeName: HC_Day1
-  - documentRecipeType: SpecialPermitRecipe
-    documentRecipeName: SP_Day1
+  - documentRecipeType: 2
+    documentRecipe:
+      m_AssetGUID: a7aefceb9fba47745b701f2b2132d746
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 3
+    documentRecipe:
+      m_AssetGUID: 8cf3dff7ebc3edc40b409908a102ab20
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 4
+    documentRecipe:
+      m_AssetGUID: ffec436aac53d7f4da2ff868eac87da1
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   functionalObjectsData:
   - prefab:
       m_AssetGUID: 6ed189573a6c6d84c830df659366dfad
@@ -40,8 +52,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     key: GStamp
-    amount: 1
-    maxAmount: 1
     spawnPosition: StampPos1
   - prefab:
       m_AssetGUID: 9624a96f6da7a8041a99da2e58497ee6
@@ -49,8 +59,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     key: RStamp
-    amount: 1
-    maxAmount: 1
     spawnPosition: StampPos2
   - prefab:
       m_AssetGUID: d346dcd1142c1d547bb35d74ae0289c3
@@ -58,8 +66,6 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
     key: License
-    amount: 5
-    maxAmount: 10
     spawnPosition: LicensePos
   scoreData:
   - id: HTa

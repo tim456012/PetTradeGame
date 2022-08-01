@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d826e7d5c8a6848899b2f673057ddd73, type: 3}
+  m_Name: DL_Day7
+  m_EditorClassIdentifier: 
+  dealerLicenseData:
+  - animalId: BKa
+    businessName:
+    - "\u6BDB\u795E\u795E"
+    - "\u86DB\u7DB2"
+    businessNumber:
+    - 92718391
+    - 12691461
+    line1Position: 3
+    line2Position: 4
+    line3Position: 0
+    line4Position: 9
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: BKaF
+    businessName:
+    - "\u6BDB\u795E\u795E"
+    - "\u86DB\u7DB2"
+    businessNumber:
+    - 92718391
+    - 12691461
+    line1Position: 3
+    line2Position: 4
+    line3Position: 0
+    line4Position: 9
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: PBa
+    businessName:
+    - "\u98A8\u4FE1\u5B50"
+    - "\u6771\u5340\u86C7\u738B"
+    businessNumber:
+    - 67743212
+    - 78575351
+    line1Position: 2
+    line2Position: 4
+    line3Position: 7
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: PBaF
+    businessName:
+    - "\u98A8\u4FE1\u5B50"
+    - "\u6771\u5340\u86C7\u738B"
+    businessNumber:
+    - 67743212
+    - 78575351
+    line1Position: 2
+    line2Position: 4
+    line3Position: 7
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: AOa
+    businessName:
+    - "\u98DB\u5EC9\u98A8\u4F2F"
+    - "\u4E5D\u51F0\u5929\u9CE5\u5712"
+    businessNumber:
+    - 76991390
+    - 36787512
+    line1Position: 1
+    line2Position: 4
+    line3Position: 0
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: AOaF
+    businessName:
+    - "\u98DB\u5EC9\u98A8\u4F2F"
+    - "\u4E5D\u51F0\u5929\u9CE5\u5712"
+    businessNumber:
+    - 76991390
+    - 36787512
+    line1Position: 1
+    line2Position: 4
+    line3Position: 0
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: SPa
+    businessName:
+    - "\u9678\u9C32\u5E97"
+    - "\u6D66\u5CF6\u592A\u90CE"
+    businessNumber:
+    - 45345125
+    - 45125778
+    line1Position: 2
+    line2Position: 4
+    line3Position: 8
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: SPaF
+    businessName:
+    - "\u9678\u9C32\u5E97"
+    - "\u6D66\u5CF6\u592A\u90CE"
+    businessNumber:
+    - 4534578925
+    - 45125778
+    line1Position: 2
+    line2Position: 4
+    line3Position: 8
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: ARa
+    businessName:
+    - "\u5F90\u6C0F\u9F9C\u5C4B"
+    - "\u975E\u725F\u5229\u9F9C\u96BB\u4FDD\u8B77\u5354\u6703"
+    businessNumber:
+    - 48428451
+    - 54723882
+    line1Position: 2
+    line2Position: 4
+    line3Position: 8
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: ARaF
+    businessName:
+    - "\u5F90\u6C0F\u9F9C\u5C4B"
+    - "\u975E\u725F\u5229\u9F9C\u96BB\u4FDD\u8B77\u5354\u6703"
+    businessNumber:
+    - 48428451
+    - 54723882
+    line1Position: 2
+    line2Position: 4
+    line3Position: 8
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: BJa
+    businessName:
+    - "\u559C\u96C0\u5E16"
+    - "\u4E2D\u570B\u6587\u9CE5"
+    businessNumber:
+    - 45678963
+    - 27394239
+    line1Position: 1
+    line2Position: 4
+    line3Position: 0
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: BJaF
+    businessName:
+    - "\u559C\u96C0\u5E16"
+    - "\u4E2D\u570B\u6587\u9CE5"
+    businessNumber:
+    - 45678963
+    - 27394239
+    line1Position: 1
+    line2Position: 4
+    line3Position: 0
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: EAa
+    businessName:
+    - "\u84EE\u59D0\u9B5A\u6A94"
+    - "\u9B5A\u9B5A\u6E6F\u5C08\u9580\u5E97"
+    businessNumber:
+    - 33193493
+    - 38292321
+    line1Position: 3
+    line2Position: 5
+    line3Position: 0
+    line4Position: 10
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: EAaF
+    businessName:
+    - "\u84EE\u59D0\u9B5A\u6A94"
+    - "\u9B5A\u9B5A\u6E6F\u5C08\u9580\u5E97"
+    businessNumber:
+    - 33193493
+    - 38292321
+    line1Position: 3
+    line2Position: 5
+    line3Position: 0
+    line4Position: 10
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: BBa
+    businessName:
+    - "\u5947\u689F\u8AC7"
+    - "\u7D3A\u591C\u91D1\u70CF"
+    businessNumber:
+    - 56756692
+    - 72492042
+    line1Position: 1
+    line2Position: 4
+    line3Position: 0
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: BBaF
+    businessName:
+    - "\u5947\u689F\u8AC7"
+    - "\u7D3A\u591C\u91D1\u70CF"
+    businessNumber:
+    - 56756692
+    - 72492042
+    line1Position: 1
+    line2Position: 4
+    line3Position: 0
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: PRa
+    businessName:
+    - "\u6BDB\u795E\u795E"
+    - "\u8718\u86DB\u82B1"
+    businessNumber:
+    - 92718391
+    - 13822391
+    line1Position: 3
+    line2Position: 4
+    line3Position: 0
+    line4Position: 9
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: PRaF
+    businessName:
+    - none
+    - "\u8718\u86DB\u82B1"
+    businessNumber:
+    - 92718391
+    - 13822391
+    line1Position: 3
+    line2Position: 4
+    line3Position: 0
+    line4Position: 9
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: AYa
+    businessName:
+    - "\u767D\u580A\u7D00"
+    - "\u9F9C\u4ED9\u4EBA"
+    businessNumber:
+    - 24733322
+    - 58392321
+    line1Position: 2
+    line2Position: 4
+    line3Position: 8
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1
+  - animalId: AYaF
+    businessName:
+    - "\u767D\u580A\u7D00"
+    - "\u9F9C\u4ED9\u4EBA"
+    businessNumber:
+    - 24733322
+    - 58392321
+    line1Position: 2
+    line2Position: 4
+    line3Position: 8
+    line4Position: 0
+    isProcess: 1
+    isTick: 1
+    stampSign:
+    - I_Stamp_1

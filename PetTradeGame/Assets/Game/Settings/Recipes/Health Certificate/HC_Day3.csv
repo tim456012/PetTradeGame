@@ -1,0 +1,33 @@
+AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Mark,Animal Mark 2,Date,Date 2,Stamp And Sign,Stamp And Sign 2
+EBa,Yes,No,禾花雀,黃胸鵐,已配晶片手環,已植入晶片,2022/8/24,2022/8/25,I_Sign_1,I_Sign_2
+EBb,No,Yes,禾花雀,黃胸鵐,已配晶片手環,已植入晶片,2022/8/25,2022/8/26,I_Sign_1,I_Sign_2
+EBaF,Yes,No,禾花雀,黃胸鵐,已配晶片手環,已植入晶片,2022/8/24,2022/8/27,I_Sign_1,I_Sign_2
+EBbF,No,Yes,禾花雀,黃胸鵐,已配晶片手環,已植入晶片,2022/8/25,2022/8/28,I_Sign_2,I_Sign_3
+DAa,Yes,No,蕃茄蛙,,,,2022/9/22,2022/9/23,I_Sign_1,I_Sign_2
+DAb,No,Yes,蕃茄蛙,,,,2022/9/22,2022/9/23,I_Sign_1,I_Sign_2
+DAaF,Yes,No,蕃茄蛙,,,,2022/9/22,2022/9/23,I_Sign_1,I_Sign_2
+DAbF,No,Yes,蕃茄蛙,,,,2022/9/22,none,I_Sign_1,I_Sign_2
+LNa,Yes,No,爪哇禾雀,,已配晶片手環,已植入晶片,2022/9/8,2022/9/9,I_Sign_1,I_Sign_2
+LNb,No,Yes,爪哇禾雀,,已配晶片手環,已植入晶片,2022/9/8,2022/9/9,I_Sign_1,I_Sign_2
+LNaF,No,Yes,爪哇禾雀,,已配晶片手環,已植入晶片,2022/9/8,2022/9/9,I_Sign_1,I_Sign_2
+LNbF,No,Yes,爪哇禾雀,,已配晶片手環,已植入晶片,2022/9/8,2022/9/9,I_Sign_1,I_Sign_4
+MHa,No,Yes,香港鬥魚,,,,2022/11/9,2022/11/10,I_Sign_1,I_Sign_2
+MHb,Yes,No,香港鬥魚,,,,2022/11/9,2022/11/10,I_Sign_1,I_Sign_2
+MHaF,Yes,Yes,香港鬥魚,,,,2022/11/9,2022/11/10,I_Sign_1,I_Sign_2
+MHbF,Yes,No, ,香港鬥魚,,,2022/11/9,2022/11/10,I_Sign_1,I_Sign_2
+HPa,Yes,Yes,海馬,,,,2022/11/2,2022/11/3,I_Sign_1,I_Sign_2
+HPb,No,Yes,海馬,,,,2022/11/2,2022/11/3,I_Sign_1,I_Sign_2
+HPaF,Yes,Yes,海馬,,,,2022/11/2,2022/11/3,I_Sign_1,I_Sign_2
+HPbF,No,Yes,海馬,,,,2022/4/13,2022/11/3,I_Sign_1,I_Sign_2
+AMa,Yes,No,墨西哥鈍口螈,,,,2022/9/18,2022/9/19,I_Sign_1,I_Sign_2
+AMb,Yes,No,墨西哥鈍口螈,,,,2022/9/18,2022/9/19,I_Sign_1,I_Sign_2
+AMaF,Yes,No,墨西哥鈍口螈,,,,2022/9/18,2022/9/19,I_Sign_2,I_Sign_3
+AMbF,Yes,No,墨西哥鈍口螈,,,,2022/9/18,2022/9/19,I_Sign_1,I_Sign_2
+AIa,Yes,No,林氏細鯽,,,,2022/10/5,2022/10/6,I_Sign_1,I_Sign_2
+AIb,Yes,No,林氏細鯽,,,,2022/10/5,2022/10/6,I_Sign_1,I_Sign_2
+AIaF,No,No,林氏細鯽,,,,2022/10/5,2022/10/6,I_Sign_1,I_Sign_2
+AIbF,Yes,No,香港半葉趾虎,,,,2022/10/5,2022/10/6,I_Sign_1,I_Sign_2
+CHa,No,Yes,擬鱷龜,,,,2022/9/26,2022/9/23,I_Sign_1,I_Sign_2
+CHb,No,Yes,擬鱷龜,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+CHaF,Yes,No,擬鱷龜,,,,2022/9/26,2022/9/23,I_Sign_1,I_Sign_2
+CHbF,No,Yes,擬鱷龜,,,,2022/9/24,2022/8/1,I_Sign_1,I_Sign_2

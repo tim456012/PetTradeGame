@@ -26,29 +26,51 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   documentRecipeData:
-  - documentRecipeType: DealerLicenseRecipe
-    documentRecipeName: DL_Day2
-  - documentRecipeType: HealthCertificateRecipe
-    documentRecipeName: HC_Day2
-  - documentRecipeType: PossessionLicenseRecipe
-    documentRecipeName: PL_Day2
-  - documentRecipeType: SpecialPermitRecipe
-    documentRecipeName: SP_Day2
+  - documentRecipeType: 1
+    documentRecipe:
+      m_AssetGUID: 4c7698f8cd2edd740a1e7b30a19bbd8f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 2
+    documentRecipe:
+      m_AssetGUID: 391fbb67965a47948bdf5845a65dc1d7
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 3
+    documentRecipe:
+      m_AssetGUID: 08331681058cbcd4fbedc624b273dfd8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 4
+    documentRecipe:
+      m_AssetGUID: 105184e5ed0d90b4b8de8a6832aba3ea
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
   functionalObjectsData:
-  - prefab: {fileID: 3278780523530120428, guid: 6ed189573a6c6d84c830df659366dfad, type: 3}
+  - prefab:
+      m_AssetGUID: 6ed189573a6c6d84c830df659366dfad
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     key: GStamp
-    amount: 1
-    maxAmount: 1
     spawnPosition: StampPos1
-  - prefab: {fileID: 8072269054454794087, guid: 9624a96f6da7a8041a99da2e58497ee6, type: 3}
+  - prefab:
+      m_AssetGUID: 9624a96f6da7a8041a99da2e58497ee6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     key: RStamp
-    amount: 1
-    maxAmount: 1
     spawnPosition: StampPos2
-  - prefab: {fileID: 5812135187394343717, guid: d346dcd1142c1d547bb35d74ae0289c3, type: 3}
+  - prefab:
+      m_AssetGUID: d346dcd1142c1d547bb35d74ae0289c3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     key: License
-    amount: 5
-    maxAmount: 10
     spawnPosition: LicensePos
   scoreData:
   - id: HHa

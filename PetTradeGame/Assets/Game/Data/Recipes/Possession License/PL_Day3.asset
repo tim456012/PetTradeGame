@@ -1,0 +1,562 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d3dc756245470c8d84c38b59a9ab4a, type: 3}
+  m_Name: PL_Day3
+  m_EditorClassIdentifier: 
+  possessionLicenseData:
+  - animalId: EBa
+    licenseNumber:
+    - PL-007
+    - PL-008
+    deadline:
+    - 2022/11/15
+    - 2022/11/16
+    name:
+    - "\u5289\u5B78\u53CB"
+    - "\u5F35\u5FB7\u83EF"
+    id:
+    - P29424
+    - P79334
+    businessNumber:
+    - 34467874
+    - 12240254
+    animalName:
+    - Emberiza aureola
+    contract:
+    - I
+    objective:
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    original:
+    - "\u6D77\u5357"
+    - "\u5EE3\u897F"
+    stampSign:
+    - I_Stamp_5
+  - animalId: EBb
+    licenseNumber:
+    - PL-009
+    - PL-010
+    deadline:
+    - 2022/11/15
+    - 2022/11/16
+    name:
+    - "\u6797\u8389\u53CB"
+    - "\u9B4F\u6CF0\u66F8"
+    id:
+    - P89454
+    - P18444
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Emberiza aureola
+    contract:
+    - I
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u6D77\u5357"
+    - "\u5EE3\u897F"
+    stampSign:
+    - I_Stamp_5
+  - animalId: EBaF
+    licenseNumber:
+    - CL-007
+    - PL-008
+    deadline:
+    - 2022/11/15
+    - 2022/11/16
+    name:
+    - "\u5289\u5B78\u53CB"
+    - "\u5F35\u5FB7\u83EF"
+    id:
+    - P29424
+    - P79334
+    businessNumber:
+    - 12240254
+    - 12240254
+    animalName:
+    - Emberiza aureola
+    - ' '
+    contract:
+    - I
+    objective:
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    - "\u975E\u5546\u696D\u7E41\u6B96"
+    original:
+    - "\u6D77\u5357"
+    - "\u5EE3\u897F"
+    stampSign:
+    - I_Stamp_5
+  - animalId: EBbF
+    licenseNumber:
+    - PL-009
+    - PL-010
+    deadline:
+    - 2022/11/15
+    - 2022/11/16
+    name:
+    - "\u6797\u8389\u53CB"
+    - "\u9B4F\u6CF0\u66F8"
+    id:
+    - P89454
+    - 12240254
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Emberiza aureola
+    contract:
+    - I
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u6D77\u5357"
+    - "\u5EE3\u897F"
+    stampSign:
+    - I_Stamp_5
+  - animalId: DAa
+    licenseNumber:
+    - CL-007
+    - CL-008
+    deadline:
+    - 2023/1/3
+    - 2023/1/4
+    name:
+    - "\u5433\u5EFA\u5EB7"
+    - "\u5289\u5F65\u7956"
+    id:
+    - P12495
+    - P32135
+    businessNumber:
+    - 12954235
+    - 13847535
+    animalName:
+    - Dyscophus antongilii
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u99AC\u9054\u52A0\u65AF\u52A0"
+    stampSign:
+    - I_Stamp_5
+  - animalId: DAb
+    licenseNumber:
+    - PL-011
+    - PL-012
+    deadline:
+    - 2023/1/3
+    - 2023/1/4
+    name:
+    - "\u5468\u4F73\u767B"
+    - "\u5F6D\u5B9A\u525B"
+    id:
+    - P49535
+    - P95895
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Dyscophus antongilii
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u99AC\u9054\u52A0\u65AF\u52A0"
+    stampSign:
+    - I_Stamp_5
+  - animalId: DAaF
+    licenseNumber:
+    - CL-007
+    - CL-008
+    deadline:
+    - 2023/1/3
+    - 2023/1/4
+    name:
+    - "\u5433\u5EFA\u5EB7"
+    - "\u5289\u5F65\u7956"
+    id:
+    - P12495
+    - P32135
+    businessNumber:
+    - 12954235
+    - 13454535
+    animalName:
+    - Dyscophus antongilii
+    contract:
+    - III
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u99AC\u9054\u52A0\u65AF\u52A0"
+    stampSign:
+    - I_Stamp_5
+  - animalId: DAbF
+    licenseNumber:
+    - PL-011
+    - PL-012
+    deadline:
+    - 2023/1/3
+    - 2023/1/4
+    name:
+    - "\u5468\u4F73\u767B"
+    - "\u5F6D\u5B9A\u525B"
+    id:
+    - P49535
+    - P95895
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Dyscophus antongilii
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u99AC\u9054\u52A0\u65AF\u52A0"
+    stampSign:
+    - I_Stamp_5
+  - animalId: HPa
+    licenseNumber:
+    - CL-009
+    - CL-010
+    deadline:
+    - 2022/12/22
+    - 2022/12/23
+    name:
+    - "\u65E5\u5948\u751F\u6D77\u6597"
+    - "\u7F85\u7389\u5A77"
+    id:
+    - P88796
+    - P88806
+    businessNumber:
+    - 51357398
+    - 37535938
+    animalName:
+    - Hippocampus
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u6FB3\u6D32"
+    stampSign:
+    - I_Stamp_5
+  - animalId: HPb
+    licenseNumber:
+    - PL-013
+    - PL-014
+    deadline:
+    - 2022/12/22
+    - 2022/12/23
+    name:
+    - "\u9EC3\u5927\u516C"
+    - "\u99AC\u51AC\u77F3"
+    id:
+    - P88816
+    - P88826
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Hippocampus
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u6FB3\u6D32"
+    stampSign:
+    - I_Stamp_5
+  - animalId: HPaF
+    licenseNumber:
+    - CL-009
+    - CL-010
+    deadline:
+    - 2022/12/22
+    - 2022/12/23
+    name:
+    - "\u65E5\u5948\u751F\u6D77\u6597"
+    - "\u7F85\u7389\u5A77"
+    id:
+    - P88796
+    - P88806
+    businessNumber:
+    - 51357398
+    - 37535938
+    animalName:
+    - Hippocampus
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u6FB3\u6D32"
+    stampSign:
+    - I_Stamp_5
+  - animalId: HPbF
+    licenseNumber:
+    - PL-013
+    - PL-014
+    deadline:
+    - 2022/12/22
+    - 2022/12/23
+    name:
+    - "\u9EC3\u5927\u516C"
+    - "\u99AC\u51AC\u77F3"
+    id:
+    - P88816
+    - P88826
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Hippocampus
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u6FB3\u6D32"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AMa
+    licenseNumber:
+    - CL-011
+    - CL-012
+    deadline:
+    - 2022/12/10
+    - 2022/12/11
+    name:
+    - "\u9673\u592B\u5B50"
+    - "\u9B4F\u89D2\u4E03"
+    id:
+    - P88796
+    - P88806
+    businessNumber:
+    - 96697892
+    - 59430222
+    animalName:
+    - Ambystoma mexicanum
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AMb
+    licenseNumber:
+    - PL-015
+    - PL-016
+    deadline:
+    - 2022/12/10
+    - 2022/12/11
+    name:
+    - "\u6F58\u5B89"
+    - "\u738B\u98DB"
+    id:
+    - P88816
+    - P88826
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Ambystoma mexicanum
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AMaF
+    licenseNumber:
+    - CL-011
+    - CL-012
+    deadline:
+    - 2022/12/10
+    - 2022/12/11
+    name:
+    - "\u9673\u592B\u5B50"
+    - "\u9B4F\u89D2\u4E03"
+    id:
+    - P88796
+    - P88806
+    businessNumber:
+    - 96697892
+    - 59430222
+    animalName:
+    - Ambystoma mexicanum
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: AMbF
+    licenseNumber:
+    - PL-015
+    - PL-016
+    deadline:
+    - 2022/12/10
+    - 2022/12/11
+    name:
+    - "\u6F58\u5B89"
+    - "\u738B\u98DB"
+    id:
+    - P8B816
+    - P88826
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Ambystoma mexicanum
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u58A8\u897F\u54E5"
+    stampSign:
+    - I_Stamp_5
+  - animalId: CHa
+    licenseNumber:
+    - CL-013
+    - CL-014
+    deadline:
+    - 2022/11/17
+    - 2022/11/18
+    name:
+    - "\u5BE7\u91C7\u6668"
+    - "\u8076\u5C0F\u60C5"
+    id:
+    - P32347
+    - P32357
+    businessNumber:
+    - 33336987
+    - 48428451
+    animalName:
+    - Chelydra serpentina
+    contract:
+    - III
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u52A0\u62FF\u5927"
+    stampSign:
+    - I_Stamp_5
+  - animalId: CHb
+    licenseNumber:
+    - PL-017
+    - PL-018
+    deadline:
+    - 2022/11/19
+    - 2022/11/20
+    name:
+    - "\u5F35\u8D64\u590F"
+    - "\u84B2\u677E\u9234"
+    id:
+    - P32367
+    - P32377
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Chelydra serpentina
+    contract:
+    - III
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u52A0\u62FF\u5927"
+    stampSign:
+    - I_Stamp_5
+  - animalId: CHaF
+    licenseNumber:
+    - CL-013
+    - CL-014
+    deadline:
+    - 2022/11/17
+    - 2022/11/18
+    name:
+    - "\u5BE7\u91C7\u6668"
+    - "\u8076\u5C0F\u60C5"
+    id:
+    - P32347
+    - P32357
+    businessNumber:
+    - 33336987
+    - 48428451
+    animalName:
+    - Chelydra serpentina
+    contract:
+    - III
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u52A0\u62FF\u5927"
+    stampSign:
+    - I_Stamp_5
+    - I_Stamp_6
+  - animalId: CHbF
+    licenseNumber:
+    - PL-017
+    - PL-018
+    deadline:
+    - 2022/11/19
+    - 2022/11/20
+    name:
+    - "\u5F35\u8D64\u590F"
+    - "\u84B2\u677E\u9234"
+    id:
+    - P32367
+    - P32377
+    businessNumber:
+    - 23313990
+    - ' '
+    animalName:
+    - Chelydra serpentina
+    contract:
+    - III
+    objective:
+    - "\u8CA9\u552E"
+    - "\u5BF5\u7269"
+    original:
+    - "\u52A0\u62FF\u5927"
+    stampSign:
+    - I_Stamp_5

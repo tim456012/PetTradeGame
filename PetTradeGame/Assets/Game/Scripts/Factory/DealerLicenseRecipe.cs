@@ -26,7 +26,7 @@ namespace Game.Scripts.Factory
             {
                 businessName = new List<string>(),
                 businessNumber = new List<string>(),
-                line1Position = lines[7] switch
+                line1Position = lines[5] switch
                 {
                     " " => DealerLicenseData.DealerLicensePosition.None,
                     "C1" => DealerLicenseData.DealerLicensePosition.CirclePos1,
@@ -34,14 +34,14 @@ namespace Game.Scripts.Factory
                     "C3" => DealerLicenseData.DealerLicensePosition.CirclePos3,
                     _ => DealerLicenseData.DealerLicensePosition.None
                 },
-                line2Position = lines[8] switch
+                line2Position = lines[6] switch
                 {
                     " " => DealerLicenseData.DealerLicensePosition.None,
                     "C4" => DealerLicenseData.DealerLicensePosition.CirclePos4,
                     "C5" => DealerLicenseData.DealerLicensePosition.CirclePos5,
                     _ => DealerLicenseData.DealerLicensePosition.None
                 },
-                line3Position = lines[9] switch
+                line3Position = lines[7] switch
                 {
                     " " => DealerLicenseData.DealerLicensePosition.None,
                     "T1" => DealerLicenseData.DealerLicensePosition.TickPos1,
@@ -49,7 +49,7 @@ namespace Game.Scripts.Factory
                     "T3" => DealerLicenseData.DealerLicensePosition.TickPos3,
                     _ => DealerLicenseData.DealerLicensePosition.None
                 },
-                line4Position = lines[10] switch
+                line4Position = lines[8] switch
                 {
                     " " => DealerLicenseData.DealerLicensePosition.None,
                     "T4" => DealerLicenseData.DealerLicensePosition.TickPos4,
@@ -57,8 +57,8 @@ namespace Game.Scripts.Factory
                     "T6" => DealerLicenseData.DealerLicensePosition.TickPos6,
                     _ => DealerLicenseData.DealerLicensePosition.None
                 },
-                isProcess = lines[11].Equals("Yes"),
-                isTick = lines[12].Equals("Yes"),
+                isProcess = lines[9].Equals("Yes"),
+                isTick = lines[10].Equals("Yes"),
                 stampSign = new List<string>()
             };
 

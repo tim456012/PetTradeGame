@@ -1,0 +1,41 @@
+AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Mark,Animal Mark 2,Date,Date 2,Stamp And Sign,Stamp And Sign 2
+LOa,Yes,Yes,尖嘴鱷,,,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
+LOb,Yes,Yes,雀鱔,,,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
+LOaF,No,Yes,尖嘴鱷,,,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
+LObF,No,Yes,雀鱔,,,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
+GEa,No,Yes,印度星龜,,,,2022/9/30,2022/10/1,I_Sign_1,I_Sign_2
+GEb,Yes,No,印度星龜,,,,2022/9/30,2022/10/1,I_Sign_1,I_Sign_2
+GEaF,No,Yes,印度星龜,,,,2022/9/30,2022/10/1,I_Sign_1,I_Sign_2
+GEbF,No,Yes,印度星龜,,,,2022/9/30,2022/10/1,I_Sign_1,I_Sign_4
+TCa,Yes,No,東箱龜,,,,2022/10/1,2022/9/30,I_Sign_1,I_Sign_2
+TCb,No,Yes,東箱龜,,,,2022/10/1,2022/9/30,I_Sign_1,I_Sign_2
+TCaF,Yes,No,印度星龜,東箱龜,,,2022/10/1,2022/9/30,I_Sign_1,I_Sign_2
+TCbF,No,Yes,東箱龜,,,,2022/10/1,2022/9/30,I_Sign_1,I_Sign_2
+PMa,Yes,No,藍寶石華麗雨林,,,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
+PMb,No,Yes,藍寶石華麗雨林,,,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
+PMaF,Yes,Yes,藍寶石華麗雨林,,,,2022/9/15,2022/9/16,I_Sign_2,I_Sign_3
+PMbF,No,Yes,藍寶石華麗雨林,,,,2022/9/15,2022/9/16,I_Sign_2,I_Sign_5
+POa,Yes,No,孔雀魚,,,,2022/9/21,2022/9/22,I_Sign_1,I_Sign_2
+POb,No,Yes,孔雀魚,,,,2022/9/21,2022/9/22,I_Sign_1,I_Sign_2
+POaF,Yes,No,孔雀魚,,,,2022/9/21,2022/9/22,I_Sign_1,I_Sign_2
+PObF,No,Yes,孔雀魚,,,,2022/9/21,2022/9/22,I_Sign_1,I_Sign_2
+TAa,Yes,No,倉鴞,,已配晶片手環,,2022/9/17,2022/9/18,I_Sign_1,I_Sign_2
+TAb,No,Yes,倉鴞,,已配晶片手環,,2022/9/17,2022/9/18,I_Sign_1,I_Sign_2
+TAaF,Yes,No,倉鴞,,已配晶片手環,,2022/9/17,2022/9/18,I_Sign_1,I_Sign_2
+TAbF,No,Yes,倉鴞,,已配晶片手環,,2022/9/17,2022/9/18,I_Sign_1,I_Sign_2
+AAa,Yes,No,緋紅金剛鸚鵡,,已植入晶片,已配晶片手環,2022/10/3,2022/10/4,I_Sign_1,I_Sign_2
+AAb,No,Yes,緋紅金剛鸚鵡,,已植入晶片,已配晶片手環,2022/10/3,2022/10/4,I_Sign_1,I_Sign_2
+AAaF,Yes,No,緋紅金剛鸚鵡,,已植入晶片,已配晶片手環,2022/10/3,2022/10/4,I_Sign_1,I_Sign_2
+AAbF,No,Yes,緋紅金剛鸚鵡,, ,已配晶片手環,2022/10/3,2022/10/4,I_Sign_1,I_Sign_2
+MHa,Yes,No,香港鬥魚,,,,2022/11/9,2022/11/10,I_Sign_1,I_Sign_2
+MHb,No,Yes,香港鬥魚,,,,2022/9/25,2022/9/26,I_Sign_1,I_Sign_2
+MHaF,Yes,No,香港鬥魚,,,,2022/9/23,2022/9/24,I_Sign_1,I_Sign_2
+MHbF,No,Yes,叉尾鬥魚,香港鬥魚,,,2022/9/25,2022/6/8,I_Sign_1,I_Sign_2
+LLa,Yes,No,紅咀相思,,已配晶片手環,已植入晶片,2022/9/6,2022/9/7,I_Sign_1,I_Sign_2
+LLb,No,Yes,紅咀相思,,已配晶片手環,已植入晶片,2022/9/6,2022/9/7,I_Sign_1,I_Sign_2
+LLaF,Yes,No,紅咀相思,, ,已植入晶片,2022/9/6,2022/9/7,I_Sign_1,I_Sign_2
+LLbF,No,Yes,紅咀相思,,已配晶片手環,已植入晶片,2022/9/6,2022/9/7,I_Sign_1,I_Sign_2
+OHa,Yes,No,眼鏡王蛇,,,,2022/9/15,2022/9/23,I_Sign_1,I_Sign_2
+OHb,Yes,Yes,眼鏡王蛇,,,,2022/9/15,2022/9/23,I_Sign_1,I_Sign_2
+OHaF,Yes,No,眼鏡王蛇,水眼鏡蛇,,,2022/9/15,2022/9/23,I_Sign_1,I_Sign_2
+OHbF,No,Yes,眼鏡王蛇,,,,2022/9/15,2022/9/23,I_Sign_1,I_Sign_2

@@ -11,7 +11,6 @@ namespace Game.Scripts.Controller
 {
     public class GameManager : StateMachine
     {
-
         public GameObject world;
         public bool debugMode;
         public bool stopTimer;

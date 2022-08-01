@@ -17,6 +17,9 @@ namespace Game.Scripts.Controller
 
         private int _score, _correctDocuments, _wrongDocuments;
         private float _time, _timeThreshold;
+        
+        public static event EventHandler OnGamePause;
+        public static event EventHandler GameFinishEvent;
 
         private void Awake()
         {
@@ -36,7 +39,10 @@ namespace Game.Scripts.Controller
         private void Update()
         {
             if (IsPause)
-                _isTimerStop = false;
+            {
+                _isTimerStop = true;
+                OnGamePause?.Invoke(this, EventArgs.Empty);
+            }
 
             if (!_isTimerStop)
                 UpdateTime();
@@ -53,7 +59,6 @@ namespace Game.Scripts.Controller
             _isReadyFinish = false;
             GameFinishEvent?.Invoke(this, EventArgs.Empty);
         }
-        public static event EventHandler GameFinishEvent;
 
         private void UpdateTime()
         {

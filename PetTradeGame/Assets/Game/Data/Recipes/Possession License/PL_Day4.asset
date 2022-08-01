@@ -1,0 +1,558 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0d3dc756245470c8d84c38b59a9ab4a, type: 3}
+  m_Name: PL_Day4
+  m_EditorClassIdentifier: 
+  possessionLicenseData:
+  - animalId: GCa
+    licenseNumber:
+    - CL-001
+    - CL-015
+    deadline:
+    - 2022/11/19
+    - 2022/11/20
+    name:
+    - "\u6D2A\u4E2D\u5DDE"
+    - "\u4F55\u570B\u52C7"
+    id:
+    - P11111
+    - P34132
+    businessNumber:
+    - 70528471
+    - 18349491
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u6D77\u5357\u5CF6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: GCb
+    licenseNumber:
+    - PL-019
+    - PL-020
+    deadline:
+    - 2022/11/21
+    - 2022/11/22
+    name:
+    - "\u5B54\u4E59\u5DF1"
+    - "\u5433\u541B\u5982"
+    id:
+    - P29022
+    - P78893
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u6D77\u5357\u5CF6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: GCaF
+    licenseNumber:
+    - CL-001
+    - CL-015
+    deadline:
+    - 2022/11/19
+    - 2022/11/20
+    name:
+    - "\u6D2A\u4E2D\u5DDE"
+    - "\u4F55\u570B\u52C7"
+    id:
+    - P11111
+    - P34132
+    businessNumber:
+    - 70528471
+    - 18349491
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u6D77\u5357\u5CF6"
+    stampSign:
+    - I_Stamp_5
+  - animalId: GCbF
+    licenseNumber:
+    - PL-019
+    - PL-020
+    deadline:
+    - 2022/11/21
+    - 2022/11/22
+    name:
+    - "\u5B54\u4E59\u5DF1"
+    - "\u5433\u541B\u5982"
+    id:
+    - P29022
+    - P78893
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Garrulax canorus
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u6D77\u5357\u5CF6"
+    - "\u99AC\u91CC"
+    stampSign:
+    - I_Stamp_5
+  - animalId: BJa
+    licenseNumber:
+    - CL-016
+    - CL-017
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u9673\u4E16\u7F8E"
+    - "\u5468\u65B0\u65B0"
+    id:
+    - P35608
+    - P25568
+    businessNumber:
+    - 52362473
+    - 39432134
+    animalName:
+    - Bombycilla japonica
+    contract:
+    - III
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u897F\u4F2F\u5229\u4E9E"
+    stampSign:
+    - I_Stamp_5
+  - animalId: BJb
+    licenseNumber:
+    - PL-020
+    - PL-021
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u821F\u5927\u798F"
+    - "\u91D1\u516D\u798F"
+    id:
+    - P67788
+    - P38408
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Bombycilla japonica
+    contract:
+    - III
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u897F\u4F2F\u5229\u4E9E"
+    stampSign:
+    - I_Stamp_5
+  - animalId: BJaF
+    licenseNumber:
+    - CL-016
+    - CL-017
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u9673\u4E16\u7F8E"
+    - "\u5468\u65B0\u65B0"
+    id:
+    - P35608
+    - P25568
+    businessNumber:
+    - 52362473
+    - 3943
+    animalName:
+    - Bombycilla japonica
+    contract:
+    - III
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u897F\u4F2F\u5229\u4E9E"
+    stampSign:
+    - I_Stamp_5
+  - animalId: BJbF
+    licenseNumber:
+    - PL-020
+    - PL-021
+    deadline:
+    - 2023/1/19
+    - 2023/1/20
+    name:
+    - "\u821F\u5927\u798F"
+    - "\u91D1\u516D\u798F"
+    id:
+    - P67788
+    - P38408
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Bombycilla japonica
+    contract:
+    - III
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u897F\u4F2F\u5229\u4E9E"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PYa
+    licenseNumber:
+    - CL-018
+    - CL-019
+    deadline:
+    - 2023/1/5
+    - 2023/1/6
+    name:
+    - "\u85CD\u5FC3\u6021"
+    - "\u912D\u5EF6\u9756"
+    id:
+    - P79329
+    - P43299
+    businessNumber:
+    - 19390348
+    - 17823040
+    animalName:
+    - Python regius
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u70CF\u5E72\u9054"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PYb
+    licenseNumber:
+    - PL-022
+    - PL-023
+    deadline:
+    - 2023/1/7
+    - 2023/1/8
+    name:
+    - "\u674E\u96C5\u5A77"
+    - "\u4E01\u66DC\u5B87"
+    id:
+    - P58359
+    - P94389
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Python regius
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u70CF\u5E72\u9054"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PYaF
+    licenseNumber:
+    - CL-018
+    - CL-019
+    deadline:
+    - 2023/1/5
+    - 2023/1/6
+    name:
+    - "\u85CD\u5FC3\u6021"
+    - "\u912D\u5EF6\u9756"
+    id:
+    - P79329
+    - P43299
+    businessNumber:
+    - 19390348
+    - 17823040
+    animalName:
+    - Python regius
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u7E41\u6B96"
+    original:
+    - "\u70CF\u5E72\u9054"
+    stampSign:
+    - I_Stamp_5
+  - animalId: PYbF
+    licenseNumber:
+    - PL-022
+    - PL-023
+    deadline:
+    - 2023/1/7
+    - 2023/1/8
+    name:
+    - "\u674E\u96C5\u5A77"
+    - "\u4E01\u66DC\u5B87"
+    id:
+    - B58359
+    - P94389
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Python regius
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u70CF\u5E72\u9054"
+    stampSign:
+    - I_Stamp_5
+  - animalId: CTa
+    licenseNumber:
+    - CL-020
+    - CL-021
+    deadline:
+    - 2023/12/5
+    - 2023/12/6
+    name:
+    - "\u6B50\u967D\u4FEE"
+    - "\u95DC\u6DFB\u6D77"
+    id:
+    - P84830
+    - P27420
+    businessNumber:
+    - 2974248
+    - 2384531
+    animalName:
+    - Cuora trifasciata
+    contract:
+    - II
+    objective:
+    - "\u8CA9\u552E"
+    - "\u8CA9\u552E"
+    original:
+    - "\u9999\u57CE"
+    stampSign:
+    - I_Stamp_5
+  - animalId: CTb
+    licenseNumber:
+    - PL-024
+    - PL-025
+    deadline:
+    - 2023/12/5
+    - 2023/12/6
+    name:
+    - "\u6A02\u5609\u742A"
+    - "\u9673\u67CF\u5713"
+    id:
+    - P48320
+    - P83340
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Cuora trifasciata
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u9999\u57CE"
+    stampSign:
+    - I_Stamp_5
+  - animalId: CTaF
+    licenseNumber:
+    - CL-020
+    - IL-021
+    deadline:
+    - 2023/12/5
+    - 2023/12/6
+    name:
+    - "\u6B50\u967D\u4FEE"
+    - "\u95DC\u6DFB\u6D77"
+    id:
+    - P84830
+    - P27420
+    businessNumber:
+    - 2974248
+    - 2384531
+    animalName:
+    - Cuora trifasciata
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u9999\u57CE"
+    stampSign:
+    - I_Stamp_5
+    - I_Stamp_6
+  - animalId: CTbF
+    licenseNumber:
+    - PL-024
+    - PL-025
+    deadline:
+    - 2023/12/5
+    - 2023/12/6
+    name:
+    - "\u6A02\u5609\u742A"
+    - "\u9673\u67CF\u5713"
+    id:
+    - P48320
+    - P83340
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Cuora trifasciata
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u9999\u57CE"
+    stampSign:
+    - I_Stamp_5
+  - animalId: FPa
+    licenseNumber:
+    - CL-022
+    - CL-023
+    deadline:
+    - 2023/6/6
+    - 2023/6/7
+    name:
+    - "\u66FE\u975C\u975C"
+    - "\u6771\u65B9\u7562\u6557"
+    id:
+    - P78632
+    - P30232
+    businessNumber:
+    - 96697892
+    - 23329891
+    animalName:
+    - Furcifer pardalis
+    contract:
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: FPb
+    licenseNumber:
+    - PL-026
+    - PL-027
+    deadline:
+    - 2023/6/6
+    - 2023/6/7
+    name:
+    - "\u674E\u8C6A"
+    - "\u9678\u5C11\u738B"
+    id:
+    - P48132
+    - P64022
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Furcifer pardalis
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: FPaF
+    licenseNumber:
+    - PL-122
+    - CL-023
+    deadline:
+    - 2023/6/6
+    - 2023/6/7
+    name:
+    - "\u66FE\u975C\u975C"
+    - "\u6771\u65B9\u7562\u6557"
+    id:
+    - P78632
+    - P30232
+    businessNumber:
+    - 96697892
+    - 23329891
+    animalName:
+    - Furcifer pardalis
+    contract:
+    - I
+    - II
+    objective:
+    - "\u7E41\u6B96"
+    - "\u8CA9\u552E"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5
+  - animalId: FPbF
+    licenseNumber:
+    - PL-026
+    - PL-027
+    deadline:
+    - 2022/3/16
+    - 2023/6/7
+    name:
+    - "\u674E\u8C6A"
+    - "\u9678\u5C11\u738B"
+    id:
+    - P48132
+    - P64022
+    businessNumber:
+    - ' '
+    - ' '
+    animalName:
+    - Furcifer pardalis
+    contract:
+    - II
+    objective:
+    - "\u5BF5\u7269"
+    - "\u5BF5\u7269"
+    original:
+    - "\u65AF\u91CC\u862D\u5361"
+    stampSign:
+    - I_Stamp_5

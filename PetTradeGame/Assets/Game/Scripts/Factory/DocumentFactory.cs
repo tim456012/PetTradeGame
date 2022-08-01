@@ -1,122 +1,176 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Enum;
+using Game.Scripts.EventArguments;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Factory
 {
     public static class DocumentFactory
     {
+        public static event EventHandler<InfoEventArgs<GameObject>> OnDocumentCreated; 
+
+        private static GameObject _prefabResult;
+        
         #region Communicate Interface
-
-        /// <summary>
-        ///     Create Dealer License by loading it recipe.
-        /// </summary>
-        /// <param name="name">Recipe name of Dealer License</param>
-        /// <param name="id"></param>
-        /// <returns>GameObject</returns>
-        public static GameObject CreateDealerLicense(string name, string id)
+        public static void CreateDocument(DocumentType documentType, AssetReference recipe, string id)
         {
-            var obj = Resources.Load<DealerLicenseRecipe>($"Recipes/Dealer License/{name}");
-            if (obj != null)
-                return CreateDealerLicense(obj, id);
-            Debug.Log("No Document Recipe found");
-            return null;
+            switch (documentType)
+            {
+                case DocumentType.PossessionLicense:
+                    LoadPossessionLicense(recipe, id);
+                    break;
+                case DocumentType.HealthCertificate:
+                    LoadHealthCertificate(recipe, id);
+                    break;
+                case DocumentType.SpecialPermit:
+                    LoadSpecialPermit(recipe, id);
+                    break;
+                case DocumentType.DealerLicense:
+                    LoadDealerLicense(recipe, id);
+                    break;
+                case DocumentType.None:
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(documentType), documentType, null);
+            }
+        }
+        
+        private static void CreateDealerLicense(DealerLicenseRecipe dl, GameObject obj, string id)
+        {
+            if (dl.dealerLicenseData.All(data => data.animalId != id))
+            {
+                Debug.Log("No dealer license for this id found.");
+                return;
+            }
+
+            Debug.Log("Start creating dealer license");
+            GameObject doc = Object.Instantiate(obj);
+
+            doc.name = dl.name;
+            doc.GetComponent<EntityAttribute>().paperType = DocumentType.DealerLicense;
+            
+            AddDealerLicenseContent(doc, dl.dealerLicenseData, id);
+            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
+        }
+        
+        private static void CreateHealthCertificate(HealthCertificateRecipe hc, GameObject obj, string id)
+        {
+            if (hc.healthCertificateData.All(data => data.animalId != id))
+            {
+                Debug.Log("No health certificate for this id found");
+                return;
+            }
+            
+            Debug.Log("Start creating health certificate");
+            GameObject doc = Object.Instantiate(obj);
+
+            doc.name = hc.name;
+            doc.GetComponent<EntityAttribute>().paperType = DocumentType.HealthCertificate;
+            AddHealthCertificateContent(doc, hc.healthCertificateData, id);
+            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static GameObject CreateHealthCertificate(string name, string id)
+        private static void CreatePossessionLicense(PossessionLicenseRecipe pl, GameObject obj, string id)
         {
-            var obj = Resources.Load<HealthCertificateRecipe>($"Recipes/Health Certificate/{name}");
-            if (obj != null)
-                return CreateHealthCertificate(obj, id);
-            Debug.Log("No Document Recipe found");
-            return null;
+            if (pl.possessionLicenseData.All(data => data.animalId != id))
+            {
+                Debug.Log("No possession license for this id found");
+                return;
+            }
 
+            Debug.Log("Start creating possession license");
+            GameObject doc = Object.Instantiate(obj);
+
+            doc.name = pl.name;
+            doc.GetComponent<EntityAttribute>().paperType = DocumentType.PossessionLicense;
+            AddPossessionLicenseContent(doc, pl.possessionLicenseData, id);
+            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static GameObject CreatePossessionLicense(string name, string id)
+        private static void CreateSpecialPermit(SpecialPermitRecipe sp, GameObject obj, string id)
         {
-            var obj = Resources.Load<PossessionLicenseRecipe>($"Recipes/Possession License/{name}");
-            if (obj != null)
-                return CreatePossessionLicense(obj, id);
-            Debug.Log("No Document Recipe found");
-            return null;
+            if (sp.specialPermitData.All(data => data.animalId != id))
+            {
+                Debug.Log("No special permit for this id found");
+                return;
+            }
 
+            Debug.Log("Start creating special permit");
+            GameObject doc = Object.Instantiate(obj);
+
+            doc.name = sp.name;
+            doc.GetComponent<EntityAttribute>().paperType = DocumentType.SpecialPermit;
+            AddSpecialPermitContent(doc, sp.specialPermitData, id);
+            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
         }
 
-        /// <summary>
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static GameObject CreateSpecialPermit(string name, string id)
+        private static void CreateGameObject(GameObject obj, GameObject parent, string posName)
         {
-            var obj = Resources.Load<SpecialPermitRecipe>($"Recipes/Special Permit/{name}");
-            if (obj != null)
-                return CreateSpecialPermit(obj, id);
-            Debug.Log("No Document Recipe found");
-            return null;
+            Transform parentTran = GameObjFinder.FindChildGameObject(parent, posName).transform;
+
+            GameObject prefab = Object.Instantiate(obj, parentTran, true);
+            //prefab.transform.localScale = Vector3.one;
+            prefab.transform.localPosition = Vector3.zero;
         }
 
         #endregion
 
-        #region Document Process
+        #region Tasks
 
-        private static GameObject CreateDealerLicense(DealerLicenseRecipe recipe, string id)
+        private static async void LoadPossessionLicense(AssetReference recipe, string id)
         {
-            if (recipe.dealerLicenseData.All(data => data.animalId != id))
-                return null;
-
-            //Instantiate Document Base
-            GameObject obj = InstantiateGameObj("Documents/I_DealerLicense");
-            obj.name = recipe.name;
-            obj.GetComponent<EntityAttribute>().paperType = DocumentType.DealerLicense;
-            AddDealerLicenseContent(obj, recipe.dealerLicenseData, id);
-            return obj;
+            PossessionLicenseRecipe pl = await recipe.Get<PossessionLicenseRecipe>().Task;
+            GameObject obj = await "Documents/I_SpecialPermit".Get<GameObject>().Task;
+            
+            CreatePossessionLicense(pl, obj, id);
+            Addressables.Release(pl);
+            Addressables.Release(obj);
         }
 
-        private static GameObject CreateHealthCertificate(HealthCertificateRecipe recipe, string id)
+        private static async void LoadSpecialPermit(AssetReference recipe, string id)
         {
-            GameObject obj = InstantiateGameObj("Documents/I_HealthCertificate");
-            obj.name = recipe.name;
-            obj.GetComponent<EntityAttribute>().paperType = DocumentType.HealthCertificate;
-            AddHealthCertificateContent(obj, recipe.healthCertificateData, id);
-            return obj;
+            SpecialPermitRecipe sp = await recipe.Get<SpecialPermitRecipe>().Task;
+            GameObject obj = await "Documents/I_SpecialPermit".Get<GameObject>().Task;
+            CreateSpecialPermit(sp, obj ,id);
+            Addressables.Release(sp);
+            Addressables.Release(obj);
+        }
+        
+        private static async void LoadHealthCertificate(AssetReference recipe, string id)
+        {
+            HealthCertificateRecipe hc = await recipe.Get<HealthCertificateRecipe>().Task;
+            GameObject obj = await "Documents/I_HealthCertificate".Get<GameObject>().Task;
+            CreateHealthCertificate(hc, obj, id);
+            Addressables.Release(hc);
+            Addressables.Release(obj);
+        }
+        
+        private static async void LoadDealerLicense(AssetReference recipe, string id)
+        {
+            DealerLicenseRecipe dl = await recipe.Get<DealerLicenseRecipe>().Task;
+            GameObject obj = await "Documents/I_DealerLicense".Get<GameObject>().Task;
+            CreateDealerLicense(dl, obj, id);
+            Addressables.Release(dl);
+            Addressables.Release(obj);
+        }
+        
+        private static async void LoadGameObject(string name, GameObject parent, string posName)
+        {
+            GameObject obj = await name.Get<GameObject>().Task;
+            CreateGameObject(obj, parent, posName);
+            Addressables.Release(obj);
         }
 
-        private static GameObject CreatePossessionLicense(PossessionLicenseRecipe recipe, string id)
-        {
-            if (recipe.possessionLicenseData.All(data => data.animalId != id))
-                return null;
+        #endregion
 
-            GameObject obj = InstantiateGameObj("Documents/I_PossessionLicense");
-            obj.name = recipe.name;
-            obj.GetComponent<EntityAttribute>().paperType = DocumentType.PossessionLicense;
-            AddPossessionLicenseContent(obj, recipe.possessionLicenseData, id);
-            return obj;
-        }
-
-        private static GameObject CreateSpecialPermit(SpecialPermitRecipe recipe, string id)
-        {
-            GameObject obj = InstantiateGameObj("Documents/I_SpecialPermit");
-            obj.name = recipe.name;
-            obj.GetComponent<EntityAttribute>().paperType = DocumentType.SpecialPermit;
-            AddSpecialPermitContent(obj, recipe.specialPermitData, id);
-            return obj;
-        }
+        #region Content
 
         private static void AddDealerLicenseContent(GameObject obj, List<DealerLicenseData> data, string id)
         {
@@ -125,11 +179,11 @@ namespace Game.Scripts.Factory
                 if (dealerLicenseData.animalId != id)
                     continue;
 
-                List<string> businessName = dealerLicenseData.businessName;
-                List<string> businessNumber = dealerLicenseData.businessNumber;
-                List<string> stampSign = dealerLicenseData.stampSign;
+                var businessName = dealerLicenseData.businessName;
+                var businessNumber = dealerLicenseData.businessNumber;
+                var stampSign = dealerLicenseData.stampSign;
 
-                int index = Random.Range(0, businessName.Count);
+                var index = Random.Range(0, businessName.Count);
                 AddContentText(obj, "TM_BusinessName", businessName.Count == 0 ? businessName[0] : businessName[index]);
 
                 index = Random.Range(0, businessNumber.Count);
@@ -137,10 +191,10 @@ namespace Game.Scripts.Factory
 
                 AddContentPrefab(obj, dealerLicenseData.line1Position.ToString(), "I_DocumentCircle");
                 AddContentPrefab(obj, dealerLicenseData.line2Position.ToString(), "I_DocumentCircle");
-                AddContentPrefab(obj, dealerLicenseData.line3Position.ToString(), "I_DocumentCircle");
-                AddContentPrefab(obj, dealerLicenseData.line4Position.ToString(), "I_DocumentCircle");
-                AddContentPrefab(obj, dealerLicenseData.isProcess, "TickPos_6", "I_DocumentCircle");
-                AddContentPrefab(obj, dealerLicenseData.isTick, "TickPos_7", "I_DocumentCircle");
+                AddContentPrefab(obj, dealerLicenseData.line3Position.ToString(), "I_Tick");
+                AddContentPrefab(obj, dealerLicenseData.line4Position.ToString(), "I_Tick");
+                AddContentPrefabChoice(obj, "TickPos7", "I_Tick", dealerLicenseData.isProcess);
+                AddContentPrefabChoice(obj, "TickPos8", "I_Tick", dealerLicenseData.isTick);
 
                 index = Random.Range(0, dealerLicenseData.stampSign.Count);
                 AddContentPrefab(obj, "StampSignPos", stampSign.Count == 0 ? stampSign[0] : stampSign[index]);
@@ -154,15 +208,15 @@ namespace Game.Scripts.Factory
                 if (healthCertificateData.animalId != id)
                     continue;
 
-                List<string> animalName = healthCertificateData.animalName;
-                List<string> animalMark = healthCertificateData.animalMark;
-                List<string> date = healthCertificateData.date;
-                List<string> stampSign = healthCertificateData.stampSign;
+                var animalName = healthCertificateData.animalName;
+                var animalMark = healthCertificateData.animalMark;
+                var date = healthCertificateData.date;
+                var stampSign = healthCertificateData.stampSign;
 
-                AddContentPrefab(obj, healthCertificateData.isOfficial, "TickPos_1", "I_DocumentCircle");
-                AddContentPrefab(obj, healthCertificateData.isLocal, "TickPos_2", "I_DocumentCircle");
+                AddContentPrefabChoice(obj, "TickPos1", "I_Tick", healthCertificateData.isOfficial);
+                AddContentPrefabChoice(obj, "TickPos2", "I_Tick", healthCertificateData.isLocal);
 
-                int index = Random.Range(0, healthCertificateData.animalName.Count);
+                var index = Random.Range(0, healthCertificateData.animalName.Count);
                 AddContentText(obj, "TM_AnimalName", animalName.Count == 0 ? animalName[0] : animalName[index]);
 
                 index = Random.Range(0, healthCertificateData.animalMark.Count);
@@ -183,18 +237,18 @@ namespace Game.Scripts.Factory
                 if (possessionLicenseData.animalId != id)
                     continue;
 
-                List<string> licenseNumber = possessionLicenseData.licenseNumber;
-                List<string> deadline = possessionLicenseData.deadline;
-                List<string> name = possessionLicenseData.name;
-                List<string> bId = possessionLicenseData.id;
-                List<string> businessNumber = possessionLicenseData.businessNumber;
-                List<string> animalName = possessionLicenseData.animalName;
-                List<string> contract = possessionLicenseData.contract;
-                List<string> objective = possessionLicenseData.objective;
-                List<string> original = possessionLicenseData.original;
-                List<string> stampSign = possessionLicenseData.stampSign;
+                var licenseNumber = possessionLicenseData.licenseNumber;
+                var deadline = possessionLicenseData.deadline;
+                var name = possessionLicenseData.name;
+                var bId = possessionLicenseData.id;
+                var businessNumber = possessionLicenseData.businessNumber;
+                var animalName = possessionLicenseData.animalName;
+                var contract = possessionLicenseData.contract;
+                var objective = possessionLicenseData.objective;
+                var original = possessionLicenseData.original;
+                var stampSign = possessionLicenseData.stampSign;
 
-                int index = Random.Range(0, possessionLicenseData.licenseNumber.Count);
+                var index = Random.Range(0, possessionLicenseData.licenseNumber.Count);
                 AddContentText(obj, "TM_LicenseNumber", licenseNumber.Count == 0 ? licenseNumber[0] : licenseNumber[index]);
 
                 index = Random.Range(0, possessionLicenseData.deadline.Count);
@@ -233,16 +287,16 @@ namespace Game.Scripts.Factory
                 if (specialPermitData.animalId != id)
                     continue;
 
-                List<string> locationName = specialPermitData.locationName;
-                List<string> objective = specialPermitData.objective;
-                List<string> businessNumber = specialPermitData.businessNumber;
-                List<string> deadline = specialPermitData.deadline;
-                List<string> animalName = specialPermitData.animalName;
-                List<string> animalCount = specialPermitData.animalCount;
-                List<string> animalFeature = specialPermitData.animalFeature;
-                List<string> stampSign = specialPermitData.stampSign;
+                var locationName = specialPermitData.locationName;
+                var objective = specialPermitData.objective;
+                var businessNumber = specialPermitData.businessNumber;
+                var deadline = specialPermitData.deadline;
+                var animalName = specialPermitData.animalName;
+                var animalCount = specialPermitData.animalCount;
+                var animalFeature = specialPermitData.animalFeature;
+                var stampSign = specialPermitData.stampSign;
 
-                int index = Random.Range(0, specialPermitData.locationName.Count);
+                var index = Random.Range(0, specialPermitData.locationName.Count);
                 AddContentText(obj, "TM_LocationName", locationName.Count == 0 ? locationName[0] : locationName[index]);
 
                 AddContentPrefab(obj, specialPermitData.line1Position.ToString(), "I_DocumentCircle");
@@ -270,19 +324,6 @@ namespace Game.Scripts.Factory
             }
         }
 
-        private static GameObject InstantiateGameObj(string name)
-        {
-            var temp = Resources.Load<GameObject>(name);
-            if (temp == null)
-            {
-                Debug.LogError($"No prefab for name {name}");
-                return new GameObject(name);
-            }
-
-            GameObject gameObject = Object.Instantiate(temp);
-            return gameObject;
-        }
-
         private static void AddContentText(GameObject obj, string objName, string name)
         {
             GameObject temp = GameObjFinder.FindChildGameObject(obj, objName);
@@ -294,29 +335,21 @@ namespace Game.Scripts.Factory
             if (name == " ")
                 return;
 
-            string posName = CheckPosition(pos);
+            var posName = CheckPosition(pos);
             if (posName == null)
                 return;
-
-            GameObject temp = GameObjFinder.FindChildGameObject(obj, posName);
-            GameObject prefab = InstantiateGameObj($"Components/{name}");
-            prefab.transform.SetParent(temp.transform);
-            //prefab.transform.localScale = Vector3.one;
-            prefab.transform.localPosition = Vector3.zero;
+            
+            LoadGameObject($"Components/{name}", obj, posName);
         }
 
-        private static void AddContentPrefab(GameObject obj, bool isTick, string posName, string name)
+        private static void AddContentPrefabChoice(GameObject obj, string posName, string objName, bool isTick)
         {
-            if (!isTick)
+            if(!isTick)
                 return;
-
-            GameObject temp = GameObjFinder.FindChildGameObject(obj, posName);
-            GameObject prefab = InstantiateGameObj($"Components/{name}");
-            prefab.transform.SetParent(temp.transform);
-            //prefab.transform.localScale = Vector3.one;
-            prefab.transform.localPosition = Vector3.zero;
+            
+            AddContentPrefab(obj, posName, objName);
         }
-
+        
         private static string CheckPosition(string pos)
         {
             return pos switch
@@ -332,6 +365,9 @@ namespace Game.Scripts.Factory
                 "TickPos3" => "TickPos_3",
                 "TickPos4" => "TickPos_4",
                 "TickPos5" => "TickPos_5",
+                "TickPos6" => "TickPos_6",
+                "TickPos7" => "TickPos_7",
+                "TickPos8" => "TickPos_8",
                 "StampSignPos" => "StampSignPos",
                 _ => null
             };

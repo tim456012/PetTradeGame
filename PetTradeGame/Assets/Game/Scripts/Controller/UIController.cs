@@ -10,6 +10,7 @@ namespace Game.Scripts.Controller
 
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
+        //[SerializeField] private 
         [SerializeField] private EndGamePanel endGamePanel;
 
         private Canvas _canvas;
@@ -57,6 +58,11 @@ namespace Game.Scripts.Controller
         {
             gamePlayPanel.gameObject.SetActive(false);
             endGamePanel.gameObject.SetActive(true);
+        }
+
+        public void ShowIpadPanel()
+        {
+            
         }
 
         public void OnBtnStartClicked()

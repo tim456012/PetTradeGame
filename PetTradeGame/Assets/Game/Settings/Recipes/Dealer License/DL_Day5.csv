@@ -1,0 +1,21 @@
+AnimalID,Business Name,Business Name 2,Business Number,Business Number 2,Line 1,Line 2,Line 3,Line 4,Line 5,Line 6,Stamp And Sign,Stamp And Sign 2
+LOa,游魚樂,北界魚佬,95370240,89038535,C3,C5,,T5,Yes,Yes,I_Stamp_1,
+LOaF,游魚樂,北界魚佬,95370240,89038535,C2,C5,T1 ,,Yes,Yes,I_Stamp_1,
+GEa,徐氏龜屋,龜龜賽跑,48428451,57481665,C2,C4,T3,,Yes,Yes,I_Stamp_1,
+GEaF,徐氏龜屋,龜龜賽跑,48428451,57481665,C2,C4,T3,,Yes,Yes,I_Stamp_1,I_Stamp_2
+TCa,慢慢悠悠,星之龜,27844617,36737967,C2,C4,T3,,Yes,Yes,I_Stamp_1,
+TCaF,慢慢悠悠,星之龜,27844617,36737967,C2,C4,T3,,Yes,Yes,I_Stamp_1,
+PMa,毛神神,如蛛如寶,23453426,89057672,C3,C4,,T4,Yes,Yes,I_Stamp_1,
+PMaF,毛神神,如蛛如寶,23453426,89057672,C3,C4,,T4,Yes,Yes,I_Stamp_1,
+POa,多多魚,水中珠,70592569,39920302,C3,C4,,T5,Yes,Yes,I_Stamp_1,
+POaF,多多魚,水中珠,70592569,39920302,C3,C4,,T5,none,Yes,I_Stamp_1,
+TAa,天際,紺夜金烏,39432134,72492042,C1,C4,,,Yes,Yes,I_Stamp_1,
+TAaF,天際,紺夜金烏,39432134,72492042,C1,C5,,,Yes,Yes,I_Stamp_1,I_Stamp_4
+AAa,鸚鵡園,香城保護區,12736842,52638112,C1,C4,,,Yes,Yes,I_Stamp_1,
+AAaF,鸚鵡園,香城保護區,12736842,52638112,C1,C4,,,Yes,Yes,I_Stamp_1,
+MHa,珍珠水魚,阿文魚,60358001,45284537,C3,C4,,,Yes,Yes,I_Stamp_1,
+MHaF,珍珠水魚,阿文魚,60358001,45284537,C2,C4,,,Yes,Yes,I_Stamp_1,I_Stamp_4
+LLa,李記飛鳥,天際,65382852,39432134,C1,C4,,,Yes,Yes,I_Stamp_1,
+LLaF,李記飛鳥,天際,65382852,39432134,C1,C4,,,Yes,Yes,I_Stamp_1,
+OHa,南區蛇佬,吃蛇,46643201,53280731,C2,C4,T2,,Yes,Yes,I_Stamp_1,
+OHaF,南區蛇佬,吃蛇,46643201,53280731,C2,C4,T2,,Yes,Yes,I_Stamp_1,
