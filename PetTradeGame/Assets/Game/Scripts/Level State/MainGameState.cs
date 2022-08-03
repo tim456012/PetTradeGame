@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
@@ -52,6 +53,8 @@ namespace Game.Scripts.Level_State
         public override void Exit()
         {
             base.Exit();
+
+            _objectController.Release();
             _uiController.ShowEndGamePanel();
         }
 
@@ -83,6 +86,18 @@ namespace Game.Scripts.Level_State
         private void LoadData()
         {
 
+        }
+
+        private IEnumerator Release()
+        {
+            _objectController.StopProcess();
+            yield return null;
+            
+            _factoryController.Release();
+            _objectController.Release();
+            yield return new WaitForSeconds(0.2f);
+            
+            Owner.ChangeState<EndGameState>();
         }
 
         #region Event Behaviors
@@ -122,11 +137,7 @@ namespace Game.Scripts.Level_State
                 Debug.Log("System is busy.");
             }
             
-            _objectController.StopProcess();
-            _factoryController.Release();
-            _objectController.Release();
-            
-            Owner.ChangeState<EndGameState>();
+            StartCoroutine(Release());
         }
         
         private void OnGamePauseEvent(object sender, EventArgs e)

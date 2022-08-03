@@ -127,7 +127,7 @@ namespace Game.Scripts.Factory
         private static async void LoadPossessionLicense(AssetReference recipe, string id)
         {
             PossessionLicenseRecipe pl = await recipe.Get<PossessionLicenseRecipe>().Task;
-            GameObject obj = await "Documents/I_SpecialPermit".Get<GameObject>().Task;
+            GameObject obj = await "Documents/I_PossessionLicense".Get<GameObject>().Task;
             
             CreatePossessionLicense(pl, obj, id);
             Addressables.Release(pl);

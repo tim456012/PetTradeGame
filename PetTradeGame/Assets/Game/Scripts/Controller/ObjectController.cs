@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
@@ -12,7 +11,6 @@ using Game.Scripts.View_Model_Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
-using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Game.Scripts.Controller
 {
@@ -20,7 +18,7 @@ namespace Game.Scripts.Controller
     {
         #region Field
 
-        private static readonly Dictionary<string, GameObject> Instances = new Dictionary<string, GameObject>();
+        private readonly List<GameObject> _instances = new List<GameObject>();
         
         private List<FunctionalObjectsData> _objectList = new List<FunctionalObjectsData>();
         private FactoryController _factoryController;
@@ -58,9 +56,9 @@ namespace Game.Scripts.Controller
                 Vector3 position = p.position;
                 prefabAsset.transform.localPosition = position;
                 
-                Instantiate(prefabAsset, position, Quaternion.identity);
-                Instances.Add(data.key, prefabAsset);
-                prefabAsset.SetActive(true);
+                GameObject obj = Instantiate(prefabAsset, position, Quaternion.identity);
+                _instances.Add(obj);
+                obj.SetActive(true);
                 Addressables.Release(prefabAsset);
             }
         }
@@ -71,22 +69,18 @@ namespace Game.Scripts.Controller
             _factoryController.enabled = true;
             _dragAndDropController.enabled = true;
         }
-
-        #region Release Methods
-
+        
         public void Release()
         {
-            foreach (var instance in Instances)
+            for (var i = _instances.Count - 1; i >= 0; --i)
             {
-                Instances.Remove(instance.Key);
-                instance.Value.SetActive(false);
-                //Destroy(instance.Value);
+                Destroy(_instances[i].gameObject);
+                _instances.RemoveAt(i);
             }
-            Instances.Clear();
+            
+            _instances.Clear();
         }
-
-        #endregion
-
+        
         public void ReGenerateDocument()
         {
             _reGenerateDocument = GenerateDocuments();
@@ -107,9 +101,9 @@ namespace Game.Scripts.Controller
                 Vector3 position = p.position;
                 prefabAsset.transform.localPosition = position;
                 
-                Instantiate(prefabAsset, position, Quaternion.identity);
-                Instances.Add(data.key, prefabAsset);
-                prefabAsset.gameObject.SetActive(true);
+                GameObject obj = Instantiate(prefabAsset, position, Quaternion.identity);
+                _instances.Add(obj);
+                obj.gameObject.SetActive(true);
                 Addressables.Release(prefabAsset);
             }
         }
@@ -135,7 +129,7 @@ namespace Game.Scripts.Controller
             if (target == null)
                 return;
 
-            Instances.Remove("License");
+            _instances.Remove(target);
             target.SetActive(false);
             Destroy(target);
         }
