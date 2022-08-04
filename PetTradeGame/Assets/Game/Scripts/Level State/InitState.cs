@@ -1,7 +1,9 @@
 using System.Collections;
 using Game.Scripts.Controller;
+using Game.Scripts.Model;
 using Game.Scripts.Tools;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Game.Scripts.Level_State
 {
@@ -21,7 +23,7 @@ namespace Game.Scripts.Level_State
         public override void Enter()
         {
             base.Enter();
-            //StartCoroutine(Init());
+            StartCoroutine(Init());
         }
 
         //Init as debug mode or general mode.
@@ -39,6 +41,7 @@ namespace Game.Scripts.Level_State
                 Owner.ChangeState<MainMenuState>();
             }
         }
+
 
         private void ScaleGameWorld()
         {

@@ -21,7 +21,7 @@ namespace Game.Scripts.Controller
             if (Input.GetMouseButtonUp(0) || Input.touchCount < 0)
                 _isHolding = false;
 
-            //Debug.Log(IsDragActive);
+            Debug.Log(IsDragActive);
             //Check Input
             CheckInput(IsDragActive);
         }

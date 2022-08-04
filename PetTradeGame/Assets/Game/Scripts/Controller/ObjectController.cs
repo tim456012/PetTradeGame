@@ -44,6 +44,9 @@ namespace Game.Scripts.Controller
 
         public async void InitFunctionalObject(List<FunctionalObjectsData> objectList)
         {
+            if (_isEnd)
+                _isEnd = false;
+            
             if (objectList == null)
                 return;
 
@@ -111,7 +114,7 @@ namespace Game.Scripts.Controller
         private IEnumerator GenerateDocuments()
         {
             _isNotReady = true;
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1f);
             if (_isEnd)
             {
                 _isEnd = false;

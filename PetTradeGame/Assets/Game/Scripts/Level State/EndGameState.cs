@@ -52,7 +52,7 @@ namespace Game.Scripts.Level_State
         private void OnNextDayEvent(object sender, EventArgs e)
         {
             GC.Collect();
-            string dataName = $"Day{++Owner.LevelCount}";
+            var dataName = $"Day{++Owner.LevelCount}";
             Debug.Log($"Loading next day data : {dataName}");
             Owner.ChangeLevel(dataName);
         }

@@ -15,9 +15,7 @@ namespace Game.Scripts.Level_State
         private GamePlayController _gamePlayController;
         private ObjectController _objectController;
         private UIController _uiController;
-
-        private bool _isBusy;
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -41,9 +39,9 @@ namespace Game.Scripts.Level_State
             Init();
             _uiController.ShowGameplayPanel();
 
-            List<RecipeData> recipeDataList = Owner.LevelData.documentRecipeData;
-            List<ScoreData> scoreDataList = Owner.LevelData.scoreData;
-            List<FunctionalObjectsData> functionObjectDataList = Owner.LevelData.functionalObjectsData;
+            var recipeDataList = Owner.LevelData.documentRecipeData;
+            var scoreDataList = Owner.LevelData.scoreData;
+            var functionObjectDataList = Owner.LevelData.functionalObjectsData;
 
             _factoryController.InitFactory(recipeDataList, scoreDataList);
             _objectController.InitFunctionalObject(functionObjectDataList);
@@ -65,6 +63,7 @@ namespace Game.Scripts.Level_State
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
             GamePlayController.GameFinishEvent += OnGameFinishEvent;
             GamePlayController.OnGamePause += OnGamePauseEvent;
+            GamePlayController.StopProduceDocument += StopProduceDocument;
         }
 
         protected override void RemoveListeners()
@@ -74,6 +73,7 @@ namespace Game.Scripts.Level_State
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
             GamePlayController.GameFinishEvent -= OnGameFinishEvent;
             GamePlayController.OnGamePause -= OnGamePauseEvent;
+            GamePlayController.StopProduceDocument -= StopProduceDocument;
         }
 
         private void Init()
@@ -90,12 +90,11 @@ namespace Game.Scripts.Level_State
 
         private IEnumerator Release()
         {
-            _objectController.StopProcess();
             yield return null;
             
             _factoryController.Release();
             _objectController.Release();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(2f);
             
             Owner.ChangeState<EndGameState>();
         }
@@ -113,7 +112,6 @@ namespace Game.Scripts.Level_State
 
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
-            _isBusy = true;
             var id = _factoryController.generatedID;
             var content = Owner.LevelData.scoreData;
             foreach (ScoreData scoreContent in content)
@@ -126,18 +124,19 @@ namespace Game.Scripts.Level_State
             
             _objectController.ReGenerateLicense();
             _objectController.ReGenerateDocument();
-            _isBusy = false;
         }
 
         private void OnGameFinishEvent(object sender, EventArgs e)
         {
             Debug.Log("Game Over");
-            while (_isBusy)
-            {
-                Debug.Log("System is busy.");
-            }
             
             StartCoroutine(Release());
+        }
+
+        private void StopProduceDocument(object sender, EventArgs e)
+        {
+            Debug.Log("Stop producing document.");
+            _objectController.StopProcess();
         }
         
         private void OnGamePauseEvent(object sender, EventArgs e)

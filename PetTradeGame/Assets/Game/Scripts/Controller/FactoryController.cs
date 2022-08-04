@@ -88,6 +88,8 @@ namespace Game.Scripts.Controller
 
         public void Release()
         {
+            StopCoroutine(ProduceDocument());
+
             for (var i = _documents.Count - 1; i >= 0; --i)
                 Destroy(_documents[i]);
             _documents.Clear();

@@ -20,6 +20,7 @@ namespace Game.Scripts.Controller
         
         public static event EventHandler OnGamePause;
         public static event EventHandler GameFinishEvent;
+        public static event EventHandler StopProduceDocument;
 
         private void Awake()
         {
@@ -43,13 +44,14 @@ namespace Game.Scripts.Controller
                 _isTimerStop = true;
                 OnGamePause?.Invoke(this, EventArgs.Empty);
             }
-
-            if (!_isTimerStop)
+            
+            if (!_isTimerStop) 
                 UpdateTime();
 
             if (!_isReadyFinish)
                 return;
-
+            
+            StopProduceDocument?.Invoke(this, EventArgs.Empty);
             if (!(_timeThreshold >= WorldTimeThreshold))
             {
                 _timeThreshold += Time.deltaTime;

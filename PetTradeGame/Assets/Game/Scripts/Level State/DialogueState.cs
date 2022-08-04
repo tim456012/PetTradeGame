@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -30,20 +32,14 @@ namespace Game.Scripts.Level_State
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("Enter dialogue state");
             LoadConversationData();
         }
 
         public override void Exit()
         {
             base.Exit();
-            if (_introConversationData)
-                Addressables.Release(_introConversationData);
-
-            if (_middleConversationData)
-                Addressables.Release(_middleConversationData);
-
-            _conversationAsset = null;
-            _conversationController.enabled = false;
+            Debug.Log("Exit dialogue state");
         }
 
         protected override void AddListeners()
@@ -66,6 +62,23 @@ namespace Game.Scripts.Level_State
 
         private void OnCompleteConversation(object sender, EventArgs e)
         {
+            StartCoroutine(ChangeState());
+        }
+
+        private IEnumerator ChangeState()
+        {
+            if (_introConversationData)
+                Addressables.Release(_introConversationData);
+
+            if (_middleConversationData)
+                Addressables.Release(_middleConversationData);
+
+            yield return null;
+            _conversationAsset = null;
+            _conversationController.enabled = false;
+            
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Changing to main game state");
             Owner.ChangeState<MainGameState>();
         }
 

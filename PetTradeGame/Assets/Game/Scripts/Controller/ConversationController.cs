@@ -49,7 +49,10 @@ namespace Game.Scripts.Controller
         {
             _canvas.gameObject.SetActive(true);
             if (data == null)
+            {
+                Debug.Log("Data is null");
                 ConversationCompleted();
+            }
 
             _conversation = Sequence(data);
             _conversation.MoveNext();
@@ -67,6 +70,7 @@ namespace Game.Scripts.Controller
         {
             if (data == null)
             {
+                Debug.Log("Data is null");
                 yield return null;
                 _canvas.gameObject.SetActive(false);
                 CompleteEvent?.Invoke(this, EventArgs.Empty);
@@ -130,6 +134,8 @@ namespace Game.Scripts.Controller
 
                 yield return null;
             }
+            
+            _conversation = null;
             ConversationCompleted();
         }
 

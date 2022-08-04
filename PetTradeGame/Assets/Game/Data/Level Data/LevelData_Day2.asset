@@ -16,12 +16,12 @@ MonoBehaviour:
   - Video Data/Day2
   - Video Data/Day2_Second
   introDialogue:
-    m_AssetGUID: e47758c45a6acc545a43eab3bbb40c2c
+    m_AssetGUID: 2825fcaf4d3e4cb469b1dfdca1f2dc4d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   middleDialogue:
-    m_AssetGUID: e47758c45a6acc545a43eab3bbb40c2c
+    m_AssetGUID: 4219e7571ff10f84089c7175ddbf5e72
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

@@ -23,10 +23,10 @@ namespace Game.Scripts.Controller
         private void Start()
         {
             LevelCount = 1;
-            ChangeLevel("Day1");
+            LoadFirstLevelData();
             ChangeState<InitState>();
         }
-
+        
         private void OnLoadLevelDataCompleted(AsyncOperationHandle<LevelData> data)
         {
             switch (data.Status)
@@ -53,7 +53,7 @@ namespace Game.Scripts.Controller
             _levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_" + levelName);
             if (_levelDataHandle.OperationException is InvalidKeyException invalidKeyException)
             {
-                Debug.Log($"No level data found : Go back to main menu and reload Day 1 Data.\n Exception: {invalidKeyException}");
+                Debug.LogError($"No level data found : Go back to main menu and reload Day 1 Data.\n Exception: {invalidKeyException}");
                 LevelCount = 1;
                 _levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_Day1");
             }
@@ -73,8 +73,19 @@ namespace Game.Scripts.Controller
                 ChangeState<MainMenuState>();
 
             StopCoroutine(_changeLevelRoutine);
+            _levelDataHandle.Completed -= OnLoadLevelDataCompleted;
         }
+        
+        private void LoadFirstLevelData()
+        {
+            var levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_Day1");
+            if (levelDataHandle.OperationException is InvalidKeyException invalidKeyException)
+                Debug.LogError($"No level data found. \n Exception: {invalidKeyException}");
 
+            levelDataHandle.Completed += OnLoadLevelDataCompleted;
+            Addressables.Release(levelDataHandle);
+        }
+        
         public void ChangeLevel(string levelName)
         {
             _changeLevelRoutine = ChangeLevelData(levelName);

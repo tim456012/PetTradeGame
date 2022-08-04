@@ -105,6 +105,14 @@ MonoBehaviour:
     m_Address: Components/I_Tick
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2825fcaf4d3e4cb469b1dfdca1f2dc4d
+    m_Address: Conversations Data/Dialogue_Day2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4219e7571ff10f84089c7175ddbf5e72
+    m_Address: Conversations Data/Dialogue_Day2_Middle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
   m_SchemaSet:
