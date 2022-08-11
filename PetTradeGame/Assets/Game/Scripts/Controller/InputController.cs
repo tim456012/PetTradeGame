@@ -21,7 +21,6 @@ namespace Game.Scripts.Controller
             if (Input.GetMouseButtonUp(0) || Input.touchCount < 0)
                 _isHolding = false;
 
-            Debug.Log(IsDragActive);
             //Check Input
             CheckInput(IsDragActive);
         }
@@ -31,6 +30,7 @@ namespace Game.Scripts.Controller
 
         private void CheckInput(bool dragging)
         {
+            //Debug.Log(IsDragActive);
             //If player is dragging something, check their input first.
             if (dragging)
             {

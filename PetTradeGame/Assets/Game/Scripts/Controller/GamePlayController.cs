@@ -8,7 +8,7 @@ namespace Game.Scripts.Controller
     {
         private const float WorldTimeThreshold = 1.3f;
 
-        public static bool IsDebugMode, IsPause;
+        public static bool IsDebugMode;
 
         [SerializeField] private Clock clock;
         [SerializeField] private float targetTime = 360f;
@@ -18,7 +18,6 @@ namespace Game.Scripts.Controller
         private int _score, _correctDocuments, _wrongDocuments;
         private float _time, _timeThreshold;
         
-        public static event EventHandler OnGamePause;
         public static event EventHandler GameFinishEvent;
         public static event EventHandler StopProduceDocument;
 
@@ -39,12 +38,6 @@ namespace Game.Scripts.Controller
 
         private void Update()
         {
-            if (IsPause)
-            {
-                _isTimerStop = true;
-                OnGamePause?.Invoke(this, EventArgs.Empty);
-            }
-            
             if (!_isTimerStop) 
                 UpdateTime();
 

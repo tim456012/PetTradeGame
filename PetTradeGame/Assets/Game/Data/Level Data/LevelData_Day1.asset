@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: LevelData_Day1
   m_EditorClassIdentifier: 
   videoAddress:
-  - Video Data/Intro
-  - Video Data/Day1
-  - Video Data/Day1_Second
+  - Intro
+  - Day1
+  - Day1_Second
   introDialogue:
     m_AssetGUID: 838e8c5706053ae49b29db459d23bf12
     m_SubObjectName: 

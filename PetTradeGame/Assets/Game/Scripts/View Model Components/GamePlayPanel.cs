@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Controller;
@@ -13,7 +14,9 @@ namespace Game.Scripts.View_Model_Components
 
         private Transform _btnPos1, _btnPos2, _originPos;
         private MonoRoutine _buttonAnimationRoutine;
-        private bool _isAnimate;
+        private bool _isAnimate, _isDisable;
+
+        public static event EventHandler ShowIpadView, HideIpadView, GamePause, GameResume;
 
         private void Awake()
         {
@@ -24,7 +27,6 @@ namespace Game.Scripts.View_Model_Components
             Vector3 position = _originPos.position;
             btnAnimalSearch.transform.position = position;
             btnDocSearch.transform.position = position;
-
         }
 
         private void Start()
@@ -37,18 +39,23 @@ namespace Game.Scripts.View_Model_Components
 
         public void ShowIpadOptions()
         {
-            if (_isAnimate)
+            if (_isAnimate || _isDisable)
                 return;
-
+            
             MoveOptions(true);
         }
 
         public void HideIpadOptions()
         {
-            if (_isAnimate)
+            if (_isAnimate || _isDisable)
                 return;
 
             MoveOptions(false);
+        }
+
+        public void ShowSettingPanel()
+        {
+            GamePause?.Invoke(this, EventArgs.Empty);
         }
 
         private void MoveOptions(bool isShow)
@@ -68,7 +75,6 @@ namespace Game.Scripts.View_Model_Components
 
         private IEnumerator DoShowButtonAnimation()
         {
-            GamePlayController.IsPause = true;
             InputController.IsPause = true;
 
             btnAnimalSearch.gameObject.SetActive(true);
@@ -83,7 +89,11 @@ namespace Game.Scripts.View_Model_Components
             btnIpadOff.gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
 
-            _buttonAnimationRoutine.Stopped += (_, _) => _isAnimate = false;
+            _buttonAnimationRoutine.Stopped += (_, _) =>
+            {
+                _isAnimate = false;
+                ShowIpadView?.Invoke(this, EventArgs.Empty);
+            };
         }
 
         private IEnumerator DoHideButtonAnimation()
@@ -103,10 +113,15 @@ namespace Game.Scripts.View_Model_Components
 
             _buttonAnimationRoutine.Stopped += (_, _) =>
             {
-                _isAnimate = false;
-                GamePlayController.IsPause = false;
+                _isAnimate = false; 
+                HideIpadView?.Invoke(this, EventArgs.Empty);
                 InputController.IsPause = false;
             };
+        }
+
+        public void IpadBtnSwitch(bool isDisable)
+        {
+            _isDisable = isDisable;
         }
     }
 }

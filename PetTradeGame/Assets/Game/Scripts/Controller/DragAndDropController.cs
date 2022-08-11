@@ -63,10 +63,14 @@ namespace Game.Scripts.Controller
 
         private void OnDragEvent(object sender, InfoEventArgs<Vector3> e)
         {
-            //Debug.Log($"Dragging Event invoke.");
-            if (!TargetObj || TargetObj == null)
+            if (!TargetObj)
+            {
+                LastObj = null;
+                TargetObj = null;
                 return;
+            }
 
+            //Debug.Log($"Dragging Event invoke.");
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
             TargetObj.transform.localPosition = new Vector2(_gameWorldPos.x, _gameWorldPos.y);

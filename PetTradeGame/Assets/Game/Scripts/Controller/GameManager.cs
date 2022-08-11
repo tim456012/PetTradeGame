@@ -34,6 +34,7 @@ namespace Game.Scripts.Controller
                 case AsyncOperationStatus.Succeeded:
                     LevelData = data.Result;
                     Debug.Log(LevelData);
+                    Addressables.Release(data);
                     break;
                 case AsyncOperationStatus.Failed:
                     break;
@@ -48,7 +49,6 @@ namespace Game.Scripts.Controller
         {
             if (_levelDataHandle.IsValid())
                 Addressables.Release(_levelDataHandle);
-            yield return null;
 
             _levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_" + levelName);
             if (_levelDataHandle.OperationException is InvalidKeyException invalidKeyException)
@@ -70,10 +70,9 @@ namespace Game.Scripts.Controller
             if (debugMode)
                 ChangeState<DialogueState>();
             else
-                ChangeState<MainMenuState>();
+                ChangeState<CutSceneState>();
 
             StopCoroutine(_changeLevelRoutine);
-            _levelDataHandle.Completed -= OnLoadLevelDataCompleted;
         }
         
         private void LoadFirstLevelData()

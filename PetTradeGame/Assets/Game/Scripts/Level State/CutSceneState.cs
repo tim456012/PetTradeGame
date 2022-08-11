@@ -85,7 +85,8 @@ namespace Game.Scripts.Level_State
 
         private IEnumerator LoadVideoData(string addressPath)
         {
-            AsyncOperationHandle<TextAsset> video = Addressables.LoadAssetAsync<TextAsset>(addressPath);
+            Debug.Log(addressPath);
+            var video = Addressables.LoadAssetAsync<TextAsset>($"Assets/Game/Data/Video Data/{addressPath}.bytes");
             yield return null;
 
             video.Completed += data =>
@@ -99,9 +100,9 @@ namespace Game.Scripts.Level_State
                 TextAsset textAsset = video.Result;
                 if (!Directory.Exists(Application.persistentDataPath + "/Video Data/"))
                     Directory.CreateDirectory(Application.persistentDataPath + "/Video Data/");
-                File.WriteAllBytes(Path.Combine(Application.persistentDataPath, addressPath + ".mp4"), textAsset.bytes);
+                File.WriteAllBytes(Path.Combine(Application.persistentDataPath + "/Video Data/", $"{addressPath}.mp4"), textAsset.bytes);
 
-                string url = Application.persistentDataPath + "/" + addressPath + ".mp4";
+                var url = Application.persistentDataPath + $"/Video Data/{addressPath}.mp4";
                 Debug.Log(url);
                 _cutsceneController.GetComponent<VideoPlayer>().url = url;
                 Addressables.Release(video);

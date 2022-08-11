@@ -29,7 +29,7 @@ namespace Game.Scripts.Level_State
 
         protected virtual void OnClick(object sender, InfoEventArgs<Vector3> e)
         {
-            Debug.Log("Detected Clicked");
+            //Debug.Log("Detected Clicked");
         }
     }
 }

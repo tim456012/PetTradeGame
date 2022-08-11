@@ -10,21 +10,21 @@ namespace Game.Scripts.Controller
 
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
-        //[SerializeField] private 
+        [SerializeField] private IpadViewPanel ipadViewPanel;
         [SerializeField] private EndGamePanel endGamePanel;
 
         private Canvas _canvas;
 
+        public static event EventHandler StartGameEvent;
+        public static event EventHandler NextDayEvent;
+        
         private void Awake()
         {
             _canvas = GetComponentInChildren<Canvas>();
             _canvas.enabled = true;
             enabled = false;
         }
-
-        public static event EventHandler StartGameEvent;
-        public static event EventHandler NextDayEvent;
-
+        
         public void Init()
         {
             enabled = true;
@@ -59,12 +59,7 @@ namespace Game.Scripts.Controller
             gamePlayPanel.gameObject.SetActive(false);
             endGamePanel.gameObject.SetActive(true);
         }
-
-        public void ShowIpadPanel()
-        {
-            
-        }
-
+        
         public void OnBtnStartClicked()
         {
             //gamePlayPanel.gameObject.SetActive(true);
@@ -75,7 +70,22 @@ namespace Game.Scripts.Controller
         {
             NextDayEvent?.Invoke(this, EventArgs.Empty);
         }
+        
+        public void ShowIpadViewPanel()
+        {
+            ipadViewPanel.gameObject.SetActive(true);
+        }
+        
+        public void HideIpadViewPanel()
+        {
+            ipadViewPanel.gameObject.SetActive(false);
+        }
 
+        public void DisableIpadButton(bool isDisable)
+        {
+            gamePlayPanel.IpadBtnSwitch(isDisable);
+        }
+        
         //TODO: Setting UI
         /*public void OnBtnSettingClicked()
         {

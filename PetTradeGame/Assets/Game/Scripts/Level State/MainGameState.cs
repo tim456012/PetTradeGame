@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
@@ -30,7 +29,14 @@ namespace Game.Scripts.Level_State
             base.OnDestroy();
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
+            
             GamePlayController.GameFinishEvent -= OnGameFinishEvent;
+            GamePlayController.StopProduceDocument -= StopProduceDocument;
+            
+            GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
+            GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
+            GamePlayPanel.GamePause -= OnGamePauseEvent;
+            GamePlayPanel.GameResume -= OnGameResumeEvent;
         }
 
         public override void Enter()
@@ -61,9 +67,14 @@ namespace Game.Scripts.Level_State
             base.AddListeners();
             EntityAttribute.FunctionalObjCollisionEvent += OnObjCollision;
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
+            
             GamePlayController.GameFinishEvent += OnGameFinishEvent;
-            GamePlayController.OnGamePause += OnGamePauseEvent;
             GamePlayController.StopProduceDocument += StopProduceDocument;
+
+            GamePlayPanel.ShowIpadView += OnShowIpadViewEvent;
+            GamePlayPanel.HideIpadView += OnHideIpadViewEvent;
+            GamePlayPanel.GamePause += OnGamePauseEvent;
+            GamePlayPanel.GameResume += OnGameResumeEvent;
         }
 
         protected override void RemoveListeners()
@@ -71,9 +82,14 @@ namespace Game.Scripts.Level_State
             base.RemoveListeners();
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
+            
             GamePlayController.GameFinishEvent -= OnGameFinishEvent;
-            GamePlayController.OnGamePause -= OnGamePauseEvent;
             GamePlayController.StopProduceDocument -= StopProduceDocument;
+            
+            GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
+            GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
+            GamePlayPanel.GamePause -= OnGamePauseEvent;
+            GamePlayPanel.GameResume -= OnGameResumeEvent;
         }
 
         private void Init()
@@ -81,6 +97,7 @@ namespace Game.Scripts.Level_State
             _objectController.Init();
             _gamePlayController.Init();
             _gamePlayController.SetTimer(Owner.stopTimer);
+            _uiController.DisableIpadButton(false);
         }
 
         private void LoadData()
@@ -129,20 +146,37 @@ namespace Game.Scripts.Level_State
         private void OnGameFinishEvent(object sender, EventArgs e)
         {
             Debug.Log("Game Over");
-            
+            InputController.IsDragActive = false;
             StartCoroutine(Release());
         }
 
         private void StopProduceDocument(object sender, EventArgs e)
         {
             Debug.Log("Stop producing document.");
+            _uiController.DisableIpadButton(true);
             _objectController.StopProcess();
+        }
+        
+        private void OnShowIpadViewEvent(object sender, EventArgs e)
+        {
+            _gamePlayController.SetTimer(true);
+            _uiController.ShowIpadViewPanel();
+        }
+        
+        private void OnHideIpadViewEvent(object sender, EventArgs e)
+        {
+            _gamePlayController.SetTimer(false);
+            _uiController.HideIpadViewPanel();
         }
         
         private void OnGamePauseEvent(object sender, EventArgs e)
         {
             Debug.Log("Game Paused");
-            _uiController.ShowIpadPanel();
+        }
+        
+        private void OnGameResumeEvent(object sender, EventArgs e)
+        {
+            Debug.Log("Game Resumed");
         }
 
         #endregion

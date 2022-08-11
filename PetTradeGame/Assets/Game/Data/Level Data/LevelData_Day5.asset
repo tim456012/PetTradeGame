@@ -1,0 +1,195 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1086b88fc98ec614d9d2ec3578c51076, type: 3}
+  m_Name: LevelData_Day5
+  m_EditorClassIdentifier: 
+  videoAddress:
+  - Day5
+  - Day5_Second
+  introDialogue:
+    m_AssetGUID: 2825fcaf4d3e4cb469b1dfdca1f2dc4d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  middleDialogue:
+    m_AssetGUID: 4219e7571ff10f84089c7175ddbf5e72
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  documentRecipeData:
+  - documentRecipeType: 1
+    documentRecipe:
+      m_AssetGUID: 80aefde62c2372a48b45a66f2a1edf87
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 2
+    documentRecipe:
+      m_AssetGUID: d5d05a122c2760542b433c7780fc20fd
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 3
+    documentRecipe:
+      m_AssetGUID: 2842f72cb2c12c643b9fc9e5f8021af6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 4
+    documentRecipe:
+      m_AssetGUID: b854b4f659917e74e9d5dfbcfaccb7a8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  functionalObjectsData:
+  - prefab:
+      m_AssetGUID: 6ed189573a6c6d84c830df659366dfad
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: GStamp
+    spawnPosition: StampPos1
+  - prefab:
+      m_AssetGUID: 9624a96f6da7a8041a99da2e58497ee6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: RStamp
+    spawnPosition: StampPos2
+  - prefab:
+      m_AssetGUID: d346dcd1142c1d547bb35d74ae0289c3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: License
+    spawnPosition: LicensePos
+  scoreData:
+  - id: LOa
+    score: 1
+    isWrongDocument: 0
+  - id: LOb
+    score: 1
+    isWrongDocument: 0
+  - id: LOaF
+    score: 1
+    isWrongDocument: 1
+  - id: LObF
+    score: 1
+    isWrongDocument: 1
+  - id: GEa
+    score: 1
+    isWrongDocument: 0
+  - id: GEb
+    score: 1
+    isWrongDocument: 0
+  - id: GEaF
+    score: 1
+    isWrongDocument: 1
+  - id: GEbF
+    score: 1
+    isWrongDocument: 1
+  - id: TCa
+    score: 1
+    isWrongDocument: 0
+  - id: TCb
+    score: 1
+    isWrongDocument: 0
+  - id: TCaF
+    score: 1
+    isWrongDocument: 1
+  - id: TCbF
+    score: 1
+    isWrongDocument: 1
+  - id: PMa
+    score: 1
+    isWrongDocument: 0
+  - id: PMb
+    score: 1
+    isWrongDocument: 0
+  - id: PMaF
+    score: 1
+    isWrongDocument: 1
+  - id: PMbF
+    score: 1
+    isWrongDocument: 1
+  - id: POa
+    score: 1
+    isWrongDocument: 0
+  - id: POb
+    score: 1
+    isWrongDocument: 0
+  - id: POaF
+    score: 1
+    isWrongDocument: 1
+  - id: PObF
+    score: 1
+    isWrongDocument: 1
+  - id: TAa
+    score: 1
+    isWrongDocument: 0
+  - id: TAb
+    score: 1
+    isWrongDocument: 0
+  - id: TAaF
+    score: 1
+    isWrongDocument: 1
+  - id: TAbF
+    score: 1
+    isWrongDocument: 1
+  - id: AAa
+    score: 1
+    isWrongDocument: 0
+  - id: AAb
+    score: 1
+    isWrongDocument: 0
+  - id: AAaF
+    score: 1
+    isWrongDocument: 1
+  - id: AAbF
+    score: 1
+    isWrongDocument: 1
+  - id: MHa
+    score: 1
+    isWrongDocument: 0
+  - id: MHb
+    score: 1
+    isWrongDocument: 0
+  - id: MHaF
+    score: 1
+    isWrongDocument: 1
+  - id: MHbF
+    score: 1
+    isWrongDocument: 1
+  - id: LLa
+    score: 1
+    isWrongDocument: 1
+  - id: LLb
+    score: 1
+    isWrongDocument: 1
+  - id: LLaF
+    score: 1
+    isWrongDocument: 1
+  - id: LLbF
+    score: 1
+    isWrongDocument: 1
+  - id: OHa
+    score: 1
+    isWrongDocument: 0
+  - id: OHb
+    score: 1
+    isWrongDocument: 0
+  - id: OHaF
+    score: 1
+    isWrongDocument: 1
+  - id: OHbF
+    score: 1
+    isWrongDocument: 1

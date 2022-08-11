@@ -75,6 +75,9 @@ namespace Game.Scripts.Controller
         
         public void Release()
         {
+            _index = 0;
+            _isNotReady = false;
+            
             for (var i = _instances.Count - 1; i >= 0; --i)
             {
                 Destroy(_instances[i].gameObject);
@@ -139,12 +142,17 @@ namespace Game.Scripts.Controller
         
         #region Functions
         
-        private static void ExecuteObjBehavior(GameObject original, GameObject target, out int i)
+        private void ExecuteObjBehavior(GameObject original, GameObject target, out int i)
         {
             ObjectType oType = original.GetComponent<EntityAttribute>().objectType;
             ObjectType tType = target.GetComponent<EntityAttribute>().objectType;
             i = -1;
-
+            if (_isEnd)
+            {
+                i = 0;
+                return;
+            }
+            
             var index = CheckObjectType(oType, tType);
             if (index == 0)
                 return;
@@ -235,7 +243,7 @@ namespace Game.Scripts.Controller
                 return;
 
             ExecuteObjBehavior(original, col, out _index);
-            if (_index == -1 || _isNotReady)
+            if (_index == -1 || _isNotReady || _isEnd)
                 return;
 
             DestroyLicense(col);

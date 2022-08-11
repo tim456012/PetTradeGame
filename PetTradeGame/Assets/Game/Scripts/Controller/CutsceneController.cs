@@ -12,7 +12,6 @@ namespace Game.Scripts.Controller
         private MonoRoutine _routine;
         private VideoPlayer _videoPlayer;
 
-        // Start is called before the first frame update
         private void Start()
         {
             _videoPlayer = GetComponent<VideoPlayer>();
@@ -45,8 +44,8 @@ namespace Game.Scripts.Controller
             _videoPlayer.enabled = true;
             _canvas.gameObject.SetActive(true);
 
-            //if(!_routine.IsRunning)
-            _routine.Start();
+            if(!_routine.IsRunning)
+                _routine.Start();
         }
 
         private IEnumerator PlayVideo()

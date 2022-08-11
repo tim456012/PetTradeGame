@@ -28,7 +28,7 @@ namespace Game.Scripts.Level_State
             _conversationAsset = null;
             _conversationController.enabled = false;
         }
-
+        
         public override void Enter()
         {
             base.Enter();

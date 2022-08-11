@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1086b88fc98ec614d9d2ec3578c51076, type: 3}
+  m_Name: LevelData_Day3
+  m_EditorClassIdentifier: 
+  videoAddress:
+  - Day3
+  - Day3_Second
+  introDialogue:
+    m_AssetGUID: 2825fcaf4d3e4cb469b1dfdca1f2dc4d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  middleDialogue:
+    m_AssetGUID: 4219e7571ff10f84089c7175ddbf5e72
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  documentRecipeData:
+  - documentRecipeType: 1
+    documentRecipe:
+      m_AssetGUID: 72986d6e480c92b4ca01baada72818ef
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 2
+    documentRecipe:
+      m_AssetGUID: 8828b63bc3c9cd140a14b8d76e4edf1d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 3
+    documentRecipe:
+      m_AssetGUID: fd7f88538b2052d47ab71ff15dbe69a5
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - documentRecipeType: 4
+    documentRecipe:
+      m_AssetGUID: ee393a35c00f6264aa1f73c650ba67f6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  functionalObjectsData:
+  - prefab:
+      m_AssetGUID: 6ed189573a6c6d84c830df659366dfad
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: GStamp
+    spawnPosition: StampPos1
+  - prefab:
+      m_AssetGUID: 9624a96f6da7a8041a99da2e58497ee6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: RStamp
+    spawnPosition: StampPos2
+  - prefab:
+      m_AssetGUID: d346dcd1142c1d547bb35d74ae0289c3
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    key: License
+    spawnPosition: LicensePos
+  scoreData:
+  - id: EBa
+    score: 1
+    isWrongDocument: 0
+  - id: EBb
+    score: 1
+    isWrongDocument: 0
+  - id: EBaF
+    score: 1
+    isWrongDocument: 1
+  - id: EBbF
+    score: 1
+    isWrongDocument: 1
+  - id: DAa
+    score: 1
+    isWrongDocument: 0
+  - id: DAb
+    score: 1
+    isWrongDocument: 0
+  - id: DAaF
+    score: 1
+    isWrongDocument: 1
+  - id: DAbF
+    score: 1
+    isWrongDocument: 1
+  - id: LNa
+    score: 1
+    isWrongDocument: 0
+  - id: LNb
+    score: 1
+    isWrongDocument: 0
+  - id: LNaF
+    score: 1
+    isWrongDocument: 1
+  - id: LNbF
+    score: 1
+    isWrongDocument: 1
+  - id: MHa
+    score: 1
+    isWrongDocument: 0
+  - id: MHb
+    score: 1
+    isWrongDocument: 0
+  - id: MHaF
+    score: 1
+    isWrongDocument: 1
+  - id: MHbF
+    score: 1
+    isWrongDocument: 1
+  - id: HPa
+    score: 1
+    isWrongDocument: 0
+  - id: HPb
+    score: 1
+    isWrongDocument: 0
+  - id: HPaF
+    score: 1
+    isWrongDocument: 0
+  - id: HPbF
+    score: 1
+    isWrongDocument: 0
+  - id: AMa
+    score: 1
+    isWrongDocument: 0
+  - id: AMb
+    score: 1
+    isWrongDocument: 0
+  - id: AMaF
+    score: 1
+    isWrongDocument: 1
+  - id: AMbF
+    score: 1
+    isWrongDocument: 1
+  - id: AIa
+    score: 1
+    isWrongDocument: 0
+  - id: AIb
+    score: 1
+    isWrongDocument: 0
+  - id: AIaF
+    score: 1
+    isWrongDocument: 1
+  - id: AIbF
+    score: 1
+    isWrongDocument: 1
+  - id: CHa
+    score: 1
+    isWrongDocument: 0
+  - id: CHb
+    score: 1
+    isWrongDocument: 0
+  - id: CHaF
+    score: 1
+    isWrongDocument: 1
+  - id: CHbF
+    score: 1
+    isWrongDocument: 1
