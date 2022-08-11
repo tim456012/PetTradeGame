@@ -1,4 +1,7 @@
 Speaker Name,Dialogue ID,NPC,Position,Messages,Messages 1,Messages 2,Messages 3,Messages 4,Messages 5
+Player,D1P_A,,Middle Center,你好，請出示文件,,,,,
+Player,D1P_R1,,Middle Center,抱歉，但我們要跟程序辦事的,,,,,
+Player,D1P_R2,,Middle Center,是是是,,,,,
 NPC,D1N1,Boss_ccexpress,Middle Center,好的，麻煩你了,,,,,
 NPC,D1N2,Boss_ccexpress,Middle Center,新人？,我就早說要加人了，結果呢？,出了事才馬後炮。,,,
 NPC,D1N3,Boss_ccexpress,Middle Center,（聽電話）什麼？,怎麼養殖的都出問題啊,我不管，你最好快點弄好,啊,不說了，到我了,

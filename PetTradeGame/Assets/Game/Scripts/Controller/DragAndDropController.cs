@@ -1,6 +1,6 @@
 using Game.Scripts.Common.Animation;
 using Game.Scripts.EventArguments;
-using Game.Scripts.TempCode;
+using Game.Scripts.Model;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 using UnityEngine.Rendering;

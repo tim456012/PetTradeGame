@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Game.Scripts.TempCode
+namespace Game.Scripts.Objects
 {
     public class Clock : MonoBehaviour
     {

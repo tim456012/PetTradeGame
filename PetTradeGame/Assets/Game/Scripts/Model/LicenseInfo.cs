@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game.Scripts.TempCode
+namespace Game.Scripts.Model
 {
     public class LicenseInfo : MonoBehaviour
     {

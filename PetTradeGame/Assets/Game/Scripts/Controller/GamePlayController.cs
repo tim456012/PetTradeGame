@@ -1,5 +1,5 @@
 using System;
-using Game.Scripts.TempCode;
+using Game.Scripts.Objects;
 using UnityEngine;
 
 namespace Game.Scripts.Controller
@@ -136,6 +136,7 @@ namespace Game.Scripts.Controller
         public void Init()
         {
             enabled = true;
+            clock.gameObject.SetActive(true);
         }
     }
 }
