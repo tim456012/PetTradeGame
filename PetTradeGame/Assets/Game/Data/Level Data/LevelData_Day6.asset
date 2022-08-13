@@ -15,13 +15,8 @@ MonoBehaviour:
   videoAddress:
   - Day6
   - Day6_Second
-  introDialogue:
-    m_AssetGUID: 2825fcaf4d3e4cb469b1dfdca1f2dc4d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  middleDialogue:
-    m_AssetGUID: 4219e7571ff10f84089c7175ddbf5e72
+  dialogue:
+    m_AssetGUID: da0d7d5797da53040ad4084e2bcdc9ce
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

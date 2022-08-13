@@ -1,8 +1,7 @@
 Speaker Name,Dialogue ID,NPC,Position,Messages,Messages 1,Messages 2,Messages 3,Messages 4,Messages 5
-NPC,D1N1,Boss_ccexpress,Middle Center,好的，麻煩你了,,,,,
-NPC,D1N2,Boss_ccexpress,Middle Center,新人？,我就早說要加人了，結果呢？,出了事才馬後炮。,,,
-NPC,D1N3,Boss_ccexpress,Middle Center,（聽電話）什麼？,怎麼養殖的都出問題啊,我不管，你最好快點弄好,啊,不說了，到我了,
-NPC,D1N1_A,Boss_ccexpress,Middle Center,不好意思,我有點急，請問可以快點嗎？,,,,
-NPC,D1N2_A,Boss_ccexpress,Middle Center,快啦！,"怎麼加了人還比之前慢！
-",,,,
-NPC,D1N3_A,Boss_ccexpress,Middle Center,你們ETM是不是故意拖時間的！,快點！,,,,
+NPC,R0_D1_N1,Boss_ccexpress,Middle Center,好的，麻煩你了,,,,,
+NPC,R0_D1_N2,Boss_ccexpress,Middle Center,新人？,我就早說要加人了，結果呢？,出了事才馬後炮。,,,
+NPC,R0_D1_N3,Boss_ccexpress,Middle Center,（聽電話）什麼？,怎麼養殖的都出問題啊,我不管，你最好快點弄好,啊,不說了，到我了,
+NPC,A0_D1_N1,Boss_ccexpress,Middle Center,不好意思,我有點急，請問可以快點嗎？,,,,
+NPC,A0_D1_N2,Boss_ccexpress,Middle Center,快啦！,怎麼加了人還比之前慢！,,,,
+NPC,A0_D1_N3,Boss_ccexpress,Middle Center,你們ETM是不是故意拖時間的！,快點！,,,,

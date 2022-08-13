@@ -32,7 +32,6 @@ namespace Game.Scripts.Level_State
         public override void Enter()
         {
             base.Enter();
-            conversationController.Show(conversationData);
         }
 
         protected override void AddListeners()

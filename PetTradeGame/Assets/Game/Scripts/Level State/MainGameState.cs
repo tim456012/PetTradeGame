@@ -14,6 +14,10 @@ namespace Game.Scripts.Level_State
         private GamePlayController _gamePlayController;
         private ObjectController _objectController;
         private UIController _uiController;
+        private ConversationController _conversationController;
+        
+        private bool _firstInit = true;
+
         
         protected override void Awake()
         {
@@ -22,6 +26,7 @@ namespace Game.Scripts.Level_State
             _objectController = Owner.GetComponentInChildren<ObjectController>();
             _factoryController = Owner.GetComponentInChildren<FactoryController>();
             _uiController = Owner.GetComponentInChildren<UIController>();
+            _conversationController = Owner.GetComponentInChildren<ConversationController>();
         }
 
         protected override void OnDestroy()
@@ -30,7 +35,7 @@ namespace Game.Scripts.Level_State
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
             
-            GamePlayController.GameFinishEvent -= OnGameFinishEvent;
+            GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
             GamePlayController.StopProduceDocument -= StopProduceDocument;
             
             GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
@@ -42,24 +47,31 @@ namespace Game.Scripts.Level_State
         public override void Enter()
         {
             base.Enter();
-            Init();
             _uiController.ShowGameplayPanel();
 
-            var recipeDataList = Owner.LevelData.documentRecipeData;
-            var scoreDataList = Owner.LevelData.scoreData;
-            var functionObjectDataList = Owner.LevelData.functionalObjectsData;
+            if (_firstInit)
+            {
+                Init();
 
-            _factoryController.InitFactory(recipeDataList, scoreDataList);
-            _objectController.InitFunctionalObject(functionObjectDataList);
+                var recipeDataList = Owner.LevelData.documentRecipeData;
+                var scoreDataList = Owner.LevelData.scoreData;
+                var functionObjectDataList = Owner.LevelData.functionalObjectsData;
+
+                _factoryController.InitFactory(recipeDataList, scoreDataList);
+                _objectController.InitFunctionalObject(functionObjectDataList);
+                _firstInit = false;
+            }
+            else
+            {
+                _gamePlayController.SetTimer(false);
+                _objectController.ReGenerateDocument();
+            }
             Debug.Log("Entering playing state");
         }
 
         public override void Exit()
         {
             base.Exit();
-
-            _objectController.Release();
-            _uiController.ShowEndGamePanel();
         }
 
         protected override void AddListeners()
@@ -68,7 +80,7 @@ namespace Game.Scripts.Level_State
             EntityAttribute.FunctionalObjCollisionEvent += OnObjCollision;
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
             
-            GamePlayController.GameFinishEvent += OnGameFinishEvent;
+            GamePlayController.GameFinishEvent += OnLevelFinishEvent;
             GamePlayController.StopProduceDocument += StopProduceDocument;
 
             GamePlayPanel.ShowIpadView += OnShowIpadViewEvent;
@@ -83,7 +95,7 @@ namespace Game.Scripts.Level_State
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
             
-            GamePlayController.GameFinishEvent -= OnGameFinishEvent;
+            GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
             GamePlayController.StopProduceDocument -= StopProduceDocument;
             
             GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
@@ -111,7 +123,9 @@ namespace Game.Scripts.Level_State
             
             _factoryController.Release();
             _objectController.Release();
-            yield return new WaitForSeconds(2f);
+            _conversationController.Release();
+            //yield return new WaitForSeconds(2f);
+            yield return null;
             
             Owner.ChangeState<EndGameState>();
         }
@@ -138,15 +152,19 @@ namespace Game.Scripts.Level_State
                 _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
             }
             _factoryController.Release();
+            _gamePlayController.SetTimer(true);
+            Owner.ChangeState<DialogueState>();
             
             _objectController.ReGenerateLicense();
-            _objectController.ReGenerateDocument();
         }
 
-        private void OnGameFinishEvent(object sender, EventArgs e)
+        private void OnLevelFinishEvent(object sender, EventArgs e)
         {
+            _firstInit = true;
             Debug.Log("Game Over");
+            
             InputController.IsDragActive = false;
+            _uiController.ShowEndGamePanel();
             StartCoroutine(Release());
         }
 

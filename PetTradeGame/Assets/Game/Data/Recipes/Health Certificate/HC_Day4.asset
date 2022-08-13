@@ -18,7 +18,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u9EC3\u5507\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/7
     - 2022/9/8
@@ -30,7 +31,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u9EC3\u5507\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/8/25
     - 2022/8/26
@@ -43,7 +45,8 @@ MonoBehaviour:
     animalName:
     - "\u9EC3\u5507\u9B5A"
     - "\u9EC3\u82B1\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/8/24
     - 2022/8/27
@@ -55,7 +58,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u9EC3\u5507\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/8/25
     - 2022/8/28
@@ -175,7 +179,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u7403\u87D2"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/10
     - 2022/9/11
@@ -187,7 +192,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u7403\u87D2"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/10
     - 2022/9/11
@@ -199,7 +205,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u7403\u87D2"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/10
     - 2022/9/11
@@ -211,7 +218,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u7403\u87D2"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/10
     - 2022/9/11
@@ -223,7 +231,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u91D1\u9322\u9F9C"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/25
     - 2022/10/26
@@ -235,7 +244,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u91D1\u9322\u9F9C"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/25
     - 2022/10/26
@@ -247,7 +257,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u91D1\u9322\u9F9C"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/25
     - 2022/10/26
@@ -259,7 +270,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u91D1\u9322\u9F9C"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/25
     - 2022/10/26
@@ -271,7 +283,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u9713\u8679\u71C8\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/6
     - 2022/10/7
@@ -283,7 +296,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u9713\u8679\u71C8\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/8
     - 2022/10/9
@@ -296,7 +310,8 @@ MonoBehaviour:
     animalName:
     - "\u5B54\u96C0\u9B5A "
     - "\u9713\u8679\u71C8\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/6
     - 2022/10/7
@@ -308,7 +323,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u9713\u8679\u71C8\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/10/8
     - 2022/10/9
@@ -320,7 +336,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u7D05\u7BAD\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/13
     - 2022/9/9
@@ -332,7 +349,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u7D05\u7BAD\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/10
     - 2022/9/11
@@ -345,7 +363,8 @@ MonoBehaviour:
     animalName:
     - "\u9713\u8679\u71C8\u9B5A"
     - "\u7D05\u7BAD\u9B5A"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/13
     - 2022/9/9
@@ -358,7 +377,8 @@ MonoBehaviour:
     animalName:
     - "\u7D05\u7BAD\u9B5A"
     - "\u5B54\u96C0\u9B5A "
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/10
     - 2022/9/11
@@ -370,7 +390,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u4E03\u5F69\u8B8A\u8272\u9F8D"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/23
     - 2022/9/24
@@ -382,7 +403,8 @@ MonoBehaviour:
     isLocal: 1
     animalName:
     - "\u4E03\u5F69\u8B8A\u8272\u9F8D"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/25
     - 2022/9/26
@@ -394,7 +416,8 @@ MonoBehaviour:
     isLocal: 0
     animalName:
     - "\u4E03\u5F69\u8B8A\u8272\u9F8D"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/23
     - 2022/9/24
@@ -407,7 +430,8 @@ MonoBehaviour:
     animalName:
     - "\u4E03\u5F69\u8B8A\u8272\u9F8D"
     - "\u8B8A\u8272\u9F8D"
-    animalMark: []
+    animalMark:
+    - ' '
     date:
     - 2022/9/25
     - 2022/9/26

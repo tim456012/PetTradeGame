@@ -1,36 +1,36 @@
 AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Mark,Animal Mark 2,Date,Date 2,Stamp And Sign,Stamp And Sign 2
-MTa,Yes,No,鱷龜,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-MTb,No,Yes,鱷龜,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-MTaF,Yes,No,鱷龜,,,,2022/7/6,2022/9/25,I_Sign_1,I_Sign_2
-MTbF,No,Yes,鱷龜,擬鱷龜,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+MTa,Yes,No,鱷龜,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+MTb,No,Yes,鱷龜,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+MTaF,Yes,No,鱷龜,, ,,2022/7/6,2022/9/25,I_Sign_1,I_Sign_2
+MTbF,No,Yes,鱷龜,擬鱷龜, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
 OLa,Yes,No,領角鴞,,已配晶片手環,已植入晶片,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
 OLb,No,Yes,領角鴞,,已配晶片手環,已植入晶片,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
 OLaF,Yes,No,領角鴞,,已配晶片手環,已植入晶片,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
 OLbF,No,Yes,領角鴞,,已配晶片手環,已植入晶片,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
-CUa,Yes,No,蘇眉,,,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_4
-CUb,No,Yes,蘇眉,,,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_2
-CUaF,Yes,No,蘇眉,,,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_2
-CUbF,No,Yes,蘇眉,,,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_2
-CIa,Yes,No,豬鼻龜,,,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
-CIb,Yes,No,豬鼻龜,,,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
-CIaF,Yes,No,綠海龜,豬鼻龜,,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
-CIbF,Yes,No,豬鼻龜,,,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
-IIa,No,Yes,绿鬣蜥,,,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
-IIb,Yes,No,绿鬣蜥,,,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
-IIaF,No,Yes,绿鬣蜥,,,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
-IIbF,No,Yes,绿鬣蜥,,,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
-ADa,No,Yes,大鯢,,,,2022/9/12,2022/9/13,I_Sign_1,I_Sign_2
-ADb,No,Yes,大鯢,,,,2022/9/12,2022/9/13,I_Sign_1,I_Sign_2
-ADaF,Yes,No,娃娃魚,,,,2022/9/12,2022/9/13,I_Sign_2,I_Sign_3
-ADbF,No,Yes,墨西哥鈍口螈,,,,2022/9/12,2022/9/13,I_Sign_1,I_Sign_2
-PBa,Yes,No,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PBb,No,Yes,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PBaF,Yes,No,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PBbF,No,Yes,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PHa,Yes,No,水虎魚,,,,2021/10/13,2022/10/20,I_Sign_1,I_Sign_2
-PHb,No,Yes,水虎魚,,,,2022/10/19,2022/10/20,I_Sign_1,I_Sign_2
-PHaF,Yes,No,紅肚食人鯧,,,,2022/10/19,2022/10/20,I_Sign_1,I_Sign_2
-PHbF,No,Yes,紅肚食人鯧,,,,2022/10/19,2022/10/20,I_Sign_1,I_Sign_2
+CUa,Yes,No,蘇眉,, ,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_4
+CUb,No,Yes,蘇眉,, ,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_2
+CUaF,Yes,No,蘇眉,, ,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_2
+CUbF,No,Yes,蘇眉,, ,,2022/11/3,2022/11/4,I_Sign_1,I_Sign_2
+CIa,Yes,No,豬鼻龜,, ,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
+CIb,Yes,No,豬鼻龜,, ,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
+CIaF,Yes,No,綠海龜,豬鼻龜, ,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
+CIbF,Yes,No,豬鼻龜,, ,,2022/9/28,2022/9/29,I_Sign_1,I_Sign_2
+IIa,No,Yes,绿鬣蜥,, ,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
+IIb,Yes,No,绿鬣蜥,, ,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
+IIaF,No,Yes,绿鬣蜥,, ,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
+IIbF,No,Yes,绿鬣蜥,, ,,2022/9/24,2022/9/29,I_Sign_1,I_Sign_2
+ADa,No,Yes,大鯢,, ,,2022/9/12,2022/9/13,I_Sign_1,I_Sign_2
+ADb,No,Yes,大鯢,, ,,2022/9/12,2022/9/13,I_Sign_1,I_Sign_2
+ADaF,Yes,No,娃娃魚,, ,,2022/9/12,2022/9/13,I_Sign_2,I_Sign_3
+ADbF,No,Yes,墨西哥鈍口螈,, ,,2022/9/12,2022/9/13,I_Sign_1,I_Sign_2
+PBa,Yes,No,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PBb,No,Yes,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PBaF,Yes,No,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PBbF,No,Yes,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PHa,Yes,No,水虎魚,, ,,2021/10/13,2022/10/20,I_Sign_1,I_Sign_2
+PHb,No,Yes,水虎魚,, ,,2022/10/19,2022/10/20,I_Sign_1,I_Sign_2
+PHaF,Yes,No,紅肚食人鯧,, ,,2022/10/19,2022/10/20,I_Sign_1,I_Sign_2
+PHbF,No,Yes,紅肚食人鯧,, ,,2022/10/19,2022/10/20,I_Sign_1,I_Sign_2
 SAa,No,Yes,灰林鴞,,已植入晶片,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
 SAb,Yes,No,灰林鴞,,已植入晶片,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
 SAaF,No,Yes,灰林鴞,,已植入晶片,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2

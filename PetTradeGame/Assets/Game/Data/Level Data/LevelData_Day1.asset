@@ -16,13 +16,8 @@ MonoBehaviour:
   - Intro
   - Day1
   - Day1_Second
-  introDialogue:
-    m_AssetGUID: 838e8c5706053ae49b29db459d23bf12
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  middleDialogue:
-    m_AssetGUID: e47758c45a6acc545a43eab3bbb40c2c
+  dialogue:
+    m_AssetGUID: 22d1a37be00360442a091ae1d33fdef8
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

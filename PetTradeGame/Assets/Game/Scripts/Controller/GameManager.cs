@@ -12,11 +12,14 @@ namespace Game.Scripts.Controller
     public class GameManager : StateMachine
     {
         public GameObject world;
+        public ConversationData globalDialogue;
+        
         public bool debugMode;
         public bool stopTimer;
 
         private IEnumerator _changeLevelRoutine;
         private AsyncOperationHandle<LevelData> _levelDataHandle;
+        
         public LevelData LevelData { get; private set; }
         public int LevelCount { get; set; }
 

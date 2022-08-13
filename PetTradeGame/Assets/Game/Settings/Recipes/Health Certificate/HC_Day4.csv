@@ -1,8 +1,8 @@
 AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Mark,Animal Mark 2,Date,Date 2,Stamp And Sign,Stamp And Sign 2
-BTa,Yes,Yes,黃唇魚,,,,2022/9/7,2022/9/8,I_Sign_1,I_Sign_2
-BTb,Yes,No,黃唇魚,,,,2022/8/25,2022/8/26,I_Sign_1,I_Sign_2
-BTaF,Yes,Yes,黃唇魚,黃花魚,,,2022/8/24,2022/8/27,I_Sign_1,I_Sign_2
-BTbF,No,Yes,黃唇魚,,,,2022/8/25,2022/8/28,I_Sign_2, 
+BTa,Yes,Yes,黃唇魚,, ,,2022/9/7,2022/9/8,I_Sign_1,I_Sign_2
+BTb,Yes,No,黃唇魚,, ,,2022/8/25,2022/8/26,I_Sign_1,I_Sign_2
+BTaF,Yes,Yes,黃唇魚,黃花魚, ,,2022/8/24,2022/8/27,I_Sign_1,I_Sign_2
+BTbF,No,Yes,黃唇魚,, ,,2022/8/25,2022/8/28,I_Sign_2, 
 GCa,Yes,No,畫眉鳥,,已配晶片手環,,2022/9/14,2022/9/2,I_Sign_1,I_Sign_2
 GCb,No,Yes,畫眉鳥,,已配晶片手環,,2022/9/3,2022/9/4,I_Sign_1,I_Sign_2
 GCaF,Yes,No,畫眉鳥,,已配晶片手環,,2022/9/14,2022/9/2,I_Sign_1,I_Sign_4
@@ -11,23 +11,23 @@ BJa,No,Yes,小太平鳥,,已植入晶片,已配晶片手環,2022/9/25,2022/9/28,
 BJb,Yes,No,小太平鳥,,已植入晶片,已配晶片手環,2022/9/27,2022/9/9,I_Sign_1,I_Sign_2
 BJaF,No,Yes,小太平鳥,,已植入晶片,已配晶片手環,2022/9/8,2022/9/9,I_Sign_1,I_Sign_2
 BJbF,Yes,No,小太平鳥,,已植入晶片,已配晶片手環,2022/9/8,2022/9/9,I_Sign_1,I_Sign_2
-PYa,No,Yes,球蟒,,,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
-PYb,Yes,No,球蟒,,,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
-PYaF,No,Yes,球蟒,,,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_3
-PYbF,Yes,No,球蟒,,,,2022/9/10,2022/9/11,I_Sign_2,I_Sign_4
-CTa,Yes,Yes,金錢龜,,,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
-CTb,Yes,Yes,金錢龜,,,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
-CTaF,No,Yes,金錢龜,,,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
-CTbF,No,No,金錢龜,,,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
-PIa,Yes,No,霓虹燈魚,,,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
-PIb,No,Yes,霓虹燈魚,,,,2022/10/8,2022/10/9,I_Sign_1,I_Sign_2
-PIaF,No,Yes,孔雀魚 ,霓虹燈魚,,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
-PIbF,Yes,No,霓虹燈魚,,,,2022/10/8,2022/10/9,I_Sign_1,I_Sign_2
-XHa,No,Yes,紅箭魚,,,,2022/9/13,2022/9/9,I_Sign_1,I_Sign_2
-XHb,No,Yes,紅箭魚,,,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
-XHaF,No,Yes,霓虹燈魚,紅箭魚,,,2022/9/13,2022/9/9,I_Sign_1,I_Sign_2
-XHbF,No,Yes,紅箭魚,孔雀魚 ,,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
-FPa,Yes,No,七彩變色龍,,,,2022/9/23,2022/9/24,I_Sign_1,I_Sign_2
-FPb,No,Yes,七彩變色龍,,,,2022/9/25,2022/9/26,I_Sign_1,I_Sign_2
-FPaF,Yes,No,七彩變色龍,,,,2022/9/23,2022/9/24,I_Sign_1,I_Sign_2
-FPbF,No,Yes,七彩變色龍,變色龍,,,2022/9/25,2022/9/26,I_Sign_1,I_Sign_2
+PYa,No,Yes,球蟒,, ,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
+PYb,Yes,No,球蟒,, ,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
+PYaF,No,Yes,球蟒,, ,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_3
+PYbF,Yes,No,球蟒,, ,,2022/9/10,2022/9/11,I_Sign_2,I_Sign_4
+CTa,Yes,Yes,金錢龜,, ,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
+CTb,Yes,Yes,金錢龜,, ,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
+CTaF,No,Yes,金錢龜,, ,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
+CTbF,No,No,金錢龜,, ,,2022/10/25,2022/10/26,I_Sign_1,I_Sign_2
+PIa,Yes,No,霓虹燈魚,, ,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
+PIb,No,Yes,霓虹燈魚,, ,,2022/10/8,2022/10/9,I_Sign_1,I_Sign_2
+PIaF,No,Yes,孔雀魚 ,霓虹燈魚, ,,2022/10/6,2022/10/7,I_Sign_1,I_Sign_2
+PIbF,Yes,No,霓虹燈魚,, ,,2022/10/8,2022/10/9,I_Sign_1,I_Sign_2
+XHa,No,Yes,紅箭魚,, ,,2022/9/13,2022/9/9,I_Sign_1,I_Sign_2
+XHb,No,Yes,紅箭魚,, ,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
+XHaF,No,Yes,霓虹燈魚,紅箭魚, ,,2022/9/13,2022/9/9,I_Sign_1,I_Sign_2
+XHbF,No,Yes,紅箭魚,孔雀魚 , ,,2022/9/10,2022/9/11,I_Sign_1,I_Sign_2
+FPa,Yes,No,七彩變色龍,, ,,2022/9/23,2022/9/24,I_Sign_1,I_Sign_2
+FPb,No,Yes,七彩變色龍,, ,,2022/9/25,2022/9/26,I_Sign_1,I_Sign_2
+FPaF,Yes,No,七彩變色龍,, ,,2022/9/23,2022/9/24,I_Sign_1,I_Sign_2
+FPbF,No,Yes,七彩變色龍,變色龍, ,,2022/9/25,2022/9/26,I_Sign_1,I_Sign_2

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEditor;
 using UnityEngine;
 
 namespace Game.Scripts.Model
@@ -8,17 +9,18 @@ namespace Game.Scripts.Model
     [CreateAssetMenu(fileName = "ConversationData", menuName = "ScriptableObject/Conversation Data")]
     public class ConversationData : ScriptableObject
     {
-
-        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+        [TextArea]
         public string description;
         public List<SpeakerData> speakerList = new List<SpeakerData>();
-
+        
+        private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
+       
         public void Load(string line)
         {
-            List<string> lines = new List<string>();
+            var lines = new List<string>();
             foreach (Match match in Regex.Matches(line))
             {
-                string current = match.Value;
+                var current = match.Value;
                 if (0 == current.Length)
                     lines.Add("");
                 lines.Add(current.Trim(',', '"'));
@@ -26,8 +28,8 @@ namespace Game.Scripts.Model
 
             var data = new SpeakerData(lines[0])
             {
-                dialogueId = Convert.ToInt32(lines[1]),
-                speaker = Resources.Load<Sprite>($"NPC/{lines[2]}"),
+                dialogueId = Convert.ToString(lines[1]),
+                speaker = AssetDatabase.LoadAssetAtPath<Sprite>($"Assets/Game/Textures/NPC/{lines[2]}.png"),
                 anchor = Convert.ToString(lines[3]) switch
                 {
                     "Upper Left" => TextAnchor.UpperLeft,
@@ -46,9 +48,9 @@ namespace Game.Scripts.Model
             if (lines.Count >= 4)
             {
                 data.messages = new List<string>(lines.Count - 4);
-                for (int i = 4; i < lines.Count; ++i)
+                for (var i = 4; i < lines.Count; ++i)
                 {
-                    string text = Convert.ToString(lines[i]);
+                    var text = Convert.ToString(lines[i]);
                     if (string.IsNullOrEmpty(text))
                         continue;
                     data.messages.Add(text);

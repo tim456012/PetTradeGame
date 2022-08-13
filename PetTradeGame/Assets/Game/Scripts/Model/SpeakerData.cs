@@ -8,7 +8,7 @@ namespace Game.Scripts.Model
     public class SpeakerData
     {
         public string speakerName;
-        public int dialogueId;
+        public string dialogueId;
         public List<string> messages;
         public Sprite speaker;
         public TextAnchor anchor;

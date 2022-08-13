@@ -13,8 +13,7 @@ namespace Game.Scripts.Model
         public string[] videoAddress;
 
         [Header("Dialogue")]
-        public AssetReference introDialogue;
-        public AssetReference middleDialogue;
+        public AssetReference dialogue;
 
         [Header("Data")]
         public List<RecipeData> documentRecipeData;

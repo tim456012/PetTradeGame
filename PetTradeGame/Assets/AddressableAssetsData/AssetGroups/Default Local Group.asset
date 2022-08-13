@@ -133,6 +133,10 @@ MonoBehaviour:
     m_Address: Level Data/LevelData_Day7
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 14e3ccad2be0fad479925ab66663175f
+    m_Address: Assets/Game/Data/Conversations
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
   m_SchemaSet:

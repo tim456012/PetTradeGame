@@ -6109,6 +6109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 389334950}
+  globalDialogue: {fileID: 11400000, guid: 92420b966d9ba8a4b81133b9433de066, type: 2}
   debugMode: 1
   stopTimer: 0
 --- !u!4 &5105011262412261254

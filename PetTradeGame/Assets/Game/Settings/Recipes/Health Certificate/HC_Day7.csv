@@ -1,41 +1,41 @@
 AnimalID,Line 1,Line 2,Animal Name,Animal Name 2,Animal Mark,Animal Mark 2,Date,Date 2,Stamp And Sign,Stamp And Sign 2
-BKa,Yes,No,墨西哥粉紅捕鳥蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-BKb,No,Yes,墨西哥粉紅捕鳥蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-BKaF,Yes,No,墨西哥粉紅捕鳥蛛,巨人捕鳥蛛,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-BKbF,No,Yes,墨西哥粉紅捕鳥蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-PBa,Yes,No,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PBb,No,Yes,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PBaF,No,No,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
-PBbF,No,Yes,緬甸蟒,,,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+BKa,Yes,No,墨西哥粉紅捕鳥蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+BKb,No,Yes,墨西哥粉紅捕鳥蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+BKaF,Yes,No,墨西哥粉紅捕鳥蛛,巨人捕鳥蛛, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+BKbF,No,Yes,墨西哥粉紅捕鳥蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+PBa,Yes,No,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PBb,No,Yes,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PBaF,No,No,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
+PBbF,No,Yes,緬甸蟒,, ,,2022/9/24,2022/9/25,I_Sign_1,I_Sign_2
 AOa,No,Yes,黃頭亞馬遜鸚鵡,,已植入晶片,已配晶片手環,2022/10/1,2022/10/2,I_Sign_1,I_Sign_2
 AOb,No,Yes,黃頭亞馬遜鸚鵡,,已植入晶片,已配晶片手環,2022/10/1,2022/10/2,I_Sign_1,I_Sign_2
 AOaF,No,Yes,黃頭亞馬遜鸚鵡,,已植入晶片,已配晶片手環,2022/10/1,2022/10/2,I_Sign_1,I_Sign_2
 AObF,No,Yes,黃頭亞馬遜鸚鵡,,已植入晶片,已配晶片手環,2022/10/1,2022/10/2,I_Sign_1,I_Sign_2
-SPa,Yes,No,豹龜,,,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
-SPb,No,Yes,豹龜,,,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
-SPaF,Yes,No,豹龜,,,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
-SPbF,No,Yes,輻射龜,豹龜,,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
-ARa,Yes,No,輻射龜,,,,2022/9/19,2022/9/20,I_Sign_1,I_Sign_2
-ARb,No,Yes,輻射龜,,,,2022/9/19,2022/9/20,I_Sign_1,I_Sign_2
-ARaF,Yes,No,輻射龜,,,,2022/9/19,2022/9/20,I_Sign_2,I_Sign_3
-ARbF,No,Yes,輻射龜,,,,2022/9/19,2022/9/20,I_Sign_1,I_Sign_5
+SPa,Yes,No,豹龜,, ,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
+SPb,No,Yes,豹龜,, ,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
+SPaF,Yes,No,豹龜,, ,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
+SPbF,No,Yes,輻射龜,豹龜, ,,2022/10/14,2022/10/15,I_Sign_1,I_Sign_2
+ARa,Yes,No,輻射龜,, ,,2022/9/19,2022/9/20,I_Sign_1,I_Sign_2
+ARb,No,Yes,輻射龜,, ,,2022/9/19,2022/9/20,I_Sign_1,I_Sign_2
+ARaF,Yes,No,輻射龜,, ,,2022/9/19,2022/9/20,I_Sign_2,I_Sign_3
+ARbF,No,Yes,輻射龜,, ,,2022/9/19,2022/9/20,I_Sign_1,I_Sign_5
 BJa,No,Yes,朱連雀,,已植入晶片,已配晶片手環,2022/9/15,2022/9/26,I_Sign_1,I_Sign_2
 BJb,Yes,No,朱連雀,,已植入晶片,已配晶片手環,2022/9/27,2022/9/28,I_Sign_1,I_Sign_2
 BJaF,No,Yes,歐亞雲雀,小太平鳥,已植入晶片,已配晶片手環,2022/9/15,2022/9/26,I_Sign_1,I_Sign_2
 BJbF,Yes,No,大太平鳥,小太平鳥,已植入晶片,已配晶片手環,2022/9/27,2022/9/28,I_Sign_1,I_Sign_2
-EAa,Yes,Yes,紅斑魚,Null,,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
-EAb,Yes,No,紅斑魚,Null,,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
-EAaF,Yes,No,紅斑魚,Null,,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
-EAbF,Yes,Yes,紅斑魚,Null,,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
+EAa,Yes,Yes,紅斑魚,Null, ,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
+EAb,Yes,No,紅斑魚,Null, ,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
+EAaF,Yes,No,紅斑魚,Null, ,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
+EAbF,Yes,Yes,紅斑魚,Null, ,,2022/9/2,2022/9/3,I_Sign_1,I_Sign_2
 BBa,No,Yes,雕鴞,,已配晶片手環,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
 BBb,No,Yes,雕鴞,,已配晶片手環,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
 BBaF,No,Yes,大鵰鴞,雕鴞,已配晶片手環,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
 BBbF,No,Yes,雕鴞,,已配晶片手環,,2022/9/15,2022/9/16,I_Sign_1,I_Sign_2
-PRa,Yes,No,佛羅里達跳蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-PRb,Yes,No,佛羅里達跳蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-PRaF,Yes,No,佛羅里達跳蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-PRbF,Yes,No,佛羅里達跳蛛,,,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
-AYa,Yes,No,安哥洛卡象龜,,,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
-AYb,No,Yes,安哥洛卡象龜,,,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
-AYaF,Yes,No,安哥洛卡象龜,,,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
-AYbF,No,No,安哥洛卡象龜,,,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
+PRa,Yes,No,佛羅里達跳蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+PRb,Yes,No,佛羅里達跳蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+PRaF,Yes,No,佛羅里達跳蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+PRbF,Yes,No,佛羅里達跳蛛,, ,,2022/10/21,2022/10/22,I_Sign_1,I_Sign_2
+AYa,Yes,No,安哥洛卡象龜,, ,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
+AYb,No,Yes,安哥洛卡象龜,, ,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
+AYaF,Yes,No,安哥洛卡象龜,, ,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2
+AYbF,No,No,安哥洛卡象龜,, ,,2022/9/29,2022/9/30,I_Sign_1,I_Sign_2

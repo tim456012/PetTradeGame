@@ -20,6 +20,7 @@ namespace Game.Scripts.Controller
         
         public static event EventHandler GameFinishEvent;
         public static event EventHandler StopProduceDocument;
+        public static event EventHandler ClearConversationEvent;
 
         private void Awake()
         {
@@ -53,6 +54,7 @@ namespace Game.Scripts.Controller
 
             _isReadyFinish = false;
             GameFinishEvent?.Invoke(this, EventArgs.Empty);
+            ClearConversationEvent?.Invoke(this, EventArgs.Empty);
         }
 
         private void UpdateTime()

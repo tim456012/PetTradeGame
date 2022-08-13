@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f37cab6f1164e7cb1b2560a35d4d9b, type: 3}
+  m_Name: Day4
+  m_EditorClassIdentifier: 
+  description: 
+  speakerList:
+  - speakerName: Player
+    dialogueId: D1P_A
+    messages:
+    - "\u4F60\u597D\uFF0C\u8ACB\u51FA\u793A\u6587\u4EF6"
+    speaker: {fileID: 0}
+    anchor: 4
+  - speakerName: Player
+    dialogueId: D1P_R1
+    messages:
+    - "\u62B1\u6B49\uFF0C\u4F46\u6211\u5011\u8981\u8DDF\u7A0B\u5E8F\u8FA6\u4E8B\u7684"
+    speaker: {fileID: 0}
+    anchor: 4
+  - speakerName: Player
+    dialogueId: D1P_R2
+    messages:
+    - "\u662F\u662F\u662F"
+    speaker: {fileID: 0}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: D1N1
+    messages:
+    - "\u597D\u7684\uFF0C\u9EBB\u7169\u4F60\u4E86"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: D1N2
+    messages:
+    - "\u65B0\u4EBA\uFF1F"
+    - "\u6211\u5C31\u65E9\u8AAA\u8981\u52A0\u4EBA\u4E86\uFF0C\u7D50\u679C\u5462\uFF1F"
+    - "\u51FA\u4E86\u4E8B\u624D\u99AC\u5F8C\u70AE\u3002"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: D1N3
+    messages:
+    - "\uFF08\u807D\u96FB\u8A71\uFF09\u4EC0\u9EBC\uFF1F"
+    - "\u600E\u9EBC\u990A\u6B96\u7684\u90FD\u51FA\u554F\u984C\u554A"
+    - "\u6211\u4E0D\u7BA1\uFF0C\u4F60\u6700\u597D\u5FEB\u9EDE\u5F04\u597D"
+    - "\u554A"
+    - "\u4E0D\u8AAA\u4E86\uFF0C\u5230\u6211\u4E86"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: D1N1_A
+    messages:
+    - "\u4E0D\u597D\u610F\u601D"
+    - "\u6211\u6709\u9EDE\u6025\uFF0C\u8ACB\u554F\u53EF\u4EE5\u5FEB\u9EDE\u55CE\uFF1F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: D1N2_A
+    messages:
+    - "\u5FEB\u5566\uFF01"
+    - "\u600E\u9EBC\u52A0\u4E86\u4EBA\u9084\u6BD4\u4E4B\u524D\u6162\uFF01"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: 
+    dialogueId: 
+    messages: []
+    speaker: {fileID: 0}
+    anchor: 0
+  - speakerName: NPC
+    dialogueId: D1N3_A
+    messages:
+    - "\u4F60\u5011ETM\u662F\u4E0D\u662F\u6545\u610F\u62D6\u6642\u9593\u7684\uFF01"
+    - "\u5FEB\u9EDE\uFF01"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4

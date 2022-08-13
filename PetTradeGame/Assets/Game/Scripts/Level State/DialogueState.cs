@@ -9,13 +9,15 @@ using UnityEngine.AddressableAssets;
 
 namespace Game.Scripts.Level_State
 {
-    //TODO: Load Middle Dialogue and show up randomly
+    //TODO: Complete Level End event
     public class DialogueState : GameCore
     {
+        private bool _firstInit = true;
+        
         private AssetReference _conversationAsset;
         private ConversationController _conversationController;
-        private ConversationData _introConversationData, _middleConversationData;
-
+        private ConversationData _conversationData;
+        
         protected override void Awake()
         {
             base.Awake();
@@ -33,7 +35,17 @@ namespace Game.Scripts.Level_State
         {
             base.Enter();
             Debug.Log("Enter dialogue state");
-            LoadConversationData();
+
+            if (_firstInit)
+            {
+                _conversationController.LoadGlobalDialogue(Owner.globalDialogue.speakerList);
+                LoadConversationData();
+                _firstInit = false;
+            }
+            else
+            {
+                _conversationController.StartConversation();
+            }
         }
 
         public override void Exit()
@@ -46,6 +58,8 @@ namespace Game.Scripts.Level_State
         {
             base.AddListeners();
             ConversationController.CompleteEvent += OnCompleteConversation;
+            if(_firstInit)
+                GamePlayController.ClearConversationEvent += OnClearConversation;
         }
 
         protected override void RemoveListeners()
@@ -67,12 +81,6 @@ namespace Game.Scripts.Level_State
 
         private IEnumerator ChangeState()
         {
-            if (_introConversationData)
-                Addressables.Release(_introConversationData);
-
-            if (_middleConversationData)
-                Addressables.Release(_middleConversationData);
-
             yield return null;
             _conversationAsset = null;
             _conversationController.enabled = false;
@@ -84,23 +92,21 @@ namespace Game.Scripts.Level_State
 
         private async void LoadConversationData()
         {
-            _conversationAsset = Owner.LevelData.introDialogue;
-            _introConversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
-
-            _conversationAsset = Owner.LevelData.middleDialogue;
-            _middleConversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
-            ShowDialogue(_introConversationData);
+            _conversationAsset = Owner.LevelData.dialogue;
+            _conversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
+            
+            _conversationController.LoadLevelDialogue(_conversationData.speakerList);
+            _conversationController.StartConversation();
         }
 
-        private void ShowDialogue(ConversationData dialogue)
+        private void OnClearConversation(object sender, EventArgs e)
         {
-            _conversationController.enabled = true;
-            _conversationController.Show(dialogue);
-        }
-
-        public void OnMiddleDialogue()
-        {
-            ShowDialogue(_middleConversationData);
+            _firstInit = true;
+            Debug.Log(_firstInit);
+            if (_conversationData)
+                Addressables.Release(_conversationData);
+            
+            GamePlayController.ClearConversationEvent -= OnClearConversation;
         }
     }
 }
