@@ -102,7 +102,6 @@ namespace Game.Scripts.Level_State
         private void OnClearConversation(object sender, EventArgs e)
         {
             _firstInit = true;
-            Debug.Log(_firstInit);
             if (_conversationData)
                 Addressables.Release(_conversationData);
             

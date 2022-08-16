@@ -15,70 +15,156 @@ MonoBehaviour:
   description: 
   speakerList:
   - speakerName: Player
-    dialogueId: D1P_A
+    dialogueId: PR0_D4
     messages:
-    - "\u4F60\u597D\uFF0C\u8ACB\u51FA\u793A\u6587\u4EF6"
+    - "\u9019\u908A\u5DF2\u7D93\u7B97\u5C11\u4EBA\u4E86"
+    - "\u6211\u9130\u5EA7\u6700\u8FD1\u6BCF\u5929\u90FD\u8981\u5206\u8EAB\u4E4F\u8853\u8655\u7406\u4E94\u5341\u500B\u4EBA"
     speaker: {fileID: 0}
     anchor: 4
   - speakerName: Player
-    dialogueId: D1P_R1
+    dialogueId: PR1_D4
     messages:
-    - "\u62B1\u6B49\uFF0C\u4F46\u6211\u5011\u8981\u8DDF\u7A0B\u5E8F\u8FA6\u4E8B\u7684"
+    - "\u9019\u662F\u8D85\u7D1A\u8CFD\u4E9E\u5916\u52E4\u4EBA\u54E1\uFF0C\u6211\u5011\u4E0D\u53EF\u4EE5\u4E00\u6982\u800C\u8AD6"
     speaker: {fileID: 0}
     anchor: 4
   - speakerName: Player
-    dialogueId: D1P_R2
+    dialogueId: PR2_D4
     messages:
-    - "\u662F\u662F\u662F"
+    - "\u5C0D\uFF0C\u6709\u751A\u9EBC\u554F\u984C\uFF1F"
+    speaker: {fileID: 0}
+    anchor: 4
+  - speakerName: Player
+    dialogueId: PR3_D4
+    messages:
+    - "\u7576\u7136\uFF0C\u7562\u7ADF\u7260\u5011\u672C\u8EAB\u5C31\u662F\u91CE\u751F\u6216\u8005\u975E\u672C\u5730\u7E41\u6B96"
+    - "\u8981\u662F\u88AB\u653E\u751F\u5230\u91CE\u5916\u6703\u7834\u58DE\u751F\u614B\u5E73\u8861\u7684\u3002"
+    - "\u597D\u4E86\uFF0C\u8ACB\u5148\u7D66\u6211\u770B\u770B\u4F60\u7684\u6587\u4EF6\u5427"
+    speaker: {fileID: 0}
+    anchor: 4
+  - speakerName: Player
+    dialogueId: PR4_D4
+    messages:
+    - "\u53EA\u662F\u8981\u904B\u5BF5\u7269\uFF0C\u5C31\u53EA\u8981\u52D5\u7269\u5065\u5EB7\u724C\u7167\u548C\u7279\u5225\u8A31\u53EF\u8B49\u5C31\u884C"
+    - "\u5546\u696D\u8981\u52A0\u4E00\u500B\u52D5\u7269\u552E\u8CE3\u5546\u724C\u7167"
+    - "\u53E6\u5916\u7015\u5371\u52D5\u72691\u30012\u30013\u7D1A\u90FD\u8981\u7015\u5371\u52D5\u7269\u9032\u53E3\u8A31\u53EF\u8B49\u8B49\u660E"
+    - "\u61C2\u55CE\uFF1F"
+    speaker: {fileID: 0}
+    anchor: 4
+  - speakerName: Player
+    dialogueId: PR5_D4
+    messages:
+    - "\u9996\u5148\uFF0C\u5783\u573E\u5834\u9019\u7A2E\u592A\u96B1\u853D\u7684\u5730\u65B9\u6C92\u6709\u4EBA\u6703\u5C08\u9580\u53BB\u5DE1\u908F\u3002"
+    - "\u5176\u6B21\uFF0C\u6B63\u662F\u56E0\u70BA\u4E0D\u60F3\u518D\u8B93\u7121\u8F9C\u5E02\u6C11\u53D7\u50B7\u6240\u4EE5\u6211\u5011\u624D\u52A0\u5F37\u95DC\u53E3\u7533\u5831"
+    - "\u9084\u6709\u63D0\u5021\u8209\u5831\u68C4\u990A\u884C\u70BA"
+    - "\u73FE\u5728\uFF0C\u80FD\u5426\u8ACB\u4F60\u7D66\u6211\u770B\u4E00\u4E0B\u4F60\u7684\u6587\u4EF6\uFF1F"
     speaker: {fileID: 0}
     anchor: 4
   - speakerName: NPC
-    dialogueId: D1N1
+    dialogueId: R0_D4_N1_E
     messages:
-    - "\u597D\u7684\uFF0C\u9EBB\u7169\u4F60\u4E86"
+    - "\u9019\u88CF\u9019\u88CF\uFF0C\u4F60\u5011\u9019\u771F\u7684\u8D8A\u4F86\u8D8A\u591A\u4EBA\u4E86"
+    - "\u6211\u660E\u660E\u5DF2\u7D93\u7531\u9694\u58C1\u5206\u6D41\u4F86\u9019\u982D\u4E86\uFF0C\u968A\u4F0D\u9084\u90A3\u9EBC\u9577"
     speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4
   - speakerName: NPC
-    dialogueId: D1N2
+    dialogueId: R1_D4_N1
     messages:
-    - "\u65B0\u4EBA\uFF1F"
-    - "\u6211\u5C31\u65E9\u8AAA\u8981\u52A0\u4EBA\u4E86\uFF0C\u7D50\u679C\u5462\uFF1F"
-    - "\u51FA\u4E86\u4E8B\u624D\u99AC\u5F8C\u70AE\u3002"
+    - "\u54CE\u55B2\uFF01"
     speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4
   - speakerName: NPC
-    dialogueId: D1N3
+    dialogueId: R0_D4_N2_E
     messages:
-    - "\uFF08\u807D\u96FB\u8A71\uFF09\u4EC0\u9EBC\uFF1F"
-    - "\u600E\u9EBC\u990A\u6B96\u7684\u90FD\u51FA\u554F\u984C\u554A"
-    - "\u6211\u4E0D\u7BA1\uFF0C\u4F60\u6700\u597D\u5FEB\u9EDE\u5F04\u597D"
-    - "\u554A"
-    - "\u4E0D\u8AAA\u4E86\uFF0C\u5230\u6211\u4E86"
+    - "\u5509\uFF1F"
+    - "\u6211\u4EE5\u70BA\u9019\u7684\u5DE5\u4F5C\u4EBA\u54E1\u90FD\u662F\u50CF\u525B\u525B\u8D70\u904E\u7684\u6293\u86C7\u731B\u7537\u4E00\u6A23\u7684\uFF1F"
     speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4
   - speakerName: NPC
-    dialogueId: D1N1_A
+    dialogueId: R1_D4_N2
     messages:
-    - "\u4E0D\u597D\u610F\u601D"
-    - "\u6211\u6709\u9EDE\u6025\uFF0C\u8ACB\u554F\u53EF\u4EE5\u5FEB\u9EDE\u55CE\uFF1F"
+    - "\u6709\u9EDE\u5931\u671B\u7684\u8AAA......"
     speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4
   - speakerName: NPC
-    dialogueId: D1N2_A
+    dialogueId: R0_D4_N3_E
     messages:
-    - "\u5FEB\u5566\uFF01"
-    - "\u600E\u9EBC\u52A0\u4E86\u4EBA\u9084\u6BD4\u4E4B\u524D\u6162\uFF01"
+    - emmm...
+    - "\u4F60\u5011\u9019\u90E8\u9580\u53EBExotic Transaction Monitor\u5427\uFF1F"
     speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4
-  - speakerName: 
-    dialogueId: 
-    messages: []
-    speaker: {fileID: 0}
-    anchor: 0
   - speakerName: NPC
-    dialogueId: D1N3_A
+    dialogueId: R1_D4_N3
     messages:
-    - "\u4F60\u5011ETM\u662F\u4E0D\u662F\u6545\u610F\u62D6\u6642\u9593\u7684\uFF01"
-    - "\u5FEB\u9EDE\uFF01"
+    - "\u4F46\u6709\u4E9BExotic\u52D5\u7269\u73FE\u5728\u4E5F\u662F\u672C\u571F\u52D5\u7269\u4E4B\u4E00\uFF0C\u9019\u8981\u6709\u7533\u5831\u55CE\uFF1F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: R0_D4_N4_E
+    messages:
+    - "\u5594\uFF0C\u5176\u5BE6\u8981\u90A3\u4E9B\u6587\u4EF6\uFF1F\u6211\u6015\u5F04\u932F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: R1_D4_N4
+    messages:
+    - "Oh\uFF0C\u61C2\u61C2"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: R0_D4_N5
+    messages:
+    - "\u9019\u88CF\u3002"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: R0_D4_N6_E
+    messages:
+    - "\u4ECA\u5929\u5831\u9053\u90A3\u5C0F\u5B69\u771F\u6158\uFF0C\u4F60\u5011ETM\u5230\u5E95\u5E72\u751A\u9EBC\u6D3B\u7684\uFF1F"
+    - "\u9019\u9EBC\u5927\u7684\u9F9C\u4E5F\u6CA1\u767C\u73FE"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: R1_D4_N6
+    messages:
+    - "\u54FC\uFF01"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D4_N1
+    messages:
+    - "\u2026\u2026\u6211\u73FE\u5728\u77E5\u9053\u70BA\u4F55\u4F60\u9019\u88CF\u6700\u5C11\u4EBA\u4E86"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D4_N2
+    messages:
+    - "\u4F60\u8AAA\u4F60\u9084\u8981\u505A\u591A\u4E45\uFF1F"
+    - "\u6211\u53EF\u4EE5\u53BB\u901B\u901B\u518D\u56DE\u4F86\u55CE\uFF1F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D4_N3
+    messages:
+    - "\u5C0F\u54E5\uFF0C\u653E\u6211\u4E00\u99AC\u5427\uFF1F"
+    - "\u4F60\u96A8\u4FBF\u5370\u4E00\u5F35\u6E96\u8A31\u8B49\u4E5F\u884C\u5440!"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D4_N4
+    messages:
+    - "\u5144\u5F1F\uFF1F\u8981\u662F\u592A\u9EBB\u7169\u6211\u6539\u5929\u518D\u4F86\u5427\uFF1F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D4_N5
+    messages:
+    - "\u2026\u2026\u4F60\u6AA2\u67FB\u597D\u4E86\u6C92\uFF1F"
+    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D4_N6
+    messages:
+    - "\u6709\u4E9B\u4EBA\u5634\u4E0A\u8AAA\u5F97\u5802\u7687\u51A0\u5195"
+    - "\u624B\u4E0A\u537B\u505A\u5F97\u6BD4\u738B\u516B\u6162"
     speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
     anchor: 4

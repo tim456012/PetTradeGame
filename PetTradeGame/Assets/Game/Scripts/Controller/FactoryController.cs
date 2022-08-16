@@ -4,13 +4,17 @@ using System.Collections.Generic;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Factory;
 using Game.Scripts.Model;
+using Game.Scripts.Tools;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
 {
     public class FactoryController : MonoBehaviour
     {
+        [SerializeField] private DocumentFactory documentFactory;
+
         [HideInInspector] public string generatedID;
         private readonly List<GameObject> _documents = new List<GameObject>();
 
@@ -45,7 +49,7 @@ namespace Game.Scripts.Controller
             Debug.Log(id);
             foreach (RecipeData recipeData in _recipeDataList)
             {
-                DocumentFactory.CreateDocument(recipeData.documentRecipeType, recipeData.documentRecipe, id);
+                documentFactory.CreateDocument(recipeData, id);
                 yield return null;
             }
         }
@@ -89,10 +93,19 @@ namespace Game.Scripts.Controller
         public void Release()
         {
             StopCoroutine(ProduceDocument());
-
             for (var i = _documents.Count - 1; i >= 0; --i)
                 Destroy(_documents[i]);
             _documents.Clear();
+            documentFactory.ReleaseRecipe();
+        }
+
+        public void ReleaseDocument()
+        {
+            StopCoroutine(ProduceDocument());
+            for (var i = _documents.Count - 1; i >= 0; --i)
+                Destroy(_documents[i]);
+            _documents.Clear();
+            documentFactory.ReleaseObject();
         }
     }
 }

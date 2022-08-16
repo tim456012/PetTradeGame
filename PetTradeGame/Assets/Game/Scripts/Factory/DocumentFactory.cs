@@ -1,178 +1,205 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
+using Game.Scripts.Model;
 using Game.Scripts.Tools;
 using Game.Scripts.View_Model_Components;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using Object = UnityEngine.Object;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Factory
 {
-    public static class DocumentFactory
+    public class DocumentFactory : MonoBehaviour
     {
         public static event EventHandler<InfoEventArgs<GameObject>> OnDocumentCreated; 
 
-        private static GameObject _prefabResult;
-        
+        private GameObject _prefabResult;
+        private readonly List<AsyncOperationHandle> _handles = new List<AsyncOperationHandle>();
+        private readonly List<AsyncOperationHandle> _objectHandles = new List<AsyncOperationHandle>();
+
         #region Communicate Interface
-        public static void CreateDocument(DocumentType documentType, AssetReference recipe, string id)
+        public void CreateDocument(RecipeData recipeData, string id)
         {
+            StartCoroutine(CreatDocumentObject(recipeData.documentRecipe, id, recipeData.documentRecipeType));
+        }
+        
+        private IEnumerator CreatDocumentObject(AssetReference recipe, string id, DocumentType documentType = DocumentType.None)
+        {
+            AsyncOperationHandle recipeHandle;
+            string key;
             switch (documentType)
             {
                 case DocumentType.PossessionLicense:
-                    LoadPossessionLicense(recipe, id);
+                    recipeHandle = recipe.Get<PossessionLicenseRecipe>();
+                    key = "Documents/I_PossessionLicense";
                     break;
                 case DocumentType.HealthCertificate:
-                    LoadHealthCertificate(recipe, id);
+                    recipeHandle = recipe.Get<HealthCertificateRecipe>();
+                    key = "Documents/I_HealthCertificate";
                     break;
                 case DocumentType.SpecialPermit:
-                    LoadSpecialPermit(recipe, id);
+                    recipeHandle = recipe.Get<SpecialPermitRecipe>();
+                    key = "Documents/I_SpecialPermit";
                     break;
                 case DocumentType.DealerLicense:
-                    LoadDealerLicense(recipe, id);
+                    recipeHandle = recipe.Get<DealerLicenseRecipe>();
+                    key = "Documents/I_DealerLicense";
                     break;
                 case DocumentType.None:
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(documentType), documentType, null);
-            }
-        }
-        
-        private static void CreateDealerLicense(DealerLicenseRecipe dl, GameObject obj, string id)
-        {
-            if (dl.dealerLicenseData.All(data => data.animalId != id))
-            {
-                Debug.Log("No dealer license for this id found.");
-                return;
-            }
-
-            Debug.Log("Start creating dealer license");
-            GameObject doc = Object.Instantiate(obj);
-
-            doc.name = dl.name;
-            doc.GetComponent<EntityAttribute>().paperType = DocumentType.DealerLicense;
-            
-            AddDealerLicenseContent(doc, dl.dealerLicenseData, id);
-            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
-        }
-        
-        private static void CreateHealthCertificate(HealthCertificateRecipe hc, GameObject obj, string id)
-        {
-            if (hc.healthCertificateData.All(data => data.animalId != id))
-            {
-                Debug.Log("No health certificate for this id found");
-                return;
+                    yield break;
             }
             
-            Debug.Log("Start creating health certificate");
-            GameObject doc = Object.Instantiate(obj);
+            if(!recipeHandle.IsDone)
+                yield return recipeHandle;
 
-            doc.name = hc.name;
-            doc.GetComponent<EntityAttribute>().paperType = DocumentType.HealthCertificate;
-            AddHealthCertificateContent(doc, hc.healthCertificateData, id);
-            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
-        }
-
-        private static void CreatePossessionLicense(PossessionLicenseRecipe pl, GameObject obj, string id)
-        {
-            if (pl.possessionLicenseData.All(data => data.animalId != id))
+            if (recipeHandle.Status != AsyncOperationStatus.Succeeded)
             {
-                Debug.Log("No possession license for this id found");
-                return;
+                Debug.Log("Recipe is not valid");
+                Addressables.Release(recipeHandle);
+                yield break;
             }
 
-            Debug.Log("Start creating possession license");
-            GameObject doc = Object.Instantiate(obj);
+            _handles.Add(recipeHandle);
+            var obj = key.Get<GameObject>();
+            if(!obj.IsDone)
+                yield return obj;
 
-            doc.name = pl.name;
-            doc.GetComponent<EntityAttribute>().paperType = DocumentType.PossessionLicense;
-            AddPossessionLicenseContent(doc, pl.possessionLicenseData, id);
-            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
-        }
-
-        private static void CreateSpecialPermit(SpecialPermitRecipe sp, GameObject obj, string id)
-        {
-            if (sp.specialPermitData.All(data => data.animalId != id))
+            if (obj.Status != AsyncOperationStatus.Succeeded)
             {
-                Debug.Log("No special permit for this id found");
-                return;
+                Debug.Log("Object is not valid");
+                Addressables.Release(obj);
+                yield break;
             }
 
-            Debug.Log("Start creating special permit");
-            GameObject doc = Object.Instantiate(obj);
-
-            doc.name = sp.name;
-            doc.GetComponent<EntityAttribute>().paperType = DocumentType.SpecialPermit;
-            AddSpecialPermitContent(doc, sp.specialPermitData, id);
-            OnDocumentCreated?.Invoke(null, new InfoEventArgs<GameObject>(doc));
+            _objectHandles.Add(obj);
+            GameObject doc = Instantiate(obj.Result);
+            doc.name = documentType.ToString();
+            doc.GetComponent<EntityAttribute>().paperType = documentType;
+            yield return doc;
+            
+            Coroutine t = StartCoroutine(CreateDocument(doc, documentType, recipeHandle.Result, id));
+            yield return t;
         }
 
-        private static void CreateGameObject(GameObject obj, GameObject parent, string posName)
+        private IEnumerator CreateDocument(GameObject obj, DocumentType documentType, object data, string id)
         {
+            if (data == null)
+            {
+                yield break;
+            }
+            
+            switch (documentType)
+            {
+                case DocumentType.PossessionLicense:
+                    var pl = data as PossessionLicenseRecipe;
+                    if (pl!.possessionLicenseData.All(x => x.animalId != id))
+                    {
+                        Debug.Log("No possession license for this id found");
+                        break;
+                    }
+                    AddPossessionLicenseContent(obj, pl!.possessionLicenseData, id);
+                    break;
+                case DocumentType.HealthCertificate:
+                    var hc = data as HealthCertificateRecipe;
+                    if (hc!.healthCertificateData.All(x => x.animalId != id))
+                    {
+                        Debug.Log("No health certificate for this id found");
+                        break;
+                    }
+                    AddHealthCertificateContent(obj, hc!.healthCertificateData, id);
+                    break;
+                case DocumentType.SpecialPermit:
+                    var sp = data as SpecialPermitRecipe;
+                    if (sp!.specialPermitData.All(x => x.animalId != id))
+                    {
+                        Debug.Log("No special permit for this id found");
+                        break;
+                    }
+                    AddSpecialPermitContent(obj, sp!.specialPermitData, id);
+                    break;
+                case DocumentType.DealerLicense:
+                    var dl = data as DealerLicenseRecipe;
+                    if (dl!.dealerLicenseData.All(x => x.animalId != id))
+                    {
+                        Debug.Log("No dealer license for this id found");
+                        break;
+                    }
+                    AddDealerLicenseContent(obj, dl!.dealerLicenseData, id);
+                    break;
+                case DocumentType.None:
+                default:
+                    yield break;
+            }
+
+            yield return null;
+            OnDocumentCreated?.Invoke(this, new InfoEventArgs<GameObject>(obj));
+        }
+        
+        private IEnumerator CreateGameObject(string key, GameObject parent, string posName)
+        {
+            var handle = key.Get<GameObject>();
+            if(!handle.IsDone)
+                yield return handle;
+
+            if (handle.Status != AsyncOperationStatus.Succeeded)
+            {
+                Debug.Log("Object is not valid");
+                Addressables.Release(handle);
+                yield break;
+            }
+            
+            _objectHandles.Add(handle);
             Transform parentTran = GameObjFinder.FindChildGameObject(parent, posName).transform;
-
-            GameObject prefab = Object.Instantiate(obj, parentTran, true);
+            GameObject prefab = Instantiate(handle.Result, parentTran, true);
             //prefab.transform.localScale = Vector3.one;
             prefab.transform.localPosition = Vector3.zero;
         }
-
+        
         #endregion
 
-        #region Tasks
-
-        private static async void LoadPossessionLicense(AssetReference recipe, string id)
+        public void ReleaseRecipe()
         {
-            PossessionLicenseRecipe pl = await recipe.Get<PossessionLicenseRecipe>().Task;
-            GameObject obj = await "Documents/I_PossessionLicense".Get<GameObject>().Task;
-            
-            CreatePossessionLicense(pl, obj, id);
-            Addressables.Release(pl);
-            Addressables.Release(obj);
+            if (_handles.Count > 0)
+            {
+                for(var i = _handles.Count - 1; i >= 0; --i)
+                {
+                    AsyncOperationHandle temp = _handles[i];
+                    Addressables.Release(temp);
+                    _handles.RemoveAt(i);
+                }
+                _handles.Clear();
+            }
+            else
+                Debug.Log("Nothing to release");
         }
 
-        private static async void LoadSpecialPermit(AssetReference recipe, string id)
+        public void ReleaseObject()
         {
-            SpecialPermitRecipe sp = await recipe.Get<SpecialPermitRecipe>().Task;
-            GameObject obj = await "Documents/I_SpecialPermit".Get<GameObject>().Task;
-            CreateSpecialPermit(sp, obj ,id);
-            Addressables.Release(sp);
-            Addressables.Release(obj);
+            if (_objectHandles.Count > 0)
+            {
+                for(var i = _objectHandles.Count - 1; i >= 0; --i)
+                {
+                    AsyncOperationHandle temp = _objectHandles[i];
+                    Addressables.Release(temp);
+                    _objectHandles.RemoveAt(i);
+                }
+                _objectHandles.Clear();
+            }
+            else
+                Debug.Log("Nothing to release");
         }
-        
-        private static async void LoadHealthCertificate(AssetReference recipe, string id)
-        {
-            HealthCertificateRecipe hc = await recipe.Get<HealthCertificateRecipe>().Task;
-            GameObject obj = await "Documents/I_HealthCertificate".Get<GameObject>().Task;
-            CreateHealthCertificate(hc, obj, id);
-            Addressables.Release(hc);
-            Addressables.Release(obj);
-        }
-        
-        private static async void LoadDealerLicense(AssetReference recipe, string id)
-        {
-            DealerLicenseRecipe dl = await recipe.Get<DealerLicenseRecipe>().Task;
-            GameObject obj = await "Documents/I_DealerLicense".Get<GameObject>().Task;
-            CreateDealerLicense(dl, obj, id);
-            Addressables.Release(dl);
-            Addressables.Release(obj);
-        }
-        
-        private static async void LoadGameObject(string name, GameObject parent, string posName)
-        {
-            GameObject obj = await name.Get<GameObject>().Task;
-            CreateGameObject(obj, parent, posName);
-            Addressables.Release(obj);
-        }
-
-        #endregion
 
         #region Content
 
-        private static void AddDealerLicenseContent(GameObject obj, List<DealerLicenseData> data, string id)
+        private void AddDealerLicenseContent(GameObject obj, List<DealerLicenseData> data, string id)
         {
             foreach (DealerLicenseData dealerLicenseData in data)
             {
@@ -201,7 +228,7 @@ namespace Game.Scripts.Factory
             }
         }
 
-        private static void AddHealthCertificateContent(GameObject obj, List<HealthCertificateData> data, string id)
+        private void AddHealthCertificateContent(GameObject obj, List<HealthCertificateData> data, string id)
         {
             foreach (HealthCertificateData healthCertificateData in data)
             {
@@ -230,7 +257,7 @@ namespace Game.Scripts.Factory
             }
         }
 
-        private static void AddPossessionLicenseContent(GameObject obj, List<PossessionLicenseData> data, string id)
+        private void AddPossessionLicenseContent(GameObject obj, List<PossessionLicenseData> data, string id)
         {
             foreach (PossessionLicenseData possessionLicenseData in data)
             {
@@ -239,7 +266,7 @@ namespace Game.Scripts.Factory
 
                 var licenseNumber = possessionLicenseData.licenseNumber;
                 var deadline = possessionLicenseData.deadline;
-                var name = possessionLicenseData.name;
+                var applicantName = possessionLicenseData.name;
                 var bId = possessionLicenseData.id;
                 var businessNumber = possessionLicenseData.businessNumber;
                 var animalName = possessionLicenseData.animalName;
@@ -255,7 +282,7 @@ namespace Game.Scripts.Factory
                 AddContentText(obj, "TM_Deadline", deadline.Count == 0 ? deadline[0] : deadline[index]);
 
                 index = Random.Range(0, possessionLicenseData.name.Count);
-                AddContentText(obj, "TM_Name", name.Count == 0 ? name[0] : name[index]);
+                AddContentText(obj, "TM_Name", applicantName.Count == 0 ? applicantName[0] : applicantName[index]);
 
                 index = Random.Range(0, possessionLicenseData.id.Count);
                 AddContentText(obj, "TM_ID", bId.Count == 0 ? bId[0] : bId[index]);
@@ -280,7 +307,7 @@ namespace Game.Scripts.Factory
             }
         }
 
-        private static void AddSpecialPermitContent(GameObject obj, List<SpecialPermitData> data, string id)
+        private void AddSpecialPermitContent(GameObject obj, List<SpecialPermitData> data, string id)
         {
             foreach (SpecialPermitData specialPermitData in data)
             {
@@ -324,13 +351,13 @@ namespace Game.Scripts.Factory
             }
         }
 
-        private static void AddContentText(GameObject obj, string objName, string name)
+        private void AddContentText(GameObject obj, string objName, string name)
         {
             GameObject temp = GameObjFinder.FindChildGameObject(obj, objName);
             temp.GetComponent<TextMeshPro>().text = name;
         }
 
-        private static void AddContentPrefab(GameObject obj, string pos, string name)
+        private void AddContentPrefab(GameObject obj, string pos, string name)
         {
             if (name == " ")
                 return;
@@ -339,10 +366,10 @@ namespace Game.Scripts.Factory
             if (posName == null)
                 return;
             
-            LoadGameObject($"Components/{name}", obj, posName);
+            StartCoroutine(CreateGameObject($"Components/{name}", obj, posName));
         }
 
-        private static void AddContentPrefabChoice(GameObject obj, string posName, string objName, bool isTick)
+        private void AddContentPrefabChoice(GameObject obj, string posName, string objName, bool isTick)
         {
             if(!isTick)
                 return;
@@ -350,7 +377,7 @@ namespace Game.Scripts.Factory
             AddContentPrefab(obj, posName, objName);
         }
         
-        private static string CheckPosition(string pos)
+        private string CheckPosition(string pos)
         {
             return pos switch
             {

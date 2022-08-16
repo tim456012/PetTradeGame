@@ -135,3 +135,10 @@ MonoBehaviour:
   - id: EAbF
     score: 1
     isWrongDocument: 1
+  animalGuide:
+  - {fileID: 21300000, guid: 24306c10c91dd52488900e75a656a65a, type: 3}
+  - {fileID: 21300000, guid: 5172658b946ae854586e66158773d675, type: 3}
+  - {fileID: 21300000, guid: 188186d1b4387c340b6758343f4ac39e, type: 3}
+  - {fileID: 21300000, guid: 9dc4444c5bb1ff546b128bf33b2aca15, type: 3}
+  - {fileID: 21300000, guid: 16acc6d73cbd2f344a259ece37cb5b7a, type: 3}
+  - {fileID: 21300000, guid: 6d45236fcb363d74094e2ef55b6acec4, type: 3}

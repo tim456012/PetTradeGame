@@ -45,6 +45,7 @@ namespace Game.Scripts.Controller
             if (!_isReadyFinish)
                 return;
             
+            
             StopProduceDocument?.Invoke(this, EventArgs.Empty);
             if (!(_timeThreshold >= WorldTimeThreshold))
             {
@@ -73,6 +74,9 @@ namespace Game.Scripts.Controller
 
             _time += Time.deltaTime;
             clock.UpdateTime(_time);
+            
+            //if(_time >= targetTime - 0.5f)
+                
         }
 
         private void FinishedCall()

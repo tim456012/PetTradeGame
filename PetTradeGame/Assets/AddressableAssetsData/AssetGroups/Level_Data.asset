@@ -25,6 +25,26 @@ MonoBehaviour:
     m_Address: Level Data/LevelData_Day2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ce16a778abe87df4e99c41e147d8070d
+    m_Address: Level Data/LevelData_Day3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d235a5e3ddd561f4bbfe0b7c3bc0c153
+    m_Address: Level Data/LevelData_Day4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 512b661e3fbd0234facf709b257a3e9a
+    m_Address: Level Data/LevelData_Day5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0f642ce7f74d6544d9853f57621309f6
+    m_Address: Level Data/LevelData_Day6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 093f7776ab6c32e4ba87ae3bfdc21371
+    m_Address: Level Data/LevelData_Day7
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
   m_SchemaSet:

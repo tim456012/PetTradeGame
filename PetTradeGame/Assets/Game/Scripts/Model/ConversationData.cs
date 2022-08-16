@@ -13,8 +13,9 @@ namespace Game.Scripts.Model
         public string description;
         public List<SpeakerData> speakerList = new List<SpeakerData>();
         
+        #if UNITY_EDITOR
         private static readonly Regex Regex = new Regex("(?:^|,)(\"(?:[^\"])*\"|[^,]*)", RegexOptions.Compiled);
-       
+        
         public void Load(string line)
         {
             var lines = new List<string>();
@@ -58,5 +59,6 @@ namespace Game.Scripts.Model
             }
             speakerList.Add(data);
         }
+        #endif
     }
 }

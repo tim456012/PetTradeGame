@@ -20,6 +20,7 @@ namespace Game.Scripts.Controller
         private readonly List<GameObject> _instances = new List<GameObject>();
         
         private List<FunctionalObjectsData> _objectList = new List<FunctionalObjectsData>();
+        private readonly Dictionary<string, Sprite> _animalGuideList = new Dictionary<string, Sprite>();
         private FactoryController _factoryController;
         private DragAndDropController _dragAndDropController;
         private GameObject _lastObj;
@@ -28,6 +29,7 @@ namespace Game.Scripts.Controller
         private int _index;
 
         public static event EventHandler<InfoEventArgs<int>> LicenseSubmittedEvent;
+        public static event EventHandler<InfoEventArgs<Sprite>> SetAnimalGuideEvent; 
 
         #endregion
 
@@ -84,6 +86,7 @@ namespace Game.Scripts.Controller
             }
             
             _instances.Clear();
+            _animalGuideList.Clear();
         }
         
         public void ReGenerateDocument()
@@ -288,6 +291,27 @@ namespace Game.Scripts.Controller
                 return;
             StopCoroutine(_reGenerateDocument);
             _reGenerateDocument = null;
+        }
+
+        public void InitAnimalGuide(List<Sprite> guide)
+        {
+            foreach (Sprite sprite in guide)
+            {
+                var spriteName = sprite.name;
+                _animalGuideList.Add(spriteName, sprite);
+            }
+        }
+        
+        public void GetAnimalGuide()
+        { 
+            var id = _factoryController.generatedID[..2];
+            if (!_animalGuideList.TryGetValue(id, out Sprite sprite))
+            {
+                Debug.Log($"No animal guide found: {id}");
+                return;
+            }
+            
+            SetAnimalGuideEvent?.Invoke(this, new InfoEventArgs<Sprite>(sprite));
         }
 
         #endregion

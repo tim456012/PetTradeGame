@@ -188,3 +188,14 @@ MonoBehaviour:
   - id: RVbF
     score: 1
     isWrongDocument: 1
+  animalGuide:
+  - {fileID: 21300000, guid: 79f94c7fada6bec45819b1ea8a281d01, type: 3}
+  - {fileID: 21300000, guid: eff3d4c454c2d2c40aed00efe53b35a3, type: 3}
+  - {fileID: 21300000, guid: a0c561cae9e90d643abc9262b3eb8fa2, type: 3}
+  - {fileID: 21300000, guid: a35a899e4001ded4996cb3eae20343e6, type: 3}
+  - {fileID: 21300000, guid: 5a42a9ad6d2a607468aeb05b8164472d, type: 3}
+  - {fileID: 21300000, guid: 4e277990f61400c45a6eb16aae591aa8, type: 3}
+  - {fileID: 21300000, guid: b74ae0ad0db5db046a923c92bb8d61e1, type: 3}
+  - {fileID: 21300000, guid: 9dc4444c5bb1ff546b128bf33b2aca15, type: 3}
+  - {fileID: 21300000, guid: 977ae31110e21b14fabf144203ce67f9, type: 3}
+  - {fileID: 21300000, guid: ffb6f212f049a9f478ad6cfeed552774, type: 3}

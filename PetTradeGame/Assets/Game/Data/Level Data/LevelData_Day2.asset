@@ -152,3 +152,11 @@ MonoBehaviour:
   - id: ALbF
     score: 1
     isWrongDocument: 1
+  animalGuide:
+  - {fileID: 21300000, guid: 08410ed2ee047034d85f0ac29e45f6c8, type: 3}
+  - {fileID: 21300000, guid: bd4af88f2ec1fbd4aa06fea6c46e9153, type: 3}
+  - {fileID: 21300000, guid: 24ac843a8b56ed841b403b8b27e518df, type: 3}
+  - {fileID: 21300000, guid: afba24d3965598d459c849fa5d1e923a, type: 3}
+  - {fileID: 21300000, guid: 1579197bdbb9f864ba3183ec3cd1cb25, type: 3}
+  - {fileID: 21300000, guid: 977ae31110e21b14fabf144203ce67f9, type: 3}
+  - {fileID: 21300000, guid: 7d6a6471ca924ec49884f181cd0a5610, type: 3}

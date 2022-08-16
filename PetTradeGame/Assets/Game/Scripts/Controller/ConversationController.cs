@@ -192,7 +192,8 @@ namespace Game.Scripts.Controller
                         if (playerResponse != null)
                         {
                             SpeakerData npcResponse = Array.Find(data, speaker => speaker.dialogueId.StartsWith($"R{_r}") && speaker.dialogueId.EndsWith($"N{_npc.ToString()}"));
-                            stack.Push(npcResponse);
+                            if (npcResponse != null)
+                                stack.Push(npcResponse);
                             _r = 0;
                         }
                         else
@@ -212,7 +213,7 @@ namespace Game.Scripts.Controller
             }
             else
             {
-                
+                //TODO: Finish asking dialogue
                 
                 var array = stack.ToArray();
                 Array.Reverse(array);

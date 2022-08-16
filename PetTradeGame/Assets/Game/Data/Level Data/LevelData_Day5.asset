@@ -188,3 +188,14 @@ MonoBehaviour:
   - id: OHbF
     score: 1
     isWrongDocument: 1
+  animalGuide:
+  - {fileID: 21300000, guid: dfcf106d89ebd7240b3c56d439747863, type: 3}
+  - {fileID: 21300000, guid: 551995a28db761b4d8771424c6063013, type: 3}
+  - {fileID: 21300000, guid: ef083aa3605454f44bb83f58b18c7e68, type: 3}
+  - {fileID: 21300000, guid: a6029e9fe735e164484165393062736c, type: 3}
+  - {fileID: 21300000, guid: b409b6dd1a1230945a6ce64a8e037fae, type: 3}
+  - {fileID: 21300000, guid: debb33883e7f8924790a8645f1f25835, type: 3}
+  - {fileID: 21300000, guid: 9618e08efbb1c5641b862e77878394fe, type: 3}
+  - {fileID: 21300000, guid: c026edf65d1fcdb4f8c01796ada3eb35, type: 3}
+  - {fileID: 21300000, guid: 44b5d5bacb44b5b4e970f5acf7e4d1ae, type: 3}
+  - {fileID: 21300000, guid: 3ceb0076c2b78ea408e49cd0a90ff9ab, type: 3}

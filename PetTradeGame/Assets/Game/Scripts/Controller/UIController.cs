@@ -85,6 +85,12 @@ namespace Game.Scripts.Controller
         {
             gamePlayPanel.IpadBtnSwitch(isDisable);
         }
+
+        public void SetAnimalGuide(Sprite sprite)
+        {
+            ipadViewPanel.animalGuide.sprite = sprite;
+            ipadViewPanel.animalGuideView.SetActive(true);
+        }
         
         //TODO: Setting UI
         /*public void OnBtnSettingClicked()

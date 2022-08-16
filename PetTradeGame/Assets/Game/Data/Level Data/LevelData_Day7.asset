@@ -188,3 +188,14 @@ MonoBehaviour:
   - id: AYbF
     score: 1
     isWrongDocument: 1
+  animalGuide:
+  - {fileID: 21300000, guid: 9ed4876c5d71c0544980c8e28a877d10, type: 3}
+  - {fileID: 21300000, guid: b74ae0ad0db5db046a923c92bb8d61e1, type: 3}
+  - {fileID: 21300000, guid: 6e239446bd8c78a40837cea2278a6d10, type: 3}
+  - {fileID: 21300000, guid: cfbdcf01056f267409a169b53a72f453, type: 3}
+  - {fileID: 21300000, guid: 313331f69d95f52499800d80f45a6eb3, type: 3}
+  - {fileID: 21300000, guid: 25828bd7befedb14aa7b9d634505767b, type: 3}
+  - {fileID: 21300000, guid: 6d45236fcb363d74094e2ef55b6acec4, type: 3}
+  - {fileID: 21300000, guid: 65662db2516e0c142ad1fb3a27ca433f, type: 3}
+  - {fileID: 21300000, guid: 81ce5328301871843aabcbafd7a46d4c, type: 3}
+  - {fileID: 21300000, guid: d9ff4bda891bd6c44a7423db4f1b8f84, type: 3}

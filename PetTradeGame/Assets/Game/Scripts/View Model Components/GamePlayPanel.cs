@@ -76,6 +76,7 @@ namespace Game.Scripts.View_Model_Components
         private IEnumerator DoShowButtonAnimation()
         {
             InputController.IsPause = true;
+            ShowIpadView?.Invoke(this, EventArgs.Empty);
 
             btnAnimalSearch.gameObject.SetActive(true);
             btnDocSearch.gameObject.SetActive(true);
@@ -92,7 +93,6 @@ namespace Game.Scripts.View_Model_Components
             _buttonAnimationRoutine.Stopped += (_, _) =>
             {
                 _isAnimate = false;
-                ShowIpadView?.Invoke(this, EventArgs.Empty);
             };
         }
 

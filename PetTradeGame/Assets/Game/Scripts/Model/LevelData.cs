@@ -19,6 +19,7 @@ namespace Game.Scripts.Model
         public List<RecipeData> documentRecipeData;
         public List<FunctionalObjectsData> functionalObjectsData;
         public List<ScoreData> scoreData;
+        public List<Sprite> animalGuide;
     }
 
     [Serializable]

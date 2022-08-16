@@ -164,3 +164,12 @@ MonoBehaviour:
   - id: FPbF
     score: 1
     isWrongDocument: 1
+  animalGuide:
+  - {fileID: 21300000, guid: 16acc6d73cbd2f344a259ece37cb5b7a, type: 3}
+  - {fileID: 21300000, guid: 1579197bdbb9f864ba3183ec3cd1cb25, type: 3}
+  - {fileID: 21300000, guid: 25828bd7befedb14aa7b9d634505767b, type: 3}
+  - {fileID: 21300000, guid: 598ae48919544a344bbde90d1ae0dc59, type: 3}
+  - {fileID: 21300000, guid: 258d66330e616cc4ca5c61311daebf4d, type: 3}
+  - {fileID: 21300000, guid: 50f7827d0915f284680580caefaa3cd6, type: 3}
+  - {fileID: 21300000, guid: 24ac843a8b56ed841b403b8b27e518df, type: 3}
+  - {fileID: 21300000, guid: 5033d1b066cefd048824add4f9512298, type: 3}

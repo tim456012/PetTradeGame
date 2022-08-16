@@ -17,7 +17,6 @@ namespace Game.Scripts.Level_State
         private ConversationController _conversationController;
         
         private bool _firstInit = true;
-
         
         protected override void Awake()
         {
@@ -42,6 +41,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
             GamePlayPanel.GamePause -= OnGamePauseEvent;
             GamePlayPanel.GameResume -= OnGameResumeEvent;
+
+            ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
         public override void Enter()
@@ -87,6 +88,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.HideIpadView += OnHideIpadViewEvent;
             GamePlayPanel.GamePause += OnGamePauseEvent;
             GamePlayPanel.GameResume += OnGameResumeEvent;
+            
+            ObjectController.SetAnimalGuideEvent += OnAnimalGuideEvent;
         }
 
         protected override void RemoveListeners()
@@ -102,6 +105,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
             GamePlayPanel.GamePause -= OnGamePauseEvent;
             GamePlayPanel.GameResume -= OnGameResumeEvent;
+            
+            ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
         private void Init()
@@ -110,6 +115,7 @@ namespace Game.Scripts.Level_State
             _gamePlayController.Init();
             _gamePlayController.SetTimer(Owner.stopTimer);
             _uiController.DisableIpadButton(false);
+            _objectController.InitAnimalGuide(Owner.LevelData.animalGuide);
         }
 
         private void LoadData()
@@ -121,6 +127,7 @@ namespace Game.Scripts.Level_State
         {
             yield return null;
             
+            _factoryController.ReleaseDocument();
             _factoryController.Release();
             _objectController.Release();
             _conversationController.Release();
@@ -151,7 +158,7 @@ namespace Game.Scripts.Level_State
                     continue;
                 _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
             }
-            _factoryController.Release();
+            _factoryController.ReleaseDocument();
             _gamePlayController.SetTimer(true);
             Owner.ChangeState<DialogueState>();
             
@@ -195,6 +202,11 @@ namespace Game.Scripts.Level_State
         private void OnGameResumeEvent(object sender, EventArgs e)
         {
             Debug.Log("Game Resumed");
+        }
+        
+        private void OnAnimalGuideEvent(object sender, InfoEventArgs<Sprite> e)
+        {
+            _uiController.SetAnimalGuide(e.info);
         }
 
         #endregion

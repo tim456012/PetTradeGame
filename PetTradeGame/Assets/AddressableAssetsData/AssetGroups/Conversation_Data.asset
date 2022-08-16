@@ -17,12 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 85c3d443b1af96842b69661cbc8a5660
   m_SerializeEntries:
-  - m_GUID: 838e8c5706053ae49b29db459d23bf12
-    m_Address: Conversations Data/Day1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e47758c45a6acc545a43eab3bbb40c2c
-    m_Address: Conversations Data/Day1_Middle
+  - m_GUID: 14e3ccad2be0fad479925ab66663175f
+    m_Address: Assets/Game/Data/Conversations
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

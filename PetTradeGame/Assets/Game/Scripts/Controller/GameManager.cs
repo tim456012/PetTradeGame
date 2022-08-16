@@ -19,15 +19,17 @@ namespace Game.Scripts.Controller
 
         private IEnumerator _changeLevelRoutine;
         private AsyncOperationHandle<LevelData> _levelDataHandle;
+        private bool _isInit;
         
         public LevelData LevelData { get; private set; }
         public int LevelCount { get; set; }
 
         private void Start()
         {
+            Application.targetFrameRate = 300;
             LevelCount = 1;
-            LoadFirstLevelData();
-            ChangeState<InitState>();
+            //LoadFirstLevelData();
+            ChangeLevel("Day1");
         }
         
         private void OnLoadLevelDataCompleted(AsyncOperationHandle<LevelData> data)
@@ -37,7 +39,7 @@ namespace Game.Scripts.Controller
                 case AsyncOperationStatus.Succeeded:
                     LevelData = data.Result;
                     Debug.Log(LevelData);
-                    Addressables.Release(data);
+                    //Addressables.Release(data);
                     break;
                 case AsyncOperationStatus.Failed:
                     break;
@@ -64,17 +66,25 @@ namespace Game.Scripts.Controller
             _levelDataHandle.Completed += OnLoadLevelDataCompleted;
             yield return _levelDataHandle;
 
-            if (GetState<InitState>() && debugMode)
+            if (!_isInit)
             {
-                GamePlayController.IsDebugMode = true;
-                UIController.IsDebugMode = true;
+                if (debugMode)
+                {
+                    GamePlayController.IsDebugMode = true;
+                    UIController.IsDebugMode = true;
+                }
+
+                _isInit = true;
+                ChangeState<InitState>();
             }
-
-            if (debugMode)
-                ChangeState<DialogueState>();
             else
-                ChangeState<CutSceneState>();
-
+            {
+                if (debugMode)
+                    ChangeState<DialogueState>();
+                else
+                    ChangeState<CutSceneState>();
+            }
+            
             StopCoroutine(_changeLevelRoutine);
         }
         
@@ -85,7 +95,9 @@ namespace Game.Scripts.Controller
                 Debug.LogError($"No level data found. \n Exception: {invalidKeyException}");
 
             levelDataHandle.Completed += OnLoadLevelDataCompleted;
-            Addressables.Release(levelDataHandle);
+            //Addressables.Release(levelDataHandle);
+            
+            ChangeState<InitState>();
         }
         
         public void ChangeLevel(string levelName)
