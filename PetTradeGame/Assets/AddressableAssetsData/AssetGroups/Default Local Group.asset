@@ -105,6 +105,66 @@ MonoBehaviour:
     m_Address: Components/I_Tick
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 234bd5f2e3665fc46874f4f0859ee6c1
+    m_Address: Assets/Game/Textures/Videos/Day6.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b5986ab93ee7b9542a145f124e3ff454
+    m_Address: Assets/Game/Textures/Videos/Intro.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 16a547f31444dba459a066d8f417b6e0
+    m_Address: Assets/Game/Textures/Videos/Day5_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 26748a9271f84b846a922b8b7053c1c0
+    m_Address: Assets/Game/Textures/Videos/Day2_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 084672870f922f645a03b7ad603fb9a9
+    m_Address: Assets/Game/Textures/Videos/Day4_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8797c5fbf3be7e47a3ecf44b6a5530f
+    m_Address: Assets/Game/Textures/Videos/Day1_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c8a65c7ae4c743749a1ff85c381d67db
+    m_Address: Assets/Game/Textures/Videos/Day1.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 69a68ee3c30dd8146b8ce42219d63131
+    m_Address: Assets/Game/Textures/Videos/Day7_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aab6e424bacad39409482e68240431e6
+    m_Address: Assets/Game/Textures/Videos/Day3.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1b9526210c8453f48ab43005a79580f4
+    m_Address: Assets/Game/Textures/Videos/Day2.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cd766f3264356c4da1c0adb39e4541d
+    m_Address: Assets/Game/Textures/Videos/Day3_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6c706503d03613f4584c2c7859704dbe
+    m_Address: Assets/Game/Textures/Videos/Day6_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6d5e6469b6e0bee4db20020421ffad1a
+    m_Address: Assets/Game/Textures/Videos/Day7.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ede671fbc2c9e764491466c30c764705
+    m_Address: Assets/Game/Textures/Videos/Day4.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5e457a95545db974b95f94f52821005e
+    m_Address: Assets/Game/Textures/Videos/Day5.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 707b2e3b6ebfe9d4885a659de5c0d30e, type: 2}
   m_SchemaSet:

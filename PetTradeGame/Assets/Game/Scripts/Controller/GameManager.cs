@@ -26,7 +26,7 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            Application.targetFrameRate = 300;
+            Application.targetFrameRate = 120;
             LevelCount = 1;
             //LoadFirstLevelData();
             ChangeLevel("Day1");
@@ -105,5 +105,18 @@ namespace Game.Scripts.Controller
             _changeLevelRoutine = ChangeLevelData(levelName);
             StartCoroutine(_changeLevelRoutine);
         }
+        
+        /*private void OnApplicationFocus(bool hasFocus)
+        {
+            Debug.Log("Hello");
+        }*/
+
+        #if UNITY_ANDROID
+        
+        #endif
+        
+        #if UNITY_IOS
+
+        #endif
     }
 }

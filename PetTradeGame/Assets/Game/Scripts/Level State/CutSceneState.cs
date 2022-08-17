@@ -2,6 +2,7 @@
 using System.Collections;
 using System.IO;
 using Game.Scripts.Controller;
+using Game.Scripts.Tools;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -14,6 +15,7 @@ namespace Game.Scripts.Level_State
         private int _currentVideoIndex;
         private CutsceneController _cutsceneController;
         private IEnumerator _loadCutsceneRoutine;
+        private AsyncOperationHandle _videoHandle;
         private string[] _videoList;
 
         protected override void Awake()
@@ -68,6 +70,7 @@ namespace Game.Scripts.Level_State
 
         private void OnCompleteVideoPlaying(object sender, EventArgs e)
         {
+            Addressables.Release(_videoHandle);
             _currentVideoIndex++;
             if (_videoList.Length > _currentVideoIndex)
             {
@@ -82,33 +85,28 @@ namespace Game.Scripts.Level_State
             _videoList = null;
             Owner.ChangeState<DialogueState>();
         }
-
+        
         private IEnumerator LoadVideoData(string addressPath)
         {
-            Debug.Log(addressPath);
-            var video = Addressables.LoadAssetAsync<TextAsset>($"Assets/Game/Data/Video Data/{addressPath}.bytes");
-            yield return null;
+            var path = $"Assets/Game/Textures/Videos/{addressPath}.mp4";
+            Debug.Log(path);
+            
+            var handle = path.Get<VideoClip>();
+            if (!handle.IsDone)
+                yield return handle;
 
-            video.Completed += data =>
+            if (handle.Status != AsyncOperationStatus.Succeeded)
             {
-                if (data.Status is AsyncOperationStatus.Failed or AsyncOperationStatus.None)
-                {
-                    Debug.LogError("Video not found");
-                    return;
-                }
+                Debug.LogError("Video not found");
+                Addressables.Release(handle);
+                yield break;
+            }
 
-                TextAsset textAsset = video.Result;
-                if (!Directory.Exists(Application.persistentDataPath + "/Video Data/"))
-                    Directory.CreateDirectory(Application.persistentDataPath + "/Video Data/");
-                File.WriteAllBytes(Path.Combine(Application.persistentDataPath + "/Video Data/", $"{addressPath}.mp4"), textAsset.bytes);
-
-                var url = Application.persistentDataPath + $"/Video Data/{addressPath}.mp4";
-                Debug.Log(url);
-                _cutsceneController.GetComponent<VideoPlayer>().url = url;
-                Addressables.Release(video);
-            };
+            VideoClip video = handle.Result;
+            _videoHandle = handle;
+            _cutsceneController.GetComponent<VideoPlayer>().clip = video;
             yield return null;
-
+            
             _cutsceneController.PlayCutScene();
         }
     }
