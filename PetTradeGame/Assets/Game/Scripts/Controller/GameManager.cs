@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.IO;
 using Game.Scripts.Common.State_Machine;
 using Game.Scripts.Level_State;
 using Game.Scripts.Model;
@@ -26,7 +27,7 @@ namespace Game.Scripts.Controller
 
         private void Start()
         {
-            Application.targetFrameRate = 120;
+            Application.targetFrameRate = 300;
             LevelCount = 1;
             //LoadFirstLevelData();
             ChangeLevel("Day1");
@@ -88,35 +89,38 @@ namespace Game.Scripts.Controller
             StopCoroutine(_changeLevelRoutine);
         }
         
-        private void LoadFirstLevelData()
-        {
-            var levelDataHandle = Addressables.LoadAssetAsync<LevelData>("Level Data/LevelData_Day1");
-            if (levelDataHandle.OperationException is InvalidKeyException invalidKeyException)
-                Debug.LogError($"No level data found. \n Exception: {invalidKeyException}");
-
-            levelDataHandle.Completed += OnLoadLevelDataCompleted;
-            //Addressables.Release(levelDataHandle);
-            
-            ChangeState<InitState>();
-        }
-        
         public void ChangeLevel(string levelName)
         {
             _changeLevelRoutine = ChangeLevelData(levelName);
             StartCoroutine(_changeLevelRoutine);
         }
-        
-        /*private void OnApplicationFocus(bool hasFocus)
+
+        public void ClearGameData()
         {
-            Debug.Log("Hello");
-        }*/
+            Debug.Log("Start Clearing Data");
+            var path = Application.persistentDataPath + "/Video Data/";
+            if (Directory.Exists(path))
+            {
+                var directoryInfo = new DirectoryInfo(path);
+                foreach (FileInfo file in directoryInfo.GetFiles())
+                {
+                    file.Delete();
+                }
 
-        #if UNITY_ANDROID
-        
-        #endif
-        
-        #if UNITY_IOS
+                Directory.Delete(path);
+            }
 
-        #endif
+            path = Application.persistentDataPath + "/Save Data/";
+            if (Directory.Exists(path))
+            {
+                var dir = new DirectoryInfo(path);
+                foreach (FileInfo file in dir.GetFiles())
+                {
+                    file.Delete();
+                }
+            }
+            
+            Debug.Log("Clearing Data Complete");
+        }
     }
 }

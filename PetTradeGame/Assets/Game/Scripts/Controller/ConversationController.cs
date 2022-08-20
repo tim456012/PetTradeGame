@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Game.Scripts.Common.Animation;
 using Game.Scripts.Model;
 using Game.Scripts.View_Model_Components;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
@@ -30,7 +28,7 @@ namespace Game.Scripts.Controller
         private Tweener _transition;
         private SpeakerData[] _globalDialogue, _levelSpeakers;
         
-        private int _r, _a, _pr, _npc = 1;
+        private int _r, _pr, _npc = 1;
 
         public static event EventHandler CompleteEvent;
 
@@ -53,9 +51,9 @@ namespace Game.Scripts.Controller
             }
         }
         
-        public void StartConversation()
+        public void StartConversation(bool isCompliant = false)
         {
-            var list = SplitArray(_levelSpeakers);
+            var list = SplitArray(_levelSpeakers, isCompliant);
             Show(list);
         }
         
@@ -166,11 +164,10 @@ namespace Game.Scripts.Controller
             _levelSpeakers = speakerList.ToArray();
         }
         
-        private SpeakerData[] SplitArray(SpeakerData[] data, bool makeAskingList = false)
+        private SpeakerData[] SplitArray(SpeakerData[] data, bool makeComplaintList)
         {
             var stack = new Stack<SpeakerData>();
-
-            if (!makeAskingList)
+            if (!makeComplaintList)
             {
                 //Add first player dialogue as default
                 stack.Push(_globalDialogue[0]);
@@ -211,20 +208,29 @@ namespace Game.Scripts.Controller
                 stack.Clear();
                 return array;
             }
-            else
+            
+            //TODO: Finish asking dialogue
+            var num = _npc - 1;
+            SpeakerData ask = Array.Find(data, speaker => speaker.dialogueId.StartsWith($"A0") && speaker.dialogueId.EndsWith($"N{num.ToString()}"));
+            if (ask != null)
             {
-                //TODO: Finish asking dialogue
-                
+                stack.Push(ask);
+                var p = Random.Range(2, 6);
+                SpeakerData response = Array.Find(_globalDialogue, speaker => speaker.dialogueId.EndsWith($"P{p}"));
+                stack.Push(response);
+                    
                 var array = stack.ToArray();
                 Array.Reverse(array);
                 return array;
             }
+                
+            Debug.Log("No ask dialogue found");
+            return null;
         }
         
         public void Release()
         {
             _r = 0;
-            _a = 0;
             _pr = 0;
             _npc = 1;
         }

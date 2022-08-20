@@ -16,7 +16,7 @@ namespace Game.Scripts.Level_State
         private UIController _uiController;
         private ConversationController _conversationController;
         
-        private bool _firstInit = true;
+        private bool _isCompliant, _firstInit = true;
         
         protected override void Awake()
         {
@@ -36,12 +36,16 @@ namespace Game.Scripts.Level_State
             
             GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
             GamePlayController.StopProduceDocument -= StopProduceDocument;
+            GamePlayController.StartCompliantEvent -= OnStartCompliant;
             
             GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
             GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
             GamePlayPanel.GamePause -= OnGamePauseEvent;
             GamePlayPanel.GameResume -= OnGameResumeEvent;
-
+            GamePlayPanel.ClearData -= OnClearDataEvent;
+            GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
+            GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
+            
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
@@ -62,11 +66,19 @@ namespace Game.Scripts.Level_State
                 _objectController.InitFunctionalObject(functionObjectDataList);
                 _firstInit = false;
             }
+            else if(_isCompliant)
+            {
+                _gamePlayController.SetTimer(false);
+                _isCompliant = false;
+                InputController.IsPause = false;
+            }
             else
             {
+                _gamePlayController.HasCompliant(false);
                 _gamePlayController.SetTimer(false);
                 _objectController.ReGenerateDocument();
             }
+            
             Debug.Log("Entering playing state");
         }
 
@@ -83,11 +95,15 @@ namespace Game.Scripts.Level_State
             
             GamePlayController.GameFinishEvent += OnLevelFinishEvent;
             GamePlayController.StopProduceDocument += StopProduceDocument;
-
+            GamePlayController.StartCompliantEvent += OnStartCompliant;
+            
             GamePlayPanel.ShowIpadView += OnShowIpadViewEvent;
             GamePlayPanel.HideIpadView += OnHideIpadViewEvent;
             GamePlayPanel.GamePause += OnGamePauseEvent;
             GamePlayPanel.GameResume += OnGameResumeEvent;
+            GamePlayPanel.ClearData += OnClearDataEvent;
+            GamePlayPanel.ScaleUpDoc += OnScaleDocumentUpEvent;
+            GamePlayPanel.ScaleDownDoc += OnScaleDocumentDownEvent;
             
             ObjectController.SetAnimalGuideEvent += OnAnimalGuideEvent;
         }
@@ -100,11 +116,15 @@ namespace Game.Scripts.Level_State
             
             GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
             GamePlayController.StopProduceDocument -= StopProduceDocument;
+            GamePlayController.StartCompliantEvent -= OnStartCompliant;
             
             GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
             GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
             GamePlayPanel.GamePause -= OnGamePauseEvent;
             GamePlayPanel.GameResume -= OnGameResumeEvent;
+            GamePlayPanel.ClearData -= OnClearDataEvent;
+            GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
+            GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
             
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
@@ -159,7 +179,10 @@ namespace Game.Scripts.Level_State
                 _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
             }
             _factoryController.ReleaseDocument();
+            
             _gamePlayController.SetTimer(true);
+            _uiController.HideGameplayPanel();
+            _conversationController.StartConversation();
             Owner.ChangeState<DialogueState>();
             
             _objectController.ReGenerateLicense();
@@ -196,17 +219,45 @@ namespace Game.Scripts.Level_State
         
         private void OnGamePauseEvent(object sender, EventArgs e)
         {
-            Debug.Log("Game Paused");
+            _gamePlayController.SetTimer(true);
+            _uiController.OnBtnSettingClicked();
         }
         
         private void OnGameResumeEvent(object sender, EventArgs e)
         {
-            Debug.Log("Game Resumed");
+            _gamePlayController.SetTimer(false);
+            _uiController.OnBtnResumeClicked();
         }
         
         private void OnAnimalGuideEvent(object sender, InfoEventArgs<Sprite> e)
         {
             _uiController.SetAnimalGuide(e.info);
+        }
+
+        private void OnClearDataEvent(object sender, EventArgs e)
+        {
+            Owner.ClearGameData();
+            _uiController.OnBtnSettingClicked();
+        }
+
+        private void OnScaleDocumentUpEvent(object sender, EventArgs e)
+        {
+            _objectController.ScaleDocument();
+        }
+
+        private void OnScaleDocumentDownEvent(object sender, EventArgs e)
+        {
+            _objectController.ScaleDocument();
+        }
+
+        private void OnStartCompliant(object sender, EventArgs e)
+        {
+            InputController.IsPause = true;
+            InputController.IsDragActive = false;
+            _isCompliant = true;
+            _uiController.HideGameplayPanel();
+            Owner.ChangeState<DialogueState>();
+            _conversationController.StartConversation(true);
         }
 
         #endregion

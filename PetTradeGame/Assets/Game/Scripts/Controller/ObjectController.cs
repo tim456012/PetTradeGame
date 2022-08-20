@@ -256,10 +256,9 @@ namespace Game.Scripts.Controller
         public void ScaleDocument()
         {
             GameObject obj = _dragAndDropController.LastObj;
-            if (obj == null)
+            if (obj == null || !obj.GetComponent<EntityAttribute>().isDocument)
                 return;
-            if (!obj.GetComponent<EntityAttribute>().isDocument)
-                return;
+
             if (_lastObj == null)
                 _lastObj = obj;
 
@@ -313,7 +312,6 @@ namespace Game.Scripts.Controller
             
             SetAnimalGuideEvent?.Invoke(this, new InfoEventArgs<Sprite>(sprite));
         }
-
         #endregion
     }
 }

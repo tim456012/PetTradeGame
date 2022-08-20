@@ -11,8 +11,9 @@ namespace Game.Scripts.Controller
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
         [SerializeField] private IpadViewPanel ipadViewPanel;
+        [SerializeField] private SettingPanel settingPanel;
         [SerializeField] private EndGamePanel endGamePanel;
-
+        
         private Canvas _canvas;
 
         public static event EventHandler StartGameEvent;
@@ -53,6 +54,11 @@ namespace Game.Scripts.Controller
         {
             gamePlayPanel.gameObject.SetActive(true);
         }
+        
+        public void HideGameplayPanel()
+        {
+            gamePlayPanel.gameObject.SetActive(false);
+        }
 
         public void ShowEndGamePanel()
         {
@@ -73,6 +79,7 @@ namespace Game.Scripts.Controller
         
         public void ShowIpadViewPanel()
         {
+            //gamePlayPanel.btn
             ipadViewPanel.gameObject.SetActive(true);
         }
         
@@ -93,15 +100,22 @@ namespace Game.Scripts.Controller
         }
         
         //TODO: Setting UI
-        /*public void OnBtnSettingClicked()
+        public void OnBtnSettingClicked()
         {
+            settingPanel.gameObject.SetActive(true);
+            if(settingPanel.confirmView.activeSelf)
+                settingPanel.confirmView.SetActive(false);
             
+            settingPanel.settingView.SetActive(true);
         }
 
-        public void OnBtnCancelClicked()
+        public void OnBtnResumeClicked()
         {
-            
-        }*/
+            settingPanel.confirmView.SetActive(false);
+            settingPanel.gameObject.SetActive(false);
+        }
+        
+        //TODO: Frame rate setting
 
         #endregion
     }

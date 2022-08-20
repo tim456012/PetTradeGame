@@ -36,16 +36,12 @@ namespace Game.Scripts.Level_State
             base.Enter();
             Debug.Log("Enter dialogue state");
 
-            if (_firstInit)
-            {
-                _conversationController.LoadGlobalDialogue(Owner.globalDialogue.speakerList);
-                LoadConversationData();
-                _firstInit = false;
-            }
-            else
-            {
-                _conversationController.StartConversation();
-            }
+            if (!_firstInit) 
+                return;
+            
+            _conversationController.LoadGlobalDialogue(Owner.globalDialogue.speakerList);
+            LoadConversationData();
+            _firstInit = false;
         }
 
         public override void Exit()

@@ -9,18 +9,16 @@ namespace Game.Scripts.Controller
         private const float WorldTimeThreshold = 1.3f;
 
         public static bool IsDebugMode;
-
+        
         [SerializeField] private Clock clock;
         [SerializeField] private float targetTime = 360f;
         [SerializeField] private float debugTargetTime = 20f;
-        private bool _isTimerStop, _isReadyFinish;
+        private bool _isTimerStop, _isReadyFinish, _isAlreadyCompliant;
 
         private int _score, _correctDocuments, _wrongDocuments;
-        private float _time, _timeThreshold;
+        private float _time, _timeThreshold, _npcTime;
         
-        public static event EventHandler GameFinishEvent;
-        public static event EventHandler StopProduceDocument;
-        public static event EventHandler ClearConversationEvent;
+        public static event EventHandler GameFinishEvent, StopProduceDocument, ClearConversationEvent, StartCompliantEvent;
 
         private void Awake()
         {
@@ -39,8 +37,11 @@ namespace Game.Scripts.Controller
 
         private void Update()
         {
-            if (!_isTimerStop) 
+            if (!_isTimerStop)
+            {
                 UpdateTime();
+                RecordNpcTime();
+            }
 
             if (!_isReadyFinish)
                 return;
@@ -71,18 +72,32 @@ namespace Game.Scripts.Controller
                     FinishedCall();
                     return;
             }
-
+            
             _time += Time.deltaTime;
             clock.UpdateTime(_time);
-            
-            //if(_time >= targetTime - 0.5f)
-                
         }
 
         private void FinishedCall()
         {
             _isReadyFinish = true;
             _isTimerStop = true;
+        }
+
+        private void RecordNpcTime()
+        {
+            if (!(_npcTime >= 10f))
+            {
+                if(_isAlreadyCompliant)
+                    return;
+
+                _npcTime += Time.deltaTime;
+                return;
+            }
+
+            _npcTime = 0;
+            _isTimerStop = true;
+            _isAlreadyCompliant = true;
+            StartCompliantEvent?.Invoke(this, EventArgs.Empty);
         }
 
         public void CalculateScore(int index, int score, bool isWrongDoc)
@@ -124,6 +139,11 @@ namespace Game.Scripts.Controller
             _isTimerStop = isStop;
         }
 
+        public void HasCompliant(bool hasComplaint)
+        {
+            _isAlreadyCompliant = hasComplaint;
+        }
+        
         public int GetScore()
         {
             return _score;

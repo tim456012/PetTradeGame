@@ -14,7 +14,7 @@ namespace Game.Scripts.Controller
         {
             if (IsPause)
                 return;
-
+            
             if (Input.GetMouseButtonDown(0) || Input.touchCount > 0)
                 _isHolding = true;
 
