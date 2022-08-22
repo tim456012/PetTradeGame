@@ -1,4 +1,5 @@
 using System;
+using Game.Scripts.EventArguments;
 using Game.Scripts.Objects;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Game.Scripts.Controller
         private float _time, _timeThreshold, _npcTime;
         
         public static event EventHandler GameFinishEvent, StopProduceDocument, ClearConversationEvent, StartCompliantEvent;
+        public static event EventHandler<InfoEventArgs<Vector3>> ForceDropEvent;
 
         private void Awake()
         {
@@ -85,7 +87,7 @@ namespace Game.Scripts.Controller
 
         private void RecordNpcTime()
         {
-            if (!(_npcTime >= 10f))
+            if (!(_npcTime >= 40f))
             {
                 if(_isAlreadyCompliant)
                     return;
@@ -97,6 +99,7 @@ namespace Game.Scripts.Controller
             _npcTime = 0;
             _isTimerStop = true;
             _isAlreadyCompliant = true;
+            ForceDropEvent?.Invoke(this, new InfoEventArgs<Vector3>(Vector3.zero));
             StartCompliantEvent?.Invoke(this, EventArgs.Empty);
         }
 

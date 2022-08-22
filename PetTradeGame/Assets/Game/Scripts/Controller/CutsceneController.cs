@@ -1,17 +1,20 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 
 namespace Game.Scripts.Controller
 {
     public class CutsceneController : MonoBehaviour
     {
+        public Button btnSkipVideo;
+        
         //private AudioSource _audioSource;
         private Canvas _canvas;
         private MonoRoutine _routine;
         private VideoPlayer _videoPlayer;
-
+        
         private void Start()
         {
             _videoPlayer = GetComponent<VideoPlayer>();
@@ -71,10 +74,14 @@ namespace Game.Scripts.Controller
             {
                 Debug.Log($"Video Time : {Mathf.FloorToInt((float)vp.time)}");
                 yield return null;
+                
+                btnSkipVideo.onClick.AddListener(delegate
+                {
+                    _routine.Stop();
+                });
             }
 
             Debug.Log("Video is finished");
-
             vp.errorReceived += (player, message) =>
             {
                 Debug.Log($"Error received : {message}");
@@ -83,6 +90,7 @@ namespace Game.Scripts.Controller
 
         private void OnRoutineStarted(object sender, EventArgs e)
         {
+            btnSkipVideo.gameObject.SetActive(true);
             if (_videoPlayer.url != null)
                 return;
 
@@ -94,7 +102,8 @@ namespace Game.Scripts.Controller
         {
             _videoPlayer.Stop();
             _videoPlayer.enabled = false;
-
+            
+            btnSkipVideo.gameObject.SetActive(false);
             _canvas.gameObject.SetActive(false);
             _routine.Stop();
             CompleteEvent?.Invoke(this, EventArgs.Empty);

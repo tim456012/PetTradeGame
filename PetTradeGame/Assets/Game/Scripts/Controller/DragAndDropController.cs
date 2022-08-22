@@ -21,6 +21,8 @@ namespace Game.Scripts.Controller
             InputController.ClickedEvent += OnClickedEvent;
             InputController.DraggingEvent += OnDragEvent;
             InputController.DroppingEvent += OnDropEvent;
+            
+            GamePlayController.ForceDropEvent += OnDropEvent;
         }
 
         private void OnDisable()
@@ -28,12 +30,16 @@ namespace Game.Scripts.Controller
             InputController.ClickedEvent -= OnClickedEvent;
             InputController.DraggingEvent -= OnDragEvent;
             InputController.DroppingEvent -= OnDropEvent;
+            
+            GamePlayController.ForceDropEvent -= OnDropEvent;
         }
 
         private void OnClickedEvent(object sender, InfoEventArgs<Vector3> e)
         {
             //Debug.Log($"Click Event invoke.");
-
+            if(InputController.IsPause)
+                return;
+            
             _screenPos = new Vector2(e.info.x, e.info.y);
             _gameWorldPos = Camera.main!.ScreenToWorldPoint(_screenPos);
 

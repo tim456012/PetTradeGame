@@ -63,7 +63,7 @@ namespace Game.Scripts.Level_State
                 var functionObjectDataList = Owner.LevelData.functionalObjectsData;
 
                 _factoryController.InitFactory(recipeDataList, scoreDataList);
-                _objectController.InitFunctionalObject(functionObjectDataList);
+                StartCoroutine(_objectController.InitFunctionalObject(functionObjectDataList));
                 _firstInit = false;
             }
             else if(_isCompliant)
@@ -85,6 +85,7 @@ namespace Game.Scripts.Level_State
         public override void Exit()
         {
             base.Exit();
+            Owner.world.SetActive(false);
         }
 
         protected override void AddListeners()
@@ -185,7 +186,7 @@ namespace Game.Scripts.Level_State
             _conversationController.StartConversation();
             Owner.ChangeState<DialogueState>();
             
-            _objectController.ReGenerateLicense();
+            StartCoroutine(_objectController.ReGenerateLicense());
         }
 
         private void OnLevelFinishEvent(object sender, EventArgs e)
@@ -252,8 +253,9 @@ namespace Game.Scripts.Level_State
 
         private void OnStartCompliant(object sender, EventArgs e)
         {
-            InputController.IsPause = true;
             InputController.IsDragActive = false;
+            InputController.IsPause = true;
+            
             _isCompliant = true;
             _uiController.HideGameplayPanel();
             Owner.ChangeState<DialogueState>();

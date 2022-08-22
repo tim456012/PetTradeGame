@@ -35,6 +35,7 @@ namespace Game.Scripts.Level_State
         {
             base.Enter();
             Debug.Log("Enter dialogue state");
+            Owner.world.SetActive(true);
 
             if (!_firstInit) 
                 return;

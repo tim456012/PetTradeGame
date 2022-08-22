@@ -17,64 +17,64 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: b1f85cd5e04248a4999bc31afcead930
   m_SerializeEntries:
-  - m_GUID: 5e457a95545db974b95f94f52821005e
+  - m_GUID: 16a547f31444dba459a066d8f417b6e0
     m_Address: Assets/Game/Textures/Videos/Day5.mp4
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ede671fbc2c9e764491466c30c764705
-    m_Address: Assets/Game/Textures/Videos/Day4.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6d5e6469b6e0bee4db20020421ffad1a
-    m_Address: Assets/Game/Textures/Videos/Day7.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 6c706503d03613f4584c2c7859704dbe
-    m_Address: Assets/Game/Textures/Videos/Day6_Second.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 4cd766f3264356c4da1c0adb39e4541d
-    m_Address: Assets/Game/Textures/Videos/Day3_Second.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 1b9526210c8453f48ab43005a79580f4
+  - m_GUID: 26748a9271f84b846a922b8b7053c1c0
     m_Address: Assets/Game/Textures/Videos/Day2.mp4
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: aab6e424bacad39409482e68240431e6
-    m_Address: Assets/Game/Textures/Videos/Day3.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 69a68ee3c30dd8146b8ce42219d63131
-    m_Address: Assets/Game/Textures/Videos/Day7_Second.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: c8a65c7ae4c743749a1ff85c381d67db
-    m_Address: Assets/Game/Textures/Videos/Day1.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a8797c5fbf3be7e47a3ecf44b6a5530f
-    m_Address: Assets/Game/Textures/Videos/Day1_Second.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 084672870f922f645a03b7ad603fb9a9
-    m_Address: Assets/Game/Textures/Videos/Day4_Second.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 26748a9271f84b846a922b8b7053c1c0
-    m_Address: Assets/Game/Textures/Videos/Day2_Second.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 16a547f31444dba459a066d8f417b6e0
-    m_Address: Assets/Game/Textures/Videos/Day5_Second.mp4
+    m_Address: Assets/Game/Textures/Videos/Day4.mp4
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b5986ab93ee7b9542a145f124e3ff454
     m_Address: Assets/Game/Textures/Videos/Intro.mp4
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 234bd5f2e3665fc46874f4f0859ee6c1
+  - m_GUID: 69a68ee3c30dd8146b8ce42219d63131
+    m_Address: Assets/Game/Textures/Videos/Day7.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cd766f3264356c4da1c0adb39e4541d
+    m_Address: Assets/Game/Textures/Videos/Day3.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6c706503d03613f4584c2c7859704dbe
     m_Address: Assets/Game/Textures/Videos/Day6.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a8797c5fbf3be7e47a3ecf44b6a5530f
+    m_Address: Assets/Game/Textures/Videos/Day1.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f0879c164ab1d473aab666cfea0bbb93
+    m_Address: Assets/Game/Textures/Videos/Day5_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a276778b1e312446f88fcb910ef136a7
+    m_Address: Assets/Game/Textures/Videos/Day2_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d789f759227b248b6bad4c0a182f3023
+    m_Address: Assets/Game/Textures/Videos/Day4_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7c45148889fa4b3caad93c22968c48b
+    m_Address: Assets/Game/Textures/Videos/Day3_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e7a7d5bd75f754ca9a9f503b2daf9e4f
+    m_Address: Assets/Game/Textures/Videos/Day7_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cb3f9ab54216b4426ad32c6d0a05010e
+    m_Address: Assets/Game/Textures/Videos/Day1_Second.mp4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dcc27cf655a024ab3a90058b9434670d
+    m_Address: Assets/Game/Textures/Videos/Day6_Second.mp4
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

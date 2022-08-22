@@ -10,6 +10,7 @@ using Game.Scripts.View_Model_Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Game.Scripts.Controller
 {
@@ -17,10 +18,11 @@ namespace Game.Scripts.Controller
     {
         #region Field
 
+        private readonly List<AsyncOperationHandle> _handles = new List<AsyncOperationHandle>();
         private readonly List<GameObject> _instances = new List<GameObject>();
-        
-        private List<FunctionalObjectsData> _objectList = new List<FunctionalObjectsData>();
         private readonly Dictionary<string, Sprite> _animalGuideList = new Dictionary<string, Sprite>();
+
+        private List<FunctionalObjectsData> _objectList = new List<FunctionalObjectsData>();
         private FactoryController _factoryController;
         private DragAndDropController _dragAndDropController;
         private GameObject _lastObj;
@@ -43,27 +45,38 @@ namespace Game.Scripts.Controller
             enabled = false;
         }
 
-        public async void InitFunctionalObject(List<FunctionalObjectsData> objectList)
+        public IEnumerator InitFunctionalObject(List<FunctionalObjectsData> objectList)
         {
             if (_isEnd)
                 _isEnd = false;
             
             if (objectList == null)
-                return;
+                yield break;
 
             _objectList = objectList;
             foreach (FunctionalObjectsData data in objectList)
             {
-                GameObject prefabAsset = await data.prefab.LoadAssetAsync<GameObject>().Task;
+                var handle = data.prefab.Get<GameObject>();
+                if (!handle.IsDone)
+                    yield return handle;
+
+                if (handle.Status != AsyncOperationStatus.Succeeded)
+                {
+                    Debug.LogError($"{data.prefab.SubObjectName} is not valid");
+                    Addressables.Release(handle);
+                    continue;
+                }
+
+                GameObject asset = handle.Result;
+                _handles.Add(handle);
                 Transform p = GameObjFinder.FindChildGameObject(gameObject, data.spawnPosition).transform;
 
                 Vector3 position = p.position;
-                prefabAsset.transform.localPosition = position;
+                asset.transform.localPosition = position;
                 
-                GameObject obj = Instantiate(prefabAsset, position, Quaternion.identity);
+                GameObject obj = Instantiate(asset, position, Quaternion.identity);
                 _instances.Add(obj);
                 obj.SetActive(true);
-                Addressables.Release(prefabAsset);
             }
         }
 
@@ -78,6 +91,12 @@ namespace Game.Scripts.Controller
         {
             _index = 0;
             _isNotReady = false;
+
+            foreach (AsyncOperationHandle handle in _handles)
+            {
+                if(handle.IsValid())
+                    Addressables.Release(handle);
+            }
             
             for (var i = _instances.Count - 1; i >= 0; --i)
             {
@@ -86,24 +105,37 @@ namespace Game.Scripts.Controller
             }
             
             _instances.Clear();
+            _handles.Clear();
             _animalGuideList.Clear();
         }
         
         public void ReGenerateDocument()
         {
-            _reGenerateDocument = GenerateDocuments();
-            StartCoroutine(_reGenerateDocument);
-            _reGenerateDocument = null;
+            //_reGenerateDocument = GenerateDocuments();
+            StartCoroutine(GenerateDocuments());
+            //_reGenerateDocument = null;
         }
 
-        public async void ReGenerateLicense()
+        public IEnumerator ReGenerateLicense()
         {
             foreach (FunctionalObjectsData data in _objectList)
             {
                 if (data.key != "License")
                     continue;
 
-                GameObject prefabAsset = await data.prefab.LoadAssetAsync<GameObject>().Task;
+                var handle = data.prefab.Get<GameObject>();
+                if (!handle.IsDone)
+                    yield return handle;
+
+                if (handle.Status != AsyncOperationStatus.Succeeded)
+                {
+                    Debug.LogError($"{data.prefab.SubObjectName} is not valid");
+                    Addressables.Release(handle);
+                    continue;
+                }
+                
+                _handles.Add(handle);
+                GameObject prefabAsset = handle.Result;
                 Transform p = GameObjFinder.FindChildGameObject(gameObject, data.spawnPosition).transform;
 
                 Vector3 position = p.position;
@@ -137,9 +169,15 @@ namespace Game.Scripts.Controller
             if (target == null)
                 return;
 
-            _instances.Remove(target);
             target.SetActive(false);
             Destroy(target);
+
+            AsyncOperationHandle handle = _handles.Find(handle => ReferenceEquals(handle.Result, target));
+            if(handle.IsValid())
+                Addressables.Release(handle);
+            _handles.Remove(handle);
+            _instances.Remove(target);
+            
         }
         
         #region Functions
@@ -248,9 +286,9 @@ namespace Game.Scripts.Controller
             if (_index == -1 || _isNotReady || _isEnd)
                 return;
 
+            LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(_index));
             DestroyLicense(col);
             _dragAndDropController.TargetObj = null;
-            LicenseSubmittedEvent?.Invoke(this, new InfoEventArgs<int>(_index));
         }
 
         public void ScaleDocument()
