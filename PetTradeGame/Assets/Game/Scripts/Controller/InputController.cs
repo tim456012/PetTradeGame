@@ -7,11 +7,30 @@ namespace Game.Scripts.Controller
     public class InputController : MonoBehaviour
     {
         public static bool IsDragActive = false, IsPause;
-
+        public static event EventHandler<InfoEventArgs<Vector3>> ClickedEvent, DraggingEvent, DroppingEvent;
+        
         private bool _isHolding;
-
+        
         private void Update()
         {
+            //Invoke general ClickedEvent when player is not doing dragging.
+            //Mobile Version
+ #if UNITY_ANDROID || UNITY_IOS
+
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Began)
+            {
+                ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                return;
+            }
+#endif
+            
+            //PC Version
+
+#if UNITY_STANDALONE || UNITY_EDITOR
+            if (Input.GetMouseButtonDown(0))
+                ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
+#endif
+            
             if (IsPause)
                 return;
             
@@ -24,10 +43,7 @@ namespace Game.Scripts.Controller
             //Check Input
             CheckInput(IsDragActive);
         }
-        public static event EventHandler<InfoEventArgs<Vector3>> ClickedEvent;
-        public static event EventHandler<InfoEventArgs<Vector3>> DraggingEvent;
-        public static event EventHandler<InfoEventArgs<Vector3>> DroppingEvent;
-
+        
         private void CheckInput(bool dragging)
         {
             //Debug.Log(IsDragActive);
@@ -38,37 +54,29 @@ namespace Game.Scripts.Controller
                 {
                     //Invoke ReleaseEvent when player release their input
                     //Mobile Version
+#if UNITY_ANDROID || UNITY_IOS
                     case false when Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Ended or TouchPhase.Canceled:
                         DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
                         return;
+
+                    //Invoke HoldingEvent when player still holding their input.
+                    case true when Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary:
+                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
+                        return;
+#endif
+
                     //PC Version
+#if UNITY_STANDALONE || UNITY_EDITOR
                     case false:
                         DroppingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
                         return;
 
-                    //Invoke HoldingEvent when player still holding their input.
-                    //Mobile Version
-                    case true when Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Moved or TouchPhase.Stationary:
-                        DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                        return;
-                    //PC Version
                     case true:
                         DraggingEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
                         return;
+#endif
                 }
             }
-
-            //Invoke general ClickedEvent when player is not doing dragging.
-            //Mobile Version
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase is TouchPhase.Began)
-            {
-                ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.GetTouch(0).position));
-                return;
-            }
-
-            //PC Version
-            if (Input.GetMouseButtonDown(0))
-                ClickedEvent?.Invoke(this, new InfoEventArgs<Vector3>(Input.mousePosition));
         }
     }
 }
