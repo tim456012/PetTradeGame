@@ -16,8 +16,7 @@ namespace Game.Scripts.Controller
         
         private Canvas _canvas;
 
-        public static event EventHandler StartGameEvent;
-        public static event EventHandler NextDayEvent;
+        public static event EventHandler StartGameEvent, StartTutorialEvent, NextDayEvent;
         
         private void Awake()
         {
@@ -72,6 +71,11 @@ namespace Game.Scripts.Controller
             StartGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
+        public void OnBtnTutorialClicked()
+        {
+            StartTutorialEvent?.Invoke(this, EventArgs.Empty);
+        }
+
         public void OnBtnNextLevelClicked()
         {
             NextDayEvent?.Invoke(this, EventArgs.Empty);
@@ -99,7 +103,6 @@ namespace Game.Scripts.Controller
             ipadViewPanel.animalGuideView.SetActive(true);
         }
         
-        //TODO: Setting UI
         public void OnBtnSettingClicked()
         {
             settingPanel.gameObject.SetActive(true);

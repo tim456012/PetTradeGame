@@ -44,9 +44,3 @@ MonoBehaviour:
     - "\u9EBB\u7169\u518D\u7B49\u4E00\u4E0B"
     speaker: {fileID: 0}
     anchor: 4
-  - speakerName: Player
-    dialogueId: GLB_P6
-    messages:
-    - "\u9084\u597D\uFF0C\u8B1D\u8B1D\u95DC\u5FC3"
-    speaker: {fileID: 0}
-    anchor: 4

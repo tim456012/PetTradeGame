@@ -3,13 +3,11 @@ using System.Collections;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Game.Scripts.Level_State
 {
-    //TODO: Complete Level End event
     public class DialogueState : GameCore
     {
         private bool _firstInit = true;
@@ -36,9 +34,17 @@ namespace Game.Scripts.Level_State
             base.Enter();
             Debug.Log("Enter dialogue state");
             Owner.world.SetActive(true);
-
+            
             if (!_firstInit) 
                 return;
+
+            if (Owner.isTutorial)
+            {
+                _conversationController.LoadTutorialDialogue(Owner.tutorialDialogue.speakerList);
+                _firstInit = false;
+                _conversationController.StartTutorialConversation();
+                return;
+            }
             
             _conversationController.LoadGlobalDialogue(Owner.globalDialogue.speakerList);
             LoadConversationData();
@@ -83,8 +89,17 @@ namespace Game.Scripts.Level_State
             _conversationController.enabled = false;
             
             yield return new WaitForSeconds(1f);
-            Debug.Log("Changing to main game state");
-            Owner.ChangeState<MainGameState>();
+
+            if (Owner.isTutorial)
+            {
+                Debug.Log("Changing to tutorial state");
+                Owner.ChangeState<TutorialState>();
+            }
+            else
+            {
+                Debug.Log("Changing to main game state");
+                Owner.ChangeState<MainGameState>();
+            }
         }
 
         private async void LoadConversationData()

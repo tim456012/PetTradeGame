@@ -14,10 +14,13 @@ namespace Game.Scripts.Controller
     {
         public GameObject world;
         public ConversationData globalDialogue;
+        public ConversationData tutorialDialogue;
         
         public bool debugMode;
         public bool stopTimer;
 
+        [HideInInspector] public bool isTutorial;
+        
         private IEnumerator _changeLevelRoutine;
         private AsyncOperationHandle<LevelData> _levelDataHandle;
         private bool _isInit;

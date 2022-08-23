@@ -1,60 +1,278 @@
-﻿using System;
+using System;
+using System.Collections;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
 namespace Game.Scripts.Level_State
 {
-    //TODO: Make tutorial state
     public class TutorialState : GameCore
     {
-        private ConversationController conversationController;
-        private ConversationData conversationData;
+        private FactoryController _factoryController;
+        private GamePlayController _gamePlayController;
+        private ObjectController _objectController;
+        private UIController _uiController;
+        private ConversationController _conversationController;
+
+        private bool _hasShowIpad, _firstInit = true;
 
         protected override void Awake()
         {
             base.Awake();
-            conversationController = Owner.GetComponentInChildren<ConversationController>();
-            //conversationData = Owner.LevelData.middleDialogue;
+            _gamePlayController = Owner.GetComponentInChildren<GamePlayController>();
+            _objectController = Owner.GetComponentInChildren<ObjectController>();
+            _factoryController = Owner.GetComponentInChildren<FactoryController>();
+            _uiController = Owner.GetComponentInChildren<UIController>();
+            _conversationController = Owner.GetComponentInChildren<ConversationController>();
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            if (conversationData)
-            {
-                //Resources.UnloadAsset(conversationData);
-                conversationData = null;
-            }
+            EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
+            ObjectController.LicenseSubmittedEvent -= OnSubmitted;
+
+            GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
+            GamePlayController.StopProduceDocument -= StopProduceDocument;
+            GamePlayController.StartCompliantEvent -= OnStartCompliant;
+
+            GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
+            GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
+            GamePlayPanel.GamePause -= OnGamePauseEvent;
+            GamePlayPanel.GameResume -= OnGameResumeEvent;
+            GamePlayPanel.ClearData -= OnClearDataEvent;
+            GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
+            GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
+
+            ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
         public override void Enter()
         {
             base.Enter();
+            _uiController.ShowGameplayPanel();
+            if (_firstInit)
+            {
+                StartCoroutine(Init());
+                _firstInit = false;
+            }
+            else if (!_hasShowIpad)
+            {
+                StartCoroutine(LoadData());
+                _hasShowIpad = true;
+                InputController.IsPause = false;
+                
+                //TODO: Click ipad button and show dialogue
+            }
+
+            Debug.Log("Entering playing state");
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            Owner.world.SetActive(false);
         }
 
         protected override void AddListeners()
         {
             base.AddListeners();
-            ConversationController.CompleteEvent += OnCompleteConversation;
+            EntityAttribute.FunctionalObjCollisionEvent += OnObjCollision;
+            ObjectController.LicenseSubmittedEvent += OnSubmitted;
+
+            GamePlayController.GameFinishEvent += OnLevelFinishEvent;
+            GamePlayController.StopProduceDocument += StopProduceDocument;
+            GamePlayController.StartCompliantEvent += OnStartCompliant;
+
+            GamePlayPanel.ShowIpadView += OnShowIpadViewEvent;
+            GamePlayPanel.HideIpadView += OnHideIpadViewEvent;
+            GamePlayPanel.GamePause += OnGamePauseEvent;
+            GamePlayPanel.GameResume += OnGameResumeEvent;
+            GamePlayPanel.ClearData += OnClearDataEvent;
+            GamePlayPanel.ScaleUpDoc += OnScaleDocumentUpEvent;
+            GamePlayPanel.ScaleDownDoc += OnScaleDocumentDownEvent;
+
+            ObjectController.SetAnimalGuideEvent += OnAnimalGuideEvent;
         }
 
         protected override void RemoveListeners()
         {
             base.RemoveListeners();
-            ConversationController.CompleteEvent -= OnCompleteConversation;
+            EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
+            ObjectController.LicenseSubmittedEvent -= OnSubmitted;
+
+            GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
+            GamePlayController.StopProduceDocument -= StopProduceDocument;
+            GamePlayController.StartCompliantEvent -= OnStartCompliant;
+
+            GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
+            GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
+            GamePlayPanel.GamePause -= OnGamePauseEvent;
+            GamePlayPanel.GameResume -= OnGameResumeEvent;
+            GamePlayPanel.ClearData -= OnClearDataEvent;
+            GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
+            GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
+
+            ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
-        protected override void OnClick(object sender, InfoEventArgs<Vector3> e)
+        private IEnumerator Init()
         {
-            base.OnClick(sender, e);
-            conversationController.Next();
+            _objectController.Init();
+            _gamePlayController.Init();
+            _gamePlayController.SetTimer(true);
+            _uiController.DisableIpadButton(false);
+            _objectController.InitAnimalGuide(Owner.LevelData.animalGuide);
+            yield return null;
+            
+            //TODO: transition
+            Debug.Log("Doing transition");
+            
+            LoadConversation(1);
+        }
+        
+        private IEnumerator LoadData()
+        {
+            var recipeDataList = Owner.LevelData.documentRecipeData;
+            var scoreDataList = Owner.LevelData.scoreData;
+            var functionObjectDataList = Owner.LevelData.functionalObjectsData;
+
+            _factoryController.InitFactory(recipeDataList, scoreDataList);
+            StartCoroutine(_objectController.InitFunctionalObject(functionObjectDataList));
+            yield return null;
+            
+            //LoadConversation(2);
+        }
+        
+        private IEnumerator Release()
+        {
+            yield return null;
+
+            _factoryController.ReleaseDocument();
+            _factoryController.Release();
+            _objectController.Release();
+            _conversationController.Release();
+            //yield return new WaitForSeconds(2f);
+            yield return null;
+
+            Owner.ChangeState<MainMenuState>();
         }
 
-        private void OnCompleteConversation(object sender, EventArgs e)
+        private void LoadConversation(int index)
         {
-            Owner.ChangeState<MainGameState>();
+            InputController.IsDragActive = false;
+            InputController.IsPause = true;
+
+            _uiController.HideGameplayPanel();
+            _conversationController.StartTutorialConversation(index);
+            Owner.ChangeState<DialogueState>();
         }
+        #region Event Behaviors
+
+        private void OnObjCollision(object sender, InfoEventArgs<GameObject> col)
+        {
+            var original = sender as GameObject;
+            if (original == null)
+                return;
+
+            _objectController.ProcessCollision(original, col.info);
+        }
+
+        private void OnSubmitted(object sender, InfoEventArgs<int> e)
+        {
+            var id = _factoryController.generatedID;
+            var content = Owner.LevelData.scoreData;
+            foreach (ScoreData scoreContent in content)
+            {
+                if (!id.Equals(scoreContent.id))
+                    continue;
+                _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
+            }
+            _factoryController.ReleaseDocument();
+
+            _gamePlayController.SetTimer(true);
+            _uiController.HideGameplayPanel();
+            _conversationController.StartConversation();
+            Owner.ChangeState<DialogueState>();
+
+            StartCoroutine(_objectController.ReGenerateLicense());
+        }
+
+        private void OnLevelFinishEvent(object sender, EventArgs e)
+        {
+            _firstInit = true;
+            Debug.Log("Game Over");
+
+            InputController.IsDragActive = false;
+            _uiController.ShowEndGamePanel();
+            StartCoroutine(Release());
+        }
+
+        private void StopProduceDocument(object sender, EventArgs e)
+        {
+            Debug.Log("Stop producing document.");
+            _uiController.DisableIpadButton(true);
+            _objectController.StopProcess();
+        }
+
+        private void OnShowIpadViewEvent(object sender, EventArgs e)
+        {
+            _gamePlayController.SetTimer(true);
+            _uiController.ShowIpadViewPanel();
+        }
+
+        private void OnHideIpadViewEvent(object sender, EventArgs e)
+        {
+            _gamePlayController.SetTimer(false);
+            _uiController.HideIpadViewPanel();
+        }
+
+        private void OnGamePauseEvent(object sender, EventArgs e)
+        {
+            _gamePlayController.SetTimer(true);
+            _uiController.OnBtnSettingClicked();
+        }
+
+        private void OnGameResumeEvent(object sender, EventArgs e)
+        {
+            _gamePlayController.SetTimer(false);
+            _uiController.OnBtnResumeClicked();
+        }
+
+        private void OnAnimalGuideEvent(object sender, InfoEventArgs<Sprite> e)
+        {
+            _uiController.SetAnimalGuide(e.info);
+        }
+
+        private void OnClearDataEvent(object sender, EventArgs e)
+        {
+            Owner.ClearGameData();
+            _uiController.OnBtnSettingClicked();
+        }
+
+        private void OnScaleDocumentUpEvent(object sender, EventArgs e)
+        {
+            _objectController.ScaleDocument();
+        }
+
+        private void OnScaleDocumentDownEvent(object sender, EventArgs e)
+        {
+            _objectController.ScaleDocument();
+        }
+
+        private void OnStartCompliant(object sender, EventArgs e)
+        {
+            InputController.IsDragActive = false;
+            InputController.IsPause = true;
+
+            _hasShowIpad = true;
+            _uiController.HideGameplayPanel();
+            Owner.ChangeState<DialogueState>();
+            _conversationController.StartConversation(true);
+        }
+
+        #endregion
     }
 }

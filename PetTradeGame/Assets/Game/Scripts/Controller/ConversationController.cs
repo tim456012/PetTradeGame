@@ -5,7 +5,6 @@ using Game.Scripts.Common.Animation;
 using Game.Scripts.Model;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
-using UnityEngine.XR;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Controller
@@ -54,6 +53,12 @@ namespace Game.Scripts.Controller
         public void StartConversation(bool isCompliant = false)
         {
             var list = SplitArray(_levelSpeakers, isCompliant);
+            Show(list);
+        }
+
+        public void StartTutorialConversation(int index = 0)
+        {
+            var list = SplitTutorialArray(_levelSpeakers, index);
             Show(list);
         }
         
@@ -159,6 +164,11 @@ namespace Game.Scripts.Controller
             _globalDialogue = speakerList.ToArray();
         }
         
+        public void LoadTutorialDialogue(List<SpeakerData> speakerList)
+        {
+            _levelSpeakers = speakerList.ToArray();
+        }
+        
         public void LoadLevelDialogue(List<SpeakerData> speakerList)
         {
             _levelSpeakers = speakerList.ToArray();
@@ -172,7 +182,6 @@ namespace Game.Scripts.Controller
                 //Add first player dialogue as default
                 stack.Push(_globalDialogue[0]);
                 //Find and add npc response dialogue to stack. If no npc response, just return the array
-                Debug.Log($"R{_r}_D1_N{_npc}");
                 SpeakerData response = Array.Find(data, speaker => speaker.dialogueId.StartsWith($"R{_r}") && speaker.dialogueId.Contains($"N{_npc.ToString()}"));
                 if (response != null)
                 {
@@ -209,7 +218,6 @@ namespace Game.Scripts.Controller
                 return array;
             }
             
-            //TODO: Finish asking dialogue
             var num = _npc - 1;
             SpeakerData ask = Array.Find(data, speaker => speaker.dialogueId.StartsWith($"A0") && speaker.dialogueId.EndsWith($"N{num.ToString()}"));
             if (ask != null)
@@ -226,6 +234,39 @@ namespace Game.Scripts.Controller
                 
             Debug.Log("No ask dialogue found");
             return null;
+        }
+
+        private SpeakerData[] SplitTutorialArray(SpeakerData[] data, int index)
+        {
+            var stack = new Stack<SpeakerData>();
+            switch (index)
+            {
+                case 0:
+                    stack.Push(data[0]);
+                    stack.Push(data[1]);
+                    break;
+                case 1:
+                    stack.Push(data[2]);
+                    stack.Push(data[3]);
+                    break;
+                case 2:
+                    stack.Push(data[4]);
+                    break;
+                case 3:
+                    stack.Push(data[5]);
+                    break;
+                case 4:
+                    stack.Push(data[6]);
+                    break;
+                case 5:
+                    stack.Push(data[7]);
+                    break;
+            }
+            
+            var array = stack.ToArray();
+            Array.Reverse(array);
+            stack.Clear();
+            return array;
         }
         
         public void Release()
