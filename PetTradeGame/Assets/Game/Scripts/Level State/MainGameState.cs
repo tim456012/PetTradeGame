@@ -214,6 +214,7 @@ namespace Game.Scripts.Level_State
         
         private void OnHideIpadViewEvent(object sender, EventArgs e)
         {
+            InputController.IsPause = false;
             _gamePlayController.SetTimer(false);
             _uiController.HideIpadViewPanel();
         }

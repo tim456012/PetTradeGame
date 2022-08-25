@@ -51,14 +51,14 @@ MonoBehaviour:
     - "\u4F60\u53EF\u4EE5\u5728\u5DE6\u4E0B\u89D2\u627E\u5230\u5E73\u677F\u96FB\u8166"
     - "\u6211\u5011\u5148\u6309\u5B88\u5247\u53BB\u770B\u4E0B\u9019\u4E9B\u6587\u4EF6\u5408\u4E0D\u5408\u8981\u6C42\u5427\uFF01"
     speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
-    anchor: 3
+    anchor: 4
   - speakerName: Aden
     dialogueId: T5
     messages:
-    - "Ok\uFF0C\u770B\u4E0A\u53BB\u6CA1\u554F\u984C!"
+    - "Ok\uFF0C\u770B\u4E0A\u53BB\u7121\u554F\u984C!"
     - "\u73FE\u5728\u53BB\u5BE6\u6642\u52D5\u7269\u76E3\u63A7\u770B\u4E00\u4E0B\u4ED6\u5011\u5E36\u4F86\u7684\u52D5\u7269\u548C\u4ED6\u5011\u6587\u4EF6\u7684\u63CF\u8FF0\u662F\u4E0D\u662F\u4E00\u81F4\u3002"
     speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
-    anchor: 3
+    anchor: 6
   - speakerName: Aden
     dialogueId: T6
     messages:
@@ -67,7 +67,7 @@ MonoBehaviour:
     - "\u597D\uFF01\u6C92\u554F\u984C\u3002"
     - "\u6211\u5011\u5148\u6536\u56DEipad\u5148"
     speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
-    anchor: 3
+    anchor: 6
   - speakerName: Aden
     dialogueId: T7
     messages:

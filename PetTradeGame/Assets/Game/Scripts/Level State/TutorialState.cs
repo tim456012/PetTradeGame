@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
-using Game.Scripts.Model;
 using Game.Scripts.View_Model_Components;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ namespace Game.Scripts.Level_State
         private UIController _uiController;
         private ConversationController _conversationController;
 
-        private bool _hasShowIpad, _firstInit = true;
+        private bool _hasShowIpad, _hasShowAnimal, _hasSubmitted, _firstInit = true;
 
         protected override void Awake()
         {
@@ -33,11 +32,7 @@ namespace Game.Scripts.Level_State
             base.OnDestroy();
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
-
-            GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
-            GamePlayController.StopProduceDocument -= StopProduceDocument;
-            GamePlayController.StartCompliantEvent -= OnStartCompliant;
-
+            
             GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
             GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
             GamePlayPanel.GamePause -= OnGamePauseEvent;
@@ -45,6 +40,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ClearData -= OnClearDataEvent;
             GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
             GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
+            GamePlayPanel.TutorialIpadEvent -= OnTutorialIpadClicked;
+            GamePlayPanel.HideTutorialIpadEvent -= OnTutorialIpadHide;
 
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
@@ -60,13 +57,22 @@ namespace Game.Scripts.Level_State
             }
             else if (!_hasShowIpad)
             {
-                StartCoroutine(LoadData());
-                _hasShowIpad = true;
-                InputController.IsPause = false;
-                
-                //TODO: Click ipad button and show dialogue
+                var recipeDataList = Owner.LevelData.documentRecipeData;
+                var scoreDataList = Owner.LevelData.scoreData;
+                var functionObjectDataList = Owner.LevelData.functionalObjectsData;
+
+                _factoryController.InitFactory(recipeDataList, scoreDataList);
+                StartCoroutine(_objectController.InitFunctionalObject(functionObjectDataList));
+            }
+            else if (_hasShowIpad && _hasShowAnimal && _hasSubmitted)
+            {
+                _objectController.StopProcess();
+
+                InputController.IsDragActive = false;
+                StartCoroutine(Release());
             }
 
+            InputController.IsPause = false;
             Debug.Log("Entering playing state");
         }
 
@@ -81,11 +87,7 @@ namespace Game.Scripts.Level_State
             base.AddListeners();
             EntityAttribute.FunctionalObjCollisionEvent += OnObjCollision;
             ObjectController.LicenseSubmittedEvent += OnSubmitted;
-
-            GamePlayController.GameFinishEvent += OnLevelFinishEvent;
-            GamePlayController.StopProduceDocument += StopProduceDocument;
-            GamePlayController.StartCompliantEvent += OnStartCompliant;
-
+            
             GamePlayPanel.ShowIpadView += OnShowIpadViewEvent;
             GamePlayPanel.HideIpadView += OnHideIpadViewEvent;
             GamePlayPanel.GamePause += OnGamePauseEvent;
@@ -93,7 +95,9 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ClearData += OnClearDataEvent;
             GamePlayPanel.ScaleUpDoc += OnScaleDocumentUpEvent;
             GamePlayPanel.ScaleDownDoc += OnScaleDocumentDownEvent;
-
+            GamePlayPanel.TutorialIpadEvent += OnTutorialIpadClicked;
+            GamePlayPanel.HideTutorialIpadEvent += OnTutorialIpadHide;
+            
             ObjectController.SetAnimalGuideEvent += OnAnimalGuideEvent;
         }
 
@@ -102,11 +106,7 @@ namespace Game.Scripts.Level_State
             base.RemoveListeners();
             EntityAttribute.FunctionalObjCollisionEvent -= OnObjCollision;
             ObjectController.LicenseSubmittedEvent -= OnSubmitted;
-
-            GamePlayController.GameFinishEvent -= OnLevelFinishEvent;
-            GamePlayController.StopProduceDocument -= StopProduceDocument;
-            GamePlayController.StartCompliantEvent -= OnStartCompliant;
-
+            
             GamePlayPanel.ShowIpadView -= OnShowIpadViewEvent;
             GamePlayPanel.HideIpadView -= OnHideIpadViewEvent;
             GamePlayPanel.GamePause -= OnGamePauseEvent;
@@ -114,7 +114,9 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ClearData -= OnClearDataEvent;
             GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
             GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
-
+            GamePlayPanel.TutorialIpadEvent -= OnTutorialIpadClicked;
+            GamePlayPanel.HideTutorialIpadEvent -= OnTutorialIpadHide;
+            
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
@@ -133,30 +135,22 @@ namespace Game.Scripts.Level_State
             LoadConversation(1);
         }
         
-        private IEnumerator LoadData()
-        {
-            var recipeDataList = Owner.LevelData.documentRecipeData;
-            var scoreDataList = Owner.LevelData.scoreData;
-            var functionObjectDataList = Owner.LevelData.functionalObjectsData;
-
-            _factoryController.InitFactory(recipeDataList, scoreDataList);
-            StartCoroutine(_objectController.InitFunctionalObject(functionObjectDataList));
-            yield return null;
-            
-            //LoadConversation(2);
-        }
-        
         private IEnumerator Release()
         {
+            _hasShowIpad = false;
+            _hasShowAnimal = false;
+            _hasSubmitted = false;
             yield return null;
 
             _factoryController.ReleaseDocument();
             _factoryController.Release();
             _objectController.Release();
             _conversationController.Release();
-            //yield return new WaitForSeconds(2f);
             yield return null;
 
+            Owner.isTutorial = false;
+            _gamePlayController.Reset();
+            
             Owner.ChangeState<MainMenuState>();
         }
 
@@ -182,41 +176,17 @@ namespace Game.Scripts.Level_State
 
         private void OnSubmitted(object sender, InfoEventArgs<int> e)
         {
-            var id = _factoryController.generatedID;
-            var content = Owner.LevelData.scoreData;
-            foreach (ScoreData scoreContent in content)
+            if(!_hasShowIpad && !_hasShowAnimal && !_hasSubmitted)
             {
-                if (!id.Equals(scoreContent.id))
-                    continue;
-                _gamePlayController.CalculateScore(e.info, scoreContent.score, scoreContent.isWrongDocument);
+                StartCoroutine(_objectController.ReGenerateLicense());
+                return;
             }
+
             _factoryController.ReleaseDocument();
-
-            _gamePlayController.SetTimer(true);
-            _uiController.HideGameplayPanel();
-            _conversationController.StartConversation();
-            Owner.ChangeState<DialogueState>();
-
-            StartCoroutine(_objectController.ReGenerateLicense());
+            _hasSubmitted = true;
+            LoadConversation(5);
         }
-
-        private void OnLevelFinishEvent(object sender, EventArgs e)
-        {
-            _firstInit = true;
-            Debug.Log("Game Over");
-
-            InputController.IsDragActive = false;
-            _uiController.ShowEndGamePanel();
-            StartCoroutine(Release());
-        }
-
-        private void StopProduceDocument(object sender, EventArgs e)
-        {
-            Debug.Log("Stop producing document.");
-            _uiController.DisableIpadButton(true);
-            _objectController.StopProcess();
-        }
-
+        
         private void OnShowIpadViewEvent(object sender, EventArgs e)
         {
             _gamePlayController.SetTimer(true);
@@ -225,7 +195,6 @@ namespace Game.Scripts.Level_State
 
         private void OnHideIpadViewEvent(object sender, EventArgs e)
         {
-            _gamePlayController.SetTimer(false);
             _uiController.HideIpadViewPanel();
         }
 
@@ -244,6 +213,12 @@ namespace Game.Scripts.Level_State
         private void OnAnimalGuideEvent(object sender, InfoEventArgs<Sprite> e)
         {
             _uiController.SetAnimalGuide(e.info);
+            if(_hasShowAnimal)
+                return;
+            
+            _hasShowAnimal = true;
+            _uiController.DisableIpadButton(false);
+            LoadConversation(3);
         }
 
         private void OnClearDataEvent(object sender, EventArgs e)
@@ -261,16 +236,21 @@ namespace Game.Scripts.Level_State
         {
             _objectController.ScaleDocument();
         }
-
-        private void OnStartCompliant(object sender, EventArgs e)
+        
+        private void OnTutorialIpadClicked(object sender, EventArgs e)
         {
-            InputController.IsDragActive = false;
-            InputController.IsPause = true;
-
+            if(_hasShowIpad)
+                return;
+            
+            _uiController.DisableIpadButton(true);
             _hasShowIpad = true;
-            _uiController.HideGameplayPanel();
-            Owner.ChangeState<DialogueState>();
-            _conversationController.StartConversation(true);
+            LoadConversation(2);
+        }
+
+        private void OnTutorialIpadHide(object sender, EventArgs e)
+        {
+            InputController.IsPause = true;
+            LoadConversation(4);
         }
 
         #endregion

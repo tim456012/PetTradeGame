@@ -2,8 +2,8 @@ Speaker Name,Dialogue ID,NPC,Position,Messages 1,Messages 2,Messages 3,Messages 
 Boss,T1,Boss_ccexpress,Middle Center,歡迎來到ETM調查組。,相信你也知道我們是新部門，現在雖然外勤人手夠了，但正缺審核人才。,恰好你調來了!,接下來會很忙，我需要你盡快接手有關鳥類、爬蟲類以及海洋生物的審查。,事不宜遲，Aden會教你如何完成任務的，對吧？
 Aden,T2,workmate_ccexpress,Middle Center,是！,你好，我是Aden。,放心吧！畢竟是第一天，我會全程Support你的。,先跟我去關口吧！,
 Aden,T3,workmate_ccexpress,Middle Center,這裏每天工作就是審核分流過來的申請文件，並決定給不給他們準許證。,為了方便比對，我們給每個員工也配了一部平板電腦去看監管動物的資料和文件的需求。,好，讓我們先去試試流程，首先申請人會走過來，你需要叫他們給那些申請表你看看合不合需求。,申請人的情況各不同，所以你拿到的數量也不會一樣。,
-Aden,T4,workmate_ccexpress,Middle Left,平板電腦有兩功能,一個是看文件內容的守則,一個是看實時動物的分析。,你可以在左下角找到平板電腦,我們先按守則去看下這些文件合不合要求吧！
-Aden,T5,workmate_ccexpress,Middle Left,Ok，看上去没問題!,現在去實時動物監控看一下他們帶來的動物和他們文件的描述是不是一致。,,,
-Aden,T6,workmate_ccexpress,Middle Left,嗯…,學名…Rites 分類…外觀特徵…,好！沒問題。,我們先收回ipad先,
+Aden,T4,workmate_ccexpress,Middle Center,平板電腦有兩功能,一個是看文件內容的守則,一個是看實時動物的分析。,你可以在左下角找到平板電腦,我們先按守則去看下這些文件合不合要求吧！
+Aden,T5,workmate_ccexpress,Lower Left,Ok，看上去無問題!,現在去實時動物監控看一下他們帶來的動物和他們文件的描述是不是一致。,,,
+Aden,T6,workmate_ccexpress,Lower Left,嗯…,學名…Rites 分類…外觀特徵…,好！沒問題。,我們先收回ipad先,
 Aden,T7,workmate_ccexpress,Upper Right,你桌面上的那些印章是按在準許證上的,如果所有文件正確就按綠色，如果不是就按紅色。,按完就給回申請人再叫下一位。,,
 Aden,T8,workmate_ccexpress,Middle Center,怎樣？很簡單吧？,但我可沒說這些小工作容易喲！,一不小心給錯了就會扣錢，扣多了還可能會掉工作。,反之，做好了就可能會升職喲！,做到六點就放工啦，加油啦～新人!

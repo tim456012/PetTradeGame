@@ -16,8 +16,8 @@ namespace Game.Scripts.View_Model_Components
         private MonoRoutine _buttonAnimationRoutine;
         private bool _isAnimate, _isDisable, _isShowingIpad;
 
-        public static event EventHandler ShowIpadView, HideIpadView, ScaleUpDoc, ScaleDownDoc, GamePause, GameResume, ClearData;
-
+        public static event EventHandler ShowIpadView, HideIpadView, ScaleUpDoc, ScaleDownDoc;
+        public static event EventHandler GamePause, GameResume, ClearData, TutorialIpadEvent, HideTutorialIpadEvent;
         private void Awake()
         {
             _btnPos1 = GameObjFinder.FindChildGameObject(gameObject, "BtnPos1").transform;
@@ -127,6 +127,7 @@ namespace Game.Scripts.View_Model_Components
             _buttonAnimationRoutine.Stopped += (_, _) =>
             {
                 _isAnimate = false;
+                TutorialIpadEvent?.Invoke(this, EventArgs.Empty);
             };
         }
 
@@ -150,7 +151,8 @@ namespace Game.Scripts.View_Model_Components
                 _isAnimate = false; 
                 _isShowingIpad = false;
                 HideIpadView?.Invoke(this, EventArgs.Empty);
-                InputController.IsPause = false;
+                HideTutorialIpadEvent?.Invoke(this, EventArgs.Empty);
+                //InputController.IsPause = false;
             };
         }
 

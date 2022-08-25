@@ -35,6 +35,7 @@ namespace Game.Scripts.Controller
             _correctDocuments = 0;
             _wrongDocuments = 0;
             clock.gameObject.SetActive(false);
+            ClearConversationEvent?.Invoke(this, EventArgs.Empty);
         }
 
         private void Update()

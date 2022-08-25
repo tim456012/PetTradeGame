@@ -33,6 +33,7 @@ namespace Game.Scripts.Level_State
         {
             base.Enter();
             Debug.Log("Enter dialogue state");
+            InputController.IsPause = true;
             Owner.world.SetActive(true);
             
             if (!_firstInit) 
@@ -55,6 +56,7 @@ namespace Game.Scripts.Level_State
         {
             base.Exit();
             Debug.Log("Exit dialogue state");
+            InputController.IsPause = false;
         }
 
         protected override void AddListeners()
