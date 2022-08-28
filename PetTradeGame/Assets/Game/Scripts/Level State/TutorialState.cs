@@ -52,8 +52,9 @@ namespace Game.Scripts.Level_State
             _uiController.ShowGameplayPanel();
             if (_firstInit)
             {
-                StartCoroutine(Init());
+                InputController.IsDragActive = false;
                 _firstInit = false;
+                StartCoroutine(Init());
             }
             else if (!_hasShowIpad)
             {
@@ -156,9 +157,6 @@ namespace Game.Scripts.Level_State
 
         private void LoadConversation(int index)
         {
-            InputController.IsDragActive = false;
-            InputController.IsPause = true;
-
             _uiController.HideGameplayPanel();
             _conversationController.StartTutorialConversation(index);
             Owner.ChangeState<DialogueState>();
@@ -189,6 +187,7 @@ namespace Game.Scripts.Level_State
         
         private void OnShowIpadViewEvent(object sender, EventArgs e)
         {
+            InputController.IsPause = true;
             _gamePlayController.SetTimer(true);
             _uiController.ShowIpadViewPanel();
         }
@@ -249,7 +248,6 @@ namespace Game.Scripts.Level_State
 
         private void OnTutorialIpadHide(object sender, EventArgs e)
         {
-            InputController.IsPause = true;
             LoadConversation(4);
         }
 

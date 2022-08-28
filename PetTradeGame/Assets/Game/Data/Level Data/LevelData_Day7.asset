@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LevelData_Day7
   m_EditorClassIdentifier: 
   videoAddress:
+  - Day6_Second
   - Day7
   - Day7_Second
   dialogue:

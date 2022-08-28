@@ -9070,7 +9070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clock: {fileID: 1437806566}
-  targetTime: 360
+  targetTime: 10
   debugTargetTime: 180
 --- !u!4 &5105011262267310216
 Transform:
@@ -9136,7 +9136,7 @@ MonoBehaviour:
   world: {fileID: 389334950}
   globalDialogue: {fileID: 11400000, guid: 92420b966d9ba8a4b81133b9433de066, type: 2}
   tutorialDialogue: {fileID: 11400000, guid: c7908ea5034b10e4f8b9a8762c8c0454, type: 2}
-  debugMode: 0
+  debugMode: 1
   stopTimer: 0
   isTutorial: 0
 --- !u!4 &5105011262412261254
@@ -9921,7 +9921,7 @@ VideoPlayer:
   m_AspectRatio: 2
   m_DataSource: 0
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 0
+  m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:

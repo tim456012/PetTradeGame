@@ -56,18 +56,14 @@ namespace Game.Scripts.Controller
             VideoPlayer vp = _videoPlayer;
             vp.Prepare();
 
-            //var waitTime = new WaitForSeconds(5f);
             while (!vp.isPrepared)
             {
                 Debug.Log($"Status: {vp.isPrepared}, Video is not prepare");
                 yield return null;
-                //yield return waitTime;
-                //break;
             }
 
             Debug.Log($"Status: {vp.isPrepared}, Video is prepared");
             vp.Play();
-            //_audioSource.Play();
 
             Debug.Log("Video is playing");
             while (vp.isPlaying)

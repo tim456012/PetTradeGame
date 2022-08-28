@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LevelData_Day5
   m_EditorClassIdentifier: 
   videoAddress:
+  - Day4_Second
   - Day5
-  - Day5_Second
   dialogue:
     m_AssetGUID: 95494d188b2d1654c838a02499ed6233
     m_SubObjectName: 

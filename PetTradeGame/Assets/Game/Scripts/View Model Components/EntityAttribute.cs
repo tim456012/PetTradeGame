@@ -8,26 +8,26 @@ namespace Game.Scripts.View_Model_Components
 {
     public class EntityAttribute : MonoBehaviour
     {
-
-        [Header("Features")]
         public bool isDocument;
         public bool isFunctionalObject;
         public bool isDraggable;
-
+        
         [ConditionalHide("isFunctionalObject", true)]
         public ObjectType objectType = ObjectType.None;
-
+        
         [ConditionalHide("isDocument", true)]
         public DocumentType paperType = DocumentType.None;
-
+        
+        public static event EventHandler<InfoEventArgs<GameObject>> FunctionalObjCollisionEvent;
+        
         //If object enter others' collider, call ObjectController to process
         private void OnTriggerStay2D(Collider2D col)
         {
-            if (!isFunctionalObject)
+            var collided = col.GetComponent<EntityAttribute>();
+            if(!collided || collided.objectType is ObjectType.GreenStamp or ObjectType.RedStamp)
                 return;
 
             FunctionalObjCollisionEvent?.Invoke(gameObject, new InfoEventArgs<GameObject>(col.gameObject));
         }
-        public static event EventHandler<InfoEventArgs<GameObject>> FunctionalObjCollisionEvent;
     }
 }

@@ -56,7 +56,6 @@ namespace Game.Scripts.Level_State
         {
             base.Exit();
             Debug.Log("Exit dialogue state");
-            InputController.IsPause = false;
         }
 
         protected override void AddListeners()

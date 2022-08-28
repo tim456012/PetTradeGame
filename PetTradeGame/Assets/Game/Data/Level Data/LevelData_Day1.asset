@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   videoAddress:
   - Intro
-  - Day1
-  - Day1_Second
+  - Day1_Voice
   dialogue:
     m_AssetGUID: 22d1a37be00360442a091ae1d33fdef8
     m_SubObjectName: 

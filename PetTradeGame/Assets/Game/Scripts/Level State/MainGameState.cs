@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Game.Scripts.Controller;
+using Game.Scripts.Enum;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
 using Game.Scripts.View_Model_Components;
@@ -70,7 +71,6 @@ namespace Game.Scripts.Level_State
             {
                 _gamePlayController.SetTimer(false);
                 _isCompliant = false;
-                InputController.IsPause = false;
             }
             else
             {
@@ -79,6 +79,7 @@ namespace Game.Scripts.Level_State
                 _objectController.ReGenerateDocument();
             }
             
+            InputController.IsPause = false;
             Debug.Log("Entering playing state");
         }
 
@@ -139,10 +140,11 @@ namespace Game.Scripts.Level_State
             _objectController.InitAnimalGuide(Owner.LevelData.animalGuide);
         }
 
-        private void LoadData()
+        //TODO: Save and Load Game Data
+        /*private void LoadData()
         {
 
-        }
+        }*/
 
         private IEnumerator Release()
         {

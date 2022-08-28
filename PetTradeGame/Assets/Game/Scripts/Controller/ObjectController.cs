@@ -187,6 +187,10 @@ namespace Game.Scripts.Controller
             ObjectType oType = original.GetComponent<EntityAttribute>().objectType;
             ObjectType tType = target.GetComponent<EntityAttribute>().objectType;
             i = -1;
+            
+            if(original != _dragAndDropController.TargetObj)
+                return;
+            
             if (_isEnd)
             {
                 i = 0;
@@ -276,10 +280,7 @@ namespace Game.Scripts.Controller
 
         public void ProcessCollision(GameObject original, GameObject col)
         {
-            if (col == null)
-                return;
-
-            if (original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
+            if (col == null || original.GetComponent<EasingControl>() || col.GetComponent<EasingControl>())
                 return;
 
             ExecuteObjBehavior(original, col, out _index);
