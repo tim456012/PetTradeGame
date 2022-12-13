@@ -15,7 +15,7 @@ namespace Game.Scripts.Level_State
         private UIController _uiController;
         private ConversationController _conversationController;
 
-        private bool _hasShowIpad, _hasShowAnimal, _hasSubmitted, _firstInit = true;
+        private bool _hasShowIpad, _hasShowAnimal, _hasSubmitted, _firstInit;
 
         protected override void Awake()
         {
@@ -25,6 +25,7 @@ namespace Game.Scripts.Level_State
             _factoryController = Owner.GetComponentInChildren<FactoryController>();
             _uiController = Owner.GetComponentInChildren<UIController>();
             _conversationController = Owner.GetComponentInChildren<ConversationController>();
+            _firstInit = true;
         }
 
         protected override void OnDestroy()
@@ -73,7 +74,7 @@ namespace Game.Scripts.Level_State
                 StartCoroutine(Release());
             }
 
-            InputController.IsPause = false;
+            //InputController.IsPause = false;
             Debug.Log("Entering playing state");
         }
 
@@ -161,6 +162,7 @@ namespace Game.Scripts.Level_State
             _conversationController.StartTutorialConversation(index);
             Owner.ChangeState<DialogueState>();
         }
+        
         #region Event Behaviors
 
         private void OnObjCollision(object sender, InfoEventArgs<GameObject> col)
@@ -187,25 +189,24 @@ namespace Game.Scripts.Level_State
         
         private void OnShowIpadViewEvent(object sender, EventArgs e)
         {
-            InputController.IsPause = true;
-            _gamePlayController.SetTimer(true);
+            InputController.IsDragActive = false;
             _uiController.ShowIpadViewPanel();
         }
 
         private void OnHideIpadViewEvent(object sender, EventArgs e)
         {
+            InputController.IsDragActive = false;
+            //InputController.IsPause = false;
             _uiController.HideIpadViewPanel();
         }
 
         private void OnGamePauseEvent(object sender, EventArgs e)
         {
-            _gamePlayController.SetTimer(true);
             _uiController.OnBtnSettingClicked();
         }
 
         private void OnGameResumeEvent(object sender, EventArgs e)
         {
-            _gamePlayController.SetTimer(false);
             _uiController.OnBtnResumeClicked();
         }
 
@@ -240,7 +241,7 @@ namespace Game.Scripts.Level_State
         {
             if(_hasShowIpad)
                 return;
-            
+
             _uiController.DisableIpadButton(true);
             _hasShowIpad = true;
             LoadConversation(2);

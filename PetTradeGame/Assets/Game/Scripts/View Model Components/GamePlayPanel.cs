@@ -81,7 +81,6 @@ namespace Game.Scripts.View_Model_Components
         
         public void HideSettingPanel()
         {
-            InputController.IsPause = false;
             GameResume?.Invoke(this, EventArgs.Empty);
         }
 
@@ -152,7 +151,7 @@ namespace Game.Scripts.View_Model_Components
                 _isShowingIpad = false;
                 HideIpadView?.Invoke(this, EventArgs.Empty);
                 HideTutorialIpadEvent?.Invoke(this, EventArgs.Empty);
-                //InputController.IsPause = false;
+                InputController.IsPause = false;
             };
         }
 

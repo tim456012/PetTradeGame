@@ -229,6 +229,7 @@ namespace Game.Scripts.Level_State
         
         private void OnGameResumeEvent(object sender, EventArgs e)
         {
+            InputController.IsPause = false;
             _gamePlayController.SetTimer(false);
             _uiController.OnBtnResumeClicked();
         }
