@@ -13,7 +13,7 @@ namespace Game.Scripts.Controller
         
         private void Update()
         {
-            Debug.Log(IsPause);
+            //Debug.Log(IsPause);
             //Invoke general ClickedEvent when player is not doing dragging.
             //Mobile Version
  #if UNITY_ANDROID || UNITY_IOS

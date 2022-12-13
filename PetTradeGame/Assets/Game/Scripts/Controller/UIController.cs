@@ -7,6 +7,7 @@ namespace Game.Scripts.Controller
     public class UIController : MonoBehaviour
     {
         public static bool IsDebugMode = false;
+        public static event EventHandler StartGameEvent, StartTutorialEvent, SelectLevelEvent, NextDayEvent;
 
         [SerializeField] private MainMenuPanel mainMenuPanel;
         [SerializeField] private GamePlayPanel gamePlayPanel;
@@ -15,8 +16,6 @@ namespace Game.Scripts.Controller
         [SerializeField] private EndGamePanel endGamePanel;
         
         private Canvas _canvas;
-
-        public static event EventHandler StartGameEvent, StartTutorialEvent, NextDayEvent;
         
         private void Awake()
         {
@@ -67,7 +66,6 @@ namespace Game.Scripts.Controller
         
         public void OnBtnStartClicked()
         {
-            //gamePlayPanel.gameObject.SetActive(true);
             StartGameEvent?.Invoke(this, EventArgs.Empty);
         }
 
@@ -76,6 +74,24 @@ namespace Game.Scripts.Controller
             StartTutorialEvent?.Invoke(this, EventArgs.Empty);
         }
 
+        public void OnBtnSelectLvClicked()
+        {
+            mainMenuPanel.menu.SetActive(false);
+            mainMenuPanel.selectLv.SetActive(true);
+            SelectLevelEvent?.Invoke(this, EventArgs.Empty);
+        }
+
+        //TODO: Select Level Function
+        /*public void OnBtnLvBackClicked()
+        {
+            
+        }*/
+
+        public void OnBtnLvClicked()
+        {
+            mainMenuPanel.gameObject.SetActive(false);
+        }
+        
         public void OnBtnNextLevelClicked()
         {
             NextDayEvent?.Invoke(this, EventArgs.Empty);
@@ -83,7 +99,6 @@ namespace Game.Scripts.Controller
         
         public void ShowIpadViewPanel()
         {
-            //gamePlayPanel.btn
             ipadViewPanel.gameObject.SetActive(true);
         }
         

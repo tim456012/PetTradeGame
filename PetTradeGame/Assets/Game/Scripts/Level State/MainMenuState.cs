@@ -26,7 +26,6 @@ namespace Game.Scripts.Level_State
             UIController.StartGameEvent += OnStartGameEvent;
             UIController.StartTutorialEvent += OnStartTutorialEvent;
 
-            GamePlayPanel.GamePause += OnSettingOpenEvent;
             GamePlayPanel.GameResume += OnSettingCloseEvent;
             GamePlayPanel.ClearData += OnClearDataEvent;
         }
@@ -37,7 +36,6 @@ namespace Game.Scripts.Level_State
             UIController.StartGameEvent -= OnStartGameEvent;
             UIController.StartTutorialEvent -= OnStartTutorialEvent;
 
-            GamePlayPanel.GamePause -= OnSettingOpenEvent;
             GamePlayPanel.GameResume -= OnSettingCloseEvent;
             GamePlayPanel.ClearData -= OnClearDataEvent;
         }
@@ -53,10 +51,10 @@ namespace Game.Scripts.Level_State
             Owner.ChangeState<DialogueState>();
         }
 
-        private void OnSettingOpenEvent(object sender, EventArgs e)
+        //TODO: Select Level Function
+        /*private void OnSelectLevelEvent(object sender, EventArgs e)
         {
-            _uiController.OnBtnSettingClicked();
-        }
+        }*/
         
         private void OnSettingCloseEvent(object sender, EventArgs e)
         {

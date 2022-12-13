@@ -59,6 +59,7 @@ namespace Game.Scripts.Controller
             while (!vp.isPrepared)
             {
                 Debug.Log($"Status: {vp.isPrepared}, Video is not prepare");
+                vp.Prepare();
                 yield return null;
             }
 

@@ -188,9 +188,6 @@ namespace Game.Scripts.Controller
             ObjectType tType = target.GetComponent<EntityAttribute>().objectType;
             i = -1;
             
-            if(original != _dragAndDropController.TargetObj)
-                return;
-            
             if (_isEnd)
             {
                 i = 0;
@@ -200,12 +197,15 @@ namespace Game.Scripts.Controller
             var index = CheckObjectType(oType, tType);
             if (index == 0)
                 return;
-
+            
             GameObject stamp, pos;
             switch (index)
             {
                 //Green Stamp
                 case 1:
+                    if(original != _dragAndDropController.TargetObj)
+                        break;
+                    
                     stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Approved");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
                     target.GetComponent<LicenseInfo>().isApproved = true;
@@ -215,6 +215,9 @@ namespace Game.Scripts.Controller
                     return;
                 //Red Stamp
                 case 2:
+                    if(original != _dragAndDropController.TargetObj)
+                        break;
+
                     stamp = target.GetComponent<LicenseInfo>().parts.Find(part => part.name == "I_Rejected");
                     pos = GameObjFinder.FindChildGameObject(target, "Pos");
                     target.GetComponent<LicenseInfo>().isApproved = false;
@@ -236,7 +239,7 @@ namespace Game.Scripts.Controller
             }
         }
 
-        private static int CheckObjectType(ObjectType original, ObjectType target)
+        private int CheckObjectType(ObjectType original, ObjectType target)
         {
             switch (original)
             {

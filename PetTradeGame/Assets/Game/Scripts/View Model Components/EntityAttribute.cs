@@ -24,10 +24,10 @@ namespace Game.Scripts.View_Model_Components
         private void OnTriggerStay2D(Collider2D col)
         {
             var collided = col.GetComponent<EntityAttribute>();
-            if(!collided || collided.objectType is ObjectType.GreenStamp or ObjectType.RedStamp)
+            if(!collided || collided.objectType is ObjectType.None || objectType is ObjectType.License)
                 return;
 
-            FunctionalObjCollisionEvent?.Invoke(gameObject, new InfoEventArgs<GameObject>(col.gameObject));
+            FunctionalObjCollisionEvent?.Invoke(gameObject, new InfoEventArgs<GameObject>(collided.gameObject));
         }
     }
 }

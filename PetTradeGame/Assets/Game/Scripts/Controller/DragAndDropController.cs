@@ -55,14 +55,13 @@ namespace Game.Scripts.Controller
 
             if (temp.isDocument || temp.GetComponent<LicenseInfo>())
             {
-                var sg = TargetObj.GetComponent<SortingGroup>();
-                sg.sortingOrder = 1;
+                TargetObj.GetComponent<SortingGroup>().sortingLayerName = "SelectedObjects";
             }
             else
             {
-                temp.gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "SelectedObjects";
+                TargetObj.GetComponent<SpriteRenderer>().sortingLayerName =  "SelectedObjects";
             }
-
+            
             _originalPos = TargetObj.transform.localPosition;
             InputController.IsDragActive = true;
         }
@@ -91,12 +90,11 @@ namespace Game.Scripts.Controller
             LastObj = TargetObj;
             if (TargetObj.GetComponent<EntityAttribute>().isDocument || TargetObj.GetComponent<LicenseInfo>())
             {
-                var sg = TargetObj.GetComponent<SortingGroup>();
-                sg.sortingOrder = 0;
+                TargetObj.GetComponent<SortingGroup>().sortingLayerName =  "GameObjects";
             }
             else
             {
-                TargetObj.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+                TargetObj.GetComponent<SpriteRenderer>().sortingLayerName =  "GameObjects";
             }
 
             Vector3 cameraWorld = Camera.main!.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));

@@ -918,8 +918,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5403467006172272489}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -134051145
+  m_SortingLayer: 1
   m_SortingOrder: 0
 --- !u!50 &5403467006172272482
 Rigidbody2D:
@@ -983,6 +983,7 @@ MonoBehaviour:
   isDocument: 1
   isFunctionalObject: 0
   isDraggable: 1
+  noCollision: 0
   objectType: 0
   paperType: 3
 --- !u!1 &5863325488457804423
