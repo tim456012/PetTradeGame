@@ -18,6 +18,8 @@ namespace Game.Scripts.View_Model_Components
 
         public static event EventHandler ShowIpadView, HideIpadView, ScaleUpDoc, ScaleDownDoc;
         public static event EventHandler GamePause, GameResume, ClearData, TutorialIpadEvent, HideTutorialIpadEvent;
+        public static event EventHandler BackToMenuEvent;
+        
         private void Awake()
         {
             _btnPos1 = GameObjFinder.FindChildGameObject(gameObject, "BtnPos1").transform;
@@ -153,6 +155,12 @@ namespace Game.Scripts.View_Model_Components
                 HideTutorialIpadEvent?.Invoke(this, EventArgs.Empty);
                 InputController.IsPause = false;
             };
+        }
+        
+        public void BackToMenu()
+        {
+            GameResume?.Invoke(this, EventArgs.Empty);
+            BackToMenuEvent?.Invoke(this, EventArgs.Empty);
         }
 
         public void IpadBtnSwitch(bool isDisable)

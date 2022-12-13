@@ -48,7 +48,7 @@ namespace Game.Scripts.Level_State
             base.RemoveListeners();
             UIController.NextDayEvent -= OnNextDayEvent;
         }
-
+        
         private void OnNextDayEvent(object sender, EventArgs e)
         {
             GC.Collect();

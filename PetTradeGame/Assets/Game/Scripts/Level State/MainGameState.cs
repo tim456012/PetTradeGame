@@ -17,7 +17,7 @@ namespace Game.Scripts.Level_State
         private UIController _uiController;
         private ConversationController _conversationController;
         
-        private bool _isCompliant, _firstInit = true;
+        private bool _isCompliant, isBackToMenu, _firstInit = true;
         
         protected override void Awake()
         {
@@ -46,7 +46,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ClearData -= OnClearDataEvent;
             GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
             GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
-            
+            GamePlayPanel.BackToMenuEvent -= OnBackToMenuEvent;
+
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
@@ -106,6 +107,7 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ClearData += OnClearDataEvent;
             GamePlayPanel.ScaleUpDoc += OnScaleDocumentUpEvent;
             GamePlayPanel.ScaleDownDoc += OnScaleDocumentDownEvent;
+            GamePlayPanel.BackToMenuEvent += OnBackToMenuEvent;
             
             ObjectController.SetAnimalGuideEvent += OnAnimalGuideEvent;
         }
@@ -127,6 +129,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ClearData -= OnClearDataEvent;
             GamePlayPanel.ScaleUpDoc -= OnScaleDocumentUpEvent;
             GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
+            GamePlayPanel.BackToMenuEvent -= OnBackToMenuEvent;
+
             
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
@@ -156,8 +160,14 @@ namespace Game.Scripts.Level_State
             _conversationController.Release();
             //yield return new WaitForSeconds(2f);
             yield return null;
-            
-            Owner.ChangeState<EndGameState>();
+
+            if(isBackToMenu)
+            {
+                _firstInit = true;
+                Owner.ChangeState<MainMenuState>();
+            }           
+            else
+                Owner.ChangeState<EndGameState>();
         }
 
         #region Event Behaviors
@@ -197,7 +207,9 @@ namespace Game.Scripts.Level_State
             Debug.Log("Game Over");
             
             InputController.IsDragActive = false;
-            _uiController.ShowEndGamePanel();
+            if(!isBackToMenu)
+                _uiController.ShowEndGamePanel();
+            
             StartCoroutine(Release());
         }
 
@@ -264,6 +276,13 @@ namespace Game.Scripts.Level_State
             _uiController.HideGameplayPanel();
             Owner.ChangeState<DialogueState>();
             _conversationController.StartConversation(true);
+        }
+        
+        private void OnBackToMenuEvent(object sender, EventArgs e)
+        {
+            isBackToMenu = true;
+            OnLevelFinishEvent(this, EventArgs.Empty);
+            
         }
 
         #endregion
