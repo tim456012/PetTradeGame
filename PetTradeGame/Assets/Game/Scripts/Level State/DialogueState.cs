@@ -3,6 +3,7 @@ using System.Collections;
 using Game.Scripts.Controller;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Model;
+using Game.Scripts.View_Model_Components;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -10,7 +11,7 @@ namespace Game.Scripts.Level_State
 {
     public class DialogueState : GameCore
     {
-        private bool _firstInit = true;
+        public static bool FirstInit = true;
         
         private AssetReference _conversationAsset;
         private ConversationController _conversationController;
@@ -36,20 +37,20 @@ namespace Game.Scripts.Level_State
             InputController.IsPause = true;
             Owner.world.SetActive(true);
             
-            if (!_firstInit) 
+            if (!FirstInit) 
                 return;
 
             if (Owner.isTutorial)
             {
                 _conversationController.LoadTutorialDialogue(Owner.tutorialDialogue.speakerList);
-                _firstInit = false;
+                FirstInit = false;
                 _conversationController.StartTutorialConversation();
                 return;
             }
             
             _conversationController.LoadGlobalDialogue(Owner.globalDialogue.speakerList);
             LoadConversationData();
-            _firstInit = false;
+            FirstInit = false;
         }
 
         public override void Exit()
@@ -62,7 +63,7 @@ namespace Game.Scripts.Level_State
         {
             base.AddListeners();
             ConversationController.CompleteEvent += OnCompleteConversation;
-            if(_firstInit)
+            if(FirstInit)
                 GamePlayController.ClearConversationEvent += OnClearConversation;
         }
 
@@ -106,7 +107,8 @@ namespace Game.Scripts.Level_State
         private async void LoadConversationData()
         {
             _conversationAsset = Owner.LevelData.dialogue;
-            _conversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
+            if(_conversationData == null)
+                _conversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
             
             _conversationController.LoadLevelDialogue(_conversationData.speakerList);
             _conversationController.StartConversation();
@@ -114,7 +116,7 @@ namespace Game.Scripts.Level_State
 
         private void OnClearConversation(object sender, EventArgs e)
         {
-            _firstInit = true;
+            FirstInit = true;
             if (_conversationData)
                 Addressables.Release(_conversationData);
             

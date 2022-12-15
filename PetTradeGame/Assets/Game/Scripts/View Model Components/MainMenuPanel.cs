@@ -7,7 +7,7 @@ namespace Game.Scripts.View_Model_Components
 {
     public class MainMenuPanel : MonoBehaviour
     {
-        public GameObject menu, selectLv, title;
+        public GameObject menu, selectLv;
         public Button btnStart, btnTutorial, btnSelectLv, btnSetting;
         public Button btnLvBack;
 
@@ -55,7 +55,6 @@ namespace Game.Scripts.View_Model_Components
 
         private void OnBtnLvBackClicked()
         {
-            title.SetActive(true);
             selectLv.SetActive(false);
             menu.SetActive(true);
         }

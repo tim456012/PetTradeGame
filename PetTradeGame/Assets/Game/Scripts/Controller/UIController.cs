@@ -77,7 +77,6 @@ namespace Game.Scripts.Controller
         public void OnBtnSelectLvClicked()
         {
             mainMenuPanel.menu.SetActive(false);
-            mainMenuPanel.title.SetActive(false);
             mainMenuPanel.selectLv.SetActive(true);
             SelectLevelEvent?.Invoke(this, EventArgs.Empty);
         }

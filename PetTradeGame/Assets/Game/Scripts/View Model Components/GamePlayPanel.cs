@@ -159,7 +159,7 @@ namespace Game.Scripts.View_Model_Components
         
         public void BackToMenu()
         {
-            GameResume?.Invoke(this, EventArgs.Empty);
+            //GameResume?.Invoke(this, EventArgs.Empty);
             BackToMenuEvent?.Invoke(this, EventArgs.Empty);
         }
 

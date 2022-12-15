@@ -15,7 +15,7 @@ namespace Game.Scripts.Level_State
         private UIController _uiController;
         private ConversationController _conversationController;
 
-        private bool _hasShowIpad, _hasShowAnimal, _hasSubmitted, _firstInit;
+        private bool _hasShowIpad, _hasShowAnimal, _hasSubmitted, _firstInit, _isBackToMenu;
 
         protected override void Awake()
         {
@@ -43,6 +43,7 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
             GamePlayPanel.TutorialIpadEvent -= OnTutorialIpadClicked;
             GamePlayPanel.HideTutorialIpadEvent -= OnTutorialIpadHide;
+            GamePlayPanel.BackToMenuEvent -= OnBackToMenuEvent;
 
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
@@ -99,6 +100,7 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ScaleDownDoc += OnScaleDocumentDownEvent;
             GamePlayPanel.TutorialIpadEvent += OnTutorialIpadClicked;
             GamePlayPanel.HideTutorialIpadEvent += OnTutorialIpadHide;
+            GamePlayPanel.BackToMenuEvent += OnBackToMenuEvent;
             
             ObjectController.SetAnimalGuideEvent += OnAnimalGuideEvent;
         }
@@ -118,7 +120,8 @@ namespace Game.Scripts.Level_State
             GamePlayPanel.ScaleDownDoc -= OnScaleDocumentDownEvent;
             GamePlayPanel.TutorialIpadEvent -= OnTutorialIpadClicked;
             GamePlayPanel.HideTutorialIpadEvent -= OnTutorialIpadHide;
-            
+            GamePlayPanel.BackToMenuEvent -= OnBackToMenuEvent;
+
             ObjectController.SetAnimalGuideEvent -= OnAnimalGuideEvent;
         }
 
@@ -250,6 +253,15 @@ namespace Game.Scripts.Level_State
         private void OnTutorialIpadHide(object sender, EventArgs e)
         {
             LoadConversation(4);
+        }
+        
+        private void OnBackToMenuEvent(object sender, EventArgs e)
+        {
+            _firstInit = true;
+            DialogueState.FirstInit = true;
+            _objectController.StopProcess();
+            InputController.IsDragActive = false;
+            StartCoroutine(Release());
         }
 
         #endregion
