@@ -167,6 +167,8 @@ namespace Game.Scripts.View_Model_Components
             btnAnimalSearch.gameObject.SetActive(false);
             btnDocSearch.gameObject.SetActive(false);
             HideIpadView?.Invoke(this, EventArgs.Empty);
+            
+
             BackToMenuEvent?.Invoke(this, EventArgs.Empty);
         }
 

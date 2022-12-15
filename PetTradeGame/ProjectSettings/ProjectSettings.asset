@@ -156,7 +156,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.thei.pettrade
-    Standalone: com.DefaultCompany.2DProject
+    Standalone: com.THEi.PetTradeGame
     iPhone: com.thei.pettrade
   buildNumber:
     Standalone: 0
@@ -765,7 +765,7 @@ PlayerSettings:
   platformArchitecture: {}
   scriptingBackend:
     Android: 1
-    Standalone: 1
+    Standalone: 0
   il2cppCompilerConfiguration:
     Android: 1
   managedStrippingLevel: {}

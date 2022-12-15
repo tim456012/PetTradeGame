@@ -284,6 +284,7 @@ namespace Game.Scripts.Level_State
             DialogueState.FirstInit = true;
             _firstInit = true;
             _isBackToMenu = true;
+            StopProduceDocument(this, EventArgs.Empty);
             OnLevelFinishEvent(this, EventArgs.Empty);
         }
 

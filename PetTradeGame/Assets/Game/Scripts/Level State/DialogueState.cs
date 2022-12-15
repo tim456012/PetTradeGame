@@ -11,7 +11,7 @@ namespace Game.Scripts.Level_State
 {
     public class DialogueState : GameCore
     {
-        public static bool FirstInit = true;
+        public static bool FirstInit;
         
         private AssetReference _conversationAsset;
         private ConversationController _conversationController;
@@ -21,8 +21,9 @@ namespace Game.Scripts.Level_State
         {
             base.Awake();
             _conversationController = Owner.GetComponentInChildren<ConversationController>();
+            FirstInit = true;
         }
-
+        
         protected override void OnDestroy()
         {
             base.OnDestroy();
@@ -107,9 +108,8 @@ namespace Game.Scripts.Level_State
         private async void LoadConversationData()
         {
             _conversationAsset = Owner.LevelData.dialogue;
-            if(_conversationData == null)
-                _conversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
             
+            _conversationData = await _conversationAsset.LoadAssetAsync<ConversationData>().Task;
             _conversationController.LoadLevelDialogue(_conversationData.speakerList);
             _conversationController.StartConversation();
         }
