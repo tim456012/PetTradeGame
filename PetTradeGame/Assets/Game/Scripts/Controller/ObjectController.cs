@@ -344,7 +344,7 @@ namespace Game.Scripts.Controller
         }
         
         public void GetAnimalGuide()
-        { 
+        {
             var id = _factoryController.generatedID[..2];
             if (!_animalGuideList.TryGetValue(id, out Sprite sprite))
             {

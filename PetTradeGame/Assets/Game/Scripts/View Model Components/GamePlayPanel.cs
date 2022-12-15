@@ -159,7 +159,14 @@ namespace Game.Scripts.View_Model_Components
         
         public void BackToMenu()
         {
-            //GameResume?.Invoke(this, EventArgs.Empty);
+            Vector3 position = _originPos.position;
+            btnDocSearch.transform.position = position;
+            btnAnimalSearch.transform.position = position;
+            btnIpadOff.gameObject.SetActive(false);
+            btnIpadOn.gameObject.SetActive(true);
+            btnAnimalSearch.gameObject.SetActive(false);
+            btnDocSearch.gameObject.SetActive(false);
+            HideIpadView?.Invoke(this, EventArgs.Empty);
             BackToMenuEvent?.Invoke(this, EventArgs.Empty);
         }
 

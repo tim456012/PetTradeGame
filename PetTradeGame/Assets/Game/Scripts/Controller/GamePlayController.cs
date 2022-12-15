@@ -139,10 +139,16 @@ namespace Game.Scripts.Controller
 
         public void SetTimer(bool isStop)
         {
-            if (!isStop)
+            if (isStop)
+            {
+                _isTimerStop = true;
+                clock.gameObject.SetActive(false);
+            }
+            else
+            {
+                _isTimerStop = false;
                 clock.gameObject.SetActive(true);
-
-            _isTimerStop = isStop;
+            }
         }
 
         public void HasCompliant(bool hasComplaint)
@@ -169,6 +175,12 @@ namespace Game.Scripts.Controller
         {
             enabled = true;
             clock.gameObject.SetActive(true);
+        }
+
+        public void ResetTimer()
+        {
+            _time = 0f;
+            clock.UpdateTime(_time);
         }
     }
 }

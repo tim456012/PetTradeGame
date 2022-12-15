@@ -142,6 +142,7 @@ namespace Game.Scripts.Level_State
         
         private IEnumerator Release()
         {
+            _firstInit = true;
             _hasShowIpad = false;
             _hasShowAnimal = false;
             _hasSubmitted = false;
@@ -257,7 +258,6 @@ namespace Game.Scripts.Level_State
         
         private void OnBackToMenuEvent(object sender, EventArgs e)
         {
-            _firstInit = true;
             DialogueState.FirstInit = true;
             _objectController.StopProcess();
             InputController.IsDragActive = false;

@@ -159,9 +159,12 @@ namespace Game.Scripts.Level_State
             _factoryController.Release();
             _objectController.Release();
             _conversationController.Release();
-            //yield return new WaitForSeconds(2f);
             yield return null;
-
+            
+            //Reset and pause the clock
+            _gamePlayController.ResetTimer();
+            _gamePlayController.SetTimer(true);
+            
             if(_isBackToMenu)
                 Owner.ChangeState<MainMenuState>();
             else
