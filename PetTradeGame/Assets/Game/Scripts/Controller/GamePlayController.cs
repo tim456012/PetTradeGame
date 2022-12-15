@@ -1,7 +1,9 @@
 using System;
 using Game.Scripts.EventArguments;
 using Game.Scripts.Objects;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game.Scripts.Controller
 {

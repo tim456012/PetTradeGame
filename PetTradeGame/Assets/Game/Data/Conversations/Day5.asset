@@ -55,7 +55,7 @@ MonoBehaviour:
     - "\uFF08\u807D\u96FB\u8A71\uFF09\u53C8\u662F\u8C93\u982D\u9DF9\uFF1F\u600E\u9EBC\u90A3\u500B\u54C8\u5229\u8DEF\u7279\u4E00\u51FA\u65B0\u5F71\u96C6\uFF0C\u6BCF\u500B\u90FD\u60F3\u8981\u8C93\u982D\u9DF9\uFF1F"
     - "\u5C0F\u5B69\u90FD\u662F\u9019\u6A23"
     - "\u4ED6\u5011\u600E\u9EBC\u4E0D\u53BB\u990A\u5730\u7CBE\uFF01"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: c863cb4adadc6407c8049ef277afba57, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R1_D5_N1
@@ -65,97 +65,97 @@ MonoBehaviour:
     - "\u4ED6\u5011\u8AAA\u8981\u5BF5\u7269\uFF1F"
     - "\u54FC\uFF0C\u6CA1\u9580\uFF01\u4E0D\u8AAA\u4E86bye"
     - "\u597D\uFF0C\u5728\u9019\u88CF\uFF0C\u4F60\u770B\u4E00\u4E0B"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: c863cb4adadc6407c8049ef277afba57, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D5_N2
     messages:
     - "\u5C0F\u827E\u3001\u54B3\uFF0C\u6211\u662F\u8AAA\u5728\u9019\u88CF\uFF01"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: f8d6e5b03fdc940edabaf9592260c66d, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D5_N3_E
     messages:
     - "\u5225\u5225\u5225\u63A8\uFF01\u5629\uFF0C\u54E5\u4F60\u9019\u4E5F\u592A\u591A\u4EBA\u4E86\u5427\uFF1F"
     - "\u6211\u8D70\u6162\u4E00\u9EDE\u4E5F\u88AB\u50AC"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 1d5bcda59d8f94b679f1fc9ab45e8c97, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R1_D5_N3
     messages:
     - "\u597D\u7684"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 1d5bcda59d8f94b679f1fc9ab45e8c97, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D5_N4_E
     messages:
     - "\u55EF......"
     - "\u4F60\u5011ETM\u53EA\u662F\u505A\u86C7\u9CE5\u7533\u8ACB\u7684\u55CE\uFF1F"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 9555329a5ed6d48b8b9241826a7f90a6, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R1_D5_N4
     messages:
     - "\u5594\u5594"
     - "\u90A3\u5E6B\u6211\u770B\u770B\u9019\u4E9Bo\u4E0Dok\uFF0C\u6211\u8981\u8FA6\u597D\u6E96\u8A31\u8B49\u624D\u80FD\u98DB\u53BB\u5916\u570B"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 9555329a5ed6d48b8b9241826a7f90a6, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D5_N5_E
     messages:
     - "\u597D\u55B2\uFF0C\u6C92\u60F3\u5230\u5FEB\u4E2D\u79CB\u4E86\uFF0C\u4F60\u5011\u4ECD\u7136\u5728\u5DE5\u4F5C"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: c863cb4adadc6407c8049ef277afba57, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R1_D5_N5
     messages:
     - "\u4F60\u5225\u8AAA\u91D1\u9B5A\u8857\u6709\u4EBA\u57288\u6708\u5DF2\u7D93\u56E4\u5B9A\u5E74\u8CA8\u4E86"
     - "\u73FE\u5728\u63D0\u65E9\u904E\u4E2D\u79CB\u4E5F\u4E0D\u8A87\u5F35"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: c863cb4adadc6407c8049ef277afba57, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D5_N6_E
     messages:
     - "\u7D42\u65BC\u5230\u4E86\uFF0C\u4F60\u5011\u9019\u968A\u600E\u9EBC\u6BD4\u524D\u5929\u9577\u4E86\uFF1F"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 9555329a5ed6d48b8b9241826a7f90a6, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: A0_D5_N1
     messages:
     - "\uFF08\u807D\u96FB\u8A71\uFF09\u53C8\u600E\u6A23\uFF1F\u554A\uFF1F\u597D\u597D\u597D\u6211\u50AC\u4E00\u4E0B"
     - "\u54B3\uFF0C\u5927\u5144\u5F1F\u554A\uFF01\u7576\u6211\u6C42\u4F60\u4E86\u6279\u5FEB\u4E00\u9EDE\u5427\uFF01"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: c863cb4adadc6407c8049ef277afba57, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: A0_D5_N2
     messages:
     - "\u6211\u60F3\u554F\u4E0B\u9019\u4EFD\u5DE5\u4F5C\u5BB9\u6613\u55CE\uFF1F"
     - "\u4F60\u89BA\u5F97\u52A0\u5E7E\u500B\u4EBA\u6BD4\u8F03\u80FD\u52A0\u901F\u6D41\u7A0B\uFF1F"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: f8d6e5b03fdc940edabaf9592260c66d, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: A0_D5_N3
     messages:
     - "\u54E5\u4F60\u5FEB\u9EDE"
     - "\u5F8C\u9762\u7684\u4EBA\u90FD\u5728\u7528\u5947\u602A\u7684\u76EE\u5149\u770B\u6211\u4E86!"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 1d5bcda59d8f94b679f1fc9ab45e8c97, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: A0_D5_N4
     messages:
     - "...\u4F60\u9084\u8981\u591A\u5C11\u6642\u9593\uFF1F"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 9555329a5ed6d48b8b9241826a7f90a6, type: 3}
+    anchor: 4
+  - speakerName: NPC
+    dialogueId: A0_D5_N5
+    messages:
+    - "\u54CE\u55B2\uFF0C\u4F60\u4E0D\u653E\u5047\u6211\u4E5F\u8981\u653E\u5047\u4E86"
+    - "\u90FD\u5FEB\u9031\u672A\u4E86\u4F60\u5C31\u653E\u904E\u6211\u5427\uFF1F"
+    speaker: {fileID: 21300000, guid: c863cb4adadc6407c8049ef277afba57, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: A0_D5_N6
     messages:
-    - "\u54CE\u55B2\uFF0C\u4F60\u4E0D\u653E\u5047\u6211\u4E5F\u8981\u653E\u5047\u4E86"
-    - "\u90FD\u5FEB\u9031\u672A\u4E86\u4F60\u5C31\u653E\u904E\u6211\u5427\uFF1F"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
-    anchor: 4
-  - speakerName: NPC
-    dialogueId: A0_D5_N7
-    messages:
     - "\u4F60\u6162\u6162\u770B\uFF0C\u6211\u770B\u500B\u65B0\u805E......"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: 9555329a5ed6d48b8b9241826a7f90a6, type: 3}
     anchor: 4

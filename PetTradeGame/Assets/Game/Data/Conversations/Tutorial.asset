@@ -22,7 +22,7 @@ MonoBehaviour:
     - "\u6070\u597D\u4F60\u8ABF\u4F86\u4E86!"
     - "\u63A5\u4E0B\u4F86\u6703\u5F88\u5FD9\uFF0C\u6211\u9700\u8981\u4F60\u76E1\u5FEB\u63A5\u624B\u6709\u95DC\u9CE5\u985E\u3001\u722C\u87F2\u985E\u4EE5\u53CA\u6D77\u6D0B\u751F\u7269\u7684\u5BE9\u67E5\u3002"
     - "\u4E8B\u4E0D\u5B9C\u9072\uFF0CAden\u6703\u6559\u4F60\u5982\u4F55\u5B8C\u6210\u4EFB\u52D9\u7684\uFF0C\u5C0D\u5427\uFF1F"
-    speaker: {fileID: 21300000, guid: 4af46f7ebce6c934bad057dee8b32e7a, type: 3}
+    speaker: {fileID: 21300000, guid: d8b04265b409c554cae9ae53719eec83, type: 3}
     anchor: 4
   - speakerName: Aden
     dialogueId: T2
@@ -31,7 +31,7 @@ MonoBehaviour:
     - "\u4F60\u597D\uFF0C\u6211\u662FAden\u3002"
     - "\u653E\u5FC3\u5427\uFF01\u7562\u7ADF\u662F\u7B2C\u4E00\u5929\uFF0C\u6211\u6703\u5168\u7A0BSupport\u4F60\u7684\u3002"
     - "\u5148\u8DDF\u6211\u53BB\u95DC\u53E3\u5427\uFF01"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Aden
     dialogueId: T3
@@ -40,7 +40,7 @@ MonoBehaviour:
     - "\u70BA\u4E86\u65B9\u4FBF\u6BD4\u5C0D\uFF0C\u6211\u5011\u7D66\u6BCF\u500B\u54E1\u5DE5\u4E5F\u914D\u4E86\u4E00\u90E8\u5E73\u677F\u96FB\u8166\u53BB\u770B\u76E3\u7BA1\u52D5\u7269\u7684\u8CC7\u6599\u548C\u6587\u4EF6\u7684\u9700\u6C42\u3002"
     - "\u597D\uFF0C\u8B93\u6211\u5011\u5148\u53BB\u8A66\u8A66\u6D41\u7A0B\uFF0C\u9996\u5148\u7533\u8ACB\u4EBA\u6703\u8D70\u904E\u4F86\uFF0C\u4F60\u9700\u8981\u53EB\u4ED6\u5011\u7D66\u90A3\u4E9B\u7533\u8ACB\u8868\u4F60\u770B\u770B\u5408\u4E0D\u5408\u9700\u6C42\u3002"
     - "\u7533\u8ACB\u4EBA\u7684\u60C5\u6CC1\u5404\u4E0D\u540C\uFF0C\u6240\u4EE5\u4F60\u62FF\u5230\u7684\u6578\u91CF\u4E5F\u4E0D\u6703\u4E00\u6A23\u3002"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Aden
     dialogueId: T4
@@ -50,14 +50,14 @@ MonoBehaviour:
     - "\u4E00\u500B\u662F\u770B\u5BE6\u6642\u52D5\u7269\u7684\u5206\u6790\u3002"
     - "\u4F60\u53EF\u4EE5\u5728\u5DE6\u4E0B\u89D2\u627E\u5230\u5E73\u677F\u96FB\u8166"
     - "\u6211\u5011\u5148\u6309\u5B88\u5247\u53BB\u770B\u4E0B\u9019\u4E9B\u6587\u4EF6\u5408\u4E0D\u5408\u8981\u6C42\u5427\uFF01"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Aden
     dialogueId: T5
     messages:
     - "Ok\uFF0C\u770B\u4E0A\u53BB\u7121\u554F\u984C!"
     - "\u73FE\u5728\u53BB\u5BE6\u6642\u52D5\u7269\u76E3\u63A7\u770B\u4E00\u4E0B\u4ED6\u5011\u5E36\u4F86\u7684\u52D5\u7269\u548C\u4ED6\u5011\u6587\u4EF6\u7684\u63CF\u8FF0\u662F\u4E0D\u662F\u4E00\u81F4\u3002"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 6
   - speakerName: Aden
     dialogueId: T6
@@ -66,7 +66,7 @@ MonoBehaviour:
     - "\u5B78\u540D\u2026Rites \u5206\u985E\u2026\u5916\u89C0\u7279\u5FB5\u2026"
     - "\u597D\uFF01\u6C92\u554F\u984C\u3002"
     - "\u6211\u5011\u5148\u6536\u56DEipad\u5148"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 6
   - speakerName: Aden
     dialogueId: T7
@@ -74,7 +74,7 @@ MonoBehaviour:
     - "\u4F60\u684C\u9762\u4E0A\u7684\u90A3\u4E9B\u5370\u7AE0\u662F\u6309\u5728\u6E96\u8A31\u8B49\u4E0A\u7684"
     - "\u5982\u679C\u6240\u6709\u6587\u4EF6\u6B63\u78BA\u5C31\u6309\u7DA0\u8272\uFF0C\u5982\u679C\u4E0D\u662F\u5C31\u6309\u7D05\u8272\u3002"
     - "\u6309\u5B8C\u5C31\u7D66\u56DE\u7533\u8ACB\u4EBA\u518D\u53EB\u4E0B\u4E00\u4F4D\u3002"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 2
   - speakerName: Aden
     dialogueId: T8
@@ -84,5 +84,5 @@ MonoBehaviour:
     - "\u4E00\u4E0D\u5C0F\u5FC3\u7D66\u932F\u4E86\u5C31\u6703\u6263\u9322\uFF0C\u6263\u591A\u4E86\u9084\u53EF\u80FD\u6703\u6389\u5DE5\u4F5C\u3002"
     - "\u53CD\u4E4B\uFF0C\u505A\u597D\u4E86\u5C31\u53EF\u80FD\u6703\u5347\u8077\u55B2\uFF01"
     - "\u505A\u5230\u516D\u9EDE\u5C31\u653E\u5DE5\u5566\uFF0C\u52A0\u6CB9\u5566\uFF5E\u65B0\u4EBA!"
-    speaker: {fileID: 21300000, guid: 9385f64dfc11c2e4fb1b696723cabe02, type: 3}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
