@@ -2465,6 +2465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 396885018}
   - component: {fileID: 396885019}
+  - component: {fileID: 396885020}
   m_Layer: 5
   m_Name: ButtonGroup
   m_TagString: Untagged
@@ -2525,6 +2526,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &396885020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396885017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5026d60e016e5b14f923f05be28cb73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInUpdate: 0
+  anchorType: 4
+  anchorOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &414532433
 GameObject:
   m_ObjectHideFlags: 0
@@ -7809,6 +7825,7 @@ GameObject:
   - component: {fileID: 1805817230}
   - component: {fileID: 1805817229}
   - component: {fileID: 1805817228}
+  - component: {fileID: 1805817231}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -7824,7 +7841,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805817226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -9504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7904,6 +7921,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1805817226}
   m_CullTransparentMesh: 1
+--- !u!114 &1805817231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805817226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5026d60e016e5b14f923f05be28cb73a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  executeInUpdate: 0
+  anchorType: 4
+  anchorOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &1833024004
 GameObject:
   m_ObjectHideFlags: 0
