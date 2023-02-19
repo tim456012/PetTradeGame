@@ -18,20 +18,20 @@ MonoBehaviour:
     dialogueId: PR0_D3
     messages:
     - "\u600E\u9EBC\u4E86\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR1_D3
     messages:
     - ......
     - "\u8ACB\u554F\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR2_D3
     messages:
     - "\u8ACB\u51FA\u793A\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR3_D3
@@ -39,13 +39,13 @@ MonoBehaviour:
     - "\u6211\u4E5F\u89BA\u5F97\uFF0C\u8D70\u79C1\u884C\u70BA\u4E0D\u53EF\u53D6\u3002"
     - "\u4E0D\u904E\uFF0C\u5148\u56DE\u5230\u6B63\u984C"
     - "\u8ACB\u4F60\u51FA\u793A\u4E00\u4E0B\u7533\u8ACB\u8868"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR4_D3
     messages:
     - "\u55EF"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D3_N1_E

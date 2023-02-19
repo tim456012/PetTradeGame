@@ -19,19 +19,19 @@ MonoBehaviour:
     messages:
     - "\u5C0D\u7684"
     - "\u9EBB\u7169\u628A\u4F60\u624B\u4E0A\u7684\u6587\u4EF6\u7D66\u6211\u770B\u4E00\u4E0B"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR1_D2
     messages:
     - "\u6240\u4EE5\u624D\u8981\u66F4\u7D30\u7DFB\u7684\u770B\u6587\u4EF6\uFF0C\u4F60\u6709\u6587\u4EF6\u55CE\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR2_D2
     messages:
     - "\u73FE\u5728\u5916\u4F86\u5BF5\u7269\u71B1\u6F6E\u672A\u9000\uFF0C\u4E5F\u53EA\u80FD\u9019\u6A23\u4E86"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR3_D2
@@ -39,7 +39,7 @@ MonoBehaviour:
     - "\u5175\u4F86\u5C07\u64CB\uFF0C\u6C34\u4F86\u571F\u63A9\u3002"
     - "\u5225\u8AAA\u4E86"
     - "\u8ACB\u7D66\u6211\u4F60\u7684\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D2_N1

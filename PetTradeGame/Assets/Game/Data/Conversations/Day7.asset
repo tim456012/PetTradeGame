@@ -18,18 +18,18 @@ MonoBehaviour:
     dialogueId: PR0_D7
     messages:
     - "......\u7B97\u662F\u5427\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR1_D7
     messages:
     - "PL \u662F Personal Law enforcement"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: 
     dialogueId: "\u800CCL\u662FAnimals bred in captivity Law enforcement\uFF0C\u4F60\u53EF\u4EE5\u53BBRites\u5B98\u7DB2\u770B\u4E00\u4E0B"
     messages: []
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 0
   - speakerName: Player
     dialogueId: PR2_D7
@@ -38,26 +38,26 @@ MonoBehaviour:
     - "\u7260\u4E8B\u5BE6\u4E0A\u662F\u5DF4\u897F\u9F9C\uFF0C\u56E0\u70BA\u751F\u5B58\u80FD\u529B\u5F3A\uFF0C\u751A\u9EBC\u90FD\u5403"
     - "\u6240\u4EE5\u4F86\u5230\u9999\u57CE\u5468\u570D\u90FD\u6709"
     - "\u9EBB\u7169\u7D66\u6211\u4E00\u4E0B\u4F60\u7684\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR3_D7
     messages:
     - "\u55EF\uFF0C\u8ACB\u51FA\u793A\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR4_D7
     messages:
     - "\u55EF\uFF0C\u4E0B\u4E00\u4F4D..."
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR5_D7
     messages:
     - "\u6211\u4E0D\u4ECB\u610F"
     - "\u9EBB\u7169\u7D66\u6211\u4F60\u7684\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D7_N1_E

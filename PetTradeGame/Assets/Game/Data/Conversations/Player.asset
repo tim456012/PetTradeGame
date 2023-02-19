@@ -18,29 +18,29 @@ MonoBehaviour:
     dialogueId: GLB_P1
     messages:
     - "\u4F60\u597D\uFF0C\u8ACB\u51FA\u793A\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: GLB_P2
     messages:
     - "\u62B1\u6B49\uFF0C\u4F46\u6211\u5011\u8981\u8DDF\u7A0B\u5E8F\u8FA6\u4E8B\u7684"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: GLB_P3
     messages:
     - "\u662F\u662F\u662F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: GLB_P4
     messages:
     - "\u62B1\u6B49\uFF0C\u6211\u76E1\u5FEB\u3002"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: GLB_P5
     messages:
     - "\u9EBB\u7169\u518D\u7B49\u4E00\u4E0B"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4

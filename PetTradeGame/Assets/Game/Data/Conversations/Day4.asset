@@ -19,19 +19,19 @@ MonoBehaviour:
     messages:
     - "\u9019\u908A\u5DF2\u7D93\u7B97\u5C11\u4EBA\u4E86"
     - "\u6211\u9130\u5EA7\u6700\u8FD1\u6BCF\u5929\u90FD\u8981\u5206\u8EAB\u4E4F\u8853\u8655\u7406\u4E94\u5341\u500B\u4EBA"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR1_D4
     messages:
     - "\u9019\u662F\u8D85\u7D1A\u8CFD\u4E9E\u5916\u52E4\u4EBA\u54E1\uFF0C\u6211\u5011\u4E0D\u53EF\u4EE5\u4E00\u6982\u800C\u8AD6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR2_D4
     messages:
     - "\u5C0D\uFF0C\u6709\u751A\u9EBC\u554F\u984C\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR3_D4
@@ -39,7 +39,7 @@ MonoBehaviour:
     - "\u7576\u7136\uFF0C\u7562\u7ADF\u7260\u5011\u672C\u8EAB\u5C31\u662F\u91CE\u751F\u6216\u8005\u975E\u672C\u5730\u7E41\u6B96"
     - "\u8981\u662F\u88AB\u653E\u751F\u5230\u91CE\u5916\u6703\u7834\u58DE\u751F\u614B\u5E73\u8861\u7684\u3002"
     - "\u597D\u4E86\uFF0C\u8ACB\u5148\u7D66\u6211\u770B\u770B\u4F60\u7684\u6587\u4EF6\u5427"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR4_D4
@@ -48,7 +48,7 @@ MonoBehaviour:
     - "\u5546\u696D\u8981\u52A0\u4E00\u500B\u52D5\u7269\u552E\u8CE3\u5546\u724C\u7167"
     - "\u53E6\u5916\u7015\u5371\u52D5\u72691\u30012\u30013\u7D1A\u90FD\u8981\u7015\u5371\u52D5\u7269\u9032\u53E3\u8A31\u53EF\u8B49\u8B49\u660E"
     - "\u61C2\u55CE\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR5_D4
@@ -57,7 +57,7 @@ MonoBehaviour:
     - "\u5176\u6B21\uFF0C\u6B63\u662F\u56E0\u70BA\u4E0D\u60F3\u518D\u8B93\u7121\u8F9C\u5E02\u6C11\u53D7\u50B7\u6240\u4EE5\u6211\u5011\u624D\u52A0\u5F37\u95DC\u53E3\u7533\u5831"
     - "\u9084\u6709\u63D0\u5021\u8209\u5831\u68C4\u990A\u884C\u70BA"
     - "\u73FE\u5728\uFF0C\u80FD\u5426\u8ACB\u4F60\u7D66\u6211\u770B\u4E00\u4E0B\u4F60\u7684\u6587\u4EF6\uFF1F"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D4_N1_E

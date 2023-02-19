@@ -19,13 +19,13 @@ MonoBehaviour:
     messages:
     - "\u95DC\u53E3\u9019\u901A\u5E38\u4E5F\u662F\u8F2A\u73ED\u4E0D\u4F11\u606F\u7684\u3002"
     - "\u9EBB\u7169\u8ACB\u4F60\u7D66\u4E00\u4E0B\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR1_D6
     messages:
     - "\u6211\u5011\u6703\u8DDF\u9032\u7684\uFF0C\u9EBB\u7169\u5148\u51FA\u793A\u4E00\u4E0B\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR2_D6
@@ -33,20 +33,20 @@ MonoBehaviour:
     - "\u5C0D\uFF0C\u4F46\u672C\u8EAB\u5DF2\u7D93\u5728\u7576\u5BF5\u7269\u6216\u662F\u70BA\u4FDD\u80B2\u990A\u7684\u6709\u6B63\u898F\u6587\u4EF6\u90FD\u53EF\u7533\u8ACB\u5165\u5883"
     - "\u624B\u7E8C\u901A\u5E38\u6BD4\u5E73\u5E38\u591A"
     - "\u4E0D\u904E\u73FE\u5728\u9EBB\u7169\u7D66\u6211\u770B\u4E0B\u4F60\u7684\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR3_D6
     messages:
     - "\u653E\u5FC3\uFF0C\u7260\u5011\u53EA\u662F\u5728\u81E8\u6642\u5BC4\u5B58\u6240\u9032\u884C\u76E3\u63A7"
     - "\u6211\u5011\u9019\u6709\u4FDD\u80B2\u54E1\u5728\u5B9A\u671F\u9935\u98DF\u7684"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: Player
     dialogueId: PR4_D6
     messages:
     - "\u9019\u4F4D\u7533\u8ACB\u4EBA\uFF1F \u9EBB\u7169\u51FA\u793A\u4E00\u4E0B\u6587\u4EF6"
-    speaker: {fileID: 0}
+    speaker: {fileID: 21300000, guid: 253f12d914020be4dae9d1163e3b8798, type: 3}
     anchor: 4
   - speakerName: NPC
     dialogueId: R0_D6_N1_E
