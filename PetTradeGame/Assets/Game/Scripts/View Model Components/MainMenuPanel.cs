@@ -8,7 +8,7 @@ namespace Game.Scripts.View_Model_Components
     public class MainMenuPanel : MonoBehaviour
     {
         public GameObject menu, selectLv;
-        public Button btnStart, btnTutorial, btnSelectLv, btnSetting;
+        public Button btnStart, btnTutorial, btnSetting;
         public Button btnLvBack;
 
         private UIController _controller;
@@ -22,16 +22,17 @@ namespace Game.Scripts.View_Model_Components
         {
             btnStart.onClick.AddListener(OnBtnStartClicked);
             btnTutorial.onClick.AddListener(OnBtnTutorialClicked);
-            btnSelectLv.onClick.AddListener(OnBtnSelectLvClicked);
+            //btnSelectLv.onClick.AddListener(OnBtnSelectLvClicked);
             btnSetting.onClick.AddListener(OnBtnSettingClicked);
             btnLvBack.onClick.AddListener(OnBtnLvBackClicked);
         }
 
         private void OnBtnStartClicked()
         {
-            Debug.Log("Start Game");
-            gameObject.SetActive(false);
-            _controller.OnBtnStartClicked();
+            //Debug.Log("Start Game");
+            //gameObject.SetActive(false);
+            //_controller.OnBtnStartClicked();
+            _controller.OnBtnSelectLvClicked();
         }
 
         private void OnBtnTutorialClicked()
