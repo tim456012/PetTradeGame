@@ -303,7 +303,7 @@ namespace Game.Scripts.Controller
 
             if (_lastObj == null)
                 _lastObj = obj;
-
+            
             _isScaled = !_isScaled;
             if (_lastObj != obj)
             {
@@ -317,11 +317,13 @@ namespace Game.Scripts.Controller
             {
                 _lastObj.transform.localScale = new Vector3(0.5f, 0.5f, 0);
                 sg.sortingLayerName = "SelectedObjects";
+                sg.sortingOrder = 1;
             }
             else
             {
                 _lastObj.transform.localScale = new Vector3(0.3f, 0.3f, 0);
-                sg.sortingLayerName = "Default";
+                sg.sortingLayerName = "GameObjects";
+                sg.sortingOrder = 0;
             }
         }
         
